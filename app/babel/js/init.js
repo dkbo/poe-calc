@@ -1,4 +1,4 @@
-const value = {
+const init = {
   player: {
     level: 1, //等級
     str: 0,   //力量
@@ -33,16 +33,14 @@ const value = {
     fb: 0,  //火焰大
     ts: 0,  //閃電小
     tb: 0,  //閃電大
-    pm: 0,  //更多傷害%
+    pm: 0,  //更多弓傷害%(亂矢)
   },
   talent: {
     as: 0,  //攻擊速度
     c: 0, //暴擊機率
-    trc: 0, //陷阱暴擊機率
     d: 0,  //傷害加成%
-    pjtd: 0, //投射出傷害%
+    pjtd: 0, //投射物傷害%
     cd: 0,  //暴傷加成%
-    trcd: 0,  //陷阱暴傷加成%
     ed: 0, //元素傷害%
     wed: 0, //武器元素傷害%
     pd: 0,  //物理傷害%
@@ -52,6 +50,10 @@ const value = {
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
     aura: 0,  //光環效果%
+    hp: 0, //最大生命
+    hpd: 0, //生命%
+    mp: 0, //最大魔力
+    mpd: 0, //魔力%
   },
   head: {
     as: 0,  //攻擊速度
@@ -72,6 +74,10 @@ const value = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    hp: 0, //最大生命
+    hpd: 0, //生命%
+    mp: 0, //最大魔力
+    mpd: 0, //魔力%
   },
   hand: {
     as: 0,  //攻擊速度
@@ -92,6 +98,10 @@ const value = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    hp: 0, //最大生命
+    hpd: 0, //生命%
+    mp: 0, //最大魔力
+    mpd: 0, //魔力%
   },
   body: {
     as: 0,  //攻擊速度
@@ -112,6 +122,10 @@ const value = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    hp: 0, //最大生命
+    hpd: 0, //生命%
+    mp: 0, //最大魔力
+    mpd: 0, //魔力%
   },
   belt: {
     as: 0,  //攻擊速度
@@ -132,6 +146,10 @@ const value = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    hp: 0, //最大生命
+    hpd: 0, //生命%
+    mp: 0, //最大魔力
+    mpd: 0, //魔力%
   },
   necklace: {
     as: 0,  //攻擊速度
@@ -152,6 +170,10 @@ const value = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    hp: 0, //最大生命
+    hpd: 0, //生命%
+    mp: 0, //最大魔力
+    mpd: 0, //魔力%
   },
   ringone: {
     as: 0,  //攻擊速度
@@ -172,6 +194,10 @@ const value = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    hp: 0, //最大生命
+    hpd: 0, //生命%
+    mp: 0, //最大魔力
+    mpd: 0, //魔力%
   },
   ringtwo: {
     as: 0,  //攻擊速度
@@ -192,6 +218,10 @@ const value = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    hp: 0, //最大生命
+    hpd: 0, //生命%
+    mp: 0, //最大魔力
+    mpd: 0, //魔力%
   },
   foot: {
     as: 0,  //攻擊速度
@@ -212,6 +242,10 @@ const value = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    hp: 0, //最大生命
+    hpd: 0, //生命%
+    mp: 0, //最大魔力
+    mpd: 0, //魔力%
   },
   quiver: {
     as: 0,  //攻擊速度
@@ -233,9 +267,14 @@ const value = {
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
     pjtd: 0, //投射出傷害%
+    hp: 0, //最大生命
+    hpd: 0, //生命%
+    mp: 0, //最大魔力
+    mpd: 0, //魔力%
   },
-  skillone: {
+  skill: {
     as: 0,  //攻擊速度
+    asl: 0, //較少攻擊速度
     c: 0, //暴擊機率
     ices: 0,  //冰冷小
     iceb: 0,  //冰冷大
@@ -245,15 +284,9 @@ const value = {
     tb: 0,  //閃電大
     cd: 0,  //暴傷加成%
     wed: 0, //武器元素傷害%
-    wedm: 0, //更多武器元素傷害%
     pd: 0,  //投射物物理傷害%
-    pdm: 0,  //更多投射物物理傷害%
     pjtd: 0, //投射物傷害%
-    pjtdm: 0, //更多投射物傷害%
-    pjtdl: 0, //較少投射物傷害%
     d: 0,  //傷害加成%
-    dm: 0,  //更多傷害加成%
-    dl: 0,  //較少傷害加成%
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
@@ -263,165 +296,27 @@ const value = {
     ptfadd: 0,  //額外物轉火
     ptiadd: 0, //額外物轉冰
     pttadd: 0, //額外物轉電
-    bd: 0,  //基礎傷害加成
+    bd: 100,  //基礎傷害加成
   },
-  skilltwo: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    cd: 0,  //暴傷加成%
-    wed: 0, //武器元素傷害%
-    wedm: 0, //更多武器元素傷害%
-    pd: 0,  //投射物物理傷害%
-    pdm: 0,  //更多投射物物理傷害%
-    pjtd: 0, //投射物傷害%
-    pjtdm: 0, //更多投射物傷害%
-    pjtdl: 0, //較少投射物傷害%
-    d: 0,  //傷害加成%
-    dm: 0,  //更多傷害加成%
-    dl: 0,  //較少傷害加成%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    ptf: 0, //物轉火
-    pti: 0, //物轉冰
-    ptt: 0, //物轉電
-    ptfadd: 0,  //額外物轉火
-    ptiadd: 0, //額外物轉冰
-    pttadd: 0, //額外物轉電
-    bd: 0,  //基礎傷害加成
+  moreless: {
+    gmp: 0,  //高階多重
+    lmp: 0,  //低階多重
+    fork: 0, //分裂
+    pjtdm: 0, //投射物減速
+    pdm: 0,  //投射物物理傷害
+    tr: 0,  //陷阱
+    trd: 0, //陷阱傷害
+    mtr: 0, //多重陷阱
+    wedm: 0, //武器元素傷害
+    ci: 0, //連鎖
+    rg: 0, //集中效應
   },
-  skillthree: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    cd: 0,  //暴傷加成%
-    wed: 0, //武器元素傷害%
-    wedm: 0, //更多武器元素傷害%
-    pd: 0,  //投射物物理傷害%
-    pdm: 0,  //更多投射物物理傷害%
-    pjtd: 0, //投射物傷害%
-    pjtdm: 0, //更多投射物傷害%
-    pjtdl: 0, //較少投射物傷害%
-    d: 0,  //傷害加成%
-    dm: 0,  //更多傷害加成%
-    dl: 0,  //較少傷害加成%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    ptf: 0, //物轉火
-    pti: 0, //物轉冰
-    ptt: 0, //物轉電
-    ptfadd: 0,  //額外物轉火
-    ptiadd: 0, //額外物轉冰
-    pttadd: 0, //額外物轉電
-    bd: 0,  //基礎傷害加成
+  hideinfo: {
+    pb: 0, //零點射擊
+    hy: 0, //急凍
   },
-  skillfour: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    cd: 0,  //暴傷加成%
-    wed: 0, //武器元素傷害%
-    wedm: 0, //更多武器元素傷害%
-    pd: 0,  //投射物物理傷害%
-    pdm: 0,  //更多投射物物理傷害%
-    pjtd: 0, //投射物傷害%
-    pjtdm: 0, //更多投射物傷害%
-    pjtdl: 0, //較少投射物傷害%
-    d: 0,  //傷害加成%
-    dm: 0,  //更多傷害加成%
-    dl: 0,  //較少傷害加成%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    ptf: 0, //物轉火
-    pti: 0, //物轉冰
-    ptt: 0, //物轉電
-    ptfadd: 0,  //額外物轉火
-    ptiadd: 0, //額外物轉冰
-    pttadd: 0, //額外物轉電
-    bd: 0,  //基礎傷害加成
-  },
-  skillfive: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    cd: 0,  //暴傷加成%
-    wed: 0, //武器元素傷害%
-    wedm: 0, //更多武器元素傷害%
-    pd: 0,  //投射物物理傷害%
-    pdm: 0,  //更多投射物物理傷害%
-    pjtd: 0, //投射物傷害%
-    pjtdm: 0, //更多投射物傷害%
-    pjtdl: 0, //較少投射物傷害%
-    d: 0,  //傷害加成%
-    dm: 0,  //更多傷害加成%
-    dl: 0,  //較少傷害加成%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    ptf: 0, //物轉火
-    pti: 0, //物轉冰
-    ptt: 0, //物轉電
-    ptfadd: 0,  //額外物轉火
-    ptiadd: 0, //額外物轉冰
-    pttadd: 0, //額外物轉電
-    bd: 0,  //基礎傷害加成
-  },
-  skillsix: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    cd: 0,  //暴傷加成%
-    wed: 0, //武器元素傷害%
-    wedm: 0, //更多武器元素傷害%
-    pd: 0,  //投射物物理傷害%
-    pdm: 0,  //更多投射物物理傷害%
-    pjtd: 0, //投射物傷害%
-    pjtdm: 0, //更多投射物傷害%
-    pjtdl: 0, //較少投射物傷害%
-    d: 0,  //傷害加成%
-    dm: 0,  //更多傷害加成%
-    dl: 0,  //較少傷害加成%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    ptf: 0, //物轉火
-    pti: 0, //物轉冰
-    ptt: 0, //物轉電
-    ptfadd: 0,  //額外物轉火
-    ptiadd: 0, //額外物轉冰
-    pttadd: 0, //額外物轉電
-    bd: 0,  //基礎傷害加成
-  },
-}
-
+};
+const value = localStorage.temp ? JSON.parse(localStorage.temp) : init;
 const Player = React.createClass({
   setLevel(e, json = this.props.s.state.player) {
     json.level = parseInt(e.target.value);
@@ -440,7 +335,7 @@ const Player = React.createClass({
     this.props.s.setState(json);
   },
   setAcc(e, json = this.props.s.state.player) {
-    json.aq = parseInt(e.target.value);
+    json.acc = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   setGb(e, json = this.props.s.state.player) {
@@ -478,7 +373,7 @@ const Weapon = React.createClass({
     this.props.s.setState(json);
   },
   setAs(e, json = this.props.s.state.weapon) {
-    json.as = parseInt(e.target.value);
+    json.as = parseFloat(e.target.value);
     this.props.s.setState(json);
   },
   setQ(e, json = this.props.s.state.weapon) {
@@ -486,7 +381,7 @@ const Weapon = React.createClass({
     this.props.s.setState(json);
   },
   setC(e, json = this.props.s.state.weapon) {
-    json.c = parseInt(e.target.value);
+    json.c = parseFloat(e.target.value);
     this.props.s.setState(json);
   },
   render(s = this.props.s) {
@@ -496,7 +391,7 @@ const Weapon = React.createClass({
         <Row>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.weapon.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.weapon.pb} onChange={this.setPb} /></RWDValue>
-          <RWDValue><label>攻速</label><input type="number" value={s.state.weapon.as} onChange={this.setas} /></RWDValue>
+          <RWDValue><label>攻速</label><input type="number" value={s.state.weapon.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>品質</label><input type="number" value={s.state.weapon.q} onChange={this.setQ} /></RWDValue>
           <RWDValue><label>暴擊機率</label><input type="number" value={s.state.weapon.c} onChange={this.setC} /></RWDValue>
         </Row>
@@ -634,6 +529,10 @@ const Talent = React.createClass({
     json.cupd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setPjtd(e, json = this.props.s.state.talent) {
+    json.pjtd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   setPd(e, json = this.props.s.state.talent) {
     json.pd = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -654,6 +553,22 @@ const Talent = React.createClass({
     json.aura = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setHp(e, json = this.props.s.state.talent) {
+    json.hp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setHpd(e, json = this.props.s.state.talent) {
+    json.hpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMp(e, json = this.props.s.state.talent) {
+    json.mp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMpd(e, json = this.props.s.state.talent) {
+    json.mpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   render(s = this.props.s) {
     return(
       <section>
@@ -666,11 +581,16 @@ const Talent = React.createClass({
           <RWDValue><label>武器元傷</label><input type="number" value={s.state.talent.wed} onChange={this.setWed} /></RWDValue>
           <RWDValue><label>持續傷</label><input type="number" value={s.state.talent.cud} onChange={this.setCud} /></RWDValue>
           <RWDValue><label>物理持續傷</label><input type="number" value={s.state.talent.cupd} onChange={this.setCupd} /></RWDValue>
+          <RWDValue><label>投射物傷害</label><input type="number" value={s.state.talent.pjtd} onChange={this.setPjtd} /></RWDValue>
           <RWDValue><label>物傷</label><input type="number" value={s.state.talent.pd} onChange={this.setPd} /></RWDValue>
           <RWDValue><label>冰傷</label><input type="number" value={s.state.talent.iced} onChange={this.setIced} /></RWDValue>
           <RWDValue><label>火傷</label><input type="number" value={s.state.talent.fd} onChange={this.setFd} /></RWDValue>
           <RWDValue><label>電傷</label><input type="number" value={s.state.talent.td} onChange={this.setTd} /></RWDValue>
           <RWDValue><label>光環效果</label><input type="number" value={s.state.talent.aura} onChange={this.setAura} /></RWDValue>
+          <RWDValue><label>最大生命</label><input type="number" value={s.state.talent.hp} onChange={this.setHp} /></RWDValue>
+          <RWDValue><label>生命%</label><input type="number" value={s.state.talent.hpd} onChange={this.setHpd} /></RWDValue>
+          <RWDValue><label>最大魔力</label><input type="number" value={s.state.talent.mp} onChange={this.setMp} /></RWDValue>
+          <RWDValue><label>魔力%</label><input type="number" value={s.state.talent.mpd} onChange={this.setMpd} /></RWDValue>
         </Row>
       </section>
     );
@@ -745,6 +665,22 @@ const Head = React.createClass({
     json.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setHp(e, json = this.props.s.state.head) {
+    json.hp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setHpd(e, json = this.props.s.state.head) {
+    json.hpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMp(e, json = this.props.s.state.head) {
+    json.mp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMpd(e, json = this.props.s.state.head) {
+    json.mpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   render(s = this.props.s) {
     return(
       <section>
@@ -767,6 +703,10 @@ const Head = React.createClass({
           <RWDValue><label>火傷(大)</label><input type="number" value={s.state.head.fb} onChange={this.setFb} /></RWDValue>
           <RWDValue><label>電傷(小)</label><input type="number" value={s.state.head.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label>電傷(大)</label><input type="number" value={s.state.head.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label>最大生命</label><input type="number" value={s.state.head.hp} onChange={this.setHp} /></RWDValue>
+          <RWDValue><label>生命%</label><input type="number" value={s.state.head.hpd} onChange={this.setHpd} /></RWDValue>
+          <RWDValue><label>最大魔力</label><input type="number" value={s.state.head.mp} onChange={this.setMp} /></RWDValue>
+          <RWDValue><label>魔力%</label><input type="number" value={s.state.head.mpd} onChange={this.setMpd} /></RWDValue>
         </Row>
       </section>
     );
@@ -841,6 +781,22 @@ const Hand = React.createClass({
     json.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setHp(e, json = this.props.s.state.hand) {
+    json.hp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setHpd(e, json = this.props.s.state.hand) {
+    json.hpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMp(e, json = this.props.s.state.hand) {
+    json.mp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMpd(e, json = this.props.s.state.hand) {
+    json.mpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   render(s = this.props.s) {
     return(
       <section>
@@ -863,6 +819,10 @@ const Hand = React.createClass({
           <RWDValue><label>火傷(大)</label><input type="number" value={s.state.hand.fb} onChange={this.setFb} /></RWDValue>
           <RWDValue><label>電傷(小)</label><input type="number" value={s.state.hand.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label>電傷(大)</label><input type="number" value={s.state.hand.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label>最大生命</label><input type="number" value={s.state.hand.hp} onChange={this.setHp} /></RWDValue>
+          <RWDValue><label>生命%</label><input type="number" value={s.state.hand.hpd} onChange={this.setHpd} /></RWDValue>
+          <RWDValue><label>最大魔力</label><input type="number" value={s.state.hand.mp} onChange={this.setMp} /></RWDValue>
+          <RWDValue><label>魔力%</label><input type="number" value={s.state.hand.mpd} onChange={this.setMpd} /></RWDValue>
         </Row>
       </section>
     );
@@ -937,6 +897,22 @@ const Body= React.createClass({
     json.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setHp(e, json = this.props.s.state.body) {
+    json.hp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setHpd(e, json = this.props.s.state.body) {
+    json.hpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMp(e, json = this.props.s.state.body) {
+    json.mp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMpd(e, json = this.props.s.state.body) {
+    json.mpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   render(s = this.props.s) {
     return(
       <section>
@@ -959,6 +935,10 @@ const Body= React.createClass({
           <RWDValue><label>火傷(大)</label><input type="number" value={s.state.body.fb} onChange={this.setFb} /></RWDValue>
           <RWDValue><label>電傷(小)</label><input type="number" value={s.state.body.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label>電傷(大)</label><input type="number" value={s.state.body.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label>最大生命</label><input type="number" value={s.state.body.hp} onChange={this.setHp} /></RWDValue>
+          <RWDValue><label>生命%</label><input type="number" value={s.state.body.hpd} onChange={this.setHpd} /></RWDValue>
+          <RWDValue><label>最大魔力</label><input type="number" value={s.state.body.mp} onChange={this.setMp} /></RWDValue>
+          <RWDValue><label>魔力%</label><input type="number" value={s.state.body.mpd} onChange={this.setMpd} /></RWDValue>
         </Row>
       </section>
     );
@@ -1033,6 +1013,22 @@ const Belt = React.createClass({
     json.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setHp(e, json = this.props.s.state.belt) {
+    json.hp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setHpd(e, json = this.props.s.state.belt) {
+    json.hpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMp(e, json = this.props.s.state.belt) {
+    json.mp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMpd(e, json = this.props.s.state.belt) {
+    json.mpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   render(s = this.props.s) {
     return(
       <section>
@@ -1055,6 +1051,10 @@ const Belt = React.createClass({
           <RWDValue><label>火傷(大)</label><input type="number" value={s.state.belt.fb} onChange={this.setFb} /></RWDValue>
           <RWDValue><label>電傷(小)</label><input type="number" value={s.state.belt.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label>電傷(大)</label><input type="number" value={s.state.belt.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label>最大生命</label><input type="number" value={s.state.belt.hp} onChange={this.setHp} /></RWDValue>
+          <RWDValue><label>生命%</label><input type="number" value={s.state.belt.hpd} onChange={this.setHpd} /></RWDValue>
+          <RWDValue><label>最大魔力</label><input type="number" value={s.state.belt.mp} onChange={this.setMp} /></RWDValue>
+          <RWDValue><label>魔力%</label><input type="number" value={s.state.belt.mpd} onChange={this.setMpd} /></RWDValue>
         </Row>
       </section>
     );
@@ -1129,6 +1129,22 @@ const Necklace = React.createClass({
     json.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setHp(e, json = this.props.s.state.necklace) {
+    json.hp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setHpd(e, json = this.props.s.state.necklace) {
+    json.hpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMp(e, json = this.props.s.state.necklace) {
+    json.mp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMpd(e, json = this.props.s.state.necklace) {
+    json.mpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   render(s = this.props.s) {
     return(
       <section>
@@ -1151,6 +1167,10 @@ const Necklace = React.createClass({
           <RWDValue><label>火傷(大)</label><input type="number" value={s.state.necklace.fb} onChange={this.setFb} /></RWDValue>
           <RWDValue><label>電傷(小)</label><input type="number" value={s.state.necklace.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label>電傷(大)</label><input type="number" value={s.state.necklace.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label>最大生命</label><input type="number" value={s.state.necklace.hp} onChange={this.setHp} /></RWDValue>
+          <RWDValue><label>生命%</label><input type="number" value={s.state.necklace.hpd} onChange={this.setHpd} /></RWDValue>
+          <RWDValue><label>最大魔力</label><input type="number" value={s.state.necklace.mp} onChange={this.setMp} /></RWDValue>
+          <RWDValue><label>魔力%</label><input type="number" value={s.state.necklace.mpd} onChange={this.setMpd} /></RWDValue>
         </Row>
       </section>
     );
@@ -1225,6 +1245,22 @@ const RingOne = React.createClass({
     json.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setHp(e, json = this.props.s.state.ringone) {
+    json.hp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setHpd(e, json = this.props.s.state.ringone) {
+    json.hpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMp(e, json = this.props.s.state.ringone) {
+    json.mp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMpd(e, json = this.props.s.state.ringone) {
+    json.mpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   render(s = this.props.s) {
     return(
       <section>
@@ -1247,6 +1283,10 @@ const RingOne = React.createClass({
           <RWDValue><label>火傷(大)</label><input type="number" value={s.state.ringone.fb} onChange={this.setFb} /></RWDValue>
           <RWDValue><label>電傷(小)</label><input type="number" value={s.state.ringone.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label>電傷(大)</label><input type="number" value={s.state.ringone.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label>最大生命</label><input type="number" value={s.state.ringone.hp} onChange={this.setHp} /></RWDValue>
+          <RWDValue><label>生命%</label><input type="number" value={s.state.ringone.hpd} onChange={this.setHpd} /></RWDValue>
+          <RWDValue><label>最大魔力</label><input type="number" value={s.state.ringone.mp} onChange={this.setMp} /></RWDValue>
+          <RWDValue><label>魔力%</label><input type="number" value={s.state.ringone.mpd} onChange={this.setMpd} /></RWDValue>
         </Row>
       </section>
     );
@@ -1321,6 +1361,22 @@ const RingTwo = React.createClass({
     json.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setHp(e, json = this.props.s.state.ringtwo) {
+    json.hp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setHpd(e, json = this.props.s.state.ringtwo) {
+    json.hpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMp(e, json = this.props.s.state.ringtwo) {
+    json.mp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMpd(e, json = this.props.s.state.ringtwo) {
+    json.mpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   render(s = this.props.s) {
     return(
       <section>
@@ -1343,6 +1399,10 @@ const RingTwo = React.createClass({
           <RWDValue><label>火傷(大)</label><input type="number" value={s.state.ringtwo.fb} onChange={this.setFb} /></RWDValue>
           <RWDValue><label>電傷(小)</label><input type="number" value={s.state.ringtwo.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label>電傷(大)</label><input type="number" value={s.state.ringtwo.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label>最大生命</label><input type="number" value={s.state.ringtwo.hp} onChange={this.setHp} /></RWDValue>
+          <RWDValue><label>生命%</label><input type="number" value={s.state.ringtwo.hpd} onChange={this.setHpd} /></RWDValue>
+          <RWDValue><label>最大魔力</label><input type="number" value={s.state.ringtwo.mp} onChange={this.setMp} /></RWDValue>
+          <RWDValue><label>魔力%</label><input type="number" value={s.state.ringtwo.mpd} onChange={this.setMpd} /></RWDValue>
         </Row>
       </section>
     );
@@ -1417,6 +1477,22 @@ const Foot = React.createClass({
     json.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setHp(e, json = this.props.s.state.foot) {
+    json.hp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setHpd(e, json = this.props.s.state.foot) {
+    json.hpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMp(e, json = this.props.s.state.foot) {
+    json.mp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMpd(e, json = this.props.s.state.foot) {
+    json.mpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   render(s = this.props.s) {
     return(
       <section>
@@ -1439,6 +1515,10 @@ const Foot = React.createClass({
           <RWDValue><label>火傷(大)</label><input type="number" value={s.state.foot.fb} onChange={this.setFb} /></RWDValue>
           <RWDValue><label>電傷(小)</label><input type="number" value={s.state.foot.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label>電傷(大)</label><input type="number" value={s.state.foot.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label>最大生命</label><input type="number" value={s.state.foot.hp} onChange={this.setHp} /></RWDValue>
+          <RWDValue><label>生命%</label><input type="number" value={s.state.foot.hpd} onChange={this.setHpd} /></RWDValue>
+          <RWDValue><label>最大魔力</label><input type="number" value={s.state.foot.mp} onChange={this.setMp} /></RWDValue>
+          <RWDValue><label>魔力%</label><input type="number" value={s.state.foot.mpd} onChange={this.setMpd} /></RWDValue>
         </Row>
       </section>
     );
@@ -1513,6 +1593,22 @@ const Quiver = React.createClass({
     json.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setHp(e, json = this.props.s.state.quiver) {
+    json.hp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setHpd(e, json = this.props.s.state.quiver) {
+    json.hpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMp(e, json = this.props.s.state.quiver) {
+    json.mp = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setMpd(e, json = this.props.s.state.quiver) {
+    json.mpd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   render(s = this.props.s) {
     return(
       <section>
@@ -1535,942 +1631,234 @@ const Quiver = React.createClass({
           <RWDValue><label>火傷(大)</label><input type="number" value={s.state.quiver.fb} onChange={this.setFb} /></RWDValue>
           <RWDValue><label>電傷(小)</label><input type="number" value={s.state.quiver.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label>電傷(大)</label><input type="number" value={s.state.quiver.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label>最大生命</label><input type="number" value={s.state.quiver.hp} onChange={this.setHp} /></RWDValue>
+          <RWDValue><label>生命%</label><input type="number" value={s.state.quiver.hpd} onChange={this.setHpd} /></RWDValue>
+          <RWDValue><label>最大魔力</label><input type="number" value={s.state.quiver.mp} onChange={this.setMp} /></RWDValue>
+          <RWDValue><label>魔力%</label><input type="number" value={s.state.quiver.mpd} onChange={this.setMpd} /></RWDValue>
         </Row>
       </section>
     );
   },
 });
-const SkillOne = React.createClass({
-  setAs(e, json = this.props.s.state.skillone) {
+const Skill = React.createClass({
+  setBd(e, json = this.props.s.state.skill) {
+    json.bd = parseFloat(e.target.value);
+    this.props.s.setState(json);
+  },
+  setAs(e, json = this.props.s.state.skill) {
     json.as = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.skillone) {
+  setAsl(e, json = this.props.s.state.skill) {
+    json.asl = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setC(e, json = this.props.s.state.skill) {
     json.c = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCd(e, json = this.props.s.state.skillone) {
+  setCd(e, json = this.props.s.state.skill) {
     json.cd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setD(e, json = this.props.s.state.skillone) {
+  setD(e, json = this.props.s.state.skill) {
     json.d = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setDm(e, json = this.props.s.state.skillone) {
-    json.dm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setDl(e, json = this.props.s.state.skillone) {
-    json.dl = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setEd(e, json = this.props.s.state.skillone) {
+  setEd(e, json = this.props.s.state.skill) {
     json.ed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWed(e, json = this.props.s.state.skillone) {
+  setWed(e, json = this.props.s.state.skill) {
     json.wed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWedm(e, json = this.props.s.state.skillone) {
-    json.wedm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPd(e, json = this.props.s.state.skillone) {
+  setPd(e, json = this.props.s.state.skill) {
     json.pd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPdm(e, json = this.props.s.state.skillone) {
-    json.pdm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPjtd(e, json = this.props.s.state.skillone) {
+  setPjtd(e, json = this.props.s.state.skill) {
     json.pjtd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPjtdm(e, json = this.props.s.state.skillone) {
-    json.pjtdm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPjtdl(e, json = this.props.s.state.skillone) {
-    json.pjtdl = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIced(e, json = this.props.s.state.skillone) {
+  setIced(e, json = this.props.s.state.skill) {
     json.iced = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFd(e, json = this.props.s.state.skillone) {
-    json.Fd = parseInt(e.target.value);
+  setFd(e, json = this.props.s.state.skill) {
+    json.fd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTd(e, json = this.props.s.state.skillone) {
+  setTd(e, json = this.props.s.state.skill) {
     json.td = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIces(e, json = this.props.s.state.skillone) {
+  setIces(e, json = this.props.s.state.skill) {
     json.ices = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIceb(e, json = this.props.s.state.skillone) {
+  setIceb(e, json = this.props.s.state.skill) {
     json.iceb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFs(e, json = this.props.s.state.skillone) {
+  setFs(e, json = this.props.s.state.skill) {
     json.fs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFb(e, json = this.props.s.state.skillone) {
+  setFb(e, json = this.props.s.state.skill) {
     json.fb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTs(e, json = this.props.s.state.skillone) {
+  setTs(e, json = this.props.s.state.skill) {
     json.ts = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTb(e, json = this.props.s.state.skillone) {
+  setTb(e, json = this.props.s.state.skill) {
     json.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPtiadd(e, json = this.props.s.state.skillone) {
+  setPtiadd(e, json = this.props.s.state.skill) {
     json.ptiadd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPtfadd(e, json = this.props.s.state.skillone) {
+  setPtfadd(e, json = this.props.s.state.skill) {
     json.ptfadd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPttadd(e, json = this.props.s.state.skillone) {
+  setPttadd(e, json = this.props.s.state.skill) {
     json.pttadd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPti(e, json = this.props.s.state.skillone) {
+  setPti(e, json = this.props.s.state.skill) {
     json.pti = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPtf(e, json = this.props.s.state.skillone) {
+  setPtf(e, json = this.props.s.state.skill) {
     json.ptf = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPtt(e, json = this.props.s.state.skillone) {
+  setPtt(e, json = this.props.s.state.skill) {
     json.ptt = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   render(s = this.props.s){
     return(
       <section>
-        <h3>技能1</h3>
+        <h3>技能</h3>
         <Row>
-          <RWDValue><label>攻速</label><input type="number" value={s.state.skillone.as} onChange={this.setAs} /></RWDValue>
-          <RWDValue><label>暴率</label><input type="number" value={s.state.skillone.c} onChange={this.setC} /></RWDValue>
-          <RWDValue><label>暴傷</label><input type="number" value={s.state.skillone.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>傷害</label><input type="number" value={s.state.skillone.d} onChange={this.setD} /></RWDValue>
-          <RWDValue><label>更多傷害</label><input type="number" value={s.state.skillone.dm} onChange={this.setDm} /></RWDValue>
-          <RWDValue><label>較少傷害</label><input type="number" value={s.state.skillone.dl} onChange={this.setDl} /></RWDValue>
-          <RWDValue><label>元素傷害</label><input type="number" value={s.state.skillone.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.skillone.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>更多武器元傷</label><input type="number" value={s.state.skillone.wedm} onChange={this.setWedm} /></RWDValue>
-          <RWDValue><label>投射物物傷</label><input type="number" value={s.state.skillone.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>更多投射物物傷</label><input type="number" value={s.state.skillone.pdm} onChange={this.setPdm} /></RWDValue>
-          <RWDValue><label>投射物傷害</label><input type="number" value={s.state.skillone.pjtd} onChange={this.setPjtd} /></RWDValue>
-          <RWDValue><label>更多投射物傷害</label><input type="number" value={s.state.skillone.pjtdm} onChange={this.setPjtdm} /></RWDValue>
-          <RWDValue><label>較少投射物傷害</label><input type="number" value={s.state.skillone.pjtdl} onChange={this.setPjtdl} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.skillone.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.skillone.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.skillone.td} onChange={this.setTd} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.skillone.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.skillone.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.skillone.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.skillone.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.skillone.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.skillone.tb} onChange={this.setTb} /></RWDValue>
-          <RWDValue><label>額外物轉冰</label><input type="number" value={s.state.skillone.ptiadd} onChange={this.setPtiadd} /></RWDValue>
-          <RWDValue><label>額外物轉火</label><input type="number" value={s.state.skillone.ptfadd} onChange={this.setPtfadd} /></RWDValue>
-          <RWDValue><label>額外物轉電</label><input type="number" value={s.state.skillone.pttadd} onChange={this.setPttadd} /></RWDValue>
-          <RWDValue><label>物轉冰</label><input type="number" value={s.state.skillone.pti} onChange={this.setPti} /></RWDValue>
-          <RWDValue><label>物轉火</label><input type="number" value={s.state.skillone.ptf} onChange={this.setPtf} /></RWDValue>
-          <RWDValue><label>物轉電</label><input type="number" value={s.state.skillone.ptt} onChange={this.setPtt} /></RWDValue>
+          <RWDValue><label>基礎傷加成</label><input type="number" value={s.state.skill.bd} onChange={this.setBd} /></RWDValue>
+          <RWDValue><label>攻速</label><input type="number" value={s.state.skill.as} onChange={this.setAs} /></RWDValue>
+          <RWDValue><label>較少攻速</label><input type="number" value={s.state.skill.asl} onChange={this.setAsl} /></RWDValue>
+          <RWDValue><label>暴率</label><input type="number" value={s.state.skill.c} onChange={this.setC} /></RWDValue>
+          <RWDValue><label>暴傷</label><input type="number" value={s.state.skill.cd} onChange={this.setCd} /></RWDValue>
+          <RWDValue><label>傷害</label><input type="number" value={s.state.skill.d} onChange={this.setD} /></RWDValue>
+          <RWDValue><label>元素傷害</label><input type="number" value={s.state.skill.ed} onChange={this.setEd} /></RWDValue>
+          <RWDValue><label>武器元傷</label><input type="number" value={s.state.skill.wed} onChange={this.setWed} /></RWDValue>
+          <RWDValue><label>投射物物傷</label><input type="number" value={s.state.skill.pd} onChange={this.setPd} /></RWDValue>
+          <RWDValue><label>投射物傷害</label><input type="number" value={s.state.skill.pjtd} onChange={this.setPjtd} /></RWDValue>
+          <RWDValue><label>冰傷</label><input type="number" value={s.state.skill.iced} onChange={this.setIced} /></RWDValue>
+          <RWDValue><label>火傷</label><input type="number" value={s.state.skill.fd} onChange={this.setFd} /></RWDValue>
+          <RWDValue><label>電傷</label><input type="number" value={s.state.skill.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.skill.ices} onChange={this.setIces} /></RWDValue>
+          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.skill.iceb} onChange={this.setIceb} /></RWDValue>
+          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.skill.fs} onChange={this.setFs} /></RWDValue>
+          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.skill.fb} onChange={this.setFb} /></RWDValue>
+          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.skill.ts} onChange={this.setTs} /></RWDValue>
+          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.skill.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label>額外物轉冰</label><input type="number" value={s.state.skill.ptiadd} onChange={this.setPtiadd} /></RWDValue>
+          <RWDValue><label>額外物轉火</label><input type="number" value={s.state.skill.ptfadd} onChange={this.setPtfadd} /></RWDValue>
+          <RWDValue><label>額外物轉電</label><input type="number" value={s.state.skill.pttadd} onChange={this.setPttadd} /></RWDValue>
+          <RWDValue><label>物轉冰</label><input type="number" value={s.state.skill.pti} onChange={this.setPti} /></RWDValue>
+          <RWDValue><label>物轉火</label><input type="number" value={s.state.skill.ptf} onChange={this.setPtf} /></RWDValue>
+          <RWDValue><label>物轉電</label><input type="number" value={s.state.skill.ptt} onChange={this.setPtt} /></RWDValue>
         </Row>
       </section>
     );
   },
 });
-const SkillTwo = React.createClass({
-  setAs(e, json = this.props.s.state.skilltwo) {
-    json.as = parseInt(e.target.value);
+
+const Moreless = React.createClass({
+  setGmp(e, json = this.props.s.state.moreless) {
+    json.gmp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.skilltwo) {
-    json.c = parseInt(e.target.value);
+  setLmp(e, json = this.props.s.state.moreless) {
+    json.lmp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCd(e, json = this.props.s.state.skilltwo) {
-    json.cd = parseInt(e.target.value);
+  setFork(e, json = this.props.s.state.moreless) {
+    json.fork = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setD(e, json = this.props.s.state.skilltwo) {
-    json.d = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setDm(e, json = this.props.s.state.skilltwo) {
-    json.dm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setDl(e, json = this.props.s.state.skilltwo) {
-    json.dl = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setEd(e, json = this.props.s.state.skilltwo) {
-    json.ed = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setWed(e, json = this.props.s.state.skilltwo) {
-    json.wed = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setWedm(e, json = this.props.s.state.skilltwo) {
-    json.wedm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPd(e, json = this.props.s.state.skilltwo) {
-    json.pd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPdm(e, json = this.props.s.state.skilltwo) {
-    json.pdm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPjtd(e, json = this.props.s.state.skilltwo) {
-    json.pjtd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPjtdm(e, json = this.props.s.state.skilltwo) {
+  setPjtdm(e, json = this.props.s.state.moreless) {
     json.pjtdm = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPjtdl(e, json = this.props.s.state.skilltwo) {
-    json.pjtdl = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIced(e, json = this.props.s.state.skilltwo) {
-    json.iced = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFd(e, json = this.props.s.state.skilltwo) {
-    json.Fd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTd(e, json = this.props.s.state.skilltwo) {
-    json.td = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIces(e, json = this.props.s.state.skilltwo) {
-    json.ices = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIceb(e, json = this.props.s.state.skilltwo) {
-    json.iceb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFs(e, json = this.props.s.state.skilltwo) {
-    json.fs = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFb(e, json = this.props.s.state.skilltwo) {
-    json.fb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTs(e, json = this.props.s.state.skilltwo) {
-    json.ts = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTb(e, json = this.props.s.state.skilltwo) {
-    json.tb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtiadd(e, json = this.props.s.state.skilltwo) {
-    json.ptiadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtfadd(e, json = this.props.s.state.skilltwo) {
-    json.ptfadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPttadd(e, json = this.props.s.state.skilltwo) {
-    json.pttadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPti(e, json = this.props.s.state.skilltwo) {
-    json.pti = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtf(e, json = this.props.s.state.skilltwo) {
-    json.ptf = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtt(e, json = this.props.s.state.skilltwo) {
-    json.ptt = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  render(s = this.props.s) {
-    return(
-      <section>
-        <h3>技能2</h3>
-        <Row>
-          <RWDValue><label>攻速</label><input type="number" value={s.state.skilltwo.as} onChange={this.setAs} /></RWDValue>
-          <RWDValue><label>暴率</label><input type="number" value={s.state.skilltwo.c} onChange={this.setC} /></RWDValue>
-          <RWDValue><label>暴傷</label><input type="number" value={s.state.skilltwo.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>傷害</label><input type="number" value={s.state.skilltwo.d} onChange={this.setD} /></RWDValue>
-          <RWDValue><label>更多傷害</label><input type="number" value={s.state.skilltwo.dm} onChange={this.setDm} /></RWDValue>
-          <RWDValue><label>較少傷害</label><input type="number" value={s.state.skilltwo.dl} onChange={this.setDl} /></RWDValue>
-          <RWDValue><label>元素傷害</label><input type="number" value={s.state.skilltwo.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.skilltwo.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>更多武器元傷</label><input type="number" value={s.state.skilltwo.wedm} onChange={this.setWedm} /></RWDValue>
-          <RWDValue><label>投射物物傷</label><input type="number" value={s.state.skilltwo.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>更多投射物物傷</label><input type="number" value={s.state.skilltwo.pdm} onChange={this.setPdm} /></RWDValue>
-          <RWDValue><label>投射物傷害</label><input type="number" value={s.state.skilltwo.pjtd} onChange={this.setPjtd} /></RWDValue>
-          <RWDValue><label>更多投射物傷害</label><input type="number" value={s.state.skilltwo.pjtdm} onChange={this.setPjtdm} /></RWDValue>
-          <RWDValue><label>較少投射物傷害</label><input type="number" value={s.state.skilltwo.pjtdl} onChange={this.setPjtdl} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.skilltwo.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.skilltwo.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.skilltwo.td} onChange={this.setTd} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.skilltwo.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.skilltwo.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.skilltwo.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.skilltwo.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.skilltwo.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.skilltwo.tb} onChange={this.setTb} /></RWDValue>
-          <RWDValue><label>額外物轉冰</label><input type="number" value={s.state.skilltwo.ptiadd} onChange={this.setPtiadd} /></RWDValue>
-          <RWDValue><label>額外物轉火</label><input type="number" value={s.state.skilltwo.ptfadd} onChange={this.setPtfadd} /></RWDValue>
-          <RWDValue><label>額外物轉電</label><input type="number" value={s.state.skilltwo.pttadd} onChange={this.setPttadd} /></RWDValue>
-          <RWDValue><label>物轉冰</label><input type="number" value={s.state.skilltwo.pti} onChange={this.setPti} /></RWDValue>
-          <RWDValue><label>物轉火</label><input type="number" value={s.state.skilltwo.ptf} onChange={this.setPtf} /></RWDValue>
-          <RWDValue><label>物轉電</label><input type="number" value={s.state.skilltwo.ptt} onChange={this.setPtt} /></RWDValue>
-        </Row>
-      </section>
-    );
-  },
-});
-const SkillThree = React.createClass({
-  setAs(e, json = this.props.s.state.skillthree) {
-    json.as = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setC(e, json = this.props.s.state.skillthree) {
-    json.c = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setCd(e, json = this.props.s.state.skillthree) {
-    json.cd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setD(e, json = this.props.s.state.skillthree) {
-    json.d = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setDm(e, json = this.props.s.state.skillthree) {
-    json.dm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setDl(e, json = this.props.s.state.skillthree) {
-    json.dl = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setEd(e, json = this.props.s.state.skillthree) {
-    json.ed = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setWed(e, json = this.props.s.state.skillthree) {
-    json.wed = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setWedm(e, json = this.props.s.state.skillthree) {
-    json.wedm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPd(e, json = this.props.s.state.skillthree) {
-    json.pd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPdm(e, json = this.props.s.state.skillthree) {
+  setPdm(e, json = this.props.s.state.moreless) {
     json.pdm = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPjtd(e, json = this.props.s.state.skillthree) {
-    json.pjtd = parseInt(e.target.value);
+  setTr(e, json = this.props.s.state.moreless) {
+    json.tr = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPjtdm(e, json = this.props.s.state.skillthree) {
-    json.pjtdm = parseInt(e.target.value);
+  setTrd(e, json = this.props.s.state.moreless) {
+    json.trd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPjtdl(e, json = this.props.s.state.skillthree) {
-    json.pjtdl = parseInt(e.target.value);
+  setMtr(e, json = this.props.s.state.moreless) {
+    json.mtr = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIced(e, json = this.props.s.state.skillthree) {
-    json.iced = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFd(e, json = this.props.s.state.skillthree) {
-    json.Fd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTd(e, json = this.props.s.state.skillthree) {
-    json.td = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIces(e, json = this.props.s.state.skillthree) {
-    json.ices = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIceb(e, json = this.props.s.state.skillthree) {
-    json.iceb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFs(e, json = this.props.s.state.skillthree) {
-    json.fs = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFb(e, json = this.props.s.state.skillthree) {
-    json.fb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTs(e, json = this.props.s.state.skillthree) {
-    json.ts = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTb(e, json = this.props.s.state.skillthree) {
-    json.tb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtiadd(e, json = this.props.s.state.skillthree) {
-    json.ptiadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtfadd(e, json = this.props.s.state.skillthree) {
-    json.ptfadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPttadd(e, json = this.props.s.state.skillthree) {
-    json.pttadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPti(e, json = this.props.s.state.skillthree) {
-    json.pti = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtf(e, json = this.props.s.state.skillthree) {
-    json.ptf = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtt(e, json = this.props.s.state.skillthree) {
-    json.ptt = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  render(s = this.props.s) {
-    return(
-      <section>
-        <h3>技能3</h3>
-        <Row>
-          <RWDValue><label>攻速</label><input type="number" value={s.state.skillthree.as} onChange={this.setAs} /></RWDValue>
-          <RWDValue><label>暴率</label><input type="number" value={s.state.skillthree.c} onChange={this.setC} /></RWDValue>
-          <RWDValue><label>暴傷</label><input type="number" value={s.state.skillthree.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>傷害</label><input type="number" value={s.state.skillthree.d} onChange={this.setD} /></RWDValue>
-          <RWDValue><label>更多傷害</label><input type="number" value={s.state.skillthree.dm} onChange={this.setDm} /></RWDValue>
-          <RWDValue><label>較少傷害</label><input type="number" value={s.state.skillthree.dl} onChange={this.setDl} /></RWDValue>
-          <RWDValue><label>元素傷害</label><input type="number" value={s.state.skillthree.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.skillthree.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>更多武器元傷</label><input type="number" value={s.state.skillthree.wedm} onChange={this.setWedm} /></RWDValue>
-          <RWDValue><label>投射物物傷</label><input type="number" value={s.state.skillthree.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>更多投射物物傷</label><input type="number" value={s.state.skillthree.pdm} onChange={this.setPdm} /></RWDValue>
-          <RWDValue><label>投射物傷害</label><input type="number" value={s.state.skillthree.pjtd} onChange={this.setPjtd} /></RWDValue>
-          <RWDValue><label>更多投射物傷害</label><input type="number" value={s.state.skillthree.pjtdm} onChange={this.setPjtdm} /></RWDValue>
-          <RWDValue><label>較少投射物傷害</label><input type="number" value={s.state.skillthree.pjtdl} onChange={this.setPjtdl} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.skillthree.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.skillthree.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.skillthree.td} onChange={this.setTd} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.skillthree.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.skillthree.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.skillthree.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.skillthree.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.skillthree.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.skillthree.tb} onChange={this.setTb} /></RWDValue>
-          <RWDValue><label>額外物轉冰</label><input type="number" value={s.state.skillthree.ptiadd} onChange={this.setPtiadd} /></RWDValue>
-          <RWDValue><label>額外物轉火</label><input type="number" value={s.state.skillthree.ptfadd} onChange={this.setPtfadd} /></RWDValue>
-          <RWDValue><label>額外物轉電</label><input type="number" value={s.state.skillthree.pttadd} onChange={this.setPttadd} /></RWDValue>
-          <RWDValue><label>物轉冰</label><input type="number" value={s.state.skillthree.pti} onChange={this.setPti} /></RWDValue>
-          <RWDValue><label>物轉火</label><input type="number" value={s.state.skillthree.ptf} onChange={this.setPtf} /></RWDValue>
-          <RWDValue><label>物轉電</label><input type="number" value={s.state.skillthree.ptt} onChange={this.setPtt} /></RWDValue>
-        </Row>
-      </section>
-    );
-  },
-});
-const SkillFour = React.createClass({
-  setAs(e, json = this.props.s.state.skillfour) {
-    json.as = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setC(e, json = this.props.s.state.skillfour) {
-    json.c = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setCd(e, json = this.props.s.state.skillfour) {
-    json.cd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setD(e, json = this.props.s.state.skillfour) {
-    json.d = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setDm(e, json = this.props.s.state.skillfour) {
-    json.dm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setDl(e, json = this.props.s.state.skillfour) {
-    json.dl = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setEd(e, json = this.props.s.state.skillfour) {
-    json.ed = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setWed(e, json = this.props.s.state.skillfour) {
-    json.wed = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setWedm(e, json = this.props.s.state.skillfour) {
+  setWedm(e, json = this.props.s.state.moreless) {
     json.wedm = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPd(e, json = this.props.s.state.skillfour) {
-    json.pd = parseInt(e.target.value);
+  setCi(e, json = this.props.s.state.moreless) {
+    json.ci = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPdm(e, json = this.props.s.state.skillfour) {
-    json.pdm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPjtd(e, json = this.props.s.state.skillfour) {
-    json.pjtd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPjtdm(e, json = this.props.s.state.skillfour) {
-    json.pjtdm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPjtdl(e, json = this.props.s.state.skillfour) {
-    json.pjtdl = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIced(e, json = this.props.s.state.skillfour) {
-    json.iced = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFd(e, json = this.props.s.state.skillfour) {
-    json.Fd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTd(e, json = this.props.s.state.skillfour) {
-    json.td = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIces(e, json = this.props.s.state.skillfour) {
-    json.ices = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIceb(e, json = this.props.s.state.skillfour) {
-    json.iceb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFs(e, json = this.props.s.state.skillfour) {
-    json.fs = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFb(e, json = this.props.s.state.skillfour) {
-    json.fb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTs(e, json = this.props.s.state.skillfour) {
-    json.ts = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTb(e, json = this.props.s.state.skillfour) {
-    json.tb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtiadd(e, json = this.props.s.state.skillfour) {
-    json.ptiadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtfadd(e, json = this.props.s.state.skillfour) {
-    json.ptfadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPttadd(e, json = this.props.s.state.skillfour) {
-    json.pttadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPti(e, json = this.props.s.state.skillfour) {
-    json.pti = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtf(e, json = this.props.s.state.skillfour) {
-    json.ptf = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtt(e, json = this.props.s.state.skillfour) {
-    json.ptt = parseInt(e.target.value);
+  setRg(e, json = this.props.s.state.moreless) {
+    json.rg = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   render(s = this.props.s){
     return(
       <section>
-        <h3>技能4</h3>
+        <h3>技能更多/較少修正</h3>
         <Row>
-          <RWDValue><label>攻速</label><input type="number" value={s.state.skillfour.as} onChange={this.setAs} /></RWDValue>
-          <RWDValue><label>暴率</label><input type="number" value={s.state.skillfour.c} onChange={this.setC} /></RWDValue>
-          <RWDValue><label>暴傷</label><input type="number" value={s.state.skillfour.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>傷害</label><input type="number" value={s.state.skillfour.d} onChange={this.setD} /></RWDValue>
-          <RWDValue><label>更多傷害</label><input type="number" value={s.state.skillfour.dm} onChange={this.setDm} /></RWDValue>
-          <RWDValue><label>較少傷害</label><input type="number" value={s.state.skillfour.dl} onChange={this.setDl} /></RWDValue>
-          <RWDValue><label>元素傷害</label><input type="number" value={s.state.skillfour.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.skillfour.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>更多武器元傷</label><input type="number" value={s.state.skillfour.wedm} onChange={this.setWedm} /></RWDValue>
-          <RWDValue><label>投射物物傷</label><input type="number" value={s.state.skillfour.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>更多投射物物傷</label><input type="number" value={s.state.skillfour.pdm} onChange={this.setPdm} /></RWDValue>
-          <RWDValue><label>投射物傷害</label><input type="number" value={s.state.skillfour.pjtd} onChange={this.setPjtd} /></RWDValue>
-          <RWDValue><label>更多投射物傷害</label><input type="number" value={s.state.skillfour.pjtdm} onChange={this.setPjtdm} /></RWDValue>
-          <RWDValue><label>較少投射物傷害</label><input type="number" value={s.state.skillfour.pjtdl} onChange={this.setPjtdl} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.skillfour.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.skillfour.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.skillfour.td} onChange={this.setTd} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.skillfour.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.skillfour.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.skillfour.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.skillfour.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.skillfour.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.skillfour.tb} onChange={this.setTb} /></RWDValue>
-          <RWDValue><label>額外物轉冰</label><input type="number" value={s.state.skillfour.ptiadd} onChange={this.setPtiadd} /></RWDValue>
-          <RWDValue><label>額外物轉火</label><input type="number" value={s.state.skillfour.ptfadd} onChange={this.setPtfadd} /></RWDValue>
-          <RWDValue><label>額外物轉電</label><input type="number" value={s.state.skillfour.pttadd} onChange={this.setPttadd} /></RWDValue>
-          <RWDValue><label>物轉冰</label><input type="number" value={s.state.skillfour.pti} onChange={this.setPti} /></RWDValue>
-          <RWDValue><label>物轉火</label><input type="number" value={s.state.skillfour.ptf} onChange={this.setPtf} /></RWDValue>
-          <RWDValue><label>物轉電</label><input type="number" value={s.state.skillfour.ptt} onChange={this.setPtt} /></RWDValue>
+          <RWDValue><label>高階多重</label><input type="number" value={s.state.moreless.gmp} onChange={this.setGmp} /></RWDValue>
+          <RWDValue><label>低階多重</label><input type="number" value={s.state.moreless.lmp} onChange={this.setLmp} /></RWDValue>
+          <RWDValue><label>分裂</label><input type="number" value={s.state.moreless.fork} onChange={this.setFork} /></RWDValue>
+          <RWDValue><label>投射物減速</label><input type="number" value={s.state.moreless.pjtdm} onChange={this.setPjtdm} /></RWDValue>
+          <RWDValue><label>物理投射物傷害</label><input type="number" value={s.state.moreless.pdm} onChange={this.setPdm} /></RWDValue>
+          <RWDValue><label>陷阱</label><input type="number" value={s.state.moreless.tr} onChange={this.setTr} /></RWDValue>
+          <RWDValue><label>陷阱傷害</label><input type="number" value={s.state.moreless.trd} onChange={this.setTrd} /></RWDValue>
+          <RWDValue><label>多重陷阱</label><input type="number" value={s.state.moreless.mtr} onChange={this.setMtr} /></RWDValue>
+          <RWDValue><label>武器元素傷害</label><input type="number" value={s.state.moreless.wedm} onChange={this.setWedm} /></RWDValue>
+          <RWDValue><label>連鎖</label><input type="number" value={s.state.moreless.ci} onChange={this.setCi} /></RWDValue>
+          <RWDValue><label>集中效應</label><input type="number" value={s.state.moreless.rg} onChange={this.setRg} /></RWDValue>
         </Row>
       </section>
     );
   },
 });
-const SkillFive = React.createClass({
-  setAs(e, json = this.props.s.state.skillfive) {
-    json.as = parseInt(e.target.value);
+const Hideinfo = React.createClass({
+  setPb(e, json = this.props.s.state.hideinfo) {
+    json.pb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.skillfive) {
-    json.c = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setCd(e, json = this.props.s.state.skillfive) {
-    json.cd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setD(e, json = this.props.s.state.skillfive) {
-    json.d = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setDm(e, json = this.props.s.state.skillfive) {
-    json.dm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setDl(e, json = this.props.s.state.skillfive) {
-    json.dl = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setEd(e, json = this.props.s.state.skillfive) {
-    json.ed = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setWed(e, json = this.props.s.state.skillfive) {
-    json.wed = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setWedm(e, json = this.props.s.state.skillfive) {
-    json.wedm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPd(e, json = this.props.s.state.skillfive) {
-    json.pd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPdm(e, json = this.props.s.state.skillfive) {
-    json.pdm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPjtd(e, json = this.props.s.state.skillfive) {
-    json.pjtd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPjtdm(e, json = this.props.s.state.skillfive) {
-    json.pjtdm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPjtdl(e, json = this.props.s.state.skillfive) {
-    json.pjtdl = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIced(e, json = this.props.s.state.skillfive) {
-    json.iced = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFd(e, json = this.props.s.state.skillfive) {
-    json.Fd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTd(e, json = this.props.s.state.skillfive) {
-    json.td = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIces(e, json = this.props.s.state.skillfive) {
-    json.ices = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIceb(e, json = this.props.s.state.skillfive) {
-    json.iceb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFs(e, json = this.props.s.state.skillfive) {
-    json.fs = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFb(e, json = this.props.s.state.skillfive) {
-    json.fb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTs(e, json = this.props.s.state.skillfive) {
-    json.ts = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTb(e, json = this.props.s.state.skillfive) {
-    json.tb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtiadd(e, json = this.props.s.state.skillfive) {
-    json.ptiadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtfadd(e, json = this.props.s.state.skillfive) {
-    json.ptfadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPttadd(e, json = this.props.s.state.skillfive) {
-    json.pttadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPti(e, json = this.props.s.state.skillfive) {
-    json.pti = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtf(e, json = this.props.s.state.skillfive) {
-    json.ptf = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtt(e, json = this.props.s.state.skillfive) {
-    json.ptt = parseInt(e.target.value);
+  setHy(e, json = this.props.s.state.hideinfo) {
+    json.hy = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   render(s = this.props.s){
     return(
       <section>
-        <h3>技能5</h3>
+        <h3>隱藏資訊</h3>
         <Row>
-          <RWDValue><label>攻速</label><input type="number" value={s.state.skillfive.as} onChange={this.setAs} /></RWDValue>
-          <RWDValue><label>暴率</label><input type="number" value={s.state.skillfive.c} onChange={this.setC} /></RWDValue>
-          <RWDValue><label>暴傷</label><input type="number" value={s.state.skillfive.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>傷害</label><input type="number" value={s.state.skillfive.d} onChange={this.setD} /></RWDValue>
-          <RWDValue><label>更多傷害</label><input type="number" value={s.state.skillfive.dm} onChange={this.setDm} /></RWDValue>
-          <RWDValue><label>較少傷害</label><input type="number" value={s.state.skillfive.dl} onChange={this.setDl} /></RWDValue>
-          <RWDValue><label>元素傷害</label><input type="number" value={s.state.skillfive.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.skillfive.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>更多武器元傷</label><input type="number" value={s.state.skillfive.wedm} onChange={this.setWedm} /></RWDValue>
-          <RWDValue><label>投射物物傷</label><input type="number" value={s.state.skillfive.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>更多投射物物傷</label><input type="number" value={s.state.skillfive.pdm} onChange={this.setPdm} /></RWDValue>
-          <RWDValue><label>投射物傷害</label><input type="number" value={s.state.skillfive.pjtd} onChange={this.setPjtd} /></RWDValue>
-          <RWDValue><label>更多投射物傷害</label><input type="number" value={s.state.skillfive.pjtdm} onChange={this.setPjtdm} /></RWDValue>
-          <RWDValue><label>較少投射物傷害</label><input type="number" value={s.state.skillfive.pjtdl} onChange={this.setPjtdl} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.skillfive.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.skillfive.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.skillfive.td} onChange={this.setTd} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.skillfive.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.skillfive.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.skillfive.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.skillfive.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.skillfive.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.skillfive.tb} onChange={this.setTb} /></RWDValue>
-          <RWDValue><label>額外物轉冰</label><input type="number" value={s.state.skillfive.ptiadd} onChange={this.setPtiadd} /></RWDValue>
-          <RWDValue><label>額外物轉火</label><input type="number" value={s.state.skillfive.ptfadd} onChange={this.setPtfadd} /></RWDValue>
-          <RWDValue><label>額外物轉電</label><input type="number" value={s.state.skillfive.pttadd} onChange={this.setPttadd} /></RWDValue>
-          <RWDValue><label>物轉冰</label><input type="number" value={s.state.skillfive.pti} onChange={this.setPti} /></RWDValue>
-          <RWDValue><label>物轉火</label><input type="number" value={s.state.skillfive.ptf} onChange={this.setPtf} /></RWDValue>
-          <RWDValue><label>物轉電</label><input type="number" value={s.state.skillfive.ptt} onChange={this.setPtt} /></RWDValue>
-        </Row>
-      </section>
-    );
-  },
-});
-const SkillSix = React.createClass({
-  setAs(e, json = this.props.s.state.skillsix) {
-    json.as = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setC(e, json = this.props.s.state.skillsix) {
-    json.c = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setCd(e, json = this.props.s.state.skillsix) {
-    json.cd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setD(e, json = this.props.s.state.skillsix) {
-    json.d = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setDm(e, json = this.props.s.state.skillsix) {
-    json.dm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setDl(e, json = this.props.s.state.skillsix) {
-    json.dl = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setEd(e, json = this.props.s.state.skillsix) {
-    json.ed = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setWed(e, json = this.props.s.state.skillsix) {
-    json.wed = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setWedm(e, json = this.props.s.state.skillsix) {
-    json.wedm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPd(e, json = this.props.s.state.skillsix) {
-    json.pd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPdm(e, json = this.props.s.state.skillsix) {
-    json.pdm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPjtd(e, json = this.props.s.state.skillsix) {
-    json.pjtd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPjtdm(e, json = this.props.s.state.skillsix) {
-    json.pjtdm = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPjtdl(e, json = this.props.s.state.skillsix) {
-    json.pjtdl = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIced(e, json = this.props.s.state.skillsix) {
-    json.iced = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFd(e, json = this.props.s.state.skillsix) {
-    json.Fd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTd(e, json = this.props.s.state.skillsix) {
-    json.td = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIces(e, json = this.props.s.state.skillsix) {
-    json.ices = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setIceb(e, json = this.props.s.state.skillsix) {
-    json.iceb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFs(e, json = this.props.s.state.skillsix) {
-    json.fs = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setFb(e, json = this.props.s.state.skillsix) {
-    json.fb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTs(e, json = this.props.s.state.skillsix) {
-    json.ts = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setTb(e, json = this.props.s.state.skillsix) {
-    json.tb = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtiadd(e, json = this.props.s.state.skillsix) {
-    json.ptiadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtfadd(e, json = this.props.s.state.skillsix) {
-    json.ptfadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPttadd(e, json = this.props.s.state.skillsix) {
-    json.pttadd = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPti(e, json = this.props.s.state.skillsix) {
-    json.pti = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtf(e, json = this.props.s.state.skillsix) {
-    json.ptf = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  setPtt(e, json = this.props.s.state.skillsix) {
-    json.ptt = parseInt(e.target.value);
-    this.props.s.setState(json);
-  },
-  render(s = this.props.s){
-    return(
-      <section>
-        <h3>技能6</h3>
-        <Row>
-          <RWDValue><label>攻速</label><input type="number" value={s.state.skillsix.as} onChange={this.setAs} /></RWDValue>
-          <RWDValue><label>暴率</label><input type="number" value={s.state.skillsix.c} onChange={this.setC} /></RWDValue>
-          <RWDValue><label>暴傷</label><input type="number" value={s.state.skillsix.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>傷害</label><input type="number" value={s.state.skillsix.d} onChange={this.setD} /></RWDValue>
-          <RWDValue><label>更多傷害</label><input type="number" value={s.state.skillsix.dm} onChange={this.setDm} /></RWDValue>
-          <RWDValue><label>較少傷害</label><input type="number" value={s.state.skillsix.dl} onChange={this.setDl} /></RWDValue>
-          <RWDValue><label>元素傷害</label><input type="number" value={s.state.skillsix.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.skillsix.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>更多武器元傷</label><input type="number" value={s.state.skillsix.wedm} onChange={this.setWedm} /></RWDValue>
-          <RWDValue><label>投射物物傷</label><input type="number" value={s.state.skillsix.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>更多投射物物傷</label><input type="number" value={s.state.skillsix.pdm} onChange={this.setPdm} /></RWDValue>
-          <RWDValue><label>投射物傷害</label><input type="number" value={s.state.skillsix.pjtd} onChange={this.setPjtd} /></RWDValue>
-          <RWDValue><label>更多投射物傷害</label><input type="number" value={s.state.skillsix.pjtdm} onChange={this.setPjtdm} /></RWDValue>
-          <RWDValue><label>較少投射物傷害</label><input type="number" value={s.state.skillsix.pjtdl} onChange={this.setPjtdl} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.skillsix.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.skillsix.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.skillsix.td} onChange={this.setTd} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.skillsix.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.skillsix.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.skillsix.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.skillsix.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.skillsix.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.skillsix.tb} onChange={this.setTb} /></RWDValue>
-          <RWDValue><label>額外物轉冰</label><input type="number" value={s.state.skillsix.ptiadd} onChange={this.setPtiadd} /></RWDValue>
-          <RWDValue><label>額外物轉火</label><input type="number" value={s.state.skillsix.ptfadd} onChange={this.setPtfadd} /></RWDValue>
-          <RWDValue><label>額外物轉電</label><input type="number" value={s.state.skillsix.pttadd} onChange={this.setPttadd} /></RWDValue>
-          <RWDValue><label>物轉冰</label><input type="number" value={s.state.skillsix.pti} onChange={this.setPti} /></RWDValue>
-          <RWDValue><label>物轉火</label><input type="number" value={s.state.skillsix.ptf} onChange={this.setPtf} /></RWDValue>
-          <RWDValue><label>物轉電</label><input type="number" value={s.state.skillsix.ptt} onChange={this.setPtt} /></RWDValue>
+          <RWDValue><label>零點射擊</label><input type="number" value={s.state.hideinfo.pb} onChange={this.setPb} /></RWDValue>
+          <RWDValue><label>急凍</label><input type="number" value={s.state.hideinfo.hy} onChange={this.setHy} /></RWDValue>
         </Row>
       </section>
     );
@@ -2493,24 +1881,141 @@ const Value = React.createClass({
         <RingTwo s={this.props.s} />
         <Foot s={this.props.s} />
         <Quiver s={this.props.s} />
-        <SkillOne s={this.props.s} />
-        <SkillTwo s={this.props.s} />
-        <SkillThree s={this.props.s} />
-        <SkillFour s={this.props.s} />
-        <SkillFive s={this.props.s} />
-        <SkillSix s={this.props.s} />
+        <Skill s={this.props.s} />
+        <Moreless s={this.props.s} />
+        <Hideinfo s={this.props.s} />
       </div>
     );
   }
 });
 const Info = React.createClass({
   render(s = this.props.s.state){
+    const sum = {
+      hp: s.talent.hp + s.head.hp + s.hand.hp + s.body.hp + s.belt.hp + s.ringone.hp + s.ringtwo.hp + s.necklace.hp + s.foot.hp + s.quiver.hp,
+      hpd: s.talent.hpd + s.head.hpd + s.hand.hpd + s.body.hpd + s.belt.hpd + s.ringone.hpd + s.ringtwo.hpd + s.necklace.hpd + s.foot.hpd + s.quiver.hpd,
+      mp: s.talent.mp + s.head.mp + s.hand.mp + s.body.mp + s.belt.mp + s.ringone.mp + s.ringtwo.mp + s.necklace.mp + s.foot.mp + s.quiver.mp,
+      mpd: s.talent.mpd + s.head.mpd + s.hand.mpd + s.body.mpd + s.belt.mpd + s.ringone.mpd + s.ringtwo.mpd + s.necklace.mpd + s.foot.mpd + s.quiver.mpd,
+      as: s.talent.as + s.head.as + s.hand.as + s.body.as + s.belt.as + s.ringone.as + s.ringtwo.as + s.necklace.as + s.foot.as + s.quiver.as + s.player.gb * 4, 
+      ed: s.weaponadd.ed + s.talent.ed + s.head.ed + s.hand.ed + s.body.ed + s.belt.ed + s.ringone.ed + s.ringtwo.ed + s.necklace.ed + s.foot.ed + s.quiver.ed,
+      wed: s.weaponadd.wed + s.talent.wed + s.head.wed + s.hand.wed + s.body.wed + s.belt.wed + s.ringone.wed + s.ringtwo.wed + s.necklace.wed + s.foot.wed + s.quiver.wed + s.skill.wed,
+      iced: s.weaponadd.iced + s.talent.iced + s.head.iced + s.hand.iced + s.body.iced + s.belt.iced + s.ringone.iced + s.ringtwo.iced + s.necklace.iced + s.foot.iced + s.quiver.iced + s.skill.iced,
+      fd: s.weaponadd.fd + s.talent.fd + s.head.fd + s.hand.fd + s.body.fd + s.belt.fd + s.ringone.fd + s.ringtwo.fd + s.necklace.fd + s.foot.fd + s.quiver.fd + s.skill.fd,
+      td: s.weaponadd.td + s.talent.td + s.head.td + s.hand.td + s.body.td + s.belt.td + s.ringone.td + s.ringtwo.td + s.necklace.td + s.foot.td + s.quiver.td + s.skill.td,
+      ices: s.weaponadd.ices + s.head.ices + s.hand.ices + s.body.ices + s.belt.ices + s.ringone.ices + s.ringtwo.ices + s.necklace.ices + s.foot.ices + s.quiver.ices + s.skill.ices,
+      iceb: s.weaponadd.iceb + s.head.iceb + s.hand.iceb + s.body.iceb + s.belt.iceb + s.ringone.iceb + s.ringtwo.iceb + s.necklace.iceb + s.foot.iceb + s.quiver.iceb + s.skill.iceb,
+      fs: s.weaponadd.fs + s.head.fs + s.hand.fs + s.body.fs + s.belt.fs + s.ringone.fs + s.ringtwo.fs + s.necklace.fs + s.foot.fs + s.quiver.fs + s.skill.fs,
+      fb: s.weaponadd.fb + s.head.fb + s.hand.fb + s.body.fb + s.belt.fb + s.ringone.fb + s.ringtwo.fb + s.necklace.fb + s.foot.fb + s.quiver.fb + s.skill.fb,
+      ts: s.weaponadd.ts + s.head.ts + s.hand.ts + s.body.ts + s.belt.ts + s.ringone.ts + s.ringtwo.ts + s.necklace.ts + s.foot.ts + s.quiver.ts + s.skill.ts,
+      tb: s.weaponadd.tb + s.head.tb + s.hand.tb + s.body.tb + s.belt.tb + s.ringone.tb + s.ringtwo.tb + s.necklace.tb + s.foot.tb + s.quiver.tb + s.skill.tb,
+      ps: s.head.ps + s.hand.ps + s.body.ps + s.belt.ps + s.ringone.ps + s.ringtwo.ps + s.necklace.ps + s.foot.ps + s.quiver.ps,
+      pb: s.head.pb + s.hand.pb + s.body.pb + s.belt.pb + s.ringone.pb + s.ringtwo.pb + s.necklace.pb + s.foot.pb + s.quiver.pb,
+      c: s.talent.c + s.head.c + s.hand.c + s.body.c + s.belt.c + s.ringone.c + s.ringtwo.c + s.necklace.c + s.foot.c + s.quiver.c + s.skill.c,
+      cd: s.weaponadd.cd + s.talent.cd + s.head.cd + s.hand.cd + s.body.cd + s.belt.cd + s.ringone.cd + s.ringtwo.cd + s.necklace.cd + s.foot.cd + s.quiver.cd + s.skill.cd,
+      pjtd: s.talent.pjtd + s.quiver.pjtd + s.skill.pjtd,
+      pd: s.talent.pd + s.head.pd + s.hand.pd + s.body.pd + s.belt.pd + s.ringone.pd + s.ringtwo.pd + s.necklace.pd + s.foot.pd + s.quiver.pd + s.skill.pd,
+      pdml: Math.round(100 + s.moreless.pdm) / 100,
+      edml: Math.round(100 + s.moreless.wedm) / 100,
+      dml: Math.round((100 - s.moreless.gmp) / 100 * (100 - s.moreless.lmp) / 100 * (100 - s.moreless.fork) / 100 * (100 + s.moreless.pjtdm )) / 100 * Math.round((100 + s.moreless.tr) / 100 * (100 + s.moreless.trd)) / 100 * Math.round((100 - s.moreless.mtr * Math.pow((100 + 4) / 100, s.player.gb)) / 100 * (100 - s.moreless.ci)) / 100 * (100 + s.moreless.rg) / 100,
+      hdml: Math.round((100 - s.moreless.gmp) / 100 * (100 - s.moreless.lmp) / 100 * (100 - s.moreless.fork) / 100 * (100 + s.moreless.pjtdm )) / 100 * (100 + s.weaponadd.pm) / 100 * Math.round((100 + s.moreless.tr) / 100 * (100 + s.moreless.trd)) / 100 * Math.round((100 - s.moreless.mtr) / 100 * (100 - s.moreless.ci) * (100 + s.hideinfo.hy) / 100 * (100 + s.hideinfo.pb) * Math.pow((100 + 4) / 100, s.player.gb) ) / 100 * (100 + s.moreless.rg) / 100,
+    };
     const weapon = {
-      ps: Math.round((s.weapon.ps+s.weaponadd.ps)*(100+s.weapon.q+s.weaponadd.pd)/100),
+      ps: Math.round((s.weapon.ps + s.weaponadd.ps) * (100 + s.weapon.q + s.weaponadd.pd) / 100), //武器加成後小傷
+      pb: Math.round((s.weapon.pb + s.weaponadd.pb) * (100 + s.weapon.q + s.weaponadd.pd) / 100), //武器加成後大傷
+      c: Math.round(s.weapon.c * (100 + s.weaponadd.c)) / 100, //武器加成後暴率
+    };
+    const health = {
+      hp: Math.round((38 + (s.player.level * 12) + (s.player.str / 2) + sum.hp) * (100 + sum.hpd) / 100),  //血量
+      mp: Math.round((46 + (4 * s.player.level) + s.player.int + sum.mp) * (100 + sum.mpd)/ 100),           //法力
+    };
+    const basic = {
+      as: Math.round(( 100 + s.weaponadd.as ) / 100 * (100 + sum.as) / 100 * (100 - s.skill.asl) )/100 - 1,
+      ices: Math.round((sum.ices * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100),
+      iceb: Math.round((sum.iceb * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100),
+      fs: Math.round((sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd + s.skill.ptf) / 100)),
+      fb: Math.round((sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd + s.skill.ptf) / 100)),
+      ts: Math.round((sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)),
+      tb: Math.round((sum.tb * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)),
+      ps: Math.round((weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf) / 100,
+      pb: Math.round((weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf) / 100,
+    };
+    const hidebasic = {
+      ices: Math.round((sum.ices * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura)) / 100 + s.skill.pti) / 100),
+      iceb: Math.round((sum.iceb * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura)) / 100 + s.skill.pti) / 100),
+      fs: Math.round((sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd * (100 + s.talent.aura)) / 100 + s.skill.ptf) / 100),
+      fb: Math.round((sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd * (100 + s.talent.aura)) / 100 + s.skill.ptf) / 100),
+      ts: Math.round((sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)),
+      tb: Math.round((sum.tb * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)),
+      ps: Math.round((weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf) / 100,
+      pb: Math.round((weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf) / 100,
+    };
+    const calc = {
+      as: Math.round(s.weapon.as * (1 + basic.as) * 100) / 100,
+      basicds: basic.ices + basic.fs + basic.ts + basic.ps,
+      basicdb: basic.iceb + basic.fb + basic.tb + basic.pb,
+      hbasicds: hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.ps,
+      hbasicdb: hidebasic.iceb + hidebasic.fb + hidebasic.tb + hidebasic.pb,
+      c: Math.round(weapon.c * (100 + sum.c)) / 100,
+      cd: Math.round(150 * (100 + sum.cd)/ 100),
+    };
+    const info = {      
+      td: Math.round((((calc.basicds + calc.basicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
+      sd: Math.round((((calc.basicds + calc.basicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc * calc.as) / 100,
+      icesc: Math.round(basic.ices * calc.cd) / 100,
+      icebc: Math.round(basic.iceb * calc.cd) / 100,
+      fsc: Math.round(basic.fs * calc.cd) / 100,
+      fbc: Math.round(basic.fb * calc.cd) / 100,
+      tsc: Math.round(basic.ts * calc.cd) / 100,
+      tbc: Math.round(basic.tb * calc.cd) / 100,
+      psc: Math.round(basic.ps * calc.cd) / 100,
+      pbc: Math.round(basic.pb * calc.cd) / 100,
+    };
+    const hideinfo = {
+      td: Math.round((((calc.hbasicds + calc.hbasicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.hbasicds + calc.hbasicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
+      sd: Math.round((((calc.hbasicds + calc.hbasicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.hbasicds + calc.hbasicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc * calc.as) / 100,
+      icesc: Math.round(hidebasic.ices * calc.cd) / 100,
+      icebc: Math.round(hidebasic.iceb * calc.cd) / 100,
+      fsc: Math.round(hidebasic.fs * calc.cd) / 100,
+      fbc: Math.round(hidebasic.fb * calc.cd) / 100,
+      tsc: Math.round(hidebasic.ts * calc.cd) / 100,
+      tbc: Math.round(hidebasic.tb * calc.cd) / 100,
+      psc: Math.round(hidebasic.ps * calc.cd) / 100,
+      pbc: Math.round(hidebasic.pb * calc.cd) / 100,
     };
     return(
     <div className="col xx12 s4">
-      {weapon.ps}
+      <section>
+        <h3>人物資訊</h3>
+        <Row>
+          <p className="col xx4 m3"><strong>等級: </strong>{s.player.level}</p>
+          <p className="col xx4 m3"><strong>血量: </strong>{health.hp}</p>
+          <p className="col xx4 m3"><strong>魔力: </strong>{health.mp}</p>
+        </Row>
+      </section>
+      <section>
+        <h3>武器素質</h3>
+        <Row>
+          <p className="col xx4"><strong>物傷: </strong>{weapon.ps} - {weapon.pb}</p>
+          <p className="col xx4"><strong>攻速: </strong>{Math.round(s.weapon.as * (100 + s.weaponadd.as)) / 100}</p>
+          <p className="col xx4"><strong>暴率: </strong>{weapon.c}</p>
+        </Row>
+      </section>
+      <section>
+        <h3>面版資訊</h3>
+        <Row>
+          <p className="col xx4"><strong>暴率: </strong>{calc.c}%</p>
+          <p className="col xx4"><strong>暴傷: </strong>{calc.cd}</p>
+          <p className="col xx4"><strong>命中: </strong>{s.player.acc}</p>
+          <p className="col xx4"><strong>修正攻速: </strong>{basic.as * 100}%</p>
+          <p className="col xx4"><strong>攻速: </strong>{calc.as}</p>
+          <p className="col xx4"><strong>每秒傷害: </strong>{info.sd}</p>
+          <p className="col xx4"><strong>每次傷害: </strong>{info.td}</p>
+          <p className="col xx4"><strong>基礎傷害: </strong>{calc.basicds} - {calc.basicdb}</p>
+          <p className="col xx4"><strong>基礎物理: </strong>{basic.ps} - {basic.pb}</p>
+          <p className="col xx4"><strong>基礎冰傷: </strong>{basic.ices} - {basic.iceb}</p>
+          <p className="col xx4"><strong>基礎火傷: </strong>{basic.fs} - {basic.fb}</p>
+          <p className="col xx4"><strong>基礎電傷: </strong>{basic.ts} - {basic.tb}</p>      
+        </Row>
+      </section>
     </div>
     );
   },
@@ -2537,6 +2042,7 @@ const App = React.createClass({
     return value;
   },
   render(){
+    localStorage.temp = JSON.stringify(this.state);
     return(
     <div>
       <Value s={this} />
