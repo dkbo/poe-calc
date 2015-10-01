@@ -355,7 +355,7 @@ const Player = React.createClass({
           <RWDValue><label>力量</label><input type="number"  value={s.state.player.str} onChange={this.setStr} /></RWDValue>
           <RWDValue><label>敏捷</label><input type="number"  value={s.state.player.agi} onChange={this.setAgi} /></RWDValue>
           <RWDValue><label>智慧</label><input type="number"  value={s.state.player.int} onChange={this.setInt} /></RWDValue>
-          <RWDValue><label>準確度</label><input type="number"  value={s.state.player.acc} onChange={this.setAcc} /></RWDValue>
+          <RWDValue><label>命中</label><input type="number"  value={s.state.player.acc} onChange={this.setAcc} /></RWDValue>
           <RWDValue><label>綠球</label><input type="number"  value={s.state.player.gb} onChange={this.setGb} /></RWDValue>
           <RWDValue><label>籃球</label><input type="number"  value={s.state.player.bb} onChange={this.setBb} /></RWDValue>
         </Row>
@@ -1895,7 +1895,7 @@ const Info = React.createClass({
       hpd: s.talent.hpd + s.head.hpd + s.hand.hpd + s.body.hpd + s.belt.hpd + s.ringone.hpd + s.ringtwo.hpd + s.necklace.hpd + s.foot.hpd + s.quiver.hpd,
       mp: s.talent.mp + s.head.mp + s.hand.mp + s.body.mp + s.belt.mp + s.ringone.mp + s.ringtwo.mp + s.necklace.mp + s.foot.mp + s.quiver.mp,
       mpd: s.talent.mpd + s.head.mpd + s.hand.mpd + s.body.mpd + s.belt.mpd + s.ringone.mpd + s.ringtwo.mpd + s.necklace.mpd + s.foot.mpd + s.quiver.mpd,
-      as: s.talent.as + s.head.as + s.hand.as + s.body.as + s.belt.as + s.ringone.as + s.ringtwo.as + s.necklace.as + s.foot.as + s.quiver.as + s.player.gb * 4, 
+      as: this.props.s.add(s.talent.as + s.head.as + s.hand.as + s.body.as + s.belt.as + s.ringone.as + s.ringtwo.as + s.necklace.as + s.foot.as + s.quiver.as, this.props.s.mul(s.player.gb, 4)), 
       ed: s.weaponadd.ed + s.talent.ed + s.head.ed + s.hand.ed + s.body.ed + s.belt.ed + s.ringone.ed + s.ringtwo.ed + s.necklace.ed + s.foot.ed + s.quiver.ed,
       wed: s.weaponadd.wed + s.talent.wed + s.head.wed + s.hand.wed + s.body.wed + s.belt.wed + s.ringone.wed + s.ringtwo.wed + s.necklace.wed + s.foot.wed + s.quiver.wed + s.skill.wed,
       iced: s.weaponadd.iced + s.talent.iced + s.head.iced + s.hand.iced + s.body.iced + s.belt.iced + s.ringone.iced + s.ringtwo.iced + s.necklace.iced + s.foot.iced + s.quiver.iced + s.skill.iced,
@@ -1916,7 +1916,7 @@ const Info = React.createClass({
       pdml: Math.round(100 + s.moreless.pdm) / 100,
       edml: Math.round(100 + s.moreless.wedm) / 100,
       dml: Math.round((100 - s.moreless.gmp) / 100 * (100 - s.moreless.lmp) / 100 * (100 - s.moreless.fork) / 100 * (100 + s.moreless.pjtdm )) / 100 * Math.round((100 + s.moreless.tr) / 100 * (100 + s.moreless.trd)) / 100 * Math.round((100 - s.moreless.mtr * Math.pow((100 + 4) / 100, s.player.gb)) / 100 * (100 - s.moreless.ci)) / 100 * (100 + s.moreless.rg) / 100,
-      hdml: Math.round((100 - s.moreless.gmp) / 100 * (100 - s.moreless.lmp) / 100 * (100 - s.moreless.fork) / 100 * (100 + s.moreless.pjtdm )) / 100 * (100 + s.weaponadd.pm) / 100 * Math.round((100 + s.moreless.tr) / 100 * (100 + s.moreless.trd)) / 100 * Math.round((100 - s.moreless.mtr) / 100 * (100 - s.moreless.ci) * (100 + s.hideinfo.hy) / 100 * (100 + s.hideinfo.pb) * Math.pow((100 + 4) / 100, s.player.gb) ) / 100 * (100 + s.moreless.rg) / 100,
+      hdml: Math.round((100 - s.moreless.gmp) / 100 * (100 - s.moreless.lmp) / 100 * (100 - s.moreless.fork) / 100 * (100 + s.moreless.pjtdm )) / 100 * (100 + s.weaponadd.pm) / 100 * Math.round((100 + s.moreless.tr) / 100 * (100 + s.moreless.trd)) / 100 * Math.round((100 - s.moreless.mtr) / 100 * (100 - s.moreless.ci) /100 * (100 + s.hideinfo.hy) / 100 * (100 + s.hideinfo.pb) * Math.pow((100 + 4) / 100, s.player.gb) ) / 100 * (100 + s.moreless.rg) / 100,
     };
     const weapon = {
       ps: Math.round((s.weapon.ps + s.weaponadd.ps) * (100 + s.weapon.q + s.weaponadd.pd) / 100), //武器加成後小傷
@@ -1928,7 +1928,7 @@ const Info = React.createClass({
       mp: Math.round((46 + (4 * s.player.level) + s.player.int + sum.mp) * (100 + sum.mpd)/ 100),           //法力
     };
     const basic = {
-      as: Math.round(( 100 + s.weaponadd.as ) / 100 * (100 + sum.as) / 100 * (100 - s.skill.asl) )/100 - 1,
+      as: this.props.s.sub(this.props.s.div(Math.round(this.props.s.div(this.props.s.mul(this.props.s.mul((this.props.s.add(100, s.weaponadd.as)), (this.props.s.add(100, sum.as))), (this.props.s.sub(100, s.skill.asl))), 10000)), 100), 1),
       ices: Math.round((sum.ices * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100),
       iceb: Math.round((sum.iceb * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100),
       fs: Math.round((sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd + s.skill.ptf) / 100)),
@@ -1983,39 +1983,58 @@ const Info = React.createClass({
     };
     return(
     <div className="col xx12 s4">
-      <section>
-        <h3>人物資訊</h3>
-        <Row>
-          <p className="col xx4 m3"><strong>等級: </strong>{s.player.level}</p>
-          <p className="col xx4 m3"><strong>血量: </strong>{health.hp}</p>
-          <p className="col xx4 m3"><strong>魔力: </strong>{health.mp}</p>
-        </Row>
-      </section>
-      <section>
-        <h3>武器素質</h3>
-        <Row>
-          <p className="col xx4"><strong>物傷: </strong>{weapon.ps} - {weapon.pb}</p>
-          <p className="col xx4"><strong>攻速: </strong>{Math.round(s.weapon.as * (100 + s.weaponadd.as)) / 100}</p>
-          <p className="col xx4"><strong>暴率: </strong>{weapon.c}</p>
-        </Row>
-      </section>
-      <section>
-        <h3>面版資訊</h3>
-        <Row>
-          <p className="col xx4"><strong>暴率: </strong>{calc.c}%</p>
-          <p className="col xx4"><strong>暴傷: </strong>{calc.cd}</p>
-          <p className="col xx4"><strong>命中: </strong>{s.player.acc}</p>
-          <p className="col xx4"><strong>修正攻速: </strong>{basic.as * 100}%</p>
-          <p className="col xx4"><strong>攻速: </strong>{calc.as}</p>
-          <p className="col xx4"><strong>每秒傷害: </strong>{info.sd}</p>
-          <p className="col xx4"><strong>每次傷害: </strong>{info.td}</p>
-          <p className="col xx4"><strong>基礎傷害: </strong>{calc.basicds} - {calc.basicdb}</p>
-          <p className="col xx4"><strong>基礎物理: </strong>{basic.ps} - {basic.pb}</p>
-          <p className="col xx4"><strong>基礎冰傷: </strong>{basic.ices} - {basic.iceb}</p>
-          <p className="col xx4"><strong>基礎火傷: </strong>{basic.fs} - {basic.fb}</p>
-          <p className="col xx4"><strong>基礎電傷: </strong>{basic.ts} - {basic.tb}</p>      
-        </Row>
-      </section>
+      <div id="infobox">
+        <section>
+          <h3>人物資訊</h3>
+          <Row>
+            <p className="col xx4"><strong>等級</strong>{s.player.level}</p>
+            <p className="col xx4"><strong>血量</strong>{health.hp}</p>
+            <p className="col xx4"><strong>魔力</strong>{health.mp}</p>
+          </Row>
+        </section>
+        <section>
+          <h3>武器素質</h3>
+          <Row>
+            <p className="col xx4"><strong>物傷</strong>{weapon.ps} - {weapon.pb}</p>
+            <p className="col xx4"><strong>攻速</strong>{Math.round(s.weapon.as * (100 + s.weaponadd.as)) / 100}</p>
+            <p className="col xx4"><strong>暴率</strong>{weapon.c}</p>
+          </Row>
+        </section>
+        <section>
+          <h3>面版一般資訊</h3>
+          <Row>
+            <p className="col xx4"><strong>暴率</strong>{calc.c}%</p>
+            <p className="col xx4"><strong>暴傷</strong>{calc.cd}</p>
+            <p className="col xx4"><strong>命中</strong>{s.player.acc}</p>
+            <p className="col xx4"><strong>修正攻速</strong>{basic.as * 100}%</p>
+            <p className="col xx4"><strong>攻速</strong>{calc.as}</p>
+          </Row>
+        </section>
+        <section>
+          <h3>面版傷害資訊</h3>
+          <Row>
+            <p className="col xx4"><strong>每秒傷害</strong>{info.sd}</p>
+            <p className="col xx4"><strong>每次傷害</strong>{info.td}</p>
+            <p className="col xx4"><strong>基礎傷害</strong>{calc.basicds} - {calc.basicdb}</p>
+            <p className="col xx4"><strong>基礎物理</strong>{basic.ps} - {basic.pb}</p>
+            <p className="col xx4"><strong>基礎冰傷</strong>{basic.ices} - {basic.iceb}</p>
+            <p className="col xx4"><strong>基礎火傷</strong>{basic.fs} - {basic.fb}</p>
+            <p className="col xx4"><strong>基礎電傷</strong>{basic.ts} - {basic.tb}</p>      
+          </Row>
+        </section>
+        <section>
+          <h3>真實傷害資訊</h3>
+          <Row>
+            <p className="col xx4"><strong>每秒傷害</strong>{hideinfo.sd}</p>
+            <p className="col xx4"><strong>每次傷害</strong>{hideinfo.td}</p>
+            <p className="col xx4"><strong>基礎傷害</strong>{calc.hbasicds} - {calc.hbasicdb}</p>
+            <p className="col xx4"><strong>基礎物理</strong>{hidebasic.ps} - {hidebasic.pb}</p>
+            <p className="col xx4"><strong>基礎冰傷</strong>{hidebasic.ices} - {hidebasic.iceb}</p>
+            <p className="col xx4"><strong>基礎火傷</strong>{hidebasic.fs} - {hidebasic.fb}</p>
+            <p className="col xx4"><strong>基礎電傷</strong>{hidebasic.ts} - {hidebasic.tb}</p>      
+          </Row>
+        </section>
+      </div>
     </div>
     );
   },
@@ -2023,7 +2042,7 @@ const Info = React.createClass({
 const RWDValue = React.createClass({
   render(){
     return(
-    <div className="col xx4 x3 m2">{this.props.children}</div>
+    <div className="col xx4 x3 l2">{this.props.children}</div>
     );
   },
 });
@@ -2040,6 +2059,25 @@ const Row = React.createClass({
 const App = React.createClass({
   getInitialState() {
     return value;
+  },
+  add(arg1,arg2) { 
+    let r1,r2,m;
+    try{r1=arg1.toString().split(".")[1].length}catch(e){r1=0}
+    try{r2=arg2.toString().split(".")[1].length}catch(e){r2=0}
+    m=Math.pow(10,Math.max(r1,r2));
+    return (this.mul(arg1,m)+this.mul(arg2,m))/m; 
+  },
+  sub(arg1,arg2) {
+    return this.add(arg1,-arg2);
+  },
+  mul(arg1,arg2) {
+    let m=0,s1=arg1.toString(),s2=arg2.toString(); 
+    try{m+=s1.split(".")[1].length}catch(e){} 
+    try{m+=s2.split(".")[1].length}catch(e){} 
+    return Number(s1.replace(".",""))*Number(s2.replace(".",""))/Math.pow(10,m) 
+  },
+  div(arg1,arg2) {
+    return this.mul(arg1,1/arg2);
   },
   render(){
     localStorage.temp = JSON.stringify(this.state);
