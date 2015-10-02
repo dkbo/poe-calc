@@ -18,11 +18,15 @@ input
 
 h3
   cursor: pointer
+  margin: 0
   padding: .5em 
-  +background(linear-gradient(#6C91E4 0%,#142C79 100%))
-  color: white
+  +background(linear-gradient(#F0F5FF 0%,#DCDCDC 100%))
+  color: #1D2C75
+  &.active,&:hover
+    +background(linear-gradient(#6C91E4 0%,#142C79 100%))
+    color: white
 section
-  padding: .5rem
+  padding: 0 .5rem
   p
     text-align: center
     strong

@@ -318,6 +318,11 @@ const init = {
 };
 const value = localStorage.temp ? JSON.parse(localStorage.temp) : init;
 const Player = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setLevel(e, json = this.props.s.state.player) {
     json.level = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -346,10 +351,14 @@ const Player = React.createClass({
     json.bb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3>人物數值</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>人物數值</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>等級</label><input type="number"  value={s.state.player.level} onChange={this.setLevel} /></RWDValue>
           <RWDValue><label className='str'>力量</label><input type="number"  value={s.state.player.str} onChange={this.setStr} /></RWDValue>
@@ -359,12 +368,17 @@ const Player = React.createClass({
           <Clear />
           <RWDValue><label className='gb'>綠球</label><input type="number"  value={s.state.player.gb} onChange={this.setGb} /></RWDValue>
           <RWDValue><label className='bb'>籃球</label><input type="number"  value={s.state.player.bb} onChange={this.setBb} /></RWDValue>
-        </Row>
+        </Row> : null}
       </section>
     );
   }
 });
 const Weapon = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setPs(e, json = this.props.s.state.weapon) {
     json.ps = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -385,22 +399,31 @@ const Weapon = React.createClass({
     json.c = parseFloat(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3>武器基底</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>武器基底</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.weapon.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.weapon.pb} onChange={this.setPb} /></RWDValue>
           <RWDValue><label>攻速</label><input type="number" value={s.state.weapon.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>品質</label><input type="number" value={s.state.weapon.q} onChange={this.setQ} /></RWDValue>
           <RWDValue><label>暴擊機率</label><input type="number" value={s.state.weapon.c} onChange={this.setC} /></RWDValue>
-        </Row>
+        </Row> : null}
       </section>
     );
   },
 });
 const WeaponAdd = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setAs(e, json = this.props.s.state.weaponadd) {
     json.as = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -473,11 +496,15 @@ const WeaponAdd = React.createClass({
     json.pm = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s) {
     return(
       <section>
-       <h3>武器詞綴</h3>
-       <Row>
+       <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>武器詞綴</h3>
+       {this.state.display ? 
+        <Row>
           <RWDValue><label>攻速</label><input type="number" value={s.state.weaponadd.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.weaponadd.c} onChange={this.setC} /></RWDValue>
           <RWDValue><label>暴傷%</label><input type="number" value={s.state.weaponadd.cd} onChange={this.setCd} /></RWDValue>
@@ -497,12 +524,17 @@ const WeaponAdd = React.createClass({
           <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.weaponadd.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.weaponadd.tb} onChange={this.setTb} /></RWDValue>
           <RWDValue><label>(亂矢)</label><input type="number" value={s.state.weaponadd.pm} onChange={this.setPm} /></RWDValue>
-        </Row>
+        </Row> : null}
       </section>
     );
   },
 });
 const Talent = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setAs(e, json = this.props.s.state.talent) {
     json.as = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -571,10 +603,14 @@ const Talent = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3>天賦點</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>天賦點</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>攻速</label><input type="number" value={s.state.talent.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.talent.c} onChange={this.setC} /></RWDValue>
@@ -595,12 +631,18 @@ const Talent = React.createClass({
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.talent.mp} onChange={this.setMp} /></RWDValue>
           <RWDValue><label>魔力%</label><input type="number" value={s.state.talent.mpd} onChange={this.setMpd} /></RWDValue>
           <RWDValue><label>光環效果</label><input type="number" value={s.state.talent.aura} onChange={this.setAura} /></RWDValue>
-        </Row>
+        </Row> : null}
+
       </section>
     );
   },
 });
 const Head = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setAs(e, json = this.props.s.state.head) {
     json.as = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -685,10 +727,14 @@ const Head = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3>頭部</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>頭部</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>攻速</label><input type="number" value={s.state.head.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.head.c} onChange={this.setC} /></RWDValue>
@@ -713,12 +759,17 @@ const Head = React.createClass({
           <RWDValue><label>生命%</label><input type="number" value={s.state.head.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.head.mp} onChange={this.setMp} /></RWDValue>
           <RWDValue><label>魔力%</label><input type="number" value={s.state.head.mpd} onChange={this.setMpd} /></RWDValue>
-        </Row>
+        </Row> : null}
       </section>
     );
   },
 });
 const Hand = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setAs(e, json = this.props.s.state.hand) {
     json.as = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -803,10 +854,14 @@ const Hand = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3>手部</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>手部</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>攻速</label><input type="number" value={s.state.hand.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.hand.c} onChange={this.setC} /></RWDValue>
@@ -831,12 +886,17 @@ const Hand = React.createClass({
           <RWDValue><label>生命%</label><input type="number" value={s.state.hand.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.hand.mp} onChange={this.setMp} /></RWDValue>
           <RWDValue><label>魔力%</label><input type="number" value={s.state.hand.mpd} onChange={this.setMpd} /></RWDValue>
-        </Row>
+        </Row> : null}
       </section>
     );
   },
 });
 const Body= React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setAs(e, json = this.props.s.state.body) {
     json.as = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -921,10 +981,14 @@ const Body= React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3>身體</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>身體</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>攻速</label><input type="number" value={s.state.body.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.body.c} onChange={this.setC} /></RWDValue>
@@ -949,12 +1013,17 @@ const Body= React.createClass({
           <RWDValue><label>生命%</label><input type="number" value={s.state.body.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.body.mp} onChange={this.setMp} /></RWDValue>
           <RWDValue><label>魔力%</label><input type="number" value={s.state.body.mpd} onChange={this.setMpd} /></RWDValue>
-        </Row>
+        </Row> : null}
       </section>
     );
   },
 });
 const Belt = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setAs(e, json = this.props.s.state.belt) {
     json.as = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -1039,10 +1108,14 @@ const Belt = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3>腰帶</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>腰帶</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>攻速</label><input type="number" value={s.state.belt.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.belt.c} onChange={this.setC} /></RWDValue>
@@ -1067,12 +1140,17 @@ const Belt = React.createClass({
           <RWDValue><label>生命%</label><input type="number" value={s.state.belt.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.belt.mp} onChange={this.setMp} /></RWDValue>
           <RWDValue><label>魔力%</label><input type="number" value={s.state.belt.mpd} onChange={this.setMpd} /></RWDValue>
-        </Row>
+        </Row> : null}
       </section>
     );
   },
 });
 const Necklace = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setAs(e, json = this.props.s.state.necklace) {
     json.as = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -1157,10 +1235,14 @@ const Necklace = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3>項鍊</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>項鍊</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>攻速</label><input type="number" value={s.state.necklace.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.necklace.c} onChange={this.setC} /></RWDValue>
@@ -1185,12 +1267,17 @@ const Necklace = React.createClass({
           <RWDValue><label>生命%</label><input type="number" value={s.state.necklace.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.necklace.mp} onChange={this.setMp} /></RWDValue>
           <RWDValue><label>魔力%</label><input type="number" value={s.state.necklace.mpd} onChange={this.setMpd} /></RWDValue>
-        </Row>
+        </Row> : null}
       </section>
     );
   },
 });
 const RingOne = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setAs(e, json = this.props.s.state.ringone) {
     json.as = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -1275,10 +1362,14 @@ const RingOne = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3>左戒指</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>左戒指</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>攻速</label><input type="number" value={s.state.ringone.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.ringone.c} onChange={this.setC} /></RWDValue>
@@ -1303,12 +1394,17 @@ const RingOne = React.createClass({
           <RWDValue><label>生命%</label><input type="number" value={s.state.ringone.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.ringone.mp} onChange={this.setMp} /></RWDValue>
           <RWDValue><label>魔力%</label><input type="number" value={s.state.ringone.mpd} onChange={this.setMpd} /></RWDValue>
-        </Row>
+        </Row> : null}
       </section>
     );
   },
 });
 const RingTwo = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setAs(e, json = this.props.s.state.ringtwo) {
     json.as = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -1393,10 +1489,14 @@ const RingTwo = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3>右戒指</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>右戒指</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>攻速</label><input type="number" value={s.state.ringtwo.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.ringtwo.c} onChange={this.setC} /></RWDValue>
@@ -1421,12 +1521,17 @@ const RingTwo = React.createClass({
           <RWDValue><label>生命%</label><input type="number" value={s.state.ringtwo.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.ringtwo.mp} onChange={this.setMp} /></RWDValue>
           <RWDValue><label>魔力%</label><input type="number" value={s.state.ringtwo.mpd} onChange={this.setMpd} /></RWDValue>
-        </Row>
+        </Row> : null}
       </section>
     );
   },
 });
 const Foot = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setAs(e, json = this.props.s.state.foot) {
     json.as = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -1511,10 +1616,14 @@ const Foot = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3>腳部</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>腳部</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>攻速</label><input type="number" value={s.state.foot.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.foot.c} onChange={this.setC} /></RWDValue>
@@ -1539,12 +1648,17 @@ const Foot = React.createClass({
           <RWDValue><label>生命%</label><input type="number" value={s.state.foot.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.foot.mp} onChange={this.setMp} /></RWDValue>
           <RWDValue><label>魔力%</label><input type="number" value={s.state.foot.mpd} onChange={this.setMpd} /></RWDValue>
-        </Row>
+        </Row> : null}
       </section>
     );
   },
 });
 const Quiver = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setAs(e, json = this.props.s.state.quiver) {
     json.as = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -1629,10 +1743,14 @@ const Quiver = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3>箭袋</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>箭袋</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>攻速</label><input type="number" value={s.state.quiver.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.quiver.c} onChange={this.setC} /></RWDValue>
@@ -1657,12 +1775,17 @@ const Quiver = React.createClass({
           <RWDValue><label>生命%</label><input type="number" value={s.state.quiver.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.quiver.mp} onChange={this.setMp} /></RWDValue>
           <RWDValue><label>魔力%</label><input type="number" value={s.state.quiver.mpd} onChange={this.setMpd} /></RWDValue>
-        </Row>
+        </Row> : null}
       </section>
     );
   },
 });
 const Skill = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setBd(e, json = this.props.s.state.skill) {
     json.bd = parseFloat(e.target.value);
     this.props.s.setState(json);
@@ -1763,10 +1886,14 @@ const Skill = React.createClass({
     json.ptt = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s){
     return(
       <section>
-        <h3>技能</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>技能</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>基礎傷加成</label><input type="number" value={s.state.skill.bd} onChange={this.setBd} /></RWDValue>
           <RWDValue><label>攻速</label><input type="number" value={s.state.skill.as} onChange={this.setAs} /></RWDValue>
@@ -1797,13 +1924,18 @@ const Skill = React.createClass({
           <RWDValue><label>物轉冰%</label><input type="number" value={s.state.skill.pti} onChange={this.setPti} /></RWDValue>
           <RWDValue><label>物轉火%</label><input type="number" value={s.state.skill.ptf} onChange={this.setPtf} /></RWDValue>
           <RWDValue><label>物轉電%</label><input type="number" value={s.state.skill.ptt} onChange={this.setPtt} /></RWDValue>
-        </Row>
+        </Row> : null }
       </section>
     );
   },
 });
 
 const Moreless = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setGmp(e, json = this.props.s.state.moreless) {
     json.gmp = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -1848,10 +1980,14 @@ const Moreless = React.createClass({
     json.rg = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s){
     return(
       <section>
-        <h3>技能更多/較少修正</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>技能更多/較少修正</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>高階多重</label><input type="number" value={s.state.moreless.gmp} onChange={this.setGmp} /></RWDValue>
           <RWDValue><label>低階多重</label><input type="number" value={s.state.moreless.lmp} onChange={this.setLmp} /></RWDValue>
@@ -1869,12 +2005,17 @@ const Moreless = React.createClass({
           <RWDValue><label>集中效應</label><input type="number" value={s.state.moreless.rg} onChange={this.setRg} /></RWDValue>
           <Clear />
           <RWDValue><label>武器元素傷害</label><input type="number" value={s.state.moreless.wedm} onChange={this.setWedm} /></RWDValue>
-        </Row>
+        </Row> : null}
       </section>
     );
   },
 });
 const Hideinfo = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
   setPb(e, json = this.props.s.state.hideinfo) {
     json.pb = parseInt(e.target.value);
     this.props.s.setState(json);
@@ -1883,14 +2024,18 @@ const Hideinfo = React.createClass({
     json.hy = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
   render(s = this.props.s){
     return(
       <section>
-        <h3>隱藏資訊</h3>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>隱藏資訊</h3>
+        {this.state.display ? 
         <Row>
           <RWDValue><label>零點射擊</label><input type="number" value={s.state.hideinfo.pb} onChange={this.setPb} /></RWDValue>
           <RWDValue><label>急凍</label><input type="number" value={s.state.hideinfo.hy} onChange={this.setHy} /></RWDValue>
-        </Row>
+        </Row> : null }
       </section>
     );
   },
@@ -1920,6 +2065,30 @@ const Value = React.createClass({
   }
 });
 const Info = React.createClass({
+  getInitialState() {
+    return {
+      playerDisplay: true,
+      weaponDisplay: true,
+      infoDisplay: true,
+      dmInfoDisplay: true,
+      hideInfoDisplay: true,
+    };
+  },
+  _handlePlayer() {
+    this.setState({playerDisplay: !this.state.playerDisplay});
+  },
+  _handleWeapon() {
+    this.setState({weaponDisplay: !this.state.weaponDisplay});
+  },
+  _handleInfo() {
+    this.setState({infoDisplay: !this.state.infoDisplay});
+  },
+  _handleDmInfo() {
+    this.setState({dmInfoDisplay: !this.state.dmInfoDisplay});
+  },
+  _handleHideInfo() {
+    this.setState({hideInfoDisplay: !this.state.hideInfoDisplay});
+  },
   render(s = this.props.s.state){
     const sum = {
       hp: s.talent.hp + s.head.hp + s.hand.hp + s.body.hp + s.belt.hp + s.ringone.hp + s.ringtwo.hp + s.necklace.hp + s.foot.hp + s.quiver.hp,
@@ -2016,33 +2185,37 @@ const Info = React.createClass({
     <div className="col xx12 s4">
       <div id="infobox">
         <section>
-          <h3>人物資訊</h3>
+          <h3 className={this.state.playerDisplay ? 'active' : null} onClick={this._handlePlayer}>人物資訊</h3>
+          {this.state.playerDisplay ?
           <Row>
             <p className="col xx4"><strong>等級</strong>{s.player.level}</p>
             <p className="col xx4"><strong>血量</strong>{health.hp}</p>
             <p className="col xx4"><strong>魔力</strong>{health.mp}</p>
-          </Row>
+          </Row> : null}
         </section>
         <section>
-          <h3>武器素質</h3>
+          <h3 className={this.state.weaponDisplay ? 'active' : null} onClick={this._handleWeapon}>武器素質</h3>
+          {this.state.weaponDisplay ?
           <Row>
             <p className="col xx4"><strong>物傷</strong>{weapon.ps} - {weapon.pb}</p>
             <p className="col xx4"><strong>攻速</strong>{Math.round(s.weapon.as * (100 + s.weaponadd.as)) / 100}</p>
             <p className="col xx4"><strong>暴率</strong>{weapon.c}</p>
-          </Row>
+          </Row> : null}
         </section>
         <section>
-          <h3>面版一般資訊</h3>
+          <h3 className={this.state.infoDisplay ? 'active' : null} onClick={this._handleInfo}>面版一般資訊</h3>
+          {this.state.infoDisplay ?
           <Row>
             <p className="col xx4"><strong>暴率</strong>{calc.c}%</p>
             <p className="col xx4"><strong>暴傷</strong>{calc.cd}</p>
             <p className="col xx4"><strong>命中</strong>{s.player.acc}</p>
             <p className="col xx4"><strong>修正攻速</strong>{basic.as * 100}%</p>
             <p className="col xx4"><strong>攻速</strong>{calc.as}</p>
-          </Row>
+          </Row> : null}
         </section>
         <section>
-          <h3>面版傷害資訊</h3>
+          <h3 className={this.state.dmInfoDisplay ? 'active' : null} onClick={this._handleDmInfo}>面版傷害資訊</h3>
+          {this.state.dmInfoDisplay ?
           <Row>
             <p className="col xx4"><strong>每秒傷害</strong>{info.sd}</p>
             <p className="col xx4"><strong>每次傷害</strong>{info.td}</p>
@@ -2051,10 +2224,11 @@ const Info = React.createClass({
             <p className="col xx4"><strong>基礎冰傷</strong>{basic.ices} - {basic.iceb}</p>
             <p className="col xx4"><strong>基礎火傷</strong>{basic.fs} - {basic.fb}</p>
             <p className="col xx4"><strong>基礎電傷</strong>{basic.ts} - {basic.tb}</p>      
-          </Row>
+          </Row> : null}
         </section>
         <section>
-          <h3>真實傷害資訊</h3>
+          <h3 className={this.state.hideInfoDisplay ? 'active' : null} onClick={this._handleHideInfo}>隱藏傷害資訊</h3>
+          {this.state.hideInfoDisplay ?
           <Row>
             <p className="col xx4"><strong>每秒傷害</strong>{hideinfo.sd}</p>
             <p className="col xx4"><strong>每次傷害</strong>{hideinfo.td}</p>
@@ -2063,7 +2237,7 @@ const Info = React.createClass({
             <p className="col xx4"><strong>基礎冰傷</strong>{hidebasic.ices} - {hidebasic.iceb}</p>
             <p className="col xx4"><strong>基礎火傷</strong>{hidebasic.fs} - {hidebasic.fb}</p>
             <p className="col xx4"><strong>基礎電傷</strong>{hidebasic.ts} - {hidebasic.tb}</p>      
-          </Row>
+          </Row> : null}
         </section>
       </div>
     </div>
