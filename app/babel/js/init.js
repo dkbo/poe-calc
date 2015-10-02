@@ -352,12 +352,13 @@ const Player = React.createClass({
         <h3>人物數值</h3>
         <Row>
           <RWDValue><label>等級</label><input type="number"  value={s.state.player.level} onChange={this.setLevel} /></RWDValue>
-          <RWDValue><label>力量</label><input type="number"  value={s.state.player.str} onChange={this.setStr} /></RWDValue>
-          <RWDValue><label>敏捷</label><input type="number"  value={s.state.player.agi} onChange={this.setAgi} /></RWDValue>
-          <RWDValue><label>智慧</label><input type="number"  value={s.state.player.int} onChange={this.setInt} /></RWDValue>
-          <RWDValue><label>命中</label><input type="number"  value={s.state.player.acc} onChange={this.setAcc} /></RWDValue>
-          <RWDValue><label>綠球</label><input type="number"  value={s.state.player.gb} onChange={this.setGb} /></RWDValue>
-          <RWDValue><label>籃球</label><input type="number"  value={s.state.player.bb} onChange={this.setBb} /></RWDValue>
+          <RWDValue><label className='str'>力量</label><input type="number"  value={s.state.player.str} onChange={this.setStr} /></RWDValue>
+          <RWDValue><label className='agi'>敏捷</label><input type="number"  value={s.state.player.agi} onChange={this.setAgi} /></RWDValue>
+          <RWDValue><label className='int'>智慧</label><input type="number"  value={s.state.player.int} onChange={this.setInt} /></RWDValue>
+          <RWDValue><label >命中</label><input type="number"  value={s.state.player.acc} onChange={this.setAcc} /></RWDValue>
+          <Clear />
+          <RWDValue><label className='gb'>綠球</label><input type="number"  value={s.state.player.gb} onChange={this.setGb} /></RWDValue>
+          <RWDValue><label className='bb'>籃球</label><input type="number"  value={s.state.player.bb} onChange={this.setBb} /></RWDValue>
         </Row>
       </section>
     );
@@ -480,20 +481,21 @@ const WeaponAdd = React.createClass({
           <RWDValue><label>攻速</label><input type="number" value={s.state.weaponadd.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.weaponadd.c} onChange={this.setC} /></RWDValue>
           <RWDValue><label>暴傷%</label><input type="number" value={s.state.weaponadd.cd} onChange={this.setCd} /></RWDValue>
+          <Clear />
           <RWDValue><label>元傷%</label><input type="number" value={s.state.weaponadd.ed} onChange={this.setEd} /></RWDValue>
           <RWDValue><label>武器元傷%</label><input type="number" value={s.state.weaponadd.wed} onChange={this.setWed} /></RWDValue>
           <RWDValue><label>物傷%</label><input type="number" value={s.state.weaponadd.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>冰傷%</label><input type="number" value={s.state.weaponadd.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷%</label><input type="number" value={s.state.weaponadd.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷%</label><input type="number" value={s.state.weaponadd.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.weaponadd.iced} onChange={this.setIced} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.weaponadd.fd} onChange={this.setFd} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.weaponadd.td} onChange={this.setTd} /></RWDValue>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.weaponadd.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.weaponadd.pb} onChange={this.setPb} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.weaponadd.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.weaponadd.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.weaponadd.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.weaponadd.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.weaponadd.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.weaponadd.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(小)</label><input type="number" value={s.state.weaponadd.ices} onChange={this.setIces} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(大)</label><input type="number" value={s.state.weaponadd.iceb} onChange={this.setIceb} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(小)</label><input type="number" value={s.state.weaponadd.fs} onChange={this.setFs} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(大)</label><input type="number" value={s.state.weaponadd.fb} onChange={this.setFb} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.weaponadd.ts} onChange={this.setTs} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.weaponadd.tb} onChange={this.setTb} /></RWDValue>
           <RWDValue><label>(亂矢)</label><input type="number" value={s.state.weaponadd.pm} onChange={this.setPm} /></RWDValue>
         </Row>
       </section>
@@ -577,20 +579,22 @@ const Talent = React.createClass({
           <RWDValue><label>攻速</label><input type="number" value={s.state.talent.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.talent.c} onChange={this.setC} /></RWDValue>
           <RWDValue><label>暴傷</label><input type="number" value={s.state.talent.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>元傷</label><input type="number" value={s.state.talent.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.talent.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>持續傷</label><input type="number" value={s.state.talent.cud} onChange={this.setCud} /></RWDValue>
-          <RWDValue><label>物理持續傷</label><input type="number" value={s.state.talent.cupd} onChange={this.setCupd} /></RWDValue>
-          <RWDValue><label>投射物傷害</label><input type="number" value={s.state.talent.pjtd} onChange={this.setPjtd} /></RWDValue>
-          <RWDValue><label>物傷</label><input type="number" value={s.state.talent.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.talent.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.talent.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.talent.td} onChange={this.setTd} /></RWDValue>
-          <RWDValue><label>光環效果</label><input type="number" value={s.state.talent.aura} onChange={this.setAura} /></RWDValue>
+          <Clear />
+          <RWDValue><label>元傷%</label><input type="number" value={s.state.talent.ed} onChange={this.setEd} /></RWDValue>
+          <RWDValue><label>武器元傷%</label><input type="number" value={s.state.talent.wed} onChange={this.setWed} /></RWDValue>
+          <RWDValue><label>持續傷%</label><input type="number" value={s.state.talent.cud} onChange={this.setCud} /></RWDValue>
+          <RWDValue><label>物理持續傷%</label><input type="number" value={s.state.talent.cupd} onChange={this.setCupd} /></RWDValue>
+          <RWDValue><label>投射物傷害%</label><input type="number" value={s.state.talent.pjtd} onChange={this.setPjtd} /></RWDValue>
+          <RWDValue><label>物傷%</label><input type="number" value={s.state.talent.pd} onChange={this.setPd} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.talent.iced} onChange={this.setIced} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.talent.fd} onChange={this.setFd} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.talent.td} onChange={this.setTd} /></RWDValue>
+          <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.talent.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.talent.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.talent.mp} onChange={this.setMp} /></RWDValue>
           <RWDValue><label>魔力%</label><input type="number" value={s.state.talent.mpd} onChange={this.setMpd} /></RWDValue>
+          <RWDValue><label>光環效果</label><input type="number" value={s.state.talent.aura} onChange={this.setAura} /></RWDValue>
         </Row>
       </section>
     );
@@ -689,20 +693,22 @@ const Head = React.createClass({
           <RWDValue><label>攻速</label><input type="number" value={s.state.head.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.head.c} onChange={this.setC} /></RWDValue>
           <RWDValue><label>暴傷</label><input type="number" value={s.state.head.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>元傷</label><input type="number" value={s.state.head.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.head.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>物傷</label><input type="number" value={s.state.head.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.head.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.head.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.head.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label>元傷%</label><input type="number" value={s.state.head.ed} onChange={this.setEd} /></RWDValue>
+          <RWDValue><label>武器元傷%</label><input type="number" value={s.state.head.wed} onChange={this.setWed} /></RWDValue>
+          <Clear />
+          <RWDValue><label>物傷%</label><input type="number" value={s.state.head.pd} onChange={this.setPd} /></RWDValue>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.head.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.head.pb} onChange={this.setPb} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.head.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.head.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.head.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.head.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.head.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.head.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.head.iced} onChange={this.setIced} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(小)</label><input type="number" value={s.state.head.ices} onChange={this.setIces} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(大)</label><input type="number" value={s.state.head.iceb} onChange={this.setIceb} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.head.fd} onChange={this.setFd} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(小)</label><input type="number" value={s.state.head.fs} onChange={this.setFs} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(大)</label><input type="number" value={s.state.head.fb} onChange={this.setFb} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.head.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.head.ts} onChange={this.setTs} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.head.tb} onChange={this.setTb} /></RWDValue>
+          <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.head.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.head.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.head.mp} onChange={this.setMp} /></RWDValue>
@@ -805,20 +811,22 @@ const Hand = React.createClass({
           <RWDValue><label>攻速</label><input type="number" value={s.state.hand.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.hand.c} onChange={this.setC} /></RWDValue>
           <RWDValue><label>暴傷</label><input type="number" value={s.state.hand.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>元傷</label><input type="number" value={s.state.hand.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.hand.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>物傷</label><input type="number" value={s.state.hand.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.hand.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.hand.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.hand.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label>元傷%</label><input type="number" value={s.state.hand.ed} onChange={this.setEd} /></RWDValue>
+          <RWDValue><label>武器元傷%</label><input type="number" value={s.state.hand.wed} onChange={this.setWed} /></RWDValue>
+          <Clear />
+          <RWDValue><label>物傷%</label><input type="number" value={s.state.hand.pd} onChange={this.setPd} /></RWDValue>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.hand.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.hand.pb} onChange={this.setPb} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.hand.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.hand.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.hand.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.hand.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.hand.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.hand.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.hand.iced} onChange={this.setIced} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(小)</label><input type="number" value={s.state.hand.ices} onChange={this.setIces} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(大)</label><input type="number" value={s.state.hand.iceb} onChange={this.setIceb} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.hand.fd} onChange={this.setFd} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(小)</label><input type="number" value={s.state.hand.fs} onChange={this.setFs} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(大)</label><input type="number" value={s.state.hand.fb} onChange={this.setFb} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.hand.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.hand.ts} onChange={this.setTs} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.hand.tb} onChange={this.setTb} /></RWDValue>
+          <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.hand.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.hand.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.hand.mp} onChange={this.setMp} /></RWDValue>
@@ -921,20 +929,22 @@ const Body= React.createClass({
           <RWDValue><label>攻速</label><input type="number" value={s.state.body.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.body.c} onChange={this.setC} /></RWDValue>
           <RWDValue><label>暴傷</label><input type="number" value={s.state.body.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>元傷</label><input type="number" value={s.state.body.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.body.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>物傷</label><input type="number" value={s.state.body.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.body.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.body.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.body.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label>元傷%</label><input type="number" value={s.state.body.ed} onChange={this.setEd} /></RWDValue>
+          <RWDValue><label>武器元傷%</label><input type="number" value={s.state.body.wed} onChange={this.setWed} /></RWDValue>
+          <Clear />
+          <RWDValue><label>物傷%</label><input type="number" value={s.state.body.pd} onChange={this.setPd} /></RWDValue>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.body.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.body.pb} onChange={this.setPb} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.body.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.body.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.body.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.body.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.body.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.body.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.body.iced} onChange={this.setIced} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(小)</label><input type="number" value={s.state.body.ices} onChange={this.setIces} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(大)</label><input type="number" value={s.state.body.iceb} onChange={this.setIceb} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.body.fd} onChange={this.setFd} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(小)</label><input type="number" value={s.state.body.fs} onChange={this.setFs} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(大)</label><input type="number" value={s.state.body.fb} onChange={this.setFb} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.body.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.body.ts} onChange={this.setTs} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.body.tb} onChange={this.setTb} /></RWDValue>
+          <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.body.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.body.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.body.mp} onChange={this.setMp} /></RWDValue>
@@ -1037,20 +1047,22 @@ const Belt = React.createClass({
           <RWDValue><label>攻速</label><input type="number" value={s.state.belt.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.belt.c} onChange={this.setC} /></RWDValue>
           <RWDValue><label>暴傷</label><input type="number" value={s.state.belt.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>元傷</label><input type="number" value={s.state.belt.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.belt.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>物傷</label><input type="number" value={s.state.belt.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.belt.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.belt.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.belt.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label>元傷%</label><input type="number" value={s.state.belt.ed} onChange={this.setEd} /></RWDValue>
+          <RWDValue><label>武器元傷%</label><input type="number" value={s.state.belt.wed} onChange={this.setWed} /></RWDValue>
+          <Clear />
+          <RWDValue><label>物傷%</label><input type="number" value={s.state.belt.pd} onChange={this.setPd} /></RWDValue>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.belt.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.belt.pb} onChange={this.setPb} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.belt.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.belt.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.belt.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.belt.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.belt.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.belt.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.belt.iced} onChange={this.setIced} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(小)</label><input type="number" value={s.state.belt.ices} onChange={this.setIces} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(大)</label><input type="number" value={s.state.belt.iceb} onChange={this.setIceb} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.belt.fd} onChange={this.setFd} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(小)</label><input type="number" value={s.state.belt.fs} onChange={this.setFs} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(大)</label><input type="number" value={s.state.belt.fb} onChange={this.setFb} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.belt.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.belt.ts} onChange={this.setTs} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.belt.tb} onChange={this.setTb} /></RWDValue>
+          <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.belt.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.belt.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.belt.mp} onChange={this.setMp} /></RWDValue>
@@ -1153,20 +1165,22 @@ const Necklace = React.createClass({
           <RWDValue><label>攻速</label><input type="number" value={s.state.necklace.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.necklace.c} onChange={this.setC} /></RWDValue>
           <RWDValue><label>暴傷</label><input type="number" value={s.state.necklace.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>元傷</label><input type="number" value={s.state.necklace.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.necklace.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>物傷</label><input type="number" value={s.state.necklace.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.necklace.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.necklace.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.necklace.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label>元傷%</label><input type="number" value={s.state.necklace.ed} onChange={this.setEd} /></RWDValue>
+          <RWDValue><label>武器元傷%</label><input type="number" value={s.state.necklace.wed} onChange={this.setWed} /></RWDValue>
+          <Clear />
+          <RWDValue><label>物傷%</label><input type="number" value={s.state.necklace.pd} onChange={this.setPd} /></RWDValue>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.necklace.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.necklace.pb} onChange={this.setPb} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.necklace.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.necklace.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.necklace.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.necklace.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.necklace.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.necklace.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.necklace.iced} onChange={this.setIced} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(小)</label><input type="number" value={s.state.necklace.ices} onChange={this.setIces} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(大)</label><input type="number" value={s.state.necklace.iceb} onChange={this.setIceb} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.necklace.fd} onChange={this.setFd} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(小)</label><input type="number" value={s.state.necklace.fs} onChange={this.setFs} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(大)</label><input type="number" value={s.state.necklace.fb} onChange={this.setFb} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.necklace.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.necklace.ts} onChange={this.setTs} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.necklace.tb} onChange={this.setTb} /></RWDValue>
+          <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.necklace.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.necklace.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.necklace.mp} onChange={this.setMp} /></RWDValue>
@@ -1269,20 +1283,22 @@ const RingOne = React.createClass({
           <RWDValue><label>攻速</label><input type="number" value={s.state.ringone.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.ringone.c} onChange={this.setC} /></RWDValue>
           <RWDValue><label>暴傷</label><input type="number" value={s.state.ringone.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>元傷</label><input type="number" value={s.state.ringone.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.ringone.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>物傷</label><input type="number" value={s.state.ringone.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.ringone.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.ringone.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.ringone.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label>元傷%</label><input type="number" value={s.state.ringone.ed} onChange={this.setEd} /></RWDValue>
+          <RWDValue><label>武器元傷%</label><input type="number" value={s.state.ringone.wed} onChange={this.setWed} /></RWDValue>
+          <Clear />
+          <RWDValue><label>物傷%</label><input type="number" value={s.state.ringone.pd} onChange={this.setPd} /></RWDValue>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.ringone.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.ringone.pb} onChange={this.setPb} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.ringone.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.ringone.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.ringone.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.ringone.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.ringone.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.ringone.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.ringone.iced} onChange={this.setIced} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(小)</label><input type="number" value={s.state.ringone.ices} onChange={this.setIces} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(大)</label><input type="number" value={s.state.ringone.iceb} onChange={this.setIceb} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.ringone.fd} onChange={this.setFd} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(小)</label><input type="number" value={s.state.ringone.fs} onChange={this.setFs} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(大)</label><input type="number" value={s.state.ringone.fb} onChange={this.setFb} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.ringone.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.ringone.ts} onChange={this.setTs} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.ringone.tb} onChange={this.setTb} /></RWDValue>
+          <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.ringone.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.ringone.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.ringone.mp} onChange={this.setMp} /></RWDValue>
@@ -1385,20 +1401,22 @@ const RingTwo = React.createClass({
           <RWDValue><label>攻速</label><input type="number" value={s.state.ringtwo.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.ringtwo.c} onChange={this.setC} /></RWDValue>
           <RWDValue><label>暴傷</label><input type="number" value={s.state.ringtwo.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>元傷</label><input type="number" value={s.state.ringtwo.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.ringtwo.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>物傷</label><input type="number" value={s.state.ringtwo.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.ringtwo.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.ringtwo.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.ringtwo.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label>元傷%</label><input type="number" value={s.state.ringtwo.ed} onChange={this.setEd} /></RWDValue>
+          <RWDValue><label>武器元傷%</label><input type="number" value={s.state.ringtwo.wed} onChange={this.setWed} /></RWDValue>
+          <Clear />
+          <RWDValue><label>物傷%</label><input type="number" value={s.state.ringtwo.pd} onChange={this.setPd} /></RWDValue>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.ringtwo.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.ringtwo.pb} onChange={this.setPb} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.ringtwo.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.ringtwo.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.ringtwo.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.ringtwo.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.ringtwo.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.ringtwo.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.ringtwo.iced} onChange={this.setIced} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(小)</label><input type="number" value={s.state.ringtwo.ices} onChange={this.setIces} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(大)</label><input type="number" value={s.state.ringtwo.iceb} onChange={this.setIceb} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.ringtwo.fd} onChange={this.setFd} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(小)</label><input type="number" value={s.state.ringtwo.fs} onChange={this.setFs} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(大)</label><input type="number" value={s.state.ringtwo.fb} onChange={this.setFb} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.ringtwo.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.ringtwo.ts} onChange={this.setTs} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.ringtwo.tb} onChange={this.setTb} /></RWDValue>
+          <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.ringtwo.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.ringtwo.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.ringtwo.mp} onChange={this.setMp} /></RWDValue>
@@ -1501,20 +1519,22 @@ const Foot = React.createClass({
           <RWDValue><label>攻速</label><input type="number" value={s.state.foot.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.foot.c} onChange={this.setC} /></RWDValue>
           <RWDValue><label>暴傷</label><input type="number" value={s.state.foot.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>元傷</label><input type="number" value={s.state.foot.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.foot.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>物傷</label><input type="number" value={s.state.foot.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.foot.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.foot.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.foot.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label>元傷%</label><input type="number" value={s.state.foot.ed} onChange={this.setEd} /></RWDValue>
+          <RWDValue><label>武器元傷%</label><input type="number" value={s.state.foot.wed} onChange={this.setWed} /></RWDValue>
+          <Clear />
+          <RWDValue><label>物傷%</label><input type="number" value={s.state.foot.pd} onChange={this.setPd} /></RWDValue>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.foot.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.foot.pb} onChange={this.setPb} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.foot.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.foot.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.foot.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.foot.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.foot.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.foot.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.foot.iced} onChange={this.setIced} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(小)</label><input type="number" value={s.state.foot.ices} onChange={this.setIces} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(大)</label><input type="number" value={s.state.foot.iceb} onChange={this.setIceb} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.foot.fd} onChange={this.setFd} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(小)</label><input type="number" value={s.state.foot.fs} onChange={this.setFs} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(大)</label><input type="number" value={s.state.foot.fb} onChange={this.setFb} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.foot.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.foot.ts} onChange={this.setTs} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.foot.tb} onChange={this.setTb} /></RWDValue>
+          <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.foot.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.foot.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.foot.mp} onChange={this.setMp} /></RWDValue>
@@ -1617,20 +1637,22 @@ const Quiver = React.createClass({
           <RWDValue><label>攻速</label><input type="number" value={s.state.quiver.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.quiver.c} onChange={this.setC} /></RWDValue>
           <RWDValue><label>暴傷</label><input type="number" value={s.state.quiver.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>元傷</label><input type="number" value={s.state.quiver.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.quiver.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>物傷</label><input type="number" value={s.state.quiver.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.quiver.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.quiver.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.quiver.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label>元傷%</label><input type="number" value={s.state.quiver.ed} onChange={this.setEd} /></RWDValue>
+          <RWDValue><label>武器元傷%</label><input type="number" value={s.state.quiver.wed} onChange={this.setWed} /></RWDValue>
+          <Clear />
+          <RWDValue><label>物傷%</label><input type="number" value={s.state.quiver.pd} onChange={this.setPd} /></RWDValue>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.quiver.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.quiver.pb} onChange={this.setPb} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.quiver.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.quiver.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.quiver.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.quiver.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.quiver.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.quiver.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.quiver.iced} onChange={this.setIced} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(小)</label><input type="number" value={s.state.quiver.ices} onChange={this.setIces} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(大)</label><input type="number" value={s.state.quiver.iceb} onChange={this.setIceb} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.quiver.fd} onChange={this.setFd} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(小)</label><input type="number" value={s.state.quiver.fs} onChange={this.setFs} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(大)</label><input type="number" value={s.state.quiver.fb} onChange={this.setFb} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.quiver.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.quiver.ts} onChange={this.setTs} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.quiver.tb} onChange={this.setTb} /></RWDValue>
+          <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.quiver.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.quiver.hpd} onChange={this.setHpd} /></RWDValue>
           <RWDValue><label>最大魔力</label><input type="number" value={s.state.quiver.mp} onChange={this.setMp} /></RWDValue>
@@ -1751,26 +1773,30 @@ const Skill = React.createClass({
           <RWDValue><label>較少攻速</label><input type="number" value={s.state.skill.asl} onChange={this.setAsl} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.skill.c} onChange={this.setC} /></RWDValue>
           <RWDValue><label>暴傷</label><input type="number" value={s.state.skill.cd} onChange={this.setCd} /></RWDValue>
-          <RWDValue><label>傷害</label><input type="number" value={s.state.skill.d} onChange={this.setD} /></RWDValue>
-          <RWDValue><label>元素傷害</label><input type="number" value={s.state.skill.ed} onChange={this.setEd} /></RWDValue>
-          <RWDValue><label>武器元傷</label><input type="number" value={s.state.skill.wed} onChange={this.setWed} /></RWDValue>
-          <RWDValue><label>投射物物傷</label><input type="number" value={s.state.skill.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label>投射物傷害</label><input type="number" value={s.state.skill.pjtd} onChange={this.setPjtd} /></RWDValue>
-          <RWDValue><label>冰傷</label><input type="number" value={s.state.skill.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label>火傷</label><input type="number" value={s.state.skill.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label>電傷</label><input type="number" value={s.state.skill.td} onChange={this.setTd} /></RWDValue>
-          <RWDValue><label>冰傷(小)</label><input type="number" value={s.state.skill.ices} onChange={this.setIces} /></RWDValue>
-          <RWDValue><label>冰傷(大)</label><input type="number" value={s.state.skill.iceb} onChange={this.setIceb} /></RWDValue>
-          <RWDValue><label>火傷(小)</label><input type="number" value={s.state.skill.fs} onChange={this.setFs} /></RWDValue>
-          <RWDValue><label>火傷(大)</label><input type="number" value={s.state.skill.fb} onChange={this.setFb} /></RWDValue>
-          <RWDValue><label>電傷(小)</label><input type="number" value={s.state.skill.ts} onChange={this.setTs} /></RWDValue>
-          <RWDValue><label>電傷(大)</label><input type="number" value={s.state.skill.tb} onChange={this.setTb} /></RWDValue>
-          <RWDValue><label>額外物轉冰</label><input type="number" value={s.state.skill.ptiadd} onChange={this.setPtiadd} /></RWDValue>
-          <RWDValue><label>額外物轉火</label><input type="number" value={s.state.skill.ptfadd} onChange={this.setPtfadd} /></RWDValue>
-          <RWDValue><label>額外物轉電</label><input type="number" value={s.state.skill.pttadd} onChange={this.setPttadd} /></RWDValue>
-          <RWDValue><label>物轉冰</label><input type="number" value={s.state.skill.pti} onChange={this.setPti} /></RWDValue>
-          <RWDValue><label>物轉火</label><input type="number" value={s.state.skill.ptf} onChange={this.setPtf} /></RWDValue>
-          <RWDValue><label>物轉電</label><input type="number" value={s.state.skill.ptt} onChange={this.setPtt} /></RWDValue>
+          <Clear />
+          <RWDValue><label>傷害%</label><input type="number" value={s.state.skill.d} onChange={this.setD} /></RWDValue>
+          <RWDValue><label>元素傷害%</label><input type="number" value={s.state.skill.ed} onChange={this.setEd} /></RWDValue>
+          <RWDValue><label>武器元傷%</label><input type="number" value={s.state.skill.wed} onChange={this.setWed} /></RWDValue>
+          <RWDValue><label>投射物物傷%</label><input type="number" value={s.state.skill.pd} onChange={this.setPd} /></RWDValue>
+          <RWDValue><label>投射物傷害%</label><input type="number" value={s.state.skill.pjtd} onChange={this.setPjtd} /></RWDValue>
+          <Clear />
+          <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.skill.iced} onChange={this.setIced} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(小)</label><input type="number" value={s.state.skill.ices} onChange={this.setIces} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(大)</label><input type="number" value={s.state.skill.iceb} onChange={this.setIceb} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.skill.fd} onChange={this.setFd} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(小)</label><input type="number" value={s.state.skill.fs} onChange={this.setFs} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(大)</label><input type="number" value={s.state.skill.fb} onChange={this.setFb} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.skill.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.skill.ts} onChange={this.setTs} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.skill.tb} onChange={this.setTb} /></RWDValue>
+          <Clear />
+          <RWDValue><label>額外物轉冰%</label><input type="number" value={s.state.skill.ptiadd} onChange={this.setPtiadd} /></RWDValue>
+          <RWDValue><label>額外物轉火%</label><input type="number" value={s.state.skill.ptfadd} onChange={this.setPtfadd} /></RWDValue>
+          <RWDValue><label>額外物轉電%</label><input type="number" value={s.state.skill.pttadd} onChange={this.setPttadd} /></RWDValue>
+          <Clear />
+          <RWDValue><label>物轉冰%</label><input type="number" value={s.state.skill.pti} onChange={this.setPti} /></RWDValue>
+          <RWDValue><label>物轉火%</label><input type="number" value={s.state.skill.ptf} onChange={this.setPtf} /></RWDValue>
+          <RWDValue><label>物轉電%</label><input type="number" value={s.state.skill.ptt} onChange={this.setPtt} /></RWDValue>
         </Row>
       </section>
     );
@@ -1831,13 +1857,18 @@ const Moreless = React.createClass({
           <RWDValue><label>低階多重</label><input type="number" value={s.state.moreless.lmp} onChange={this.setLmp} /></RWDValue>
           <RWDValue><label>分裂</label><input type="number" value={s.state.moreless.fork} onChange={this.setFork} /></RWDValue>
           <RWDValue><label>投射物減速</label><input type="number" value={s.state.moreless.pjtdm} onChange={this.setPjtdm} /></RWDValue>
+          <Clear />
           <RWDValue><label>物理投射物傷害</label><input type="number" value={s.state.moreless.pdm} onChange={this.setPdm} /></RWDValue>
+          <Clear />
           <RWDValue><label>陷阱</label><input type="number" value={s.state.moreless.tr} onChange={this.setTr} /></RWDValue>
           <RWDValue><label>陷阱傷害</label><input type="number" value={s.state.moreless.trd} onChange={this.setTrd} /></RWDValue>
+          <Clear />
           <RWDValue><label>多重陷阱</label><input type="number" value={s.state.moreless.mtr} onChange={this.setMtr} /></RWDValue>
-          <RWDValue><label>武器元素傷害</label><input type="number" value={s.state.moreless.wedm} onChange={this.setWedm} /></RWDValue>
           <RWDValue><label>連鎖</label><input type="number" value={s.state.moreless.ci} onChange={this.setCi} /></RWDValue>
+          <Clear />
           <RWDValue><label>集中效應</label><input type="number" value={s.state.moreless.rg} onChange={this.setRg} /></RWDValue>
+          <Clear />
+          <RWDValue><label>武器元素傷害</label><input type="number" value={s.state.moreless.wedm} onChange={this.setWedm} /></RWDValue>
         </Row>
       </section>
     );
@@ -2047,12 +2078,16 @@ const RWDValue = React.createClass({
   },
 });
 const Row = React.createClass({
-  calc() {
-      
-  },
   render() {
     return(
     <div className="row">{this.props.children}</div>
+    );
+  },
+});
+const Clear = React.createClass({
+  render() {
+    return(
+    <div className="clearfix" />
     );
   },
 });

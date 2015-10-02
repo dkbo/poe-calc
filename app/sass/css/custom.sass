@@ -1,3 +1,15 @@
+@import 'compass'
+$electricColor: blue
+$iceColor: #1E96FF
+$fireColor: #E80606
+$strColor: red
+$intColor: blue
+$agiColor: green
+$gbColor: green
+$bbColor: blue
+
+label
+  font-weight: bold
 input
   width: 100%
   text-align: right
@@ -6,9 +18,28 @@ input
 
 h3
   cursor: pointer
+  padding: .5em 
+  +background(linear-gradient(#6C91E4 0%,#142C79 100%))
+  color: white
 section
   padding: .5rem
   p
     text-align: center
     strong
       display: block
+.iceColor
+  color: $iceColor
+.fireColor
+  color: $fireColor
+.electricColor
+  color: $electricColor
+.str
+  color: $strColor
+.int
+  color: $intColor
+.agi
+  color: $agiColor
+.gb
+  color: $gbColor
+.bb
+  color: $bbColor
