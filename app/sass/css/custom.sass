@@ -8,6 +8,9 @@ $agiColor: green
 $gbColor: green
 $bbColor: blue
 
+body
+  font-family: '微軟正黑體'
+  background: white
 label
   font-weight: bold
 input
@@ -31,6 +34,26 @@ section
     text-align: center
     strong
       display: block
+nav
+  position: relative
+  height: 40px
+  z-index: 999
+  width: 100%
+  ul
+    position: fixed
+    width: 100%
+    background: #E2E3E6
+    li
+      padding: .5em
+      cursor: pointer
+      float: left
+      color: #1D2C75
+      +background(linear-gradient(#F0F5FF 0%,#DCDCDC 100%))
+      &.active,&:hover
+        +background(linear-gradient(#6C91E4 0%,#142C79 100%))
+        color: white
+
+
 .iceColor
   color: $iceColor
 .fireColor

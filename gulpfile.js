@@ -66,7 +66,6 @@ gulp.task(init.jade.name, function() {
 gulp.task(init.babel.name, function() {
     var x = init.babel
     gulp.src(x.src) 
-    .pipe(concat(x.concat))
     .pipe(babel()) 
     .pipe(uglify())
     .pipe(gulp.dest(x.dest))
