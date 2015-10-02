@@ -323,10 +323,10 @@ if(localStorage.temp) {
   if(typeof JSON.parse(localStorage.temp) === 'object') {
     value = JSON.parse(localStorage.temp);
   } else {
-    value[index-1] = init;
+    value[0] = init;
   }
 } else {
-  value[index-1] = init;
+  value[0] = init;
 }
 
 const Page = React.createClass({
@@ -335,17 +335,24 @@ const Page = React.createClass({
       display: false,
     };
   },
-  _handleClick() {
-    this.setState({display: !this.state.display});
-  },
   _handleAdd() {
-    
+    value[value.length] = init;
+    localStorage.index = index = value.length;
+    this.setState();
+    main.setState(value[index - 1]);
+  },
+   _handleCopy() {
+  },
+  _handleClick(id) {
+    localStorage.index = index = id;
+    this.setState();
+    main.setState(value[index - 1]);
   },
   _index(page, id) {
     if(index - 1 === id) {
       return <li className="active" keys={id} >{value[index - 1].name}</li>;
     } else {
-      return <li keys={id} >{value[index - 1].name}</li>;
+      return <li keys={id} onClick={this._handleClick.bind(null,id + 1)} >{value[index - 1].name}</li>;
     }
   },
   render(s = this.props.s){
@@ -353,7 +360,7 @@ const Page = React.createClass({
       <nav>
         <ul className="clearfix">
           {value.map(this._index)}
-          <li>+</li>
+          <li onClick={this._handleAdd}>+</li>
         </ul>
       </nav>
     );

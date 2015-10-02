@@ -1,4 +1,3 @@
-let index = localStorage.index;
 
 const Player = React.createClass({
   getInitialState() {
@@ -1972,7 +1971,6 @@ const App = React.createClass({
     return this.mul(arg1,1/arg2);
   },
   render(){
-    localStorage.index = index;
     value[index - 1] = this.state;
     localStorage.temp = JSON.stringify(value);
     return(
