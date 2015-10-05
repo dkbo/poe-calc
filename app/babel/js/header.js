@@ -26,6 +26,7 @@ const init = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    zd: 0, //混傷%
     ps: 0,  //物理(小)
     pb: 0,  //物理(大)
     ices: 0,  //冰冷小
@@ -34,7 +35,10 @@ const init = {
     fb: 0,  //火焰大
     ts: 0,  //閃電小
     tb: 0,  //閃電大
+    zs: 0,  //混傷小
+    zb: 0,  //混傷大
     pm: 0,  //更多弓傷害%(亂矢)
+    ttz: 0, //魔暴弓(電轉混)
   },
   talent: {
     as: 0,  //攻擊速度
@@ -55,6 +59,17 @@ const init = {
     hpd: 0, //生命%
     mp: 0, //最大魔力
     mpd: 0, //魔力%
+    zd: 0, //混傷%
+    ps: 0,  //物理(小)
+    pb: 0,  //物理(大)
+    ices: 0,  //冰冷小
+    iceb: 0,  //冰冷大
+    fs: 0,  //火焰小
+    fb: 0,  //火焰大
+    ts: 0,  //閃電小
+    tb: 0,  //閃電大
+    zs: 0,  //混傷小
+    zb: 0,  //混傷大
   },
   head: {
     as: 0,  //攻擊速度
@@ -68,6 +83,8 @@ const init = {
     fb: 0,  //火焰大
     ts: 0,  //閃電小
     tb: 0,  //閃電大
+    zs: 0,  //混傷小
+    zb: 0,  //混傷大
     cd: 0,  //暴傷加成%
     ed: 0, //元素傷害%
     wed: 0, //武器元素傷害%
@@ -75,6 +92,7 @@ const init = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    zd: 0, //混傷%
     hp: 0, //最大生命
     hpd: 0, //生命%
     mp: 0, //最大魔力
@@ -92,6 +110,8 @@ const init = {
     fb: 0,  //火焰大
     ts: 0,  //閃電小
     tb: 0,  //閃電大
+    zs: 0,  //混傷小
+    zb: 0,  //混傷大
     cd: 0,  //暴傷加成%
     ed: 0, //元素傷害%
     wed: 0, //武器元素傷害%
@@ -99,6 +119,7 @@ const init = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    zd: 0, //混傷%
     hp: 0, //最大生命
     hpd: 0, //生命%
     mp: 0, //最大魔力
@@ -116,6 +137,8 @@ const init = {
     fb: 0,  //火焰大
     ts: 0,  //閃電小
     tb: 0,  //閃電大
+    zs: 0,  //混傷小
+    zb: 0,  //混傷大
     cd: 0,  //暴傷加成%
     ed: 0, //元素傷害%
     wed: 0, //武器元素傷害%
@@ -123,6 +146,7 @@ const init = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    zd: 0, //混傷%
     hp: 0, //最大生命
     hpd: 0, //生命%
     mp: 0, //最大魔力
@@ -140,6 +164,8 @@ const init = {
     fb: 0,  //火焰大
     ts: 0,  //閃電小
     tb: 0,  //閃電大
+    zs: 0,  //混傷小
+    zb: 0,  //混傷大
     cd: 0,  //暴傷加成%
     ed: 0, //元素傷害%
     wed: 0, //武器元素傷害%
@@ -147,6 +173,7 @@ const init = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    zd: 0, //混傷%
     hp: 0, //最大生命
     hpd: 0, //生命%
     mp: 0, //最大魔力
@@ -164,6 +191,8 @@ const init = {
     fb: 0,  //火焰大
     ts: 0,  //閃電小
     tb: 0,  //閃電大
+    zs: 0,  //混傷小
+    zb: 0,  //混傷大
     cd: 0,  //暴傷加成%
     ed: 0, //元素傷害%
     wed: 0, //武器元素傷害%
@@ -171,6 +200,7 @@ const init = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    zd: 0, //混傷%
     hp: 0, //最大生命
     hpd: 0, //生命%
     mp: 0, //最大魔力
@@ -188,6 +218,8 @@ const init = {
     fb: 0,  //火焰大
     ts: 0,  //閃電小
     tb: 0,  //閃電大
+    zs: 0,  //混傷小
+    zb: 0,  //混傷大
     cd: 0,  //暴傷加成%
     ed: 0, //元素傷害%
     wed: 0, //武器元素傷害%
@@ -195,6 +227,7 @@ const init = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    zd: 0, //混傷%
     hp: 0, //最大生命
     hpd: 0, //生命%
     mp: 0, //最大魔力
@@ -212,6 +245,8 @@ const init = {
     fb: 0,  //火焰大
     ts: 0,  //閃電小
     tb: 0,  //閃電大
+    zs: 0,  //混傷小
+    zb: 0,  //混傷大
     cd: 0,  //暴傷加成%
     ed: 0, //元素傷害%
     wed: 0, //武器元素傷害%
@@ -219,6 +254,7 @@ const init = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    zd: 0, //混傷%
     hp: 0, //最大生命
     hpd: 0, //生命%
     mp: 0, //最大魔力
@@ -236,6 +272,8 @@ const init = {
     fb: 0,  //火焰大
     ts: 0,  //閃電小
     tb: 0,  //閃電大
+    zs: 0,  //混傷小
+    zb: 0,  //混傷大
     cd: 0,  //暴傷加成%
     ed: 0, //元素傷害%
     wed: 0, //武器元素傷害%
@@ -243,6 +281,7 @@ const init = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    zd: 0, //混傷%
     hp: 0, //最大生命
     hpd: 0, //生命%
     mp: 0, //最大魔力
@@ -260,6 +299,8 @@ const init = {
     fb: 0,  //火焰大
     ts: 0,  //閃電小
     tb: 0,  //閃電大
+    zs: 0,  //混傷小
+    zb: 0,  //混傷大
     cd: 0,  //暴傷加成%
     ed: 0, //元素傷害%
     wed: 0, //武器元素傷害%
@@ -267,6 +308,7 @@ const init = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    zd: 0, //混傷%
     pjtd: 0, //投射出傷害%
     hp: 0, //最大生命
     hpd: 0, //生命%
@@ -283,6 +325,8 @@ const init = {
     fb: 0,  //火焰大
     ts: 0,  //閃電小
     tb: 0,  //閃電大
+    zs: 0,  //混傷小
+    zb: 0,  //混傷大
     cd: 0,  //暴傷加成%
     wed: 0, //武器元素傷害%
     pd: 0,  //投射物物理傷害%
@@ -291,12 +335,18 @@ const init = {
     iced: 0, //冰冷傷害%
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
+    zd: 0, //混傷%
     ptf: 0, //物轉火
     pti: 0, //物轉冰
     ptt: 0, //物轉電
+    ptz: 0, //物轉混
     ptfadd: 0,  //額外物轉火
     ptiadd: 0, //額外物轉冰
     pttadd: 0, //額外物轉電
+    ptzadd: 0, //額外物轉混
+    itf: 0, // 冰轉火
+    itfadd: 0, // 額外冰轉火
+    ftz: 0, //火轉混
     bd: 100,  //基礎傷害加成
   },
   moreless: {
@@ -328,7 +378,6 @@ if(localStorage.temp) {
 } else {
   value[0] = init;
 }
-
 const Page = React.createClass({
   getInitialState() {
     return {
@@ -337,13 +386,36 @@ const Page = React.createClass({
   },
   _handleAdd() {
     value[value.length] = init;
-    localStorage.index = index = value.length;
-    this.setState();
-    main.setState(value[index - 1]);
+    this._handleChangePage(value.length);
+    window.location.reload();
   },
-   _handleCopy() {
+  _handleDel() {
+    if(value.length === 1) {
+      alert('目前只有一個分頁唷!');
+    } else if(index  === value.length) {
+      value.splice(index - 1,1);
+      this._handleChangePage(index - 1);
+    } else {
+      value.splice(index - 1,1);
+      this._handleChangePage(index);
+    }
   },
-  _handleClick(id) {
+  _handleReanme() {
+    const name =  prompt("請輸入要修改的名稱",value[index - 1].name);
+    if(name.trim()) {
+      value[index - 1].name = name;
+      this.setState();
+      main.setState();
+    }
+  },
+  _handleCopy() {
+    const name = "複製 - " + value[index - 1].name;
+    value[value.length] = value[index - 1];
+    value[value.length - 1].name = name;
+    this._handleChangePage(value.length);
+    window.location.reload();
+  },
+  _handleChangePage(id) {
     localStorage.index = index = id;
     this.setState();
     main.setState(value[index - 1]);
@@ -352,15 +424,19 @@ const Page = React.createClass({
     if(index - 1 === id) {
       return <li className="active" keys={id} >{value[index - 1].name}</li>;
     } else {
-      return <li keys={id} onClick={this._handleClick.bind(null,id + 1)} >{value[index - 1].name}</li>;
+      return <li keys={id} onClick={this._handleChangePage.bind(null,id + 1)} >{page.name}</li>;
     }
   },
   render(s = this.props.s){
     return(
       <nav>
         <ul className="clearfix">
+          <li className='' onClick={this._handleAdd}>新增</li>
+          <li className='' onClick={this._handleReanme}>命名</li>
+          <li className='' onClick={this._handleCopy}>複製</li>
+          <li className='' onClick={this._handleDel}>刪除</li>
+          <div className='clearfix' />
           {value.map(this._index)}
-          <li onClick={this._handleAdd}>+</li>
         </ul>
       </nav>
     );

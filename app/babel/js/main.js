@@ -174,8 +174,24 @@ const WeaponAdd = React.createClass({
     json.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setZd(e, json = this.props.s.state.weaponadd) {
+    json.zd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZs(e, json = this.props.s.state.weaponadd) {
+    json.zs = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZb(e, json = this.props.s.state.weaponadd) {
+    json.zb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   setPm(e, json = this.props.s.state.weaponadd) {
     json.pm = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setTtz(e, json = this.props.s.state.weaponadd) {
+    json.ttz = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -193,19 +209,24 @@ const WeaponAdd = React.createClass({
           <Clear />
           <RWDValue><label>元傷%</label><input type="number" value={s.state.weaponadd.ed} onChange={this.setEd} /></RWDValue>
           <RWDValue><label>武器元傷%</label><input type="number" value={s.state.weaponadd.wed} onChange={this.setWed} /></RWDValue>
+          <Clear />
           <RWDValue><label>物傷%</label><input type="number" value={s.state.weaponadd.pd} onChange={this.setPd} /></RWDValue>
-          <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.weaponadd.iced} onChange={this.setIced} /></RWDValue>
-          <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.weaponadd.fd} onChange={this.setFd} /></RWDValue>
-          <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.weaponadd.td} onChange={this.setTd} /></RWDValue>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.weaponadd.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.weaponadd.pb} onChange={this.setPb} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.weaponadd.iced} onChange={this.setIced} /></RWDValue>
           <RWDValue><label className='iceColor' >冰傷(小)</label><input type="number" value={s.state.weaponadd.ices} onChange={this.setIces} /></RWDValue>
           <RWDValue><label className='iceColor' >冰傷(大)</label><input type="number" value={s.state.weaponadd.iceb} onChange={this.setIceb} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.weaponadd.fd} onChange={this.setFd} /></RWDValue>
           <RWDValue><label className='fireColor' >火傷(小)</label><input type="number" value={s.state.weaponadd.fs} onChange={this.setFs} /></RWDValue>
           <RWDValue><label className='fireColor' >火傷(大)</label><input type="number" value={s.state.weaponadd.fb} onChange={this.setFb} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.weaponadd.td} onChange={this.setTd} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.weaponadd.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.weaponadd.tb} onChange={this.setTb} /></RWDValue>
-          <RWDValue><label>(亂矢)</label><input type="number" value={s.state.weaponadd.pm} onChange={this.setPm} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷%</label><input type="number" value={s.state.weaponadd.zd} onChange={this.setZd} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(小)</label><input type="number" value={s.state.weaponadd.zs} onChange={this.setZs} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(大)</label><input type="number" value={s.state.weaponadd.zb} onChange={this.setZb} /></RWDValue>       
+          <RWDValue><label>(亂矢%)</label><input type="number" value={s.state.weaponadd.pm} onChange={this.setPm} /></RWDValue>
+          <RWDValue><label>(魔暴電轉混%)</label><input type="number" value={s.state.weaponadd.ttz} onChange={this.setTtz} /></RWDValue>
         </Row> : null}
       </section>
     );
@@ -285,6 +306,50 @@ const Talent = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setPs(e, json = this.props.s.state.talent) {
+    json.ps = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setPb(e, json = this.props.s.state.talent) {
+    json.pb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setIces(e, json = this.props.s.state.talent) {
+    json.ices = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setIceb(e, json = this.props.s.state.talent) {
+    json.iceb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setFs(e, json = this.props.s.state.talent) {
+    json.fs = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setFb(e, json = this.props.s.state.talent) {
+    json.fb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setTs(e, json = this.props.s.state.talent) {
+    json.ts = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setTb(e, json = this.props.s.state.talent) {
+    json.tb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZd(e, json = this.props.s.state.talent) {
+    json.zd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZs(e, json = this.props.s.state.talent) {
+    json.zs = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZb(e, json = this.props.s.state.talent) {
+    json.zb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   _handleClick() {
     this.setState({display: !this.state.display});
   },
@@ -304,9 +369,20 @@ const Talent = React.createClass({
           <RWDValue><label>物理持續傷%</label><input type="number" value={s.state.talent.cupd} onChange={this.setCupd} /></RWDValue>
           <RWDValue><label>投射物傷害%</label><input type="number" value={s.state.talent.pjtd} onChange={this.setPjtd} /></RWDValue>
           <RWDValue><label>物傷%</label><input type="number" value={s.state.talent.pd} onChange={this.setPd} /></RWDValue>
+          <RWDValue><label>物傷(小)</label><input type="number" value={s.state.talent.ps} onChange={this.setPs} /></RWDValue>
+          <RWDValue><label>物傷(大)</label><input type="number" value={s.state.talent.pb} onChange={this.setPb} /></RWDValue>
           <RWDValue><label className='iceColor' >冰傷%</label><input type="number" value={s.state.talent.iced} onChange={this.setIced} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(小)</label><input type="number" value={s.state.talent.ices} onChange={this.setIces} /></RWDValue>
+          <RWDValue><label className='iceColor' >冰傷(大)</label><input type="number" value={s.state.talent.iceb} onChange={this.setIceb} /></RWDValue>
           <RWDValue><label className='fireColor' >火傷%</label><input type="number" value={s.state.talent.fd} onChange={this.setFd} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(小)</label><input type="number" value={s.state.talent.fs} onChange={this.setFs} /></RWDValue>
+          <RWDValue><label className='fireColor' >火傷(大)</label><input type="number" value={s.state.talent.fb} onChange={this.setFb} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.talent.td} onChange={this.setTd} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.talent.ts} onChange={this.setTs} /></RWDValue>
+          <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.talent.tb} onChange={this.setTb} /></RWDValue> 
+          <RWDValue><label className='zColor' >混傷%</label><input type="number" value={s.state.talent.zd} onChange={this.setZd} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(小)</label><input type="number" value={s.state.talent.zs} onChange={this.setZs} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(大)</label><input type="number" value={s.state.talent.zb} onChange={this.setZb} /></RWDValue>    
           <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.talent.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.talent.hpd} onChange={this.setHpd} /></RWDValue>
@@ -409,6 +485,18 @@ const Head = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setZd(e, json = this.props.s.state.head) {
+    json.zd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZs(e, json = this.props.s.state.head) {
+    json.zs = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZb(e, json = this.props.s.state.head) {
+    json.zb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   _handleClick() {
     this.setState({display: !this.state.display});
   },
@@ -436,6 +524,9 @@ const Head = React.createClass({
           <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.head.td} onChange={this.setTd} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.head.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.head.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷%</label><input type="number" value={s.state.head.zd} onChange={this.setZd} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(小)</label><input type="number" value={s.state.head.zs} onChange={this.setZs} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(大)</label><input type="number" value={s.state.head.zb} onChange={this.setZb} /></RWDValue>    
           <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.head.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.head.hpd} onChange={this.setHpd} /></RWDValue>
@@ -536,6 +627,18 @@ const Hand = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setZd(e, json = this.props.s.state.hand) {
+    json.zd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZs(e, json = this.props.s.state.hand) {
+    json.zs = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZb(e, json = this.props.s.state.hand) {
+    json.zb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   _handleClick() {
     this.setState({display: !this.state.display});
   },
@@ -563,6 +666,9 @@ const Hand = React.createClass({
           <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.hand.td} onChange={this.setTd} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.hand.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.hand.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷%</label><input type="number" value={s.state.hand.zd} onChange={this.setZd} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(小)</label><input type="number" value={s.state.hand.zs} onChange={this.setZs} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(大)</label><input type="number" value={s.state.hand.zb} onChange={this.setZb} /></RWDValue>    
           <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.hand.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.hand.hpd} onChange={this.setHpd} /></RWDValue>
@@ -663,6 +769,18 @@ const Body= React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setZd(e, json = this.props.s.state.body) {
+    json.zd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZs(e, json = this.props.s.state.body) {
+    json.zs = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZb(e, json = this.props.s.state.body) {
+    json.zb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   _handleClick() {
     this.setState({display: !this.state.display});
   },
@@ -690,6 +808,9 @@ const Body= React.createClass({
           <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.body.td} onChange={this.setTd} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.body.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.body.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷%</label><input type="number" value={s.state.necklace.zd} onChange={this.setZd} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(小)</label><input type="number" value={s.state.necklace.zs} onChange={this.setZs} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(大)</label><input type="number" value={s.state.necklace.zb} onChange={this.setZb} /></RWDValue>    
           <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.body.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.body.hpd} onChange={this.setHpd} /></RWDValue>
@@ -790,6 +911,18 @@ const Belt = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setZd(e, json = this.props.s.state.belt) {
+    json.zd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZs(e, json = this.props.s.state.belt) {
+    json.zs = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZb(e, json = this.props.s.state.belt) {
+    json.zb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   _handleClick() {
     this.setState({display: !this.state.display});
   },
@@ -817,6 +950,9 @@ const Belt = React.createClass({
           <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.belt.td} onChange={this.setTd} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.belt.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.belt.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷%</label><input type="number" value={s.state.belt.zd} onChange={this.setZd} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(小)</label><input type="number" value={s.state.belt.zs} onChange={this.setZs} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(大)</label><input type="number" value={s.state.belt.zb} onChange={this.setZb} /></RWDValue>    
           <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.belt.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.belt.hpd} onChange={this.setHpd} /></RWDValue>
@@ -917,6 +1053,18 @@ const Necklace = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setZd(e, json = this.props.s.state.necklace) {
+    json.zd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZs(e, json = this.props.s.state.necklace) {
+    json.zs = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZb(e, json = this.props.s.state.necklace) {
+    json.zb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   _handleClick() {
     this.setState({display: !this.state.display});
   },
@@ -944,6 +1092,9 @@ const Necklace = React.createClass({
           <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.necklace.td} onChange={this.setTd} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.necklace.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.necklace.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷%</label><input type="number" value={s.state.necklace.zd} onChange={this.setZd} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(小)</label><input type="number" value={s.state.necklace.zs} onChange={this.setZs} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(大)</label><input type="number" value={s.state.necklace.zb} onChange={this.setZb} /></RWDValue>    
           <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.necklace.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.necklace.hpd} onChange={this.setHpd} /></RWDValue>
@@ -1044,6 +1195,18 @@ const RingOne = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setZd(e, json = this.props.s.state.ringone) {
+    json.zd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZs(e, json = this.props.s.state.ringone) {
+    json.zs = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZb(e, json = this.props.s.state.ringone) {
+    json.zb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   _handleClick() {
     this.setState({display: !this.state.display});
   },
@@ -1071,6 +1234,9 @@ const RingOne = React.createClass({
           <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.ringone.td} onChange={this.setTd} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.ringone.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.ringone.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷%</label><input type="number" value={s.state.ringone.zd} onChange={this.setZd} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(小)</label><input type="number" value={s.state.ringone.zs} onChange={this.setZs} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(大)</label><input type="number" value={s.state.ringone.zb} onChange={this.setZb} /></RWDValue>    
           <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.ringone.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.ringone.hpd} onChange={this.setHpd} /></RWDValue>
@@ -1171,6 +1337,18 @@ const RingTwo = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setZd(e, json = this.props.s.state.ringtwo) {
+    json.zd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZs(e, json = this.props.s.state.ringtwo) {
+    json.zs = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZb(e, json = this.props.s.state.ringtwo) {
+    json.zb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   _handleClick() {
     this.setState({display: !this.state.display});
   },
@@ -1198,6 +1376,9 @@ const RingTwo = React.createClass({
           <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.ringtwo.td} onChange={this.setTd} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.ringtwo.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.ringtwo.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷%</label><input type="number" value={s.state.ringtwo.zd} onChange={this.setZd} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(小)</label><input type="number" value={s.state.ringtwo.zs} onChange={this.setZs} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(大)</label><input type="number" value={s.state.ringtwo.zb} onChange={this.setZb} /></RWDValue>    
           <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.ringtwo.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.ringtwo.hpd} onChange={this.setHpd} /></RWDValue>
@@ -1298,6 +1479,18 @@ const Foot = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setZd(e, json = this.props.s.state.root) {
+    json.zd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZs(e, json = this.props.s.state.root) {
+    json.zs = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZb(e, json = this.props.s.state.root) {
+    json.zb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   _handleClick() {
     this.setState({display: !this.state.display});
   },
@@ -1325,6 +1518,9 @@ const Foot = React.createClass({
           <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.foot.td} onChange={this.setTd} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.foot.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.foot.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷%</label><input type="number" value={s.state.foot.zd} onChange={this.setZd} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(小)</label><input type="number" value={s.state.foot.zs} onChange={this.setZs} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(大)</label><input type="number" value={s.state.foot.zb} onChange={this.setZb} /></RWDValue>    
           <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.foot.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.foot.hpd} onChange={this.setHpd} /></RWDValue>
@@ -1425,6 +1621,18 @@ const Quiver = React.createClass({
     json.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setZd(e, json = this.props.s.state.quiver) {
+    json.zd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZs(e, json = this.props.s.state.quiver) {
+    json.zs = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZb(e, json = this.props.s.state.quiver) {
+    json.zb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   _handleClick() {
     this.setState({display: !this.state.display});
   },
@@ -1452,6 +1660,9 @@ const Quiver = React.createClass({
           <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.quiver.td} onChange={this.setTd} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.quiver.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.quiver.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷%</label><input type="number" value={s.state.quiver.zd} onChange={this.setZd} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(小)</label><input type="number" value={s.state.quiver.zs} onChange={this.setZs} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(大)</label><input type="number" value={s.state.quiver.zb} onChange={this.setZb} /></RWDValue>    
           <Clear />
           <RWDValue><label>最大生命</label><input type="number" value={s.state.quiver.hp} onChange={this.setHp} /></RWDValue>
           <RWDValue><label>生命%</label><input type="number" value={s.state.quiver.hpd} onChange={this.setHpd} /></RWDValue>
@@ -1556,8 +1767,16 @@ const Skill = React.createClass({
     json.pttadd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPti(e, json = this.props.s.state.skill) {
-    json.pti = parseInt(e.target.value);
+  setPtzadd(e, json = this.props.s.state.skill) {
+    json.ptzadd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setItfadd(e, json = this.props.s.state.skill) {
+    json.itfadd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setItf(e, json = this.props.s.state.skill) {
+    json.itf = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   setPtf(e, json = this.props.s.state.skill) {
@@ -1566,6 +1785,26 @@ const Skill = React.createClass({
   },
   setPtt(e, json = this.props.s.state.skill) {
     json.ptt = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setPtz(e, json = this.props.s.state.skill) {
+    json.ptz = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setFtz(e, json = this.props.s.state.skill) {
+    json.ftz = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZd(e, json = this.props.s.state.skill) {
+    json.zd = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZs(e, json = this.props.s.state.skill) {
+    json.zs = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setZb(e, json = this.props.s.state.skill) {
+    json.zb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -1598,14 +1837,23 @@ const Skill = React.createClass({
           <RWDValue><label className='electricColor' >電傷%</label><input type="number" value={s.state.skill.td} onChange={this.setTd} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(小)</label><input type="number" value={s.state.skill.ts} onChange={this.setTs} /></RWDValue>
           <RWDValue><label className='electricColor' >電傷(大)</label><input type="number" value={s.state.skill.tb} onChange={this.setTb} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷%</label><input type="number" value={s.state.skill.zd} onChange={this.setZd} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(小)</label><input type="number" value={s.state.skill.zs} onChange={this.setZs} /></RWDValue>
+          <RWDValue><label className='zColor' >混傷(大)</label><input type="number" value={s.state.skill.zb} onChange={this.setZb} /></RWDValue>
           <Clear />
           <RWDValue><label>額外物轉冰%</label><input type="number" value={s.state.skill.ptiadd} onChange={this.setPtiadd} /></RWDValue>
           <RWDValue><label>額外物轉火%</label><input type="number" value={s.state.skill.ptfadd} onChange={this.setPtfadd} /></RWDValue>
           <RWDValue><label>額外物轉電%</label><input type="number" value={s.state.skill.pttadd} onChange={this.setPttadd} /></RWDValue>
+          <RWDValue><label>額外物轉混%</label><input type="number" value={s.state.skill.ptzadd} onChange={this.setPtzadd} /></RWDValue>
           <Clear />
           <RWDValue><label>物轉冰%</label><input type="number" value={s.state.skill.pti} onChange={this.setPti} /></RWDValue>
           <RWDValue><label>物轉火%</label><input type="number" value={s.state.skill.ptf} onChange={this.setPtf} /></RWDValue>
           <RWDValue><label>物轉電%</label><input type="number" value={s.state.skill.ptt} onChange={this.setPtt} /></RWDValue>
+          <RWDValue><label>物轉混%</label><input type="number" value={s.state.skill.ptz} onChange={this.setPtz} /></RWDValue>
+          <Clear />
+          <RWDValue><label>額外冰轉火%</label><input type="number" value={s.state.skill.itfadd} onChange={this.setItfadd} /></RWDValue>
+          <RWDValue><label>冰轉火%</label><input type="number" value={s.state.skill.itf} onChange={this.setItf} /></RWDValue>
+          <RWDValue><label>火轉混%</label><input type="number" value={s.state.skill.ftz} onChange={this.setFtz} /></RWDValue>
         </Row> : null }
       </section>
     );
@@ -1783,14 +2031,16 @@ const Info = React.createClass({
       iced: s.weaponadd.iced + s.talent.iced + s.head.iced + s.hand.iced + s.body.iced + s.belt.iced + s.ringone.iced + s.ringtwo.iced + s.necklace.iced + s.foot.iced + s.quiver.iced + s.skill.iced,
       fd: s.weaponadd.fd + s.talent.fd + s.head.fd + s.hand.fd + s.body.fd + s.belt.fd + s.ringone.fd + s.ringtwo.fd + s.necklace.fd + s.foot.fd + s.quiver.fd + s.skill.fd,
       td: s.weaponadd.td + s.talent.td + s.head.td + s.hand.td + s.body.td + s.belt.td + s.ringone.td + s.ringtwo.td + s.necklace.td + s.foot.td + s.quiver.td + s.skill.td,
-      ices: s.weaponadd.ices + s.head.ices + s.hand.ices + s.body.ices + s.belt.ices + s.ringone.ices + s.ringtwo.ices + s.necklace.ices + s.foot.ices + s.quiver.ices + s.skill.ices,
-      iceb: s.weaponadd.iceb + s.head.iceb + s.hand.iceb + s.body.iceb + s.belt.iceb + s.ringone.iceb + s.ringtwo.iceb + s.necklace.iceb + s.foot.iceb + s.quiver.iceb + s.skill.iceb,
-      fs: s.weaponadd.fs + s.head.fs + s.hand.fs + s.body.fs + s.belt.fs + s.ringone.fs + s.ringtwo.fs + s.necklace.fs + s.foot.fs + s.quiver.fs + s.skill.fs,
-      fb: s.weaponadd.fb + s.head.fb + s.hand.fb + s.body.fb + s.belt.fb + s.ringone.fb + s.ringtwo.fb + s.necklace.fb + s.foot.fb + s.quiver.fb + s.skill.fb,
-      ts: s.weaponadd.ts + s.head.ts + s.hand.ts + s.body.ts + s.belt.ts + s.ringone.ts + s.ringtwo.ts + s.necklace.ts + s.foot.ts + s.quiver.ts + s.skill.ts,
-      tb: s.weaponadd.tb + s.head.tb + s.hand.tb + s.body.tb + s.belt.tb + s.ringone.tb + s.ringtwo.tb + s.necklace.tb + s.foot.tb + s.quiver.tb + s.skill.tb,
-      ps: s.head.ps + s.hand.ps + s.body.ps + s.belt.ps + s.ringone.ps + s.ringtwo.ps + s.necklace.ps + s.foot.ps + s.quiver.ps,
-      pb: s.head.pb + s.hand.pb + s.body.pb + s.belt.pb + s.ringone.pb + s.ringtwo.pb + s.necklace.pb + s.foot.pb + s.quiver.pb,
+      ices: s.weaponadd.ices + s.talent.ices + s.head.ices + s.hand.ices + s.body.ices + s.belt.ices + s.ringone.ices + s.ringtwo.ices + s.necklace.ices + s.foot.ices + s.quiver.ices + s.skill.ices,
+      iceb: s.weaponadd.iceb + s.talent.iceb + s.head.iceb + s.hand.iceb + s.body.iceb + s.belt.iceb + s.ringone.iceb + s.ringtwo.iceb + s.necklace.iceb + s.foot.iceb + s.quiver.iceb + s.skill.iceb,
+      fs: s.weaponadd.fs + s.talent.fs + s.head.fs + s.hand.fs + s.body.fs + s.belt.fs + s.ringone.fs + s.ringtwo.fs + s.necklace.fs + s.foot.fs + s.quiver.fs + s.skill.fs,
+      fb: s.weaponadd.fb + s.talent.fb + s.head.fb + s.hand.fb + s.body.fb + s.belt.fb + s.ringone.fb + s.ringtwo.fb + s.necklace.fb + s.foot.fb + s.quiver.fb + s.skill.fb,
+      ts: s.weaponadd.ts + s.talent.ts + s.head.ts + s.hand.ts + s.body.ts + s.belt.ts + s.ringone.ts + s.ringtwo.ts + s.necklace.ts + s.foot.ts + s.quiver.ts + s.skill.ts,
+      tb: s.weaponadd.tb + s.talent.tb + s.head.tb + s.hand.tb + s.body.tb + s.belt.tb + s.ringone.tb + s.ringtwo.tb + s.necklace.tb + s.foot.tb + s.quiver.tb + s.skill.tb,
+      zs: s.weaponadd.zs + s.talent.zs + s.head.zs + s.hand.zs + s.body.zs + s.belt.zs + s.ringone.zs + s.ringtwo.zs + s.necklace.zs + s.foot.zs + s.quiver.zs + s.skill.zs,
+      zb: s.weaponadd.zb + s.talent.zb + s.head.zb + s.hand.zb + s.body.zb + s.belt.zb + s.ringone.zb + s.ringtwo.zb + s.necklace.zb + s.foot.zb + s.quiver.zb + s.skill.zb,
+      ps: s.head.ps + s.talent.ps + s.hand.ps + s.body.ps + s.belt.ps + s.ringone.ps + s.ringtwo.ps + s.necklace.ps + s.foot.ps + s.quiver.ps,
+      pb: s.head.pb + s.talent.pb + s.hand.pb + s.body.pb + s.belt.pb + s.ringone.pb + s.ringtwo.pb + s.necklace.pb + s.foot.pb + s.quiver.pb,
       c: s.talent.c + s.head.c + s.hand.c + s.body.c + s.belt.c + s.ringone.c + s.ringtwo.c + s.necklace.c + s.foot.c + s.quiver.c + s.skill.c,
       cd: s.weaponadd.cd + s.talent.cd + s.head.cd + s.hand.cd + s.body.cd + s.belt.cd + s.ringone.cd + s.ringtwo.cd + s.necklace.cd + s.foot.cd + s.quiver.cd + s.skill.cd,
       pjtd: s.talent.pjtd + s.quiver.pjtd + s.skill.pjtd,
@@ -1811,24 +2061,29 @@ const Info = React.createClass({
     };
     const basic = {
       as: this.props.s.sub(this.props.s.div(Math.round(this.props.s.div(this.props.s.mul(this.props.s.mul((this.props.s.add(100, s.weaponadd.as)), (this.props.s.add(100, sum.as))), (this.props.s.sub(100, s.skill.asl))), 10000)), 100), 1),
-      ices: Math.round((sum.ices * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100),
-      iceb: Math.round((sum.iceb * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100),
-      fs: Math.round((sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd + s.skill.ptf) / 100)),
-      fb: Math.round((sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd + s.skill.ptf) / 100)),
-      ts: Math.round((sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)),
-      tb: Math.round((sum.tb * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)),
-      ps: Math.round((weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf) / 100),
-      pb: Math.round((weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf) / 100),
+      ices: Math.round(((sum.ices * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (100 - s.skill.itf) / 100),
+      iceb: Math.round(((sum.iceb * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (100 - s.skill.itf) / 100),
+      fs: Math.round(((sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + Math.round(((sum.ices * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (100 - s.skill.itf) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd + s.skill.ptf) / 100)) * (100 - s.skill.ftz) / 100),
+      fb: Math.round(((sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + Math.round(((sum.iceb * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (100 - s.skill.itf) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd + s.skill.ptf) / 100)) * (100 - s.skill.ftz) / 100),
+      ts: Math.round(((sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)) * (100 - s.weaponadd.ttz) / 100),
+      tb: Math.round(((sum.tb * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)) * (100 - s.weaponadd.ttz) / 100),
+      ps: Math.round((weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
+      pb: Math.round((weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
+      zs: Math.round(((sum.zs * (100 + sum.pjtd + sum.zd) / 100 * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd + sum.zd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptzadd + s.skill.ptz) / 100)) + ((sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)) * s.weaponadd.ttz / 100 + ((sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + Math.round(((sum.ices * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (100 - s.skill.itf) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd + s.skill.ptf) / 100)) * (s.skill.ftz) / 100),
+      zb: Math.round(((sum.zb * (100 + sum.pjtd + sum.zd) / 100 * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd + sum.zd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptzadd + s.skill.ptz) / 100)) + ((sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)) * s.weaponadd.ttz / 100 + ((sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + Math.round(((sum.iceb * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (100 - s.skill.itf) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd + s.skill.ptf) / 100)) * (s.skill.ftz) / 100),
     };
     const hidebasic = {
-      ices: Math.round((sum.ices * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura)) / 100 + s.skill.pti) / 100),
-      iceb: Math.round((sum.iceb * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura)) / 100 + s.skill.pti) / 100),
-      fs: Math.round((sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd * (100 + s.talent.aura)) / 100 + s.skill.ptf) / 100),
-      fb: Math.round((sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd * (100 + s.talent.aura)) / 100 + s.skill.ptf) / 100),
-      ts: Math.round((sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)),
-      tb: Math.round((sum.tb * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)),
-      ps: Math.round((weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf) / 100),
-      pb: Math.round((weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf) / 100),
+      as: this.props.s.sub(this.props.s.div(Math.round(this.props.s.div(this.props.s.mul(this.props.s.mul((this.props.s.add(100, s.weaponadd.as)), (this.props.s.add(100, sum.as))), (this.props.s.sub(100, s.skill.asl))), 10000)), 100), 1),
+      ices: Math.round(((sum.ices * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (100 - s.skill.itf) / 100),
+      iceb: Math.round(((sum.iceb * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (100 - s.skill.itf) / 100),
+      fs: Math.round(((sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + Math.round(((sum.ices * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (100 - s.skill.itf) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd + s.skill.ptf) / 100)) * (100 - s.skill.ftz) / 100),
+      fb: Math.round(((sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + Math.round(((sum.iceb * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (100 - s.skill.itf) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd + s.skill.ptf) / 100)) * (100 - s.skill.ftz) / 100),
+      ts: Math.round(((sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)) * (100 - s.weaponadd.ttz) / 100),
+      tb: Math.round(((sum.tb * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)) * (100 - s.weaponadd.ttz) / 100),
+      ps: Math.round((weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
+      pb: Math.round((weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
+      zs: Math.round(((sum.zs * (100 + sum.pjtd + sum.zd) / 100 * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd + sum.zd) / 100 * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptzadd + s.skill.ptz) / 100)) + ((sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)) * s.weaponadd.ttz / 100 + ((sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + Math.round(((sum.ices * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (100 - s.skill.itf) / 100) + ((weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd + s.skill.ptf) / 100)) * (s.skill.ftz) / 100),
+      zb: Math.round(((sum.zb * (100 + sum.pjtd + sum.zd) / 100 * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd + sum.zd) / 100 * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptzadd + s.skill.ptz) / 100)) + ((sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.pttadd + s.skill.ptt) / 100)) * s.weaponadd.ttz / 100 + ((sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + Math.round(((sum.iceb * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (100 - s.skill.itf) / 100) + ((weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (Math.round(s.skill.ptfadd + s.skill.ptf) / 100)) * (s.skill.ftz) / 100),
     };
     const calc = {
       as: Math.round(s.weapon.as * (1 + basic.as) * 100) / 100,
@@ -1972,7 +2227,10 @@ const App = React.createClass({
   },
   render(){
     value[index - 1] = this.state;
+    //const url = "#" + JSON.stringify(this.state);
+    //window.location.href = url;
     localStorage.temp = JSON.stringify(value);
+
     return(
     <div>
       <Value s={this} />
