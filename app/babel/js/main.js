@@ -1779,6 +1779,10 @@ const Skill = React.createClass({
     json.itf = parseInt(e.target.value);
     this.props.s.setState(json);
   },
+  setPti(e, json = this.props.s.state.skill) {
+    json.pti = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
   setPtf(e, json = this.props.s.state.skill) {
     json.ptf = parseInt(e.target.value);
     this.props.s.setState(json);
