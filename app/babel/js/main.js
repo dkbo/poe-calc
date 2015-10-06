@@ -1944,6 +1944,51 @@ const Moreless = React.createClass({
     );
   },
 });
+const Aural = React.createClass({
+  getInitialState() {
+    return {
+      display: false,
+    };
+  },
+  setHate(e, json = this.props.s.state.aural) {
+    json.hate = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setThs(e, json = this.props.s.state.aural) {
+    json.ths = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setThb(e, json = this.props.s.state.aural) {
+    json.thb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setAgs(e, json = this.props.s.state.aural) {
+    json.ags = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  setAgb(e, json = this.props.s.state.aural) {
+    json.agb = parseInt(e.target.value);
+    this.props.s.setState(json);
+  },
+  _handleClick() {
+    this.setState({display: !this.state.display});
+  },
+  render(s = this.props.s){
+    return(
+      <section>
+        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>技能光環</h3>
+        {this.state.display ? 
+        <Row>
+          <RWDValue><label className="agi">憎恨</label><input type="number" value={s.state.aural.hate} onChange={this.setHate} /></RWDValue>
+          <RWDValue><label className="electricColor">雷霆(小)</label><input type="number" value={s.state.aural.ths} onChange={this.setThs} /></RWDValue>
+          <RWDValue><label className="electricColor">雷霆(大)</label><input type="number" value={s.state.aural.thb} onChange={this.setThb} /></RWDValue>
+          <RWDValue><label className="fireColor">憤怒(小)</label><input type="number" value={s.state.aural.ags} onChange={this.setAgs} /></RWDValue>
+          <RWDValue><label className="fireColor">憤怒(大)</label><input type="number" value={s.state.aural.agb} onChange={this.setAgb} /></RWDValue>
+        </Row> : null }
+      </section>
+    );
+  },
+});
 const Hideinfo = React.createClass({
   getInitialState() {
     return {
@@ -1993,6 +2038,7 @@ const Value = React.createClass({
         <Quiver s={this.props.s} />
         <Skill s={this.props.s} />
         <Moreless s={this.props.s} />
+        <Aural s={this.props.s} />
         <Hideinfo s={this.props.s} />
       </div>
     );
@@ -2006,6 +2052,10 @@ const Info = React.createClass({
       infoDisplay: true,
       dmInfoDisplay: true,
       hideInfoDisplay: true,
+      addDisplay: false,
+      addHDisplay: false,
+      puDisplay: false,
+      puHDisplay: false,
     };
   },
   _handlePlayer() {
@@ -2023,6 +2073,18 @@ const Info = React.createClass({
   _handleHideInfo() {
     this.setState({hideInfoDisplay: !this.state.hideInfoDisplay});
   },
+  _handleAdd() {
+    this.setState({addDisplay: !this.state.addDisplay});
+  },
+  _handleAddH() {
+    this.setState({addHDisplay: !this.state.addHDisplay});
+  },
+  _handlePu() {
+    this.setState({puDisplay: !this.state.puDisplay});
+  },
+  _handlePuH() {
+    this.setState({puHDisplay: !this.state.puHDisplay});
+  },
   render(s = this.props.s.state){
     const sum = {
       hp: s.talent.hp + s.head.hp + s.hand.hp + s.body.hp + s.belt.hp + s.ringone.hp + s.ringtwo.hp + s.necklace.hp + s.foot.hp + s.quiver.hp,
@@ -2038,16 +2100,18 @@ const Info = React.createClass({
       zd: s.weaponadd.zd + s.talent.zd + s.head.zd + s.hand.zd + s.body.zd + s.belt.zd + s.ringone.zd + s.ringtwo.zd + s.necklace.zd + s.foot.zd + s.quiver.zd + s.skill.zd,
       ices: s.weaponadd.ices + s.talent.ices + s.head.ices + s.hand.ices + s.body.ices + s.belt.ices + s.ringone.ices + s.ringtwo.ices + s.necklace.ices + s.foot.ices + s.quiver.ices + s.skill.ices,
       iceb: s.weaponadd.iceb + s.talent.iceb + s.head.iceb + s.hand.iceb + s.body.iceb + s.belt.iceb + s.ringone.iceb + s.ringtwo.iceb + s.necklace.iceb + s.foot.iceb + s.quiver.iceb + s.skill.iceb,
-      fs: s.weaponadd.fs + s.talent.fs + s.head.fs + s.hand.fs + s.body.fs + s.belt.fs + s.ringone.fs + s.ringtwo.fs + s.necklace.fs + s.foot.fs + s.quiver.fs + s.skill.fs,
-      fb: s.weaponadd.fb + s.talent.fb + s.head.fb + s.hand.fb + s.body.fb + s.belt.fb + s.ringone.fb + s.ringtwo.fb + s.necklace.fb + s.foot.fb + s.quiver.fb + s.skill.fb,
-      ts: s.weaponadd.ts + s.talent.ts + s.head.ts + s.hand.ts + s.body.ts + s.belt.ts + s.ringone.ts + s.ringtwo.ts + s.necklace.ts + s.foot.ts + s.quiver.ts + s.skill.ts,
-      tb: s.weaponadd.tb + s.talent.tb + s.head.tb + s.hand.tb + s.body.tb + s.belt.tb + s.ringone.tb + s.ringtwo.tb + s.necklace.tb + s.foot.tb + s.quiver.tb + s.skill.tb,
+      fs: Math.floor(s.aural.ags * (100 + s.talent.aura) / 100) + s.weaponadd.fs + s.talent.fs + s.head.fs + s.hand.fs + s.body.fs + s.belt.fs + s.ringone.fs + s.ringtwo.fs + s.necklace.fs + s.foot.fs + s.quiver.fs + s.skill.fs,
+      fb: Math.floor(s.aural.agb * (100 + s.talent.aura) / 100) + s.weaponadd.fb + s.talent.fb + s.head.fb + s.hand.fb + s.body.fb + s.belt.fb + s.ringone.fb + s.ringtwo.fb + s.necklace.fb + s.foot.fb + s.quiver.fb + s.skill.fb,
+      ts: Math.floor(s.aural.ths * (100 + s.talent.aura) / 100) + s.weaponadd.ts + s.talent.ts + s.head.ts + s.hand.ts + s.body.ts + s.belt.ts + s.ringone.ts + s.ringtwo.ts + s.necklace.ts + s.foot.ts + s.quiver.ts + s.skill.ts,
+      tb: Math.floor(s.aural.thb * (100 + s.talent.aura) / 100) + s.weaponadd.tb + s.talent.tb + s.head.tb + s.hand.tb + s.body.tb + s.belt.tb + s.ringone.tb + s.ringtwo.tb + s.necklace.tb + s.foot.tb + s.quiver.tb + s.skill.tb,
       zs: s.weaponadd.zs + s.talent.zs + s.head.zs + s.hand.zs + s.body.zs + s.belt.zs + s.ringone.zs + s.ringtwo.zs + s.necklace.zs + s.foot.zs + s.quiver.zs + s.skill.zs,
       zb: s.weaponadd.zb + s.talent.zb + s.head.zb + s.hand.zb + s.body.zb + s.belt.zb + s.ringone.zb + s.ringtwo.zb + s.necklace.zb + s.foot.zb + s.quiver.zb + s.skill.zb,
       ps: s.head.ps + s.talent.ps + s.hand.ps + s.body.ps + s.belt.ps + s.ringone.ps + s.ringtwo.ps + s.necklace.ps + s.foot.ps + s.quiver.ps,
       pb: s.head.pb + s.talent.pb + s.hand.pb + s.body.pb + s.belt.pb + s.ringone.pb + s.ringtwo.pb + s.necklace.pb + s.foot.pb + s.quiver.pb,
       c: s.talent.c + s.head.c + s.hand.c + s.body.c + s.belt.c + s.ringone.c + s.ringtwo.c + s.necklace.c + s.foot.c + s.quiver.c + s.skill.c,
       cd: s.weaponadd.cd + s.talent.cd + s.head.cd + s.hand.cd + s.body.cd + s.belt.cd + s.ringone.cd + s.ringtwo.cd + s.necklace.cd + s.foot.cd + s.quiver.cd + s.skill.cd,
+      cud: s.talent.cud,
+      cupd: s.talent.cupd,
       pjtd: s.talent.pjtd + s.quiver.pjtd + s.skill.pjtd,
       pd: s.talent.pd + s.head.pd + s.hand.pd + s.body.pd + s.belt.pd + s.ringone.pd + s.ringtwo.pd + s.necklace.pd + s.foot.pd + s.quiver.pd + s.skill.pd,
       pdml: Math.round(100 + s.moreless.pdm) / 100,
@@ -2067,29 +2131,33 @@ const Info = React.createClass({
     };
     const basic = {
       as: this.props.s.sub(this.props.s.div(Math.round(this.props.s.div(this.props.s.mul(this.props.s.mul((this.props.s.add(100, s.weaponadd.as)), (this.props.s.add(100, sum.as))), (this.props.s.sub(100, s.skill.asl))), 10000)), 100), 1),
-      ices: Math.round((sum.ices * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100 ) * (100 - s.skill.itf) / 100),
-      iceb: Math.round((sum.iceb * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100 ) * (100 - s.skill.itf) / 100),
-      fs: Math.round((sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (sum.ices * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100),
-      fb: Math.round((sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (sum.iceb * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100),
+      ices: Math.round((sum.ices * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100 ) * (100 - s.skill.itf) / 100),
+      iceb: Math.round((sum.iceb * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100 ) * (100 - s.skill.itf) / 100),
+      fs: Math.round((sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (sum.ices * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100),
+      fb: Math.round((sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (sum.iceb * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100),
       ts: Math.round(sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (s.skill.pttadd + s.skill.ptt) / 100 * (100 - s.weaponadd.ttz) / 100),
       tb: Math.round(sum.tb * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (s.skill.pttadd + s.skill.ptt) / 100 * (100 - s.weaponadd.ttz) / 100),
       ps: Math.round((weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
       pb: Math.round((weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
-      zs: Math.round(sum.zs * (100 + sum.zd + sum.pjtd) / 100 * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd + sum.zd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (s.skill.ptzadd + s.skill.ptz) / 100 + (sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd +sum.zd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (s.skill.pttadd + s.skill.ptt) / 100 * s.weaponadd.ttz / 100 + (sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (sum.ices * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * s.skill.ftz / 100),
-      zb: Math.round(sum.zb * (100 + sum.zd + sum.pjtd) / 100 * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd + sum.zd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (s.skill.ptzadd + s.skill.ptz) / 100 + (sum.tb * (100 + sum.wed + sum.ed + sum.td + sum.pjtd +sum.zd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (s.skill.pttadd + s.skill.ptt) / 100 * s.weaponadd.ttz / 100 + (sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (sum.iceb * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * s.skill.ftz / 100),
+      zs: Math.round(sum.zs * (100 + sum.zd + sum.pjtd) / 100 * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd + sum.zd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (s.skill.ptzadd + s.skill.ptz) / 100 + (sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd +sum.zd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (s.skill.pttadd + s.skill.ptt) / 100 * s.weaponadd.ttz / 100 + (sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (sum.ices * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * s.skill.ftz / 100),
+      zb: Math.round(sum.zb * (100 + sum.zd + sum.pjtd) / 100 * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd + sum.zd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (s.skill.ptzadd + s.skill.ptz) / 100 + (sum.tb * (100 + sum.wed + sum.ed + sum.td + sum.pjtd +sum.zd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100) * (s.skill.pttadd + s.skill.ptt) / 100 * s.weaponadd.ttz / 100 + (sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (sum.iceb * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * s.skill.ftz / 100),
+      pus: ((weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd + sum.cud + sum.cupd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
+      pub: ((weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd + sum.cud + sum.cupd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
     };
     const hidebasic = {
       as: this.props.s.sub(this.props.s.div(Math.round(this.props.s.div(this.props.s.mul(this.props.s.mul((this.props.s.add(100, s.weaponadd.as)), (this.props.s.add(100, sum.as))), (this.props.s.sub(100, s.skill.asl))), 10000)), 100), 1),
-      ices: Math.round((sum.ices * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (100 - s.skill.itf) / 100),
-      iceb: Math.round((sum.iceb * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (100 - s.skill.itf) / 100),
-      fs: Math.round((sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (sum.ices * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100),
-      fb: Math.round((sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (sum.iceb * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100),
+      ices: Math.round((sum.ices * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (100 - s.skill.itf) / 100),
+      iceb: Math.round((sum.iceb * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (100 - s.skill.itf) / 100),
+      fs: Math.round((sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (sum.ices * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100),
+      fb: Math.round((sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (sum.iceb * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100),
       ts: Math.round(sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (s.skill.pttadd + s.skill.ptt) / 100 * (100 - s.weaponadd.ttz) / 100),
       tb: Math.round(sum.tb * (100 + sum.wed + sum.ed + sum.td + sum.pjtd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (s.skill.pttadd + s.skill.ptt) / 100 * (100 - s.weaponadd.ttz) / 100),
       ps: Math.round((weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
       pb: Math.round((weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd) / 100 * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
-      zs: Math.round(sum.zs * (100 + sum.zd + sum.pjtd) / 100 * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd + sum.zd) / 100 * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (s.skill.ptzadd + s.skill.ptz) / 100 + (sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd +sum.zd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (s.skill.pttadd + s.skill.ptt) / 100 * s.weaponadd.ttz / 100 + (sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (sum.ices * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * s.skill.ftz / 100),
-      zb: Math.round(sum.zb * (100 + sum.zd + sum.pjtd) / 100 * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd + sum.zd) / 100 * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (s.skill.ptzadd + s.skill.ptz) / 100 + (sum.tb * (100 + sum.wed + sum.ed + sum.td + sum.pjtd +sum.zd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (s.skill.pttadd + s.skill.ptt) / 100 * s.weaponadd.ttz / 100 + (sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (sum.iceb * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (Math.round(s.skill.ptiadd * (100 + s.talent.aura) / 100)  + s.skill.pti) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * s.skill.ftz / 100),
+      zs: Math.round(sum.zs * (100 + sum.zd + sum.pjtd) / 100 * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd + sum.zd) / 100 * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (s.skill.ptzadd + s.skill.ptz) / 100 + (sum.ts * (100 + sum.wed + sum.ed + sum.td + sum.pjtd +sum.zd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (s.skill.pttadd + s.skill.ptt) / 100 * s.weaponadd.ttz / 100 + (sum.fs * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (sum.ices * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.ps + sum.ps) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * s.skill.ftz / 100),
+      zb: Math.round(sum.zb * (100 + sum.zd + sum.pjtd) / 100 * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd + sum.zd) / 100 * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (s.skill.ptzadd + s.skill.ptz) / 100 + (sum.tb * (100 + sum.wed + sum.ed + sum.td + sum.pjtd +sum.zd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.td + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100) * (s.skill.pttadd + s.skill.ptt) / 100 * s.weaponadd.ttz / 100 + (sum.fb * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (sum.iceb * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.zd) / 100 * sum.edml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.fd + sum.ed + sum.iced + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + (weapon.pb + sum.pb) * (100 + sum.wed + sum.ed + sum.fd + sum.pjtd + sum.pd + sum.zd) / 100 * sum.edml * sum.pdml * Math.round(sum.hdml * Math.floor(s.skill.bd)) / 100 * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * s.skill.ftz / 100),
+      pus: ((weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd + sum.cud + sum.cupd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
+      pub: ((weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd + sum.cud + sum.cupd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
     };
     console.log(sum.zd);
     const calc = {
@@ -2112,6 +2180,13 @@ const Info = React.createClass({
       tbc: Math.round(basic.tb * calc.cd) / 100,
       psc: Math.round(basic.ps * calc.cd) / 100,
       pbc: Math.round(basic.pb * calc.cd) / 100,
+      zsc: Math.round(basic.zs * calc.cd) / 100,
+      zbc: Math.round(basic.zb * calc.cd) / 100,
+      pusc: Math.round(basic.pus * 0.1 * calc.cd) / 100,
+      pubc: Math.round(basic.pub * 0.1 * calc.cd) / 100,
+      puswc: Math.round((basic.pus * 0.1) + (basic.pus * 0.5) * calc.cd) / 100,
+      pubwc: Math.round((basic.pub * 0.1) + (basic.pub * 0.5) * calc.cd) / 100,
+
     };
     const hideinfo = {
       td: Math.round((((calc.hbasicds + calc.hbasicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.hbasicds + calc.hbasicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
@@ -2124,6 +2199,12 @@ const Info = React.createClass({
       tbc: Math.round(hidebasic.tb * calc.cd) / 100,
       psc: Math.round(hidebasic.ps * calc.cd) / 100,
       pbc: Math.round(hidebasic.pb * calc.cd) / 100,
+      zsc: Math.round(hidebasic.zs * calc.cd) / 100,
+      zbc: Math.round(hidebasic.zb * calc.cd) / 100,
+      pusc: Math.round(hidebasic.pus * 0.1 * calc.cd) / 100,
+      pubc: Math.round(hidebasic.pub * 0.1 * calc.cd) / 100,
+      puswc: Math.round((hidebasic.pus * 0.1) + (hidebasic.pus * 0.5) * calc.cd) / 100,
+      pubwc: Math.round((hidebasic.pub * 0.1) + (hidebasic.pub * 0.5) * calc.cd) / 100,
     };
     return(
     <div className="col xx12 s4">
@@ -2183,6 +2264,48 @@ const Info = React.createClass({
             <p className="col xx4"><strong>基礎火傷</strong>{hidebasic.fs} - {hidebasic.fb}</p>
             <p className="col xx4"><strong>基礎電傷</strong>{hidebasic.ts} - {hidebasic.tb}</p>
             <p className="col xx4"><strong>基礎混傷</strong>{hidebasic.zs} - {hidebasic.zb}</p>    
+          </Row> : null}
+        </section>
+        <section>
+          <h3 className={this.state.addDisplay ? 'active' : null} onClick={this._handleAdd}>暴擊傷害</h3>
+          {this.state.addDisplay ?
+          <Row>
+            <p className="col xx6"><strong>物理</strong>{info.psc} - {info.pbc}</p>
+            <p className="col xx6"><strong>冰傷</strong>{info.icesc} - {info.icebc}</p>
+            <p className="col xx6"><strong>火傷</strong>{info.fsc} - {info.fbc}</p>
+            <p className="col xx6"><strong>電傷</strong>{info.tsc} - {info.tbc}</p>
+            <p className="col xx6"><strong>總傷</strong>{info.psc + info.icesc + info.fsc + info.tsc} - {info.pbc + info.icebc + info.fbc + info.tbc}</p> 
+          </Row> : null}
+        </section>
+        <section>
+          <h3 className={this.state.addHDisplay ? 'active' : null} onClick={this._handleAddH}>隱藏暴擊傷害</h3>
+          {this.state.addHDisplay ?
+          <Row>
+            <p className="col xx6"><strong>物理</strong>{hideinfo.psc} - {hideinfo.pbc}</p>
+            <p className="col xx6"><strong>冰傷</strong>{hideinfo.icesc} - {hideinfo.icebc}</p>
+            <p className="col xx6"><strong>火傷</strong>{hideinfo.fsc} - {hideinfo.fbc}</p>
+            <p className="col xx6"><strong>電傷</strong>{hideinfo.tsc} - {hideinfo.tbc}</p>
+            <p className="col xx6"><strong>總傷</strong>{hideinfo.psc + hideinfo.icesc + hideinfo.fsc + hideinfo.tsc} - {hideinfo.pbc + hideinfo.icebc + hideinfo.fbc + hideinfo.tbc}</p>   
+          </Row> : null}
+        </section>
+        <section>
+          <h3 className={this.state.puDisplay ? 'active' : null} onClick={this._handlePu}>流血傷害</h3>
+          {this.state.puDisplay ?
+          <Row>
+            <p className="col xx6"><strong>站立</strong>{Math.round(basic.pus * 0.1)} - {Math.round(basic.pub * 0.1)}</p>
+            <p className="col xx6"><strong>站立暴擊</strong>{info.pusc} - {info.pubc}</p>
+            <p className="col xx6"><strong>移動</strong>{Math.round(basic.pus * 0.6)} - {Math.round(basic.pub * 0.6)}</p>
+            <p className="col xx6"><strong>移動暴擊</strong>{info.puswc} - {info.pubwc}</p>
+          </Row> : null}
+        </section>
+        <section>
+          <h3 className={this.state.puHDisplay ? 'active' : null} onClick={this._handlePuH}>隱藏流血傷害</h3>
+          {this.state.puHDisplay ?
+          <Row>
+            <p className="col xx6"><strong>站立</strong>{Math.round(hidebasic.pus * 0.1)} - {Math.round(hidebasic.pub * 0.1)}</p>
+            <p className="col xx6"><strong>站立暴擊</strong>{hideinfo.pusc} - {hideinfo.pubc}</p>
+            <p className="col xx6"><strong>移動</strong>{Math.round(hidebasic.pus * 0.6)} - {Math.round(hidebasic.pub * 0.6)}</p>
+            <p className="col xx6"><strong>移動暴擊</strong>{hideinfo.puswc} - {hideinfo.pubwc}</p>
           </Row> : null}
         </section>
       </div>

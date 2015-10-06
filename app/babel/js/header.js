@@ -366,17 +366,29 @@ const init = {
     pb: 0, //零點射擊
     hy: 0, //急凍
   },
+  aural: {
+    hate: 0,//贈恨
+    ths: 0,//雷霆(小)
+    thb: 0,//雷霆(大)
+    ags: 0, //憤怒(小)
+    agb: 0, //憤怒(大)
+  },
 };
 let index = localStorage.index ? localStorage.index : 1;
 let value = [];
 if(localStorage.temp) {
   if(typeof JSON.parse(localStorage.temp) === 'object') {
-    value = JSON.parse(localStorage.temp);
+    localStorage.version == 1 ? value = JSON.parse(localStorage.temp) : value[0] = init;
+    localStorage.version = 1;
   } else {
     value[0] = init;
+    localStorage.temp = JSON.stringify(value);
+    localStorage.version = 1;
   }
 } else {
   value[0] = init;
+  localStorage.temp = JSON.stringify(value);
+  localStorage.version = 1;
 }
 const Page = React.createClass({
   getInitialState() {
