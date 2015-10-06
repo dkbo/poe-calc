@@ -2,7 +2,7 @@
 const Player = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[0],
     };
   },
   setLevel(e, json = this.props.s.state.player) {
@@ -34,6 +34,8 @@ const Player = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[0] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s) {
@@ -58,7 +60,7 @@ const Player = React.createClass({
 const Weapon = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[1],
     };
   },
   setPs(e, json = this.props.s.state.weapon) {
@@ -82,6 +84,8 @@ const Weapon = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[1] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s) {
@@ -103,7 +107,7 @@ const Weapon = React.createClass({
 const WeaponAdd = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[2],
     };
   },
   setAs(e, json = this.props.s.state.weaponadd) {
@@ -195,6 +199,8 @@ const WeaponAdd = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[2] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s) {
@@ -235,7 +241,7 @@ const WeaponAdd = React.createClass({
 const Talent = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[3],
     };
   },
   setAs(e, json = this.props.s.state.talent) {
@@ -351,6 +357,8 @@ const Talent = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[3] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s) {
@@ -398,7 +406,7 @@ const Talent = React.createClass({
 const Head = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[4],
     };
   },
   setAs(e, json = this.props.s.state.head) {
@@ -498,6 +506,8 @@ const Head = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[4] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s) {
@@ -540,7 +550,7 @@ const Head = React.createClass({
 const Hand = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[5],
     };
   },
   setAs(e, json = this.props.s.state.hand) {
@@ -640,6 +650,8 @@ const Hand = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[5] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s) {
@@ -682,7 +694,7 @@ const Hand = React.createClass({
 const Body= React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[6],
     };
   },
   setAs(e, json = this.props.s.state.body) {
@@ -782,6 +794,8 @@ const Body= React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[6] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s) {
@@ -824,7 +838,7 @@ const Body= React.createClass({
 const Belt = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[7],
     };
   },
   setAs(e, json = this.props.s.state.belt) {
@@ -924,6 +938,8 @@ const Belt = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[7] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s) {
@@ -966,7 +982,7 @@ const Belt = React.createClass({
 const Necklace = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[8],
     };
   },
   setAs(e, json = this.props.s.state.necklace) {
@@ -1066,6 +1082,8 @@ const Necklace = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[8] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s) {
@@ -1108,7 +1126,7 @@ const Necklace = React.createClass({
 const RingOne = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[9],
     };
   },
   setAs(e, json = this.props.s.state.ringone) {
@@ -1208,6 +1226,8 @@ const RingOne = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[9] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s) {
@@ -1250,7 +1270,7 @@ const RingOne = React.createClass({
 const RingTwo = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[10],
     };
   },
   setAs(e, json = this.props.s.state.ringtwo) {
@@ -1350,6 +1370,8 @@ const RingTwo = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[10] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s) {
@@ -1392,7 +1414,7 @@ const RingTwo = React.createClass({
 const Foot = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[11],
     };
   },
   setAs(e, json = this.props.s.state.foot) {
@@ -1492,6 +1514,8 @@ const Foot = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[11] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s) {
@@ -1534,7 +1558,7 @@ const Foot = React.createClass({
 const Quiver = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[12],
     };
   },
   setAs(e, json = this.props.s.state.quiver) {
@@ -1634,6 +1658,8 @@ const Quiver = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[12] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s) {
@@ -1676,7 +1702,7 @@ const Quiver = React.createClass({
 const Skill = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[13],
     };
   },
   setBd(e, json = this.props.s.state.skill) {
@@ -1812,6 +1838,8 @@ const Skill = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[13] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s){
@@ -1867,7 +1895,7 @@ const Skill = React.createClass({
 const Moreless = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[14],
     };
   },
   setGmp(e, json = this.props.s.state.moreless) {
@@ -1915,6 +1943,8 @@ const Moreless = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[14] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s){
@@ -1947,7 +1977,7 @@ const Moreless = React.createClass({
 const Aural = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[15],
     };
   },
   setHate(e, json = this.props.s.state.aural) {
@@ -1971,6 +2001,8 @@ const Aural = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[15] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s){
@@ -1992,7 +2024,7 @@ const Aural = React.createClass({
 const Hideinfo = React.createClass({
   getInitialState() {
     return {
-      display: false,
+      display: leftPanel[16],
     };
   },
   setPb(e, json = this.props.s.state.hideinfo) {
@@ -2004,6 +2036,8 @@ const Hideinfo = React.createClass({
     this.props.s.setState(json);
   },
   _handleClick() {
+    leftPanel[16] = !this.state.display;
+    main.leftPanel();
     this.setState({display: !this.state.display});
   },
   render(s = this.props.s){
@@ -2047,42 +2081,60 @@ const Value = React.createClass({
 const Info = React.createClass({
   getInitialState() {
     return {
-      playerDisplay: true,
-      weaponDisplay: true,
-      infoDisplay: true,
-      dmInfoDisplay: true,
-      hideInfoDisplay: true,
-      addDisplay: false,
-      addHDisplay: false,
-      puDisplay: false,
-      puHDisplay: false,
+      playerDisplay: rightPanel[0],
+      weaponDisplay: rightPanel[1],
+      infoDisplay: rightPanel[2],
+      dmInfoDisplay: rightPanel[3],
+      hideInfoDisplay: rightPanel[4],
+      addDisplay: rightPanel[5],
+      addHDisplay:rightPanel[6],
+      puDisplay: rightPanel[7],
+      puHDisplay: rightPanel[8],
     };
   },
   _handlePlayer() {
+    rightPanel[0] = !this.state.playerDisplay;
+    main.rightPanel();
     this.setState({playerDisplay: !this.state.playerDisplay});
   },
   _handleWeapon() {
+    rightPanel[1] = !this.state.weaponDisplay;
+    main.rightPanel();
     this.setState({weaponDisplay: !this.state.weaponDisplay});
   },
   _handleInfo() {
+    rightPanel[2] = !this.state.infoDisplay;
+    main.rightPanel();
     this.setState({infoDisplay: !this.state.infoDisplay});
   },
   _handleDmInfo() {
+    rightPanel[3] = !this.state.dmInfoDisplay;
+    main.rightPanel();
     this.setState({dmInfoDisplay: !this.state.dmInfoDisplay});
   },
   _handleHideInfo() {
+    rightPanel[4] = !this.state.hideInfoDisplay;
+    main.rightPanel();
     this.setState({hideInfoDisplay: !this.state.hideInfoDisplay});
   },
   _handleAdd() {
+    rightPanel[5] = !this.state.addDisplay;
+    main.rightPanel();
     this.setState({addDisplay: !this.state.addDisplay});
   },
   _handleAddH() {
+    rightPanel[6] = !this.state.addHDisplay;
+    main.rightPanel();
     this.setState({addHDisplay: !this.state.addHDisplay});
   },
   _handlePu() {
+    rightPanel[7] = !this.state.puDisplay;
+    main.rightPanel();
     this.setState({puDisplay: !this.state.puDisplay});
   },
   _handlePuH() {
+    rightPanel[8] = !this.state.puHDisplay;
+    main.rightPanel();
     this.setState({puHDisplay: !this.state.puHDisplay});
   },
   render(s = this.props.s.state){
@@ -2159,7 +2211,6 @@ const Info = React.createClass({
       pus: ((weapon.ps + sum.ps) * (100 + sum.pjtd + sum.pd + sum.cud + sum.cupd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
       pub: ((weapon.pb + sum.pb) * (100 + sum.pjtd + sum.pd + sum.cud + sum.cupd) / 100 * sum.pdml * Math.round(sum.dml * Math.floor(s.skill.bd)) / 100 * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
     };
-    console.log(sum.zd);
     const calc = {
       as: Math.round(s.weapon.as * (1 + basic.as) * 100) / 100,
       basicds: basic.ices + basic.fs + basic.ts + basic.ps + basic.zs,
@@ -2353,6 +2404,12 @@ const App = React.createClass({
     try{m+=s1.split(".")[1].length}catch(e){} 
     try{m+=s2.split(".")[1].length}catch(e){} 
     return Number(s1.replace(".",""))*Number(s2.replace(".",""))/Math.pow(10,m) 
+  },
+  leftPanel() {
+    localStorage.left = leftPanel.join(",");
+  },
+  rightPanel() {
+    localStorage.right = rightPanel.join(",");
   },
   div(arg1,arg2) {
     return this.mul(arg1,1/arg2);

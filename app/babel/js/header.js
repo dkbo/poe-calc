@@ -374,8 +374,29 @@ const init = {
     agb: 0, //憤怒(大)
   },
 };
+let leftPanel =  [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+let rightPanel = [false, false, false, false, false, false, false, false, false];
 let index = localStorage.index ? localStorage.index : 1;
 let value = [];
+if(localStorage.left) {
+  leftPanel = localStorage.left.split(",").map(function(bool){
+    if(bool == "false") {
+      return false;
+    } else {
+      return true;  
+    }
+  });
+}
+if(localStorage.right) {
+  rightPanel = localStorage.right.split(",").map(function(bool){
+    if(bool == "false") {
+      return false;
+    } else {
+      return true;  
+    } 
+  });
+}
+
 if(localStorage.temp) {
   if(typeof JSON.parse(localStorage.temp) === 'object') {
     localStorage.version == 1 ? value = JSON.parse(localStorage.temp) : value[0] = init;
@@ -404,7 +425,7 @@ const Page = React.createClass({
   _handleDel() {
     if(value.length === 1) {
       alert('目前只有一個分頁唷!');
-    } else if(index  === value.length) {
+    } else if(index  == value.length) {
       value.splice(index - 1,1);
       this._handleChangePage(index - 1);
     } else {
