@@ -2179,7 +2179,7 @@ const Info = React.createClass({
     };
     const health = {
       hp: Math.round((38 + (s.player.level * 12) + (s.player.str / 2) + sum.hp) * (100 + sum.hpd) / 100),  //血量
-      mp: Math.round((46 + (4 * s.player.level) + s.player.int + sum.mp) * (100 + sum.mpd)/ 100),           //法力
+      mp: Math.round((36 + (4 * s.player.level) + (s.player.int / 2) + sum.mp) * (100 + sum.mpd)/ 100),    //法力
     };
     const basic = {
       as: this.props.s.sub(this.props.s.div(Math.round(this.props.s.div(this.props.s.mul(this.props.s.mul((this.props.s.add(100, s.weaponadd.as)), (this.props.s.add(100, sum.as))), (this.props.s.sub(100, s.skill.asl))), 10000)), 100), 1),
