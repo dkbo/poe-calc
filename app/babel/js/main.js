@@ -2297,9 +2297,9 @@ const Info = React.createClass({
             <p className="col xx4"><strong>每次傷害</strong>{info.td}</p>
             <p className="col xx4"><strong>基礎傷害</strong>{calc.basicds} - {calc.basicdb}</p>
             <p className="col xx4"><strong>基礎物理</strong>{basic.ps} - {basic.pb}</p>
-            <p className="col xx4"><strong>基礎冰傷</strong>{basic.ices} - {basic.iceb}</p>
-            <p className="col xx4"><strong>基礎火傷</strong>{basic.fs} - {basic.fb}</p>
-            <p className="col xx4"><strong>基礎電傷</strong>{basic.ts} - {basic.tb}</p>
+            <p className="col xx4"><strong className="iceColor">基礎冰傷</strong>{basic.ices} - {basic.iceb}</p>
+            <p className="col xx4"><strong className="fireColor">基礎火傷</strong>{basic.fs} - {basic.fb}</p>
+            <p className="col xx4"><strong className="electricColor">基礎電傷</strong>{basic.ts} - {basic.tb}</p>
             <p className="col xx4"><strong>基礎混傷</strong>{basic.zs} - {basic.zb}</p>  
           </Row> : null}
         </section>
@@ -2311,9 +2311,9 @@ const Info = React.createClass({
             <p className="col xx4"><strong>每次傷害</strong>{hideinfo.td}</p>
             <p className="col xx4"><strong>基礎傷害</strong>{calc.hbasicds} - {calc.hbasicdb}</p>
             <p className="col xx4"><strong>基礎物理</strong>{hidebasic.ps} - {hidebasic.pb}</p>
-            <p className="col xx4"><strong>基礎冰傷</strong>{hidebasic.ices} - {hidebasic.iceb}</p>
-            <p className="col xx4"><strong>基礎火傷</strong>{hidebasic.fs} - {hidebasic.fb}</p>
-            <p className="col xx4"><strong>基礎電傷</strong>{hidebasic.ts} - {hidebasic.tb}</p>
+            <p className="col xx4"><strong className="iceColor">基礎冰傷</strong>{hidebasic.ices} - {hidebasic.iceb}</p>
+            <p className="col xx4"><strong className="fireColor">基礎火傷</strong>{hidebasic.fs} - {hidebasic.fb}</p>
+            <p className="col xx4"><strong className="electricColor">基礎電傷</strong>{hidebasic.ts} - {hidebasic.tb}</p>
             <p className="col xx4"><strong>基礎混傷</strong>{hidebasic.zs} - {hidebasic.zb}</p>    
           </Row> : null}
         </section>
@@ -2322,10 +2322,11 @@ const Info = React.createClass({
           {this.state.addDisplay ?
           <Row>
             <p className="col xx6"><strong>物理</strong>{info.psc} - {info.pbc}</p>
-            <p className="col xx6"><strong>冰傷</strong>{info.icesc} - {info.icebc}</p>
-            <p className="col xx6"><strong>火傷</strong>{info.fsc} - {info.fbc}</p>
-            <p className="col xx6"><strong>電傷</strong>{info.tsc} - {info.tbc}</p>
-            <p className="col xx6"><strong>總傷</strong>{info.psc + info.icesc + info.fsc + info.tsc} - {info.pbc + info.icebc + info.fbc + info.tbc}</p> 
+            <p className="col xx6"><strong className="iceColor">冰傷</strong>{info.icesc} - {info.icebc}</p>
+            <p className="col xx6"><strong className="fireColor">火傷</strong>{info.fsc} - {info.fbc}</p>
+            <p className="col xx6"><strong className="electricColor">電傷</strong>{info.tsc} - {info.tbc}</p>
+            <p className="col xx6"><strong>混傷</strong>{info.zsc} - {info.zbc}</p>
+            <p className="col xx6"><strong>總傷</strong>{info.psc + info.icesc + info.fsc + info.tsc + info.zsc} - {info.pbc + info.icebc + info.fbc + info.tbc + info.zbc}</p> 
           </Row> : null}
         </section>
         <section>
@@ -2333,10 +2334,11 @@ const Info = React.createClass({
           {this.state.addHDisplay ?
           <Row>
             <p className="col xx6"><strong>物理</strong>{hideinfo.psc} - {hideinfo.pbc}</p>
-            <p className="col xx6"><strong>冰傷</strong>{hideinfo.icesc} - {hideinfo.icebc}</p>
-            <p className="col xx6"><strong>火傷</strong>{hideinfo.fsc} - {hideinfo.fbc}</p>
-            <p className="col xx6"><strong>電傷</strong>{hideinfo.tsc} - {hideinfo.tbc}</p>
-            <p className="col xx6"><strong>總傷</strong>{hideinfo.psc + hideinfo.icesc + hideinfo.fsc + hideinfo.tsc} - {hideinfo.pbc + hideinfo.icebc + hideinfo.fbc + hideinfo.tbc}</p>   
+            <p className="col xx6"><strong className="iceColor">冰傷</strong>{hideinfo.icesc} - {hideinfo.icebc}</p>
+            <p className="col xx6"><strong className="fireColor">火傷</strong>{hideinfo.fsc} - {hideinfo.fbc}</p>
+            <p className="col xx6"><strong className="electricColor">電傷</strong>{hideinfo.tsc} - {hideinfo.tbc}</p>
+            <p className="col xx6"><strong>混傷</strong>{hideinfo.zsc} - {hideinfo.zbc}</p>
+            <p className="col xx6"><strong>總傷</strong>{hideinfo.psc + hideinfo.icesc + hideinfo.fsc + hideinfo.tsc + hideinfo.zsc} - {hideinfo.pbc + hideinfo.icebc + hideinfo.fbc + hideinfo.tbc + hideinfo.zbc}</p>   
           </Row> : null}
         </section>
         <section>
