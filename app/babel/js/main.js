@@ -2174,8 +2174,8 @@ const Info = React.createClass({
       pd: s.talent.pd + s.head.pd + s.hand.pd + s.body.pd + s.belt.pd + s.ringone.pd + s.ringtwo.pd + s.necklace.pd + s.foot.pd + s.quiver.pd + s.skill.pd,
       pdml: Math.round(100 + s.moreless.pdm) / 100,
       edml: Math.round(100 + s.moreless.wedm) / 100,
-      dml: Math.round(Math.round((100 - s.moreless.gmp) / 100 * (100 - s.moreless.lmp) / 100 * (100 - s.moreless.fork) / 100 * (100 + s.moreless.pjtdm )) / 100 * Math.round((100 + s.moreless.tr) / 100 * (100 + s.moreless.trd)) / 100 * Math.round((100 - s.moreless.mtr * Math.pow((100 + 4) / 100, s.player.gb)) / 100 * (100 - s.moreless.ci)) / 100 * (100 + s.moreless.rg)) / 100,
-      hdml: Math.round(Math.round((100 - s.moreless.gmp) / 100 * (100 - s.moreless.lmp) / 100 * (100 - s.moreless.fork) / 100 * (100 + s.moreless.pjtdm )) / 100 * (100 + s.weaponadd.pm) / 100 * Math.round((100 + s.moreless.tr) / 100 * (100 + s.moreless.trd)) / 100 * Math.round((100 - s.moreless.mtr) / 100 * (100 - s.moreless.ci) /100 * (100 + s.hideinfo.hy) / 100 * (100 + s.hideinfo.pb) * Math.pow((100 + 4) / 100, s.player.gb) ) / 100 * (100 + s.moreless.rg)) / 100,
+      dml: Math.round(Math.round((100 - s.moreless.gmp) / 100 * (100 - s.moreless.lmp) / 100 * (100 - s.moreless.fork) / 100 * (100 + s.moreless.pjtdm )) / 100 * Math.round((100 + s.moreless.tr) / 100 * (100 + s.moreless.trd)) / 100 * Math.round((100 - s.moreless.mtr) / 100 * (100 - s.moreless.ci) ) / 100 * Math.round(Math.pow((100 + 4) / 100, s.player.gb) * 100) / 100 * (100 + s.moreless.rg)) / 100,
+      hdml: Math.round(Math.round((100 - s.moreless.gmp) / 100 * (100 - s.moreless.lmp) / 100 * (100 - s.moreless.fork) / 100 * (100 + s.moreless.pjtdm )) / 100 * (100 + s.weaponadd.pm) / 100 * Math.round((100 + s.moreless.tr) / 100 * (100 + s.moreless.trd)) / 100 * Math.round((100 - s.moreless.mtr) / 100 * (100 - s.moreless.ci) /100 * (100 + s.hideinfo.hy) / 100 * (100 + s.hideinfo.pb)) / 100 * Math.round(Math.pow((100 + 4) / 100, s.player.gb) * 100) /100 * (100 + s.moreless.rg)) / 100,
     };
 
     const weapon = {
