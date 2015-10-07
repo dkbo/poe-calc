@@ -442,11 +442,12 @@ const Page = React.createClass({
     }
   },
   _handleCopy() {
-    const name = "複製 - " + value[index - 1].name;
-    value[value.length] = value[index - 1];
-    value[value.length - 1].name = name;
+    const name = "複製 - " + main.state.name;
+    const temp = value[index - 1];
+    temp.name = name;
+    value.push(temp);
     this._handleChangePage(value.length);
-    window.location.reload();
+    
   },
   _handleChangePage(id) {
     localStorage.index = index = id;

@@ -96,9 +96,9 @@ const Weapon = React.createClass({
         <Row>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.weapon.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.weapon.pb} onChange={this.setPb} /></RWDValue>
-          <RWDValue><label>攻速</label><input type="number" value={s.state.weapon.as} onChange={this.setAs} /></RWDValue>
+          <RWDValue><label>攻速</label><input type="number" step="0.1" value={s.state.weapon.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>品質</label><input type="number" value={s.state.weapon.q} onChange={this.setQ} /></RWDValue>
-          <RWDValue><label>暴擊機率</label><input type="number" value={s.state.weapon.c} onChange={this.setC} /></RWDValue>
+          <RWDValue><label>暴擊機率</label><input type="number" step="0.1" value={s.state.weapon.c} onChange={this.setC} /></RWDValue>
         </Row> : null}
       </section>
     );
@@ -1848,7 +1848,7 @@ const Skill = React.createClass({
         <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>技能</h3>
         {this.state.display ? 
         <Row>
-          <RWDValue><label>基礎傷加成</label><input type="number" value={s.state.skill.bd} onChange={this.setBd} /></RWDValue>
+          <RWDValue><label>基礎傷加成</label><input type="number" step="0.1" value={s.state.skill.bd} onChange={this.setBd} /></RWDValue>
           <RWDValue><label>攻速</label><input type="number" value={s.state.skill.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>較少攻速</label><input type="number" value={s.state.skill.asl} onChange={this.setAsl} /></RWDValue>
           <RWDValue><label>暴率</label><input type="number" value={s.state.skill.c} onChange={this.setC} /></RWDValue>
@@ -2397,8 +2397,8 @@ const Info = React.createClass({
             <p className="col xx6"><strong >暴傷加成%</strong>{sum.cd}</p>
             <p className="col xx6"><strong >物理傷害(倍率)</strong>{sum.pdml}</p>
             <p className="col xx6"><strong >元素傷害(倍率)</strong>{sum.edml}</p>
-            <p className="col xx6"><strong >傷害傷害(倍率)</strong>{sum.dml}</p>
-            <p className="col xx6"><strong >隱藏傷害傷害(倍率)</strong>{sum.hdml}</p>
+            <p className="col xx6"><strong >傷害(倍率)</strong>{sum.dml}</p>
+            <p className="col xx6"><strong >隱藏傷害(倍率)</strong>{sum.hdml}</p>
           </Row> : null}
         </section>
       </div>
