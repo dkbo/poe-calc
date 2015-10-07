@@ -375,7 +375,7 @@ const init = {
   },
 };
 let leftPanel =  [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
-let rightPanel = [false, false, false, false, false, false, false, false, false];
+let rightPanel = [false, false, false, false, false, false, false, false, false, false];
 let index = localStorage.index ? localStorage.index : 1;
 let value = [];
 if(localStorage.left) {

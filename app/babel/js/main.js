@@ -2090,6 +2090,7 @@ const Info = React.createClass({
       addHDisplay:rightPanel[6],
       puDisplay: rightPanel[7],
       puHDisplay: rightPanel[8],
+      sumDisplay: rightPanel[9],
     };
   },
   _handlePlayer() {
@@ -2137,6 +2138,11 @@ const Info = React.createClass({
     main.rightPanel();
     this.setState({puHDisplay: !this.state.puHDisplay});
   },
+  _handleSum() {
+    rightPanel[9] = !this.state.sumDisplay;
+    main.rightPanel();
+    this.setState({sumDisplay: !this.state.sumDisplay});
+  },
   render(s = this.props.s.state){
     const sum = {
       hp: s.talent.hp + s.head.hp + s.hand.hp + s.body.hp + s.belt.hp + s.ringone.hp + s.ringtwo.hp + s.necklace.hp + s.foot.hp + s.quiver.hp,
@@ -2160,7 +2166,7 @@ const Info = React.createClass({
       zb: s.weaponadd.zb + s.talent.zb + s.head.zb + s.hand.zb + s.body.zb + s.belt.zb + s.ringone.zb + s.ringtwo.zb + s.necklace.zb + s.foot.zb + s.quiver.zb + s.skill.zb,
       ps: s.head.ps + s.talent.ps + s.hand.ps + s.body.ps + s.belt.ps + s.ringone.ps + s.ringtwo.ps + s.necklace.ps + s.foot.ps + s.quiver.ps,
       pb: s.head.pb + s.talent.pb + s.hand.pb + s.body.pb + s.belt.pb + s.ringone.pb + s.ringtwo.pb + s.necklace.pb + s.foot.pb + s.quiver.pb,
-      c: s.talent.c + s.head.c + s.hand.c + s.body.c + s.belt.c + s.ringone.c + s.ringtwo.c + s.necklace.c + s.foot.c + s.quiver.c + s.skill.c,
+      c: s.player.bb * 50 + s.talent.c + s.head.c + s.hand.c + s.body.c + s.belt.c + s.ringone.c + s.ringtwo.c + s.necklace.c + s.foot.c + s.quiver.c + s.skill.c,
       cd: s.weaponadd.cd + s.talent.cd + s.head.cd + s.hand.cd + s.body.cd + s.belt.cd + s.ringone.cd + s.ringtwo.cd + s.necklace.cd + s.foot.cd + s.quiver.cd + s.skill.cd,
       cud: s.talent.cud,
       cupd: s.talent.cupd,
@@ -2220,6 +2226,7 @@ const Info = React.createClass({
       c: Math.round(weapon.c * (100 + sum.c)) / 100,
       cd: Math.round(150 * (100 + sum.cd)/ 100),
     };
+    calc.c = calc.c > 95 ? 95 : calc.c;
     const info = {      
       td: Math.round((((calc.basicds + calc.basicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
       sd: Math.round((((calc.basicds + calc.basicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc * calc.as) / 100,
@@ -2359,6 +2366,39 @@ const Info = React.createClass({
             <p className="col xx6"><strong>站立暴擊</strong>{hideinfo.pusc} - {hideinfo.pubc}</p>
             <p className="col xx6"><strong>移動</strong>{Math.round(hidebasic.pus * 0.6)} - {Math.round(hidebasic.pub * 0.6)}</p>
             <p className="col xx6"><strong>移動暴擊</strong>{hideinfo.puswc} - {hideinfo.pubwc}</p>
+          </Row> : null}
+        </section>
+        <section>
+          <h3 className={this.state.sumDisplay ? 'active' : null} onClick={this._handleSum}>加總數據</h3>
+          {this.state.sumDisplay ?
+          <Row>
+            <p className="col xx3"><strong>生命</strong>{sum.hp}</p>
+            <p className="col xx3"><strong>生命%</strong>{sum.hpd}</p>
+            <p className="col xx3"><strong>魔力</strong>{sum.mp}</p>
+            <p className="col xx3"><strong>魔力%</strong>{sum.mpd}</p>
+            <p className="col xx6"><strong>元素傷害%</strong>{sum.ed}</p>
+            <p className="col xx6"><strong>武器元素傷害%</strong>{sum.wed}</p>
+            <p className="col xx6"><strong>物傷%</strong>{sum.pd}</p>
+            <p className="col xx6"><strong>物傷(大小)</strong>{sum.ps} - {sum.pb}</p>
+            <p className="col xx6"><strong className="iceColor">冰傷%</strong>{sum.iced}</p>
+            <p className="col xx6"><strong className="iceColor">冰傷(大小)</strong>{sum.ices} - {sum.iceb}</p>
+            <p className="col xx6"><strong className="fireColor">火傷%</strong>{sum.fd}</p>
+            <p className="col xx6"><strong className="fireColor">火傷(大小)</strong>{sum.fs} - {sum.fb}</p>
+            <p className="col xx6"><strong className="electricColor">電傷%</strong>{sum.td}</p>
+            <p className="col xx6"><strong className="electricColor">電傷(大小)</strong>{sum.ts} - {sum.tb}</p>
+            <p className="col xx6"><strong >混傷%</strong>{sum.zd}</p>
+            <p className="col xx6"><strong >混傷(大小)</strong>{sum.zs} - {sum.zb}</p>
+            <p className="col xx6"><strong >持續傷害%</strong>{sum.cud}</p>
+            <p className="col xx6"><strong >物理持續傷害%</strong>{sum.cupd}</p>
+            <p className="col xx4"><strong >持續傷害%</strong>{sum.cud}</p>
+            <p className="col xx4"><strong >物理持續傷害%</strong>{sum.cupd}</p>
+            <p className="col xx4"><strong >投射物傷害%</strong>{sum.pjtd}</p>
+            <p className="col xx6"><strong >暴率%</strong>{sum.c}</p>
+            <p className="col xx6"><strong >暴傷加成%</strong>{sum.cd}</p>
+            <p className="col xx6"><strong >物理傷害(倍率)</strong>{sum.pdml}</p>
+            <p className="col xx6"><strong >元素傷害(倍率)</strong>{sum.edml}</p>
+            <p className="col xx6"><strong >傷害傷害(倍率)</strong>{sum.dml}</p>
+            <p className="col xx6"><strong >隱藏傷害傷害(倍率)</strong>{sum.hdml}</p>
           </Row> : null}
         </section>
       </div>
