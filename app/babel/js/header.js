@@ -447,7 +447,7 @@ const Page = React.createClass({
     temp.name = name;
     value.push(temp);
     this._handleChangePage(value.length);
-    
+    window.location.reload();
   },
   _handleChangePage(id) {
     localStorage.index = index = id;
