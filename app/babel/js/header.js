@@ -454,6 +454,15 @@ const Page = React.createClass({
     this.setState();
     main.setState(value[index - 1]);
   },
+  _handleInport(e) {
+    const file = e.target.files[0];
+    const fileReader = new FileReader();           
+    fileReader.onload = function (ev) {
+      localStorage.temp = ev.target.result;
+      window.location.reload();
+    };
+    fileReader.readAsText(file);
+  },
   _index(page, id) {
     if(index - 1 === id) {
       return <li className="active" keys={id} >{value[index - 1].name}</li>;
@@ -465,6 +474,8 @@ const Page = React.createClass({
     return(
       <nav>
         <ul className="clearfix">
+          <li className=''><a  href={URL.createObjectURL(new Blob([JSON.stringify(value)],{ type:"application/octect-stream" }))} download='poe-calc.txt'>匯出</a></li>
+          <li className='' ><input id="fileInport" onChange={this._handleInport} type="file"   />匯入</li>
           <li className='' onClick={this._handleAdd}>新增</li>
           <li className='' onClick={this._handleReanme}>命名</li>
           <li className='' onClick={this._handleCopy}>複製</li>
