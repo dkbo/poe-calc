@@ -378,6 +378,8 @@ let leftPanel =  [false, false, false, false, false, false, false, false, false,
 let rightPanel = [false, false, false, false, false, false, false, false, false, false];
 let index = localStorage.index ? localStorage.index : 1;
 let value = [];
+const view = location.hash ? true : false;
+
 if(localStorage.left) {
   leftPanel = localStorage.left.split(",").map(function(bool){
     if(bool == "false") {
@@ -396,20 +398,28 @@ if(localStorage.right) {
     } 
   });
 }
-
-if(localStorage.temp) {
-  if(typeof JSON.parse(localStorage.temp) === 'object') {
-    localStorage.version == 1 ? value = JSON.parse(localStorage.temp) : value[0] = init;
-    localStorage.version = 1;
-  } else {
-    value[0] = init;
-    localStorage.temp = JSON.stringify(value);
-    localStorage.version = 1;
-  }
+if(!view) {
+    if(localStorage.temp) {
+      if(typeof JSON.parse(localStorage.temp) === 'object') {
+        localStorage.version == 1 ? value = JSON.parse(localStorage.temp) : value[0] = init;
+        localStorage.version = 1;
+        if(value.length < index) {
+            localStorage.index = index = value.length;
+        }
+      } else {
+        value[0] = init;
+        localStorage.temp = JSON.stringify(value);
+        localStorage.version = 1;
+      }
+    } else {
+      value[0] = init;
+      localStorage.temp = JSON.stringify(value);
+      localStorage.version = 1;
+    }
 } else {
-  value[0] = init;
-  localStorage.temp = JSON.stringify(value);
-  localStorage.version = 1;
+    value[index - 1] = JSON.parse(location.hash.replace("#",""));
+    console.log(location.hash)
+    console.log(value[index - 1]) 
 }
 const Page = React.createClass({
   getInitialState() {
@@ -420,7 +430,7 @@ const Page = React.createClass({
   _handleAdd() {
     value[value.length] = init;
     this._handleChangePage(value.length);
-    window.location.reload();
+    window.location.href = ('/');
   },
   _handleDel() {
     if(value.length === 1) {
@@ -447,19 +457,21 @@ const Page = React.createClass({
     temp.name = name;
     value.push(temp);
     this._handleChangePage(value.length);
-    window.location.reload();
+    window.location.href = ('/');
   },
   _handleChangePage(id) {
-    localStorage.index = index = id;
-    this.setState();
-    main.setState(value[index - 1]);
+    if(!view) {
+      localStorage.index = index = id;
+      this.setState();
+      main.setState(value[index - 1]);
+    }
   },
   _handleInport(e) {
     const file = e.target.files[0];
     const fileReader = new FileReader();           
     fileReader.onload = function (ev) {
       localStorage.temp = ev.target.result;
-      window.location.reload();
+      window.location.href = ('/');
     };
     fileReader.readAsText(file);
   },
@@ -474,12 +486,13 @@ const Page = React.createClass({
     return(
       <nav>
         <ul className="clearfix">
-          <li className=''><a  href={URL.createObjectURL(new Blob([JSON.stringify(value)],{ type:"application/octect-stream" }))} download='poe-calc.txt'>匯出</a></li>
-          <li className='' ><input id="fileInport" onChange={this._handleInport} type="file"   />匯入</li>
-          <li className='' onClick={this._handleAdd}>新增</li>
-          <li className='' onClick={this._handleReanme}>命名</li>
-          <li className='' onClick={this._handleCopy}>複製</li>
-          <li className='' onClick={this._handleDel}>刪除</li>
+          {view ? <li className=''><a href="/">回到個人配置頁面</a></li> : null}
+          {view ? null : <li className=''><a  href={URL.createObjectURL(new Blob([JSON.stringify(value)],{ type:"application/octect-stream" }))} download='poe-calc.txt'>匯出</a></li>}
+          {view ? null : <li className='' ><input id="fileInport" onChange={this._handleInport} type="file"   />匯入</li>}
+          {view ? null : <li className='' onClick={this._handleAdd}>新增</li>}
+          {view ? null : <li className='' onClick={this._handleReanme}>命名</li>}
+          {view ? null : <li className='' onClick={this._handleCopy}>複製</li>}
+          {view ? null : <li className='' onClick={this._handleDel}>刪除</li> }
           <div className='clearfix' />
           {value.map(this._index)}
         </ul>

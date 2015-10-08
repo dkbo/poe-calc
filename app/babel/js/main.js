@@ -2458,10 +2458,10 @@ const App = React.createClass({
   },
   render(){
     value[index - 1] = this.state;
-    //const url = "#" + JSON.stringify(this.state);
-    //window.location.href = url;
-    localStorage.temp = JSON.stringify(value);
-
+    window.location.href = (`#${JSON.stringify(value[index - 1])}`);
+    if(!view) {
+      localStorage.temp = JSON.stringify(value);
+    }
     return(
     <div>
       <Value s={this} />
