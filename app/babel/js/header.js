@@ -433,7 +433,7 @@ const Page = React.createClass({
   _handleAdd() {
     value[value.length] = init;
     this._handleChangePage(value.length);
-    window.location.href = ('/');
+    window.location.href = (`${location.pathname}`);
   },
   _handleDel() {
     if(value.length === 1) {
@@ -460,7 +460,7 @@ const Page = React.createClass({
     temp.name = name;
     value.push(temp);
     this._handleChangePage(value.length);
-    window.location.href = ('/');
+    window.location.href = (`${location.pathname}`);
   },
   _handleChangePage(id) {
     if(!view) {
@@ -474,7 +474,7 @@ const Page = React.createClass({
     const fileReader = new FileReader();           
     fileReader.onload = function (ev) {
       localStorage.temp = ev.target.result;
-      window.location.href = ('/');
+      window.location.href = (`${location.pathname}`);
     };
     fileReader.readAsText(file);
   },
@@ -489,7 +489,7 @@ const Page = React.createClass({
     return(
       <nav>
         <ul className="clearfix">
-          {view ? <li className=''><a href="/">回到個人配置頁面</a></li> : null}
+          {view ? <li className=''><a href={`${location.pathname}`}>回到個人配置頁面</a></li> : null}
           {view ? null : <li className=''><a  href={URL.createObjectURL(new Blob([JSON.stringify(value)],{ type:"application/octect-stream" }))} download='poe-calc.txt'>匯出</a></li>}
           {view ? null : <li className='' ><input id="fileInport" onChange={this._handleInport} type="file"   />匯入</li>}
           {view ? null : <li className='' onClick={this._handleAdd}>新增</li>}
