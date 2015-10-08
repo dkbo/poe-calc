@@ -417,9 +417,12 @@ if(!view) {
       localStorage.version = 1;
     }
 } else {
-    value[index - 1] = JSON.parse(location.hash.replace("#",""));
-    console.log(location.hash)
-    console.log(value[index - 1]) 
+    const hash = location.hash.replace("#","")
+    const arr = hash.split("xxx");
+    const json = arr.join('"');
+    console.log(json)
+    value[index - 1] = JSON.parse(json);
+    
 }
 const Page = React.createClass({
   getInitialState() {
