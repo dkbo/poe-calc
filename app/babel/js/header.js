@@ -493,6 +493,7 @@ const Page = React.createClass({
           {view ? null : <li className='' onClick={this._handleReanme}>命名</li>}
           {view ? null : <li className='' onClick={this._handleCopy}>複製</li>}
           {view ? null : <li className='' onClick={this._handleDel}>刪除</li> }
+          <li id="author" className='xx-fright' ><a href="http://dkbo.github.io">DKBO 製作</a></li>
           <div className='clearfix' />
           {value.map(this._index)}
         </ul>
