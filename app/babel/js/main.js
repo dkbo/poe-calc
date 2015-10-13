@@ -2458,7 +2458,7 @@ const App = React.createClass({
   },
   render(){
     value[index - 1] = this.state;
-    window.location.href = (`#${JSON.stringify(value[index - 1])}`);
+    window.location.href = (`#${base64.encode(JSON.stringify(value[index - 1]))}`);
     if(!view) {
       localStorage.temp = JSON.stringify(value);
     }
