@@ -96,7 +96,7 @@ const Weapon = React.createClass({
         <Row>
           <RWDValue><label>物傷(小)</label><input type="number" value={s.state.weapon.ps} onChange={this.setPs} /></RWDValue>
           <RWDValue><label>物傷(大)</label><input type="number" value={s.state.weapon.pb} onChange={this.setPb} /></RWDValue>
-          <RWDValue><label>攻速</label><input type="number" step="0.1" value={s.state.weapon.as} onChange={this.setAs} /></RWDValue>
+          <RWDValue><label>攻速</label><input type="number" step="0.01" value={s.state.weapon.as} onChange={this.setAs} /></RWDValue>
           <RWDValue><label>品質</label><input type="number" value={s.state.weapon.q} onChange={this.setQ} /></RWDValue>
           <RWDValue><label>暴擊機率</label><input type="number" step="0.1" value={s.state.weapon.c} onChange={this.setC} /></RWDValue>
         </Row> : null}
