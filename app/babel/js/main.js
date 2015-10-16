@@ -2459,6 +2459,19 @@ const App = React.createClass({
   render(){
     value[index - 1] = this.state;
     window.location.href = (`#${base64.encode(JSON.stringify(value[index - 1]))}`);
+    $.ajax({
+      url : 'https:\/\/www.googleapis.com/urlshortener/v1/url?key=AIzaSyBQw5RseC1Om1DzQn8YfsbF08GAryITvf8',
+      type : 'POST',
+      data : JSON.stringify({'longUrl': `http:\/\/dkbo.github.io/poe-calc/#${base64.encode(JSON.stringify(value[index - 1]))}`}),
+      contentType : "application/json",
+      dataType : "json",
+      success: function(result,status,xhr){
+        if ( status=="success" ) {
+        shortUrl = result.id;
+        header.setState();
+      }
+     }
+    });
     if(!view) {
       localStorage.temp = JSON.stringify(value);
     }

@@ -379,7 +379,7 @@ let rightPanel = [false, false, false, false, false, false, false, false, false,
 let index = localStorage.index ? localStorage.index : 1;
 let value = [];
 const view = location.hash ? true : false;
-
+let shortUrl = null;
 if(localStorage.left) {
   leftPanel = localStorage.left.split(",").map(function(bool){
     if(bool == "false") {
@@ -493,6 +493,7 @@ const Page = React.createClass({
           {view ? null : <li className='' onClick={this._handleReanme}>命名</li>}
           {view ? null : <li className='' onClick={this._handleCopy}>複製</li>}
           {view ? null : <li className='' onClick={this._handleDel}>刪除</li> }
+          <li className='' ><label>短網址</label><input value={shortUrl} /></li>
           <li id="author" className='xx-fright' ><a href="http://dkbo.github.io">DKBO 製作</a></li>
           <div className='clearfix' />
           {value.map(this._index)}
