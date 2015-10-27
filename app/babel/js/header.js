@@ -505,7 +505,12 @@ const Page = React.createClass({
 const Title = React.createClass({
   render(s = this.props.s){
     return(
-      <h1 className="xx-center">POE 弓類武器傷害試算</h1>
+      <div className="col xx12">
+        <h1 className="xx-center">POE 弓類傷害計算機</h1>
+        <div className="row">
+          <p className="primary xx-p">避免沉迷於巴哈姆特上，日前已把相關文章全數刪除，因自己及周遭朋友還會使用，所以網頁計算機依舊會保留。路過的訪客要是覺得好用，也可隨意散撥或修改，目前已經了解 POE 8成公式，如在使用上、傷害計算、迴避、減傷等公式有任何問題時，也歡迎在遊戲中設我為好友 ID: DKBO，上線時間不多，休閒時會玩下。</p>
+        </div>
+      </div>
     );
   },
 });
