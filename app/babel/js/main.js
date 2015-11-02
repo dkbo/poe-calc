@@ -2230,6 +2230,12 @@ const Info = React.createClass({
     const info = {      
       td: Math.round((((calc.basicds + calc.basicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
       sd: Math.round((((calc.basicds + calc.basicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc * calc.as) / 100,
+      ptd: Math.round((((basic.ps + basic.pb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.ps + basic.pb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
+      psd: Math.round((((basic.ps + basic.pb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.ps + basic.pb) / 2 * (100 - calc.c) / 100)) * s.player.acc * calc.as) / 100,
+      etd: Math.round((((basic.ices + basic.fs + basic.ts + basic.iceb + basic.fb + basic.tb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.ices + basic.fs + basic.ts + basic.iceb + basic.fb + basic.tb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
+      esd: Math.round((((basic.ices + basic.fs + basic.ts + basic.iceb + basic.fb + basic.tb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.ices + basic.fs + basic.ts + basic.iceb + basic.fb + basic.tb) / 2 * (100 - calc.c) / 100)) * s.player.acc * calc.as) / 100,
+      ztd: Math.round((((basic.zs + basic.zb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.zs + basic.zb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
+      zsd: Math.round((((basic.zs + basic.zb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.zs + basic.zb) / 2 * (100 - calc.c) / 100)) * s.player.acc * calc.as) / 100,
       icesc: Math.round(basic.ices * calc.cd) / 100,
       icebc: Math.round(basic.iceb * calc.cd) / 100,
       fsc: Math.round(basic.fs * calc.cd) / 100,
@@ -2249,6 +2255,12 @@ const Info = React.createClass({
     const hideinfo = {
       td: Math.round((((calc.hbasicds + calc.hbasicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.hbasicds + calc.hbasicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
       sd: Math.round((((calc.hbasicds + calc.hbasicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.hbasicds + calc.hbasicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc * calc.as) / 100,
+      ptd: Math.round((((hidebasic.ps + hidebasic.pb) / 2 * calc.c / 100 * calc.cd / 100) + ((hidebasic.ps + hidebasic.pb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
+      psd: Math.round((((hidebasic.ps + hidebasic.pb) / 2 * calc.c / 100 * calc.cd / 100) + ((hidebasic.ps + hidebasic.pb) / 2 * (100 - calc.c) / 100)) * s.player.acc * calc.as) / 100,
+      etd: Math.round((((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * calc.c / 100 * calc.cd / 100) + ((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
+      esd: Math.round((((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * calc.c / 100 * calc.cd / 100) + ((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * (100 - calc.c) / 100)) * s.player.acc * calc.as) / 100,
+      ztd: Math.round((((hidebasic.zs + hidebasic.zb) / 2 * calc.c / 100 * calc.cd / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
+      zsd: Math.round((((hidebasic.zs + hidebasic.zb) / 2 * calc.c / 100 * calc.cd / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.c) / 100)) * s.player.acc * calc.as) / 100,
       icesc: Math.round(hidebasic.ices * calc.cd) / 100,
       icebc: Math.round(hidebasic.iceb * calc.cd) / 100,
       fsc: Math.round(hidebasic.fs * calc.cd) / 100,
@@ -2300,8 +2312,14 @@ const Info = React.createClass({
           <h3 className={this.state.dmInfoDisplay ? 'active' : null} onClick={this._handleDmInfo}>面版傷害資訊</h3>
           {this.state.dmInfoDisplay ?
           <Row>
-            <p className="col xx4"><strong>每秒傷害</strong>{info.sd}</p>
-            <p className="col xx4"><strong>每次傷害</strong>{info.td}</p>
+            <p className="col xx6"><strong>每秒傷害(總傷)</strong>{info.sd}</p>
+            <p className="col xx6"><strong>每次傷害(總傷)</strong>{info.td}</p>
+            <p className="col xx6"><strong>每秒傷害(物理)</strong>{info.psd}</p>
+            <p className="col xx6"><strong>每次傷害(物理)</strong>{info.ptd}</p>
+            <p className="col xx6"><strong>每秒傷害(元素)</strong>{info.esd}</p>
+            <p className="col xx6"><strong>每次傷害(元素)</strong>{info.etd}</p>
+            <p className="col xx6"><strong>每秒傷害(混沌)</strong>{info.zsd}</p>
+            <p className="col xx6"><strong>每次傷害(混沌)</strong>{info.ztd}</p>
             <p className="col xx4"><strong>基礎傷害</strong>{calc.basicds} - {calc.basicdb}</p>
             <p className="col xx4"><strong>基礎物理</strong>{basic.ps} - {basic.pb}</p>
             <p className="col xx4"><strong className="iceColor">基礎冰傷</strong>{basic.ices} - {basic.iceb}</p>
@@ -2314,8 +2332,14 @@ const Info = React.createClass({
           <h3 className={this.state.hideInfoDisplay ? 'active' : null} onClick={this._handleHideInfo}>隱藏傷害資訊</h3>
           {this.state.hideInfoDisplay ?
           <Row>
-            <p className="col xx4"><strong>每秒傷害</strong>{hideinfo.sd}</p>
-            <p className="col xx4"><strong>每次傷害</strong>{hideinfo.td}</p>
+            <p className="col xx6"><strong>每秒傷害(總傷)</strong>{hideinfo.sd}</p>
+            <p className="col xx6"><strong>每次傷害(總傷)</strong>{hideinfo.td}</p>
+            <p className="col xx6"><strong>每秒傷害(物理)</strong>{hideinfo.psd}</p>
+            <p className="col xx6"><strong>每次傷害(物理)</strong>{hideinfo.ptd}</p>
+            <p className="col xx6"><strong>每秒傷害(元素)</strong>{hideinfo.esd}</p>
+            <p className="col xx6"><strong>每次傷害(元素)</strong>{hideinfo.etd}</p>
+            <p className="col xx6"><strong>每秒傷害(混沌)</strong>{hideinfo.zsd}</p>
+            <p className="col xx6"><strong>每次傷害(混沌)</strong>{hideinfo.ztd}</p>
             <p className="col xx4"><strong>基礎傷害</strong>{calc.hbasicds} - {calc.hbasicdb}</p>
             <p className="col xx4"><strong>基礎物理</strong>{hidebasic.ps} - {hidebasic.pb}</p>
             <p className="col xx4"><strong className="iceColor">基礎冰傷</strong>{hidebasic.ices} - {hidebasic.iceb}</p>
