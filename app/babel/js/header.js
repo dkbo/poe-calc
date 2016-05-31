@@ -373,8 +373,8 @@ const init = {
     thb: 0,//雷霆(大)
     ags: 0, //憤怒(小)
     agb: 0, //憤怒(大)
-  },
-};
+  }
+}
 let leftPanel =  [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 let rightPanel = [false, false, false, false, false, false, false, false, false, false];
 let index = localStorage.index ? localStorage.index : 1;
@@ -509,7 +509,7 @@ const Title = React.createClass({
       <div className="col xx12">
         <h1 className="xx-center">POE 弓類傷害計算機</h1>
         <div className="row">
-          <p className="primary xx-p">路過的訪客要是覺得好用，可隨意散撥或修改，此工具不在做任何更新及修正。2016/02/02</p>
+          <p className="primary xx-p">路過的訪客要是覺得好用，也可隨意散撥或修改，目前已經對於 POE 傷害公式還算了解，如在使用上有任何問題時，也歡迎在遊戲中設我為好友 ID: DKBO，上線時間不多，休閒時會玩下。</p>
         </div>
       </div>
     );

@@ -5,32 +5,32 @@ const Player = React.createClass({
       display: leftPanel[0],
     };
   },
-  setLevel(e, json = this.props.s.state.player) {
-    json.level = parseInt(e.target.value);
+  setLevel(e, json = this.props.s.state) {
+    json.player.level = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setStr(e, json = this.props.s.state.player) {
-    json.str = parseInt(e.target.value);
+  setStr(e, json = this.props.s.state) {
+    json.player.str = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setAgi(e, json = this.props.s.state.player) {
-    json.agi = parseInt(e.target.value);
+  setAgi(e, json = this.props.s.state) {
+    json.player.agi = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setInt(e, json = this.props.s.state.player) {
-    json.int = parseInt(e.target.value);
+  setInt(e, json = this.props.s.state) {
+    json.player.int = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setAcc(e, json = this.props.s.state.player) {
-    json.acc = parseInt(e.target.value);
+  setAcc(e, json = this.props.s.state) {
+    json.player.acc = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setGb(e, json = this.props.s.state.player) {
-    json.gb = parseInt(e.target.value);
+  setGb(e, json = this.props.s.state) {
+    json.player.gb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setBb(e, json = this.props.s.state.player) {
-    json.bb = parseInt(e.target.value);
+  setBb(e, json = this.props.s.state) {
+    json.player.bb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -63,24 +63,24 @@ const Weapon = React.createClass({
       display: leftPanel[1],
     };
   },
-  setPs(e, json = this.props.s.state.weapon) {
-    json.ps = parseInt(e.target.value);
+  setPs(e, json = this.props.s.state) {
+    json.weapon.ps = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPb(e, json = this.props.s.state.weapon) {
-    json.pb = parseInt(e.target.value);
+  setPb(e, json = this.props.s.state) {
+    json.weapon.pb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setAs(e, json = this.props.s.state.weapon) {
-    json.as = parseFloat(e.target.value);
+  setAs(e, json = this.props.s.state) {
+    json.weapon.as = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setQ(e, json = this.props.s.state.weapon) {
-    json.q = parseInt(e.target.value);
+  setQ(e, json = this.props.s.state) {
+    json.weapon.q = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.weapon) {
-    json.c = parseFloat(e.target.value);
+  setC(e, json = this.props.s.state) {
+    json.weapon.c = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -110,92 +110,92 @@ const WeaponAdd = React.createClass({
       display: leftPanel[2],
     };
   },
-  setAs(e, json = this.props.s.state.weaponadd) {
-    json.as = parseInt(e.target.value);
+  setAs(e, json = this.props.s.state) {
+    json.weaponadd.as = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.weaponadd) {
-    json.c = parseInt(e.target.value);
+  setC(e, json = this.props.s.state) {
+    json.weaponadd.c = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCd(e, json = this.props.s.state.weaponadd) {
-    json.cd = parseInt(e.target.value);
+  setCd(e, json = this.props.s.state) {
+    json.weaponadd.cd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setEd(e, json = this.props.s.state.weaponadd) {
-    json.ed = parseInt(e.target.value);
+  setEd(e, json = this.props.s.state) {
+    json.weaponadd.ed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWed(e, json = this.props.s.state.weaponadd) {
-    json.wed = parseInt(e.target.value);
+  setWed(e, json = this.props.s.state) {
+    json.weaponadd.wed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPd(e, json = this.props.s.state.weaponadd) {
-    json.pd = parseInt(e.target.value);
+  setPd(e, json = this.props.s.state) {
+    json.weaponadd.pd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIced(e, json = this.props.s.state.weaponadd) {
-    json.iced = parseInt(e.target.value);
+  setIced(e, json = this.props.s.state) {
+    json.weaponadd.iced = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFd(e, json = this.props.s.state.weaponadd) {
-    json.fd = parseInt(e.target.value);
+  setFd(e, json = this.props.s.state) {
+    json.weaponadd.fd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTd(e, json = this.props.s.state.weaponadd) {
-    json.td = parseInt(e.target.value);
+  setTd(e, json = this.props.s.state) {
+    json.weaponadd.td = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPs(e, json = this.props.s.state.weaponadd) {
-    json.ps = parseInt(e.target.value);
+  setPs(e, json = this.props.s.state) {
+    json.weaponadd.ps = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPb(e, json = this.props.s.state.weaponadd) {
-    json.pb = parseInt(e.target.value);
+  setPb(e, json = this.props.s.state) {
+    json.weaponadd.pb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIces(e, json = this.props.s.state.weaponadd) {
-    json.ices = parseInt(e.target.value);
+  setIces(e, json = this.props.s.state) {
+    json.weaponadd.ices = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIceb(e, json = this.props.s.state.weaponadd) {
-    json.iceb = parseInt(e.target.value);
+  setIceb(e, json = this.props.s.state) {
+    json.weaponadd.iceb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFs(e, json = this.props.s.state.weaponadd) {
-    json.fs = parseInt(e.target.value);
+  setFs(e, json = this.props.s.state) {
+    json.weaponadd.fs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFb(e, json = this.props.s.state.weaponadd) {
-    json.fb = parseInt(e.target.value);
+  setFb(e, json = this.props.s.state) {
+    json.weaponadd.fb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTs(e, json = this.props.s.state.weaponadd) {
-    json.ts = parseInt(e.target.value);
+  setTs(e, json = this.props.s.state) {
+    json.weaponadd.ts = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTb(e, json = this.props.s.state.weaponadd) {
-    json.tb = parseInt(e.target.value);
+  setTb(e, json = this.props.s.state) {
+    json.weaponadd.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZd(e, json = this.props.s.state.weaponadd) {
-    json.zd = parseInt(e.target.value);
+  setZd(e, json = this.props.s.state) {
+    json.weaponadd.zd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZs(e, json = this.props.s.state.weaponadd) {
-    json.zs = parseInt(e.target.value);
+  setZs(e, json = this.props.s.state) {
+    json.weaponadd.zs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZb(e, json = this.props.s.state.weaponadd) {
-    json.zb = parseInt(e.target.value);
+  setZb(e, json = this.props.s.state) {
+    json.weaponadd.zb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPm(e, json = this.props.s.state.weaponadd) {
-    json.pm = parseInt(e.target.value);
+  setPm(e, json = this.props.s.state) {
+    json.weaponadd.pm = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTtz(e, json = this.props.s.state.weaponadd) {
-    json.ttz = parseInt(e.target.value);
+  setTtz(e, json = this.props.s.state) {
+    json.weaponadd.ttz = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -244,116 +244,116 @@ const Talent = React.createClass({
       display: leftPanel[3],
     };
   },
-  setAs(e, json = this.props.s.state.talent) {
-    json.as = parseInt(e.target.value);
+  setAs(e, json = this.props.s.state) {
+    json.talent.as = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.talent) {
-    json.c = parseInt(e.target.value);
+  setC(e, json = this.props.s.state) {
+    json.talent.c = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCd(e, json = this.props.s.state.talent) {
-    json.cd = parseInt(e.target.value);
+  setCd(e, json = this.props.s.state) {
+    json.talent.cd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setEd(e, json = this.props.s.state.talent) {
-    json.ed = parseInt(e.target.value);
+  setEd(e, json = this.props.s.state) {
+    json.talent.ed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWed(e, json = this.props.s.state.talent) {
-    json.wed = parseInt(e.target.value);
+  setWed(e, json = this.props.s.state) {
+    json.talent.wed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCud(e, json = this.props.s.state.talent) {
-    json.cud = parseInt(e.target.value);
+  setCud(e, json = this.props.s.state) {
+    json.talent.cud = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCupd(e, json = this.props.s.state.talent) {
-    json.cupd = parseInt(e.target.value);
+  setCupd(e, json = this.props.s.state) {
+    json.talent.cupd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPjtd(e, json = this.props.s.state.talent) {
-    json.pjtd = parseInt(e.target.value);
+  setPjtd(e, json = this.props.s.state) {
+    json.talent.pjtd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPd(e, json = this.props.s.state.talent) {
-    json.pd = parseInt(e.target.value);
+  setPd(e, json = this.props.s.state) {
+    json.talent.pd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIced(e, json = this.props.s.state.talent) {
-    json.iced = parseInt(e.target.value);
+  setIced(e, json = this.props.s.state) {
+    json.talent.iced = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFd(e, json = this.props.s.state.talent) {
-    json.fd = parseInt(e.target.value);
+  setFd(e, json = this.props.s.state) {
+    json.talent.fd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTd(e, json = this.props.s.state.talent) {
-    json.td = parseInt(e.target.value);
+  setTd(e, json = this.props.s.state) {
+    json.talent.td = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setAura(e, json = this.props.s.state.talent) {
-    json.aura = parseInt(e.target.value);
+  setAura(e, json = this.props.s.state) {
+    json.talent.aura = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHp(e, json = this.props.s.state.talent) {
-    json.hp = parseInt(e.target.value);
+  setHp(e, json = this.props.s.state) {
+    json.talent.hp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHpd(e, json = this.props.s.state.talent) {
-    json.hpd = parseInt(e.target.value);
+  setHpd(e, json = this.props.s.state) {
+    json.talent.hpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMp(e, json = this.props.s.state.talent) {
-    json.mp = parseInt(e.target.value);
+  setMp(e, json = this.props.s.state) {
+    json.talent.mp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMpd(e, json = this.props.s.state.talent) {
-    json.mpd = parseInt(e.target.value);
+  setMpd(e, json = this.props.s.state) {
+    json.talent.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPs(e, json = this.props.s.state.talent) {
-    json.ps = parseInt(e.target.value);
+  setPs(e, json = this.props.s.state) {
+    json.talent.ps = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPb(e, json = this.props.s.state.talent) {
-    json.pb = parseInt(e.target.value);
+  setPb(e, json = this.props.s.state) {
+    json.talent.pb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIces(e, json = this.props.s.state.talent) {
-    json.ices = parseInt(e.target.value);
+  setIces(e, json = this.props.s.state) {
+    json.talent.ices = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIceb(e, json = this.props.s.state.talent) {
-    json.iceb = parseInt(e.target.value);
+  setIceb(e, json = this.props.s.state) {
+    json.talent.iceb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFs(e, json = this.props.s.state.talent) {
-    json.fs = parseInt(e.target.value);
+  setFs(e, json = this.props.s.state) {
+    json.talent.fs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFb(e, json = this.props.s.state.talent) {
-    json.fb = parseInt(e.target.value);
+  setFb(e, json = this.props.s.state) {
+    json.talent.fb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTs(e, json = this.props.s.state.talent) {
-    json.ts = parseInt(e.target.value);
+  setTs(e, json = this.props.s.state) {
+    json.talent.ts = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTb(e, json = this.props.s.state.talent) {
-    json.tb = parseInt(e.target.value);
+  setTb(e, json = this.props.s.state) {
+    json.talent.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZd(e, json = this.props.s.state.talent) {
-    json.zd = parseInt(e.target.value);
+  setZd(e, json = this.props.s.state) {
+    json.talent.zd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZs(e, json = this.props.s.state.talent) {
-    json.zs = parseInt(e.target.value);
+  setZs(e, json = this.props.s.state) {
+    json.talent.zs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZb(e, json = this.props.s.state.talent) {
-    json.zb = parseInt(e.target.value);
+  setZb(e, json = this.props.s.state) {
+    json.talent.zb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -409,100 +409,100 @@ const Head = React.createClass({
       display: leftPanel[4],
     };
   },
-  setAs(e, json = this.props.s.state.head) {
-    json.as = parseInt(e.target.value);
+  setAs(e, json = this.props.s.state) {
+    json.head.as = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.head) {
-    json.c = parseInt(e.target.value);
+  setC(e, json = this.props.s.state) {
+    json.head.c = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCd(e, json = this.props.s.state.head) {
-    json.cd = parseInt(e.target.value);
+  setCd(e, json = this.props.s.state) {
+    json.head.cd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setEd(e, json = this.props.s.state.head) {
-    json.ed = parseInt(e.target.value);
+  setEd(e, json = this.props.s.state) {
+    json.head.ed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWed(e, json = this.props.s.state.head) {
-    json.wed = parseInt(e.target.value);
+  setWed(e, json = this.props.s.state) {
+    json.head.wed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPd(e, json = this.props.s.state.head) {
-    json.pd = parseInt(e.target.value);
+  setPd(e, json = this.props.s.state) {
+    json.head.pd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIced(e, json = this.props.s.state.head) {
-    json.iced = parseInt(e.target.value);
+  setIced(e, json = this.props.s.state) {
+    json.head.iced = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFd(e, json = this.props.s.state.head) {
-    json.fd = parseInt(e.target.value);
+  setFd(e, json = this.props.s.state) {
+    json.head.fd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTd(e, json = this.props.s.state.head) {
-    json.td = parseInt(e.target.value);
+  setTd(e, json = this.props.s.state) {
+    json.head.td = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPs(e, json = this.props.s.state.head) {
-    json.ps = parseInt(e.target.value);
+  setPs(e, json = this.props.s.state) {
+    json.head.ps = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPb(e, json = this.props.s.state.head) {
-    json.pb = parseInt(e.target.value);
+  setPb(e, json = this.props.s.state) {
+    json.head.pb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIces(e, json = this.props.s.state.head) {
-    json.ices = parseInt(e.target.value);
+  setIces(e, json = this.props.s.state) {
+    json.head.ices = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIceb(e, json = this.props.s.state.head) {
-    json.iceb = parseInt(e.target.value);
+  setIceb(e, json = this.props.s.state) {
+    json.head.iceb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFs(e, json = this.props.s.state.head) {
-    json.fs = parseInt(e.target.value);
+  setFs(e, json = this.props.s.state) {
+    json.head.fs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFb(e, json = this.props.s.state.head) {
-    json.fb = parseInt(e.target.value);
+  setFb(e, json = this.props.s.state) {
+    json.head.fb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTs(e, json = this.props.s.state.head) {
-    json.ts = parseInt(e.target.value);
+  setTs(e, json = this.props.s.state) {
+    json.head.ts = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTb(e, json = this.props.s.state.head) {
-    json.tb = parseInt(e.target.value);
+  setTb(e, json = this.props.s.state) {
+    json.head.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHp(e, json = this.props.s.state.head) {
-    json.hp = parseInt(e.target.value);
+  setHp(e, json = this.props.s.state) {
+    json.head.hp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHpd(e, json = this.props.s.state.head) {
-    json.hpd = parseInt(e.target.value);
+  setHpd(e, json = this.props.s.state) {
+    json.head.hpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMp(e, json = this.props.s.state.head) {
-    json.mp = parseInt(e.target.value);
+  setMp(e, json = this.props.s.state) {
+    json.head.mp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMpd(e, json = this.props.s.state.head) {
-    json.mpd = parseInt(e.target.value);
+  setMpd(e, json = this.props.s.state) {
+    json.head.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZd(e, json = this.props.s.state.head) {
-    json.zd = parseInt(e.target.value);
+  setZd(e, json = this.props.s.state) {
+    json.head.zd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZs(e, json = this.props.s.state.head) {
-    json.zs = parseInt(e.target.value);
+  setZs(e, json = this.props.s.state) {
+    json.head.zs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZb(e, json = this.props.s.state.head) {
-    json.zb = parseInt(e.target.value);
+  setZb(e, json = this.props.s.state) {
+    json.head.zb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -553,100 +553,100 @@ const Hand = React.createClass({
       display: leftPanel[5],
     };
   },
-  setAs(e, json = this.props.s.state.hand) {
-    json.as = parseInt(e.target.value);
+  setAs(e, json = this.props.s.state) {
+    json.hand.as = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.hand) {
-    json.c = parseInt(e.target.value);
+  setC(e, json = this.props.s.state) {
+    json.hand.c = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCd(e, json = this.props.s.state.hand) {
-    json.cd = parseInt(e.target.value);
+  setCd(e, json = this.props.s.state) {
+    json.hand.cd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setEd(e, json = this.props.s.state.hand) {
-    json.ed = parseInt(e.target.value);
+  setEd(e, json = this.props.s.state) {
+    json.hand.ed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWed(e, json = this.props.s.state.hand) {
-    json.wed = parseInt(e.target.value);
+  setWed(e, json = this.props.s.state) {
+    json.hand.wed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPd(e, json = this.props.s.state.hand) {
-    json.pd = parseInt(e.target.value);
+  setPd(e, json = this.props.s.state) {
+    json.hand.pd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIced(e, json = this.props.s.state.hand) {
-    json.iced = parseInt(e.target.value);
+  setIced(e, json = this.props.s.state) {
+    json.hand.iced = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFd(e, json = this.props.s.state.hand) {
-    json.fd = parseInt(e.target.value);
+  setFd(e, json = this.props.s.state) {
+    json.hand.fd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTd(e, json = this.props.s.state.hand) {
-    json.td = parseInt(e.target.value);
+  setTd(e, json = this.props.s.state) {
+    json.hand.td = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPs(e, json = this.props.s.state.hand) {
-    json.ps = parseInt(e.target.value);
+  setPs(e, json = this.props.s.state) {
+    json.hand.ps = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPb(e, json = this.props.s.state.hand) {
-    json.pb = parseInt(e.target.value);
+  setPb(e, json = this.props.s.state) {
+    json.hand.pb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIces(e, json = this.props.s.state.hand) {
-    json.ices = parseInt(e.target.value);
+  setIces(e, json = this.props.s.state) {
+    json.hand.ices = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIceb(e, json = this.props.s.state.hand) {
-    json.iceb = parseInt(e.target.value);
+  setIceb(e, json = this.props.s.state) {
+    json.hand.iceb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFs(e, json = this.props.s.state.hand) {
-    json.fs = parseInt(e.target.value);
+  setFs(e, json = this.props.s.state) {
+    json.hand.fs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFb(e, json = this.props.s.state.hand) {
-    json.fb = parseInt(e.target.value);
+  setFb(e, json = this.props.s.state) {
+    json.hand.fb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTs(e, json = this.props.s.state.hand) {
-    json.ts = parseInt(e.target.value);
+  setTs(e, json = this.props.s.state) {
+    json.hand.ts = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTb(e, json = this.props.s.state.hand) {
-    json.tb = parseInt(e.target.value);
+  setTb(e, json = this.props.s.state) {
+    json.hand.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHp(e, json = this.props.s.state.hand) {
-    json.hp = parseInt(e.target.value);
+  setHp(e, json = this.props.s.state) {
+    json.hand.hp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHpd(e, json = this.props.s.state.hand) {
-    json.hpd = parseInt(e.target.value);
+  setHpd(e, json = this.props.s.state) {
+    json.hand.hpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMp(e, json = this.props.s.state.hand) {
-    json.mp = parseInt(e.target.value);
+  setMp(e, json = this.props.s.state) {
+    json.hand.mp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMpd(e, json = this.props.s.state.hand) {
-    json.mpd = parseInt(e.target.value);
+  setMpd(e, json = this.props.s.state) {
+    json.hand.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZd(e, json = this.props.s.state.hand) {
-    json.zd = parseInt(e.target.value);
+  setZd(e, json = this.props.s.state) {
+    json.hand.zd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZs(e, json = this.props.s.state.hand) {
-    json.zs = parseInt(e.target.value);
+  setZs(e, json = this.props.s.state) {
+    json.hand.zs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZb(e, json = this.props.s.state.hand) {
-    json.zb = parseInt(e.target.value);
+  setZb(e, json = this.props.s.state) {
+    json.hand.zb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -697,100 +697,100 @@ const Body= React.createClass({
       display: leftPanel[6],
     };
   },
-  setAs(e, json = this.props.s.state.body) {
-    json.as = parseInt(e.target.value);
+  setAs(e, json = this.props.s.state) {
+    json.body.as = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.body) {
-    json.c = parseInt(e.target.value);
+  setC(e, json = this.props.s.state) {
+    json.body.c = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCd(e, json = this.props.s.state.body) {
-    json.cd = parseInt(e.target.value);
+  setCd(e, json = this.props.s.state) {
+    json.body.cd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setEd(e, json = this.props.s.state.body) {
-    json.ed = parseInt(e.target.value);
+  setEd(e, json = this.props.s.state) {
+    json.body.ed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWed(e, json = this.props.s.state.body) {
-    json.wed = parseInt(e.target.value);
+  setWed(e, json = this.props.s.state) {
+    json.body.wed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPd(e, json = this.props.s.state.body) {
-    json.pd = parseInt(e.target.value);
+  setPd(e, json = this.props.s.state) {
+    json.body.pd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIced(e, json = this.props.s.state.body) {
-    json.iced = parseInt(e.target.value);
+  setIced(e, json = this.props.s.state) {
+    json.body.iced = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFd(e, json = this.props.s.state.body) {
-    json.fd = parseInt(e.target.value);
+  setFd(e, json = this.props.s.state) {
+    json.body.fd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTd(e, json = this.props.s.state.body) {
-    json.td = parseInt(e.target.value);
+  setTd(e, json = this.props.s.state) {
+    json.body.td = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPs(e, json = this.props.s.state.body) {
-    json.ps = parseInt(e.target.value);
+  setPs(e, json = this.props.s.state) {
+    json.body.ps = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPb(e, json = this.props.s.state.body) {
-    json.pb = parseInt(e.target.value);
+  setPb(e, json = this.props.s.state) {
+    json.body.pb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIces(e, json = this.props.s.state.body) {
-    json.ices = parseInt(e.target.value);
+  setIces(e, json = this.props.s.state) {
+    json.body.ices = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIceb(e, json = this.props.s.state.body) {
-    json.iceb = parseInt(e.target.value);
+  setIceb(e, json = this.props.s.state) {
+    json.body.iceb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFs(e, json = this.props.s.state.body) {
-    json.fs = parseInt(e.target.value);
+  setFs(e, json = this.props.s.state) {
+    json.body.fs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFb(e, json = this.props.s.state.body) {
-    json.fb = parseInt(e.target.value);
+  setFb(e, json = this.props.s.state) {
+    json.body.fb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTs(e, json = this.props.s.state.body) {
-    json.ts = parseInt(e.target.value);
+  setTs(e, json = this.props.s.state) {
+    json.body.ts = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTb(e, json = this.props.s.state.body) {
-    json.tb = parseInt(e.target.value);
+  setTb(e, json = this.props.s.state) {
+    json.body.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHp(e, json = this.props.s.state.body) {
-    json.hp = parseInt(e.target.value);
+  setHp(e, json = this.props.s.state) {
+    json.body.hp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHpd(e, json = this.props.s.state.body) {
-    json.hpd = parseInt(e.target.value);
+  setHpd(e, json = this.props.s.state) {
+    json.body.hpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMp(e, json = this.props.s.state.body) {
-    json.mp = parseInt(e.target.value);
+  setMp(e, json = this.props.s.state) {
+    json.body.mp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMpd(e, json = this.props.s.state.body) {
-    json.mpd = parseInt(e.target.value);
+  setMpd(e, json = this.props.s.state) {
+    json.body.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZd(e, json = this.props.s.state.body) {
-    json.zd = parseInt(e.target.value);
+  setZd(e, json = this.props.s.state) {
+    json.body.zd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZs(e, json = this.props.s.state.body) {
-    json.zs = parseInt(e.target.value);
+  setZs(e, json = this.props.s.state) {
+    json.body.zs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZb(e, json = this.props.s.state.body) {
-    json.zb = parseInt(e.target.value);
+  setZb(e, json = this.props.s.state) {
+    json.body.zb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -841,100 +841,100 @@ const Belt = React.createClass({
       display: leftPanel[7],
     };
   },
-  setAs(e, json = this.props.s.state.belt) {
-    json.as = parseInt(e.target.value);
+  setAs(e, json = this.props.s.state) {
+    json.belt.as = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.belt) {
-    json.c = parseInt(e.target.value);
+  setC(e, json = this.props.s.state) {
+    json.belt.c = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCd(e, json = this.props.s.state.belt) {
-    json.cd = parseInt(e.target.value);
+  setCd(e, json = this.props.s.state) {
+    json.belt.cd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setEd(e, json = this.props.s.state.belt) {
-    json.ed = parseInt(e.target.value);
+  setEd(e, json = this.props.s.state) {
+    json.belt.ed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWed(e, json = this.props.s.state.belt) {
-    json.wed = parseInt(e.target.value);
+  setWed(e, json = this.props.s.state) {
+    json.belt.wed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPd(e, json = this.props.s.state.belt) {
-    json.pd = parseInt(e.target.value);
+  setPd(e, json = this.props.s.state) {
+    json.belt.pd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIced(e, json = this.props.s.state.belt) {
-    json.iced = parseInt(e.target.value);
+  setIced(e, json = this.props.s.state) {
+    json.belt.iced = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFd(e, json = this.props.s.state.belt) {
-    json.fd = parseInt(e.target.value);
+  setFd(e, json = this.props.s.state) {
+    json.belt.fd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTd(e, json = this.props.s.state.belt) {
-    json.td = parseInt(e.target.value);
+  setTd(e, json = this.props.s.state) {
+    json.belt.td = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPs(e, json = this.props.s.state.belt) {
-    json.ps = parseInt(e.target.value);
+  setPs(e, json = this.props.s.state) {
+    json.belt.ps = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPb(e, json = this.props.s.state.belt) {
-    json.pb = parseInt(e.target.value);
+  setPb(e, json = this.props.s.state) {
+    json.belt.pb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIces(e, json = this.props.s.state.belt) {
-    json.ices = parseInt(e.target.value);
+  setIces(e, json = this.props.s.state) {
+    json.belt.ices = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIceb(e, json = this.props.s.state.belt) {
-    json.iceb = parseInt(e.target.value);
+  setIceb(e, json = this.props.s.state) {
+    json.belt.iceb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFs(e, json = this.props.s.state.belt) {
-    json.fs = parseInt(e.target.value);
+  setFs(e, json = this.props.s.state) {
+    json.belt.fs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFb(e, json = this.props.s.state.belt) {
-    json.fb = parseInt(e.target.value);
+  setFb(e, json = this.props.s.state) {
+    json.belt.fb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTs(e, json = this.props.s.state.belt) {
-    json.ts = parseInt(e.target.value);
+  setTs(e, json = this.props.s.state) {
+    json.belt.ts = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTb(e, json = this.props.s.state.belt) {
-    json.tb = parseInt(e.target.value);
+  setTb(e, json = this.props.s.state) {
+    json.belt.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHp(e, json = this.props.s.state.belt) {
-    json.hp = parseInt(e.target.value);
+  setHp(e, json = this.props.s.state) {
+    json.belt.hp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHpd(e, json = this.props.s.state.belt) {
-    json.hpd = parseInt(e.target.value);
+  setHpd(e, json = this.props.s.state) {
+    json.belt.hpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMp(e, json = this.props.s.state.belt) {
-    json.mp = parseInt(e.target.value);
+  setMp(e, json = this.props.s.state) {
+    json.belt.mp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMpd(e, json = this.props.s.state.belt) {
-    json.mpd = parseInt(e.target.value);
+  setMpd(e, json = this.props.s.state) {
+    json.belt.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZd(e, json = this.props.s.state.belt) {
-    json.zd = parseInt(e.target.value);
+  setZd(e, json = this.props.s.state) {
+    json.belt.zd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZs(e, json = this.props.s.state.belt) {
-    json.zs = parseInt(e.target.value);
+  setZs(e, json = this.props.s.state) {
+    json.belt.zs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZb(e, json = this.props.s.state.belt) {
-    json.zb = parseInt(e.target.value);
+  setZb(e, json = this.props.s.state) {
+    json.belt.zb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -985,100 +985,100 @@ const Necklace = React.createClass({
       display: leftPanel[8],
     };
   },
-  setAs(e, json = this.props.s.state.necklace) {
-    json.as = parseInt(e.target.value);
+  setAs(e, json = this.props.s.state) {
+    json.necklace.as = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.necklace) {
-    json.c = parseInt(e.target.value);
+  setC(e, json = this.props.s.state) {
+    json.necklace.c = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCd(e, json = this.props.s.state.necklace) {
-    json.cd = parseInt(e.target.value);
+  setCd(e, json = this.props.s.state) {
+    json.necklace.cd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setEd(e, json = this.props.s.state.necklace) {
-    json.ed = parseInt(e.target.value);
+  setEd(e, json = this.props.s.state) {
+    json.necklace.ed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWed(e, json = this.props.s.state.necklace) {
-    json.wed = parseInt(e.target.value);
+  setWed(e, json = this.props.s.state) {
+    json.necklace.wed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPd(e, json = this.props.s.state.necklace) {
-    json.pd = parseInt(e.target.value);
+  setPd(e, json = this.props.s.state) {
+    json.necklace.pd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIced(e, json = this.props.s.state.necklace) {
-    json.iced = parseInt(e.target.value);
+  setIced(e, json = this.props.s.state) {
+    json.necklace.iced = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFd(e, json = this.props.s.state.necklace) {
-    json.fd = parseInt(e.target.value);
+  setFd(e, json = this.props.s.state) {
+    json.necklace.fd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTd(e, json = this.props.s.state.necklace) {
-    json.td = parseInt(e.target.value);
+  setTd(e, json = this.props.s.state) {
+    json.necklace.td = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPs(e, json = this.props.s.state.necklace) {
-    json.ps = parseInt(e.target.value);
+  setPs(e, json = this.props.s.state) {
+    json.necklace.ps = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPb(e, json = this.props.s.state.necklace) {
-    json.pb = parseInt(e.target.value);
+  setPb(e, json = this.props.s.state) {
+    json.necklace.pb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIces(e, json = this.props.s.state.necklace) {
-    json.ices = parseInt(e.target.value);
+  setIces(e, json = this.props.s.state) {
+    json.necklace.ices = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIceb(e, json = this.props.s.state.necklace) {
-    json.iceb = parseInt(e.target.value);
+  setIceb(e, json = this.props.s.state) {
+    json.necklace.iceb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFs(e, json = this.props.s.state.necklace) {
-    json.fs = parseInt(e.target.value);
+  setFs(e, json = this.props.s.state) {
+    json.necklace.fs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFb(e, json = this.props.s.state.necklace) {
-    json.fb = parseInt(e.target.value);
+  setFb(e, json = this.props.s.state) {
+    json.necklace.fb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTs(e, json = this.props.s.state.necklace) {
-    json.ts = parseInt(e.target.value);
+  setTs(e, json = this.props.s.state) {
+    json.necklace.ts = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTb(e, json = this.props.s.state.necklace) {
-    json.tb = parseInt(e.target.value);
+  setTb(e, json = this.props.s.state) {
+    json.necklace.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHp(e, json = this.props.s.state.necklace) {
-    json.hp = parseInt(e.target.value);
+  setHp(e, json = this.props.s.state) {
+    json.necklace.hp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHpd(e, json = this.props.s.state.necklace) {
-    json.hpd = parseInt(e.target.value);
+  setHpd(e, json = this.props.s.state) {
+    json.necklace.hpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMp(e, json = this.props.s.state.necklace) {
-    json.mp = parseInt(e.target.value);
+  setMp(e, json = this.props.s.state) {
+    json.necklace.mp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMpd(e, json = this.props.s.state.necklace) {
-    json.mpd = parseInt(e.target.value);
+  setMpd(e, json = this.props.s.state) {
+    json.necklace.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZd(e, json = this.props.s.state.necklace) {
-    json.zd = parseInt(e.target.value);
+  setZd(e, json = this.props.s.state) {
+    json.necklace.zd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZs(e, json = this.props.s.state.necklace) {
-    json.zs = parseInt(e.target.value);
+  setZs(e, json = this.props.s.state) {
+    json.necklace.zs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZb(e, json = this.props.s.state.necklace) {
-    json.zb = parseInt(e.target.value);
+  setZb(e, json = this.props.s.state) {
+    json.necklace.zb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -1129,100 +1129,100 @@ const RingOne = React.createClass({
       display: leftPanel[9],
     };
   },
-  setAs(e, json = this.props.s.state.ringone) {
-    json.as = parseInt(e.target.value);
+  setAs(e, json = this.props.s.state) {
+    json.ringone.as = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.ringone) {
-    json.c = parseInt(e.target.value);
+  setC(e, json = this.props.s.state) {
+    json.ringone.c = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCd(e, json = this.props.s.state.ringone) {
-    json.cd = parseInt(e.target.value);
+  setCd(e, json = this.props.s.state) {
+    json.ringone.cd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setEd(e, json = this.props.s.state.ringone) {
-    json.ed = parseInt(e.target.value);
+  setEd(e, json = this.props.s.state) {
+    json.ringone.ed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWed(e, json = this.props.s.state.ringone) {
-    json.wed = parseInt(e.target.value);
+  setWed(e, json = this.props.s.state) {
+    json.ringone.wed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPd(e, json = this.props.s.state.ringone) {
-    json.pd = parseInt(e.target.value);
+  setPd(e, json = this.props.s.state) {
+    json.ringone.pd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIced(e, json = this.props.s.state.ringone) {
-    json.iced = parseInt(e.target.value);
+  setIced(e, json = this.props.s.state) {
+    json.ringone.iced = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFd(e, json = this.props.s.state.ringone) {
-    json.fd = parseInt(e.target.value);
+  setFd(e, json = this.props.s.state) {
+    json.ringone.fd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTd(e, json = this.props.s.state.ringone) {
-    json.td = parseInt(e.target.value);
+  setTd(e, json = this.props.s.state) {
+    json.ringone.td = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPs(e, json = this.props.s.state.ringone) {
-    json.ps = parseInt(e.target.value);
+  setPs(e, json = this.props.s.state) {
+    json.ringone.ps = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPb(e, json = this.props.s.state.ringone) {
-    json.pb = parseInt(e.target.value);
+  setPb(e, json = this.props.s.state) {
+    json.ringone.pb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIces(e, json = this.props.s.state.ringone) {
-    json.ices = parseInt(e.target.value);
+  setIces(e, json = this.props.s.state) {
+    json.ringone.ices = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIceb(e, json = this.props.s.state.ringone) {
-    json.iceb = parseInt(e.target.value);
+  setIceb(e, json = this.props.s.state) {
+    json.ringone.iceb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFs(e, json = this.props.s.state.ringone) {
-    json.fs = parseInt(e.target.value);
+  setFs(e, json = this.props.s.state) {
+    json.ringone.fs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFb(e, json = this.props.s.state.ringone) {
-    json.fb = parseInt(e.target.value);
+  setFb(e, json = this.props.s.state) {
+    json.ringone.fb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTs(e, json = this.props.s.state.ringone) {
-    json.ts = parseInt(e.target.value);
+  setTs(e, json = this.props.s.state) {
+    json.ringone.ts = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTb(e, json = this.props.s.state.ringone) {
-    json.tb = parseInt(e.target.value);
+  setTb(e, json = this.props.s.state) {
+    json.ringone.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHp(e, json = this.props.s.state.ringone) {
-    json.hp = parseInt(e.target.value);
+  setHp(e, json = this.props.s.state) {
+    json.ringone.hp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHpd(e, json = this.props.s.state.ringone) {
-    json.hpd = parseInt(e.target.value);
+  setHpd(e, json = this.props.s.state) {
+    json.ringone.hpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMp(e, json = this.props.s.state.ringone) {
-    json.mp = parseInt(e.target.value);
+  setMp(e, json = this.props.s.state) {
+    json.ringone.mp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMpd(e, json = this.props.s.state.ringone) {
-    json.mpd = parseInt(e.target.value);
+  setMpd(e, json = this.props.s.state) {
+    json.ringone.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZd(e, json = this.props.s.state.ringone) {
-    json.zd = parseInt(e.target.value);
+  setZd(e, json = this.props.s.state) {
+    json.ringone.zd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZs(e, json = this.props.s.state.ringone) {
-    json.zs = parseInt(e.target.value);
+  setZs(e, json = this.props.s.state) {
+    json.ringone.zs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZb(e, json = this.props.s.state.ringone) {
-    json.zb = parseInt(e.target.value);
+  setZb(e, json = this.props.s.state) {
+    json.ringone.zb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -1273,100 +1273,100 @@ const RingTwo = React.createClass({
       display: leftPanel[10],
     };
   },
-  setAs(e, json = this.props.s.state.ringtwo) {
-    json.as = parseInt(e.target.value);
+  setAs(e, json = this.props.s.state) {
+    json.ringtwo.as = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.ringtwo) {
-    json.c = parseInt(e.target.value);
+  setC(e, json = this.props.s.state) {
+    json.ringtwo.c = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCd(e, json = this.props.s.state.ringtwo) {
-    json.cd = parseInt(e.target.value);
+  setCd(e, json = this.props.s.state) {
+    json.ringtwo.cd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setEd(e, json = this.props.s.state.ringtwo) {
-    json.ed = parseInt(e.target.value);
+  setEd(e, json = this.props.s.state) {
+    json.ringtwo.ed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWed(e, json = this.props.s.state.ringtwo) {
-    json.wed = parseInt(e.target.value);
+  setWed(e, json = this.props.s.state) {
+    json.ringtwo.wed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPd(e, json = this.props.s.state.ringtwo) {
-    json.pd = parseInt(e.target.value);
+  setPd(e, json = this.props.s.state) {
+    json.ringtwo.pd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIced(e, json = this.props.s.state.ringtwo) {
-    json.iced = parseInt(e.target.value);
+  setIced(e, json = this.props.s.state) {
+    json.ringtwo.iced = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFd(e, json = this.props.s.state.ringtwo) {
-    json.fd = parseInt(e.target.value);
+  setFd(e, json = this.props.s.state) {
+    json.ringtwo.fd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTd(e, json = this.props.s.state.ringtwo) {
-    json.td = parseInt(e.target.value);
+  setTd(e, json = this.props.s.state) {
+    json.ringtwo.td = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPs(e, json = this.props.s.state.ringtwo) {
-    json.ps = parseInt(e.target.value);
+  setPs(e, json = this.props.s.state) {
+    json.ringtwo.ps = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPb(e, json = this.props.s.state.ringtwo) {
-    json.pb = parseInt(e.target.value);
+  setPb(e, json = this.props.s.state) {
+    json.ringtwo.pb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIces(e, json = this.props.s.state.ringtwo) {
-    json.ices = parseInt(e.target.value);
+  setIces(e, json = this.props.s.state) {
+    json.ringtwo.ices = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIceb(e, json = this.props.s.state.ringtwo) {
-    json.iceb = parseInt(e.target.value);
+  setIceb(e, json = this.props.s.state) {
+    json.ringtwo.iceb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFs(e, json = this.props.s.state.ringtwo) {
-    json.fs = parseInt(e.target.value);
+  setFs(e, json = this.props.s.state) {
+    json.ringtwo.fs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFb(e, json = this.props.s.state.ringtwo) {
-    json.fb = parseInt(e.target.value);
+  setFb(e, json = this.props.s.state) {
+    json.ringtwo.fb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTs(e, json = this.props.s.state.ringtwo) {
-    json.ts = parseInt(e.target.value);
+  setTs(e, json = this.props.s.state) {
+    json.ringtwo.ts = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTb(e, json = this.props.s.state.ringtwo) {
-    json.tb = parseInt(e.target.value);
+  setTb(e, json = this.props.s.state) {
+    json.ringtwo.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHp(e, json = this.props.s.state.ringtwo) {
-    json.hp = parseInt(e.target.value);
+  setHp(e, json = this.props.s.state) {
+    json.ringtwo.hp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHpd(e, json = this.props.s.state.ringtwo) {
-    json.hpd = parseInt(e.target.value);
+  setHpd(e, json = this.props.s.state) {
+    json.ringtwo.hpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMp(e, json = this.props.s.state.ringtwo) {
-    json.mp = parseInt(e.target.value);
+  setMp(e, json = this.props.s.state) {
+    json.ringtwo.mp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMpd(e, json = this.props.s.state.ringtwo) {
-    json.mpd = parseInt(e.target.value);
+  setMpd(e, json = this.props.s.state) {
+    json.ringtwo.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZd(e, json = this.props.s.state.ringtwo) {
-    json.zd = parseInt(e.target.value);
+  setZd(e, json = this.props.s.state) {
+    json.ringtwo.zd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZs(e, json = this.props.s.state.ringtwo) {
-    json.zs = parseInt(e.target.value);
+  setZs(e, json = this.props.s.state) {
+    json.ringtwo.zs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZb(e, json = this.props.s.state.ringtwo) {
-    json.zb = parseInt(e.target.value);
+  setZb(e, json = this.props.s.state) {
+    json.ringtwo.zb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -1417,100 +1417,100 @@ const Foot = React.createClass({
       display: leftPanel[11],
     };
   },
-  setAs(e, json = this.props.s.state.foot) {
-    json.as = parseInt(e.target.value);
+  setAs(e, json = this.props.s.state) {
+    json.foot.as = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.foot) {
-    json.c = parseInt(e.target.value);
+  setC(e, json = this.props.s.state) {
+    json.foot.c = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCd(e, json = this.props.s.state.foot) {
-    json.cd = parseInt(e.target.value);
+  setCd(e, json = this.props.s.state) {
+    json.foot.cd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setEd(e, json = this.props.s.state.foot) {
-    json.ed = parseInt(e.target.value);
+  setEd(e, json = this.props.s.state) {
+    json.foot.ed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWed(e, json = this.props.s.state.foot) {
-    json.wed = parseInt(e.target.value);
+  setWed(e, json = this.props.s.state) {
+    json.foot.wed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPd(e, json = this.props.s.state.foot) {
-    json.pd = parseInt(e.target.value);
+  setPd(e, json = this.props.s.state) {
+    json.foot.pd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIced(e, json = this.props.s.state.foot) {
-    json.iced = parseInt(e.target.value);
+  setIced(e, json = this.props.s.state) {
+    json.foot.iced = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFd(e, json = this.props.s.state.foot) {
-    json.fd = parseInt(e.target.value);
+  setFd(e, json = this.props.s.state) {
+    json.foot.fd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTd(e, json = this.props.s.state.foot) {
-    json.td = parseInt(e.target.value);
+  setTd(e, json = this.props.s.state) {
+    json.foot.td = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPs(e, json = this.props.s.state.foot) {
-    json.ps = parseInt(e.target.value);
+  setPs(e, json = this.props.s.state) {
+    json.foot.ps = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPb(e, json = this.props.s.state.foot) {
-    json.pb = parseInt(e.target.value);
+  setPb(e, json = this.props.s.state) {
+    json.foot.pb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIces(e, json = this.props.s.state.foot) {
-    json.ices = parseInt(e.target.value);
+  setIces(e, json = this.props.s.state) {
+    json.foot.ices = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIceb(e, json = this.props.s.state.foot) {
-    json.iceb = parseInt(e.target.value);
+  setIceb(e, json = this.props.s.state) {
+    json.foot.iceb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFs(e, json = this.props.s.state.foot) {
-    json.fs = parseInt(e.target.value);
+  setFs(e, json = this.props.s.state) {
+    json.foot.fs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFb(e, json = this.props.s.state.foot) {
-    json.fb = parseInt(e.target.value);
+  setFb(e, json = this.props.s.state) {
+    json.foot.fb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTs(e, json = this.props.s.state.foot) {
-    json.ts = parseInt(e.target.value);
+  setTs(e, json = this.props.s.state) {
+    json.foot.ts = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTb(e, json = this.props.s.state.foot) {
-    json.tb = parseInt(e.target.value);
+  setTb(e, json = this.props.s.state) {
+    json.foot.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHp(e, json = this.props.s.state.foot) {
-    json.hp = parseInt(e.target.value);
+  setHp(e, json = this.props.s.state) {
+    json.foot.hp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHpd(e, json = this.props.s.state.foot) {
-    json.hpd = parseInt(e.target.value);
+  setHpd(e, json = this.props.s.state) {
+    json.foot.hpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMp(e, json = this.props.s.state.foot) {
-    json.mp = parseInt(e.target.value);
+  setMp(e, json = this.props.s.state) {
+    json.foot.mp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMpd(e, json = this.props.s.state.foot) {
-    json.mpd = parseInt(e.target.value);
+  setMpd(e, json = this.props.s.state) {
+    json.foot.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZd(e, json = this.props.s.state.root) {
-    json.zd = parseInt(e.target.value);
+  setZd(e, json = this.props.s.state) {
+    json.foot.zd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZs(e, json = this.props.s.state.root) {
-    json.zs = parseInt(e.target.value);
+  setZs(e, json = this.props.s.state) {
+    json.foot.zs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZb(e, json = this.props.s.state.root) {
-    json.zb = parseInt(e.target.value);
+  setZb(e, json = this.props.s.state) {
+    json.foot.zb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -1561,100 +1561,100 @@ const Quiver = React.createClass({
       display: leftPanel[12],
     };
   },
-  setAs(e, json = this.props.s.state.quiver) {
-    json.as = parseInt(e.target.value);
+  setAs(e, json = this.props.s.state) {
+    json.quiver.as = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.quiver) {
-    json.c = parseInt(e.target.value);
+  setC(e, json = this.props.s.state) {
+    json.quiver.c = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCd(e, json = this.props.s.state.quiver) {
-    json.cd = parseInt(e.target.value);
+  setCd(e, json = this.props.s.state) {
+    json.quiver.cd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setEd(e, json = this.props.s.state.quiver) {
-    json.ed = parseInt(e.target.value);
+  setEd(e, json = this.props.s.state) {
+    json.quiver.ed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWed(e, json = this.props.s.state.quiver) {
-    json.wed = parseInt(e.target.value);
+  setWed(e, json = this.props.s.state) {
+    json.quiver.wed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPd(e, json = this.props.s.state.quiver) {
-    json.pd = parseInt(e.target.value);
+  setPd(e, json = this.props.s.state) {
+    json.quiver.pd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIced(e, json = this.props.s.state.quiver) {
-    json.iced = parseInt(e.target.value);
+  setIced(e, json = this.props.s.state) {
+    json.quiver.iced = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFd(e, json = this.props.s.state.quiver) {
-    json.fd = parseInt(e.target.value);
+  setFd(e, json = this.props.s.state) {
+    json.quiver.fd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTd(e, json = this.props.s.state.quiver) {
-    json.td = parseInt(e.target.value);
+  setTd(e, json = this.props.s.state) {
+    json.quiver.td = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPs(e, json = this.props.s.state.quiver) {
-    json.ps = parseInt(e.target.value);
+  setPs(e, json = this.props.s.state) {
+    json.quiver.ps = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPb(e, json = this.props.s.state.quiver) {
-    json.pb = parseInt(e.target.value);
+  setPb(e, json = this.props.s.state) {
+    json.quiver.pb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIces(e, json = this.props.s.state.quiver) {
-    json.ices = parseInt(e.target.value);
+  setIces(e, json = this.props.s.state) {
+    json.quiver.ices = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIceb(e, json = this.props.s.state.quiver) {
-    json.iceb = parseInt(e.target.value);
+  setIceb(e, json = this.props.s.state) {
+    json.quiver.iceb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFs(e, json = this.props.s.state.quiver) {
-    json.fs = parseInt(e.target.value);
+  setFs(e, json = this.props.s.state) {
+    json.quiver.fs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFb(e, json = this.props.s.state.quiver) {
-    json.fb = parseInt(e.target.value);
+  setFb(e, json = this.props.s.state) {
+    json.quiver.fb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTs(e, json = this.props.s.state.quiver) {
-    json.ts = parseInt(e.target.value);
+  setTs(e, json = this.props.s.state) {
+    json.quiver.ts = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTb(e, json = this.props.s.state.quiver) {
-    json.tb = parseInt(e.target.value);
+  setTb(e, json = this.props.s.state) {
+    json.quiver.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHp(e, json = this.props.s.state.quiver) {
-    json.hp = parseInt(e.target.value);
+  setHp(e, json = this.props.s.state) {
+    json.quiver.hp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHpd(e, json = this.props.s.state.quiver) {
-    json.hpd = parseInt(e.target.value);
+  setHpd(e, json = this.props.s.state) {
+    json.quiver.hpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMp(e, json = this.props.s.state.quiver) {
-    json.mp = parseInt(e.target.value);
+  setMp(e, json = this.props.s.state) {
+    json.quiver.mp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMpd(e, json = this.props.s.state.quiver) {
-    json.mpd = parseInt(e.target.value);
+  setMpd(e, json = this.props.s.state) {
+    json.quiver.mpd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZd(e, json = this.props.s.state.quiver) {
-    json.zd = parseInt(e.target.value);
+  setZd(e, json = this.props.s.state) {
+    json.quiver.zd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZs(e, json = this.props.s.state.quiver) {
-    json.zs = parseInt(e.target.value);
+  setZs(e, json = this.props.s.state) {
+    json.quiver.zs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZb(e, json = this.props.s.state.quiver) {
-    json.zb = parseInt(e.target.value);
+  setZb(e, json = this.props.s.state) {
+    json.quiver.zb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -1705,136 +1705,136 @@ const Skill = React.createClass({
       display: leftPanel[13],
     };
   },
-  setBd(e, json = this.props.s.state.skill) {
-    json.bd = parseFloat(e.target.value);
+  setBd(e, json = this.props.s.state) {
+    json.skill.bd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setAs(e, json = this.props.s.state.skill) {
-    json.as = parseInt(e.target.value);
+  setAs(e, json = this.props.s.state) {
+    json.skill.as = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setAsl(e, json = this.props.s.state.skill) {
-    json.asl = parseInt(e.target.value);
+  setAsl(e, json = this.props.s.state) {
+    json.skill.asl = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setC(e, json = this.props.s.state.skill) {
-    json.c = parseInt(e.target.value);
+  setC(e, json = this.props.s.state) {
+    json.skill.c = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCd(e, json = this.props.s.state.skill) {
-    json.cd = parseInt(e.target.value);
+  setCd(e, json = this.props.s.state) {
+    json.skill.cd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setD(e, json = this.props.s.state.skill) {
-    json.d = parseInt(e.target.value);
+  setD(e, json = this.props.s.state) {
+    json.skill.d = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setEd(e, json = this.props.s.state.skill) {
-    json.ed = parseInt(e.target.value);
+  setEd(e, json = this.props.s.state) {
+    json.skill.ed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWed(e, json = this.props.s.state.skill) {
-    json.wed = parseInt(e.target.value);
+  setWed(e, json = this.props.s.state) {
+    json.skill.wed = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPd(e, json = this.props.s.state.skill) {
-    json.pd = parseInt(e.target.value);
+  setPd(e, json = this.props.s.state) {
+    json.skill.pd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPjtd(e, json = this.props.s.state.skill) {
-    json.pjtd = parseInt(e.target.value);
+  setPjtd(e, json = this.props.s.state) {
+    json.skill.pjtd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIced(e, json = this.props.s.state.skill) {
-    json.iced = parseInt(e.target.value);
+  setIced(e, json = this.props.s.state) {
+    json.skill.iced = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFd(e, json = this.props.s.state.skill) {
-    json.fd = parseInt(e.target.value);
+  setFd(e, json = this.props.s.state) {
+    json.skill.fd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTd(e, json = this.props.s.state.skill) {
-    json.td = parseInt(e.target.value);
+  setTd(e, json = this.props.s.state) {
+    json.skill.td = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIces(e, json = this.props.s.state.skill) {
-    json.ices = parseInt(e.target.value);
+  setIces(e, json = this.props.s.state) {
+    json.skill.ices = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setIceb(e, json = this.props.s.state.skill) {
-    json.iceb = parseInt(e.target.value);
+  setIceb(e, json = this.props.s.state) {
+    json.skill.iceb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFs(e, json = this.props.s.state.skill) {
-    json.fs = parseInt(e.target.value);
+  setFs(e, json = this.props.s.state) {
+    json.skill.fs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFb(e, json = this.props.s.state.skill) {
-    json.fb = parseInt(e.target.value);
+  setFb(e, json = this.props.s.state) {
+    json.skill.fb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTs(e, json = this.props.s.state.skill) {
-    json.ts = parseInt(e.target.value);
+  setTs(e, json = this.props.s.state) {
+    json.skill.ts = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTb(e, json = this.props.s.state.skill) {
-    json.tb = parseInt(e.target.value);
+  setTb(e, json = this.props.s.state) {
+    json.skill.tb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPtiadd(e, json = this.props.s.state.skill) {
-    json.ptiadd = parseInt(e.target.value);
+  setPtiadd(e, json = this.props.s.state) {
+    json.skill.ptiadd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPtfadd(e, json = this.props.s.state.skill) {
-    json.ptfadd = parseInt(e.target.value);
+  setPtfadd(e, json = this.props.s.state) {
+    json.skill.ptfadd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPttadd(e, json = this.props.s.state.skill) {
-    json.pttadd = parseInt(e.target.value);
+  setPttadd(e, json = this.props.s.state) {
+    json.skill.pttadd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPtzadd(e, json = this.props.s.state.skill) {
-    json.ptzadd = parseInt(e.target.value);
+  setPtzadd(e, json = this.props.s.state) {
+    json.skill.ptzadd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setItfadd(e, json = this.props.s.state.skill) {
-    json.itfadd = parseInt(e.target.value);
+  setItfadd(e, json = this.props.s.state) {
+    json.skill.itfadd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setItf(e, json = this.props.s.state.skill) {
-    json.itf = parseInt(e.target.value);
+  setItf(e, json = this.props.s.state) {
+    json.skill.itf = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPti(e, json = this.props.s.state.skill) {
-    json.pti = parseInt(e.target.value);
+  setPti(e, json = this.props.s.state) {
+    json.skill.pti = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPtf(e, json = this.props.s.state.skill) {
-    json.ptf = parseInt(e.target.value);
+  setPtf(e, json = this.props.s.state) {
+    json.skill.ptf = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPtt(e, json = this.props.s.state.skill) {
-    json.ptt = parseInt(e.target.value);
+  setPtt(e, json = this.props.s.state) {
+    json.skill.ptt = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPtz(e, json = this.props.s.state.skill) {
-    json.ptz = parseInt(e.target.value);
+  setPtz(e, json = this.props.s.state) {
+    json.skill.ptz = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFtz(e, json = this.props.s.state.skill) {
-    json.ftz = parseInt(e.target.value);
+  setFtz(e, json = this.props.s.state) {
+    json.skill.ftz = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZd(e, json = this.props.s.state.skill) {
-    json.zd = parseInt(e.target.value);
+  setZd(e, json = this.props.s.state) {
+    json.skill.zd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZs(e, json = this.props.s.state.skill) {
-    json.zs = parseInt(e.target.value);
+  setZs(e, json = this.props.s.state) {
+    json.skill.zs = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setZb(e, json = this.props.s.state.skill) {
-    json.zb = parseInt(e.target.value);
+  setZb(e, json = this.props.s.state) {
+    json.skill.zb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -1897,49 +1897,48 @@ const Moreless = React.createClass({
     return {
       display: leftPanel[14],
     };
-  },
-  setGmp(e, json = this.props.s.state.moreless) {
-    json.gmp = parseInt(e.target.value);
+  }, setGmp(e, json = this.props.s.state) {
+    json.moreless.gmp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setLmp(e, json = this.props.s.state.moreless) {
-    json.lmp = parseInt(e.target.value);
+  setLmp(e, json = this.props.s.state) {
+    json.moreless.lmp = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setFork(e, json = this.props.s.state.moreless) {
-    json.fork = parseInt(e.target.value);
+  setFork(e, json = this.props.s.state) {
+    json.moreless.fork = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPjtdm(e, json = this.props.s.state.moreless) {
-    json.pjtdm = parseInt(e.target.value);
+  setPjtdm(e, json = this.props.s.state) {
+    json.moreless.pjtdm = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setPdm(e, json = this.props.s.state.moreless) {
-    json.pdm = parseInt(e.target.value);
+  setPdm(e, json = this.props.s.state) {
+    json.moreless.pdm = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTr(e, json = this.props.s.state.moreless) {
-    json.tr = parseInt(e.target.value);
+  setTr(e, json = this.props.s.state) {
+    json.moreless.tr = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setTrd(e, json = this.props.s.state.moreless) {
-    json.trd = parseInt(e.target.value);
+  setTrd(e, json = this.props.s.state) {
+    json.moreless.trd = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setMtr(e, json = this.props.s.state.moreless) {
-    json.mtr = parseInt(e.target.value);
+  setMtr(e, json = this.props.s.state) {
+    json.moreless.mtr = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setWedm(e, json = this.props.s.state.moreless) {
-    json.wedm = parseInt(e.target.value);
+  setWedm(e, json = this.props.s.state) {
+    json.moreless.wedm = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setCi(e, json = this.props.s.state.moreless) {
-    json.ci = parseInt(e.target.value);
+  setCi(e, json = this.props.s.state) {
+    json.moreless.ci = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setRg(e, json = this.props.s.state.moreless) {
-    json.rg = parseInt(e.target.value);
+  setRg(e, json = this.props.s.state) {
+    json.moreless.rg = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -1980,24 +1979,24 @@ const Aural = React.createClass({
       display: leftPanel[15],
     };
   },
-  setHate(e, json = this.props.s.state.aural) {
-    json.hate = parseInt(e.target.value);
+  setHate(e, json = this.props.s.state) {
+    json.aural.hate = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setThs(e, json = this.props.s.state.aural) {
-    json.ths = parseInt(e.target.value);
+  setThs(e, json = this.props.s.state) {
+    json.aural.ths = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setThb(e, json = this.props.s.state.aural) {
-    json.thb = parseInt(e.target.value);
+  setThb(e, json = this.props.s.state) {
+    json.aural.thb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setAgs(e, json = this.props.s.state.aural) {
-    json.ags = parseInt(e.target.value);
+  setAgs(e, json = this.props.s.state) {
+    json.aural.ags = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setAgb(e, json = this.props.s.state.aural) {
-    json.agb = parseInt(e.target.value);
+  setAgb(e, json = this.props.s.state) {
+    json.aural.agb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -2027,12 +2026,12 @@ const Hideinfo = React.createClass({
       display: leftPanel[16],
     };
   },
-  setPb(e, json = this.props.s.state.hideinfo) {
-    json.pb = parseInt(e.target.value);
+  setPb(e, json = this.props.s.state) {
+    json.hideinfo.pb = parseInt(e.target.value);
     this.props.s.setState(json);
   },
-  setHy(e, json = this.props.s.state.hideinfo) {
-    json.hy = parseInt(e.target.value);
+  setHy(e, json = this.props.s.state) {
+    json.hideinfo.hy = parseInt(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
@@ -2224,7 +2223,7 @@ const Info = React.createClass({
       hbasicds: hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.ps + hidebasic.zs,
       hbasicdb: hidebasic.iceb + hidebasic.fb + hidebasic.tb + hidebasic.pb + hidebasic.zb,
       c: Math.round(weapon.c * (100 + sum.c)) / 100,
-      cd: Math.round(150 * (100 + sum.cd)/ 100),
+      cd: Math.round(150 + sum.cd),
     };
     calc.c = calc.c > 95 ? 95 : calc.c;
     const info = {      
