@@ -11,7 +11,10 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),       //JS最簡壓縮用
     webserver = require('gulp-webserver'), //內建伺服器用
     jade = require('gulp-jade'),           //html 用 
-    compass = require('gulp-compass'),     //compass sass+ susy
+    plumber = require('gulp-plumber'),
+    sass = require('gulp-sass'),
+    plumber = require('gulp-plumber'),
+    postcss = require('gulp-postcss'),
     babel = require('gulp-babel');       //babel
 var init = {
   jade : {
@@ -42,7 +45,7 @@ var init = {
   webServer : {
     name : 'webserver',
     src : '',
-    port : 80,
+    port : 81,
     livereload : true
   },
 
@@ -72,21 +75,30 @@ gulp.task(init.babel.name, function() {
     .pipe(notify({ message: x.message }))
     .pipe(livereload());
 });
-gulp.task(init.compass.name, function() {
-  var x = init.compass;
-    gulp.src(x.src)
-    .pipe(compass({
-    config_file: x.config_file,
-    css: x.css,
-    sass: x.sass,
-    sourcemap: x.sourcemap,
-    style: x.style,
-    comments: x.comments,
-    require: x.require
-  }))
-  .pipe(notify({ message: x.message }))
-  .pipe(livereload());
-  gulp.run('del');
+gulp.task('sass', function() {
+    gulp.src('app/sass/**/*.sass')
+        .pipe(plumber())
+        .pipe(sass({
+                outputStyle: 'compressed',
+                includePaths: [
+                    'node_modules/susy/sass'
+                ]
+            })
+            .on('error', sass.logError))
+        .pipe(gulp.dest('app/css/'))
+        .pipe(livereload());
+});
+gulp.task('css', function() {
+    var processors = [
+        autoprefixer({
+            browsers: ['last 1 version']
+        })
+    ];
+        gulp.src('app/css/**/*.css')
+            .pipe(plumber())
+            .pipe(postcss(processors))
+            .pipe(gulp.dest('/css/'));
+
 });
 gulp.task('del', function(cb) {
     del([
@@ -95,12 +107,12 @@ gulp.task('del', function(cb) {
 });
 gulp.task('watch', function () { 
   gulp.watch('app/jade/**/*.jade', ['jade']);
-  gulp.watch('app/sass/**/*.sass', ['compass']);
+  gulp.watch('app/sass/**/*.sass', ['sass']);
   gulp.watch('app/coffeescripts/**/*.coffee', ['coffee']);
   gulp.watch('app/babel/**/*.js', ['babel']);
   gulp.watch('app/images/**/*', ['images']);
   livereload.listen();
 });
  // Default task
-gulp.task('default', ['jade','compass','babel','webserver','watch'])
+gulp.task('default', ['jade','sass','babel','webserver','watch'])
 
