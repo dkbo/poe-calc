@@ -80,7 +80,7 @@ const Weapon = React.createClass({
     this.props.s.setState(json);
   },
   setC(e, json = this.props.s.state) {
-    json.weapon.c = parseInt(e.target.value);
+    json.weapon.c = parseFloat(e.target.value);
     this.props.s.setState(json);
   },
   _handleClick() {
