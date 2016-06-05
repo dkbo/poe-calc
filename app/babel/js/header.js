@@ -1,3 +1,22 @@
+//正規
+const reg = {
+  weapon: {
+
+  },
+  talent: {
+
+  },
+  equipment: {
+    // 傷害
+    add: /(附加)\s(\d+)-(\d+)\s(.{2})傷害/g,
+    // 生命 法力
+    hp: /(-|\+)(\d+)\s.+(生命)/g,
+    mp: /(-|\+)(\d+)\s.+(法力)/g,
+  },
+  skill: {
+
+  },
+};
 const init = {
   name: '未命名頁面',
   player: {
@@ -7,7 +26,8 @@ const init = {
     int: 0,   //智慧
     acc: 0,   //準確度
     gb: 0,    //綠球
-    bb: 0,    //籃球  
+    bb: 0,    //籃球 
+    bc: 1,    //散彈效應 
   },
   weapon: {
     ps: 0,  //物理(小)
@@ -71,250 +91,15 @@ const init = {
     zs: 0,  //混傷小
     zb: 0,  //混傷大
   },
-  head: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    d: 0,  //傷害加成%
-    ps: 0,  //物理(小)
-    pb: 0,  //物理(大)
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    zs: 0,  //混傷小
-    zb: 0,  //混傷大
-    cd: 0,  //暴傷加成%
-    ed: 0, //元素傷害%
-    wed: 0, //武器元素傷害%
-    pd: 0,  //物理傷害%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    zd: 0, //混傷%
-    hp: 0, //最大生命
-    hpd: 0, //生命%
-    mp: 0, //最大魔力
-    mpd: 0, //魔力%
-  },
-  hand: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    d: 0,  //傷害加成%
-    ps: 0,  //物理(小)
-    pb: 0,  //物理(大)
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    zs: 0,  //混傷小
-    zb: 0,  //混傷大
-    cd: 0,  //暴傷加成%
-    ed: 0, //元素傷害%
-    wed: 0, //武器元素傷害%
-    pd: 0,  //物理傷害%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    zd: 0, //混傷%
-    hp: 0, //最大生命
-    hpd: 0, //生命%
-    mp: 0, //最大魔力
-    mpd: 0, //魔力%
-  },
-  body: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    d: 0,  //傷害加成%
-    ps: 0,  //物理(小)
-    pb: 0,  //物理(大)
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    zs: 0,  //混傷小
-    zb: 0,  //混傷大
-    cd: 0,  //暴傷加成%
-    ed: 0, //元素傷害%
-    wed: 0, //武器元素傷害%
-    pd: 0,  //物理傷害%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    zd: 0, //混傷%
-    hp: 0, //最大生命
-    hpd: 0, //生命%
-    mp: 0, //最大魔力
-    mpd: 0, //魔力%
-  },
-  belt: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    d: 0,  //傷害加成%
-    ps: 0,  //物理(小)
-    pb: 0,  //物理(大)
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    zs: 0,  //混傷小
-    zb: 0,  //混傷大
-    cd: 0,  //暴傷加成%
-    ed: 0, //元素傷害%
-    wed: 0, //武器元素傷害%
-    pd: 0,  //物理傷害%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    zd: 0, //混傷%
-    hp: 0, //最大生命
-    hpd: 0, //生命%
-    mp: 0, //最大魔力
-    mpd: 0, //魔力%
-  },
-  necklace: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    d: 0,  //傷害加成%
-    ps: 0,  //物理(小)
-    pb: 0,  //物理(大)
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    zs: 0,  //混傷小
-    zb: 0,  //混傷大
-    cd: 0,  //暴傷加成%
-    ed: 0, //元素傷害%
-    wed: 0, //武器元素傷害%
-    pd: 0,  //物理傷害%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    zd: 0, //混傷%
-    hp: 0, //最大生命
-    hpd: 0, //生命%
-    mp: 0, //最大魔力
-    mpd: 0, //魔力%
-  },
-  ringone: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    d: 0,  //傷害加成%
-    ps: 0,  //物理(小)
-    pb: 0,  //物理(大)
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    zs: 0,  //混傷小
-    zb: 0,  //混傷大
-    cd: 0,  //暴傷加成%
-    ed: 0, //元素傷害%
-    wed: 0, //武器元素傷害%
-    pd: 0,  //物理傷害%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    zd: 0, //混傷%
-    hp: 0, //最大生命
-    hpd: 0, //生命%
-    mp: 0, //最大魔力
-    mpd: 0, //魔力%
-  },
-  ringtwo: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    d: 0,  //傷害加成%
-    ps: 0,  //物理(小)
-    pb: 0,  //物理(大)
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    zs: 0,  //混傷小
-    zb: 0,  //混傷大
-    cd: 0,  //暴傷加成%
-    ed: 0, //元素傷害%
-    wed: 0, //武器元素傷害%
-    pd: 0,  //物理傷害%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    zd: 0, //混傷%
-    hp: 0, //最大生命
-    hpd: 0, //生命%
-    mp: 0, //最大魔力
-    mpd: 0, //魔力%
-  },
-  foot: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    d: 0,  //傷害加成%
-    ps: 0,  //物理(小)
-    pb: 0,  //物理(大)
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    zs: 0,  //混傷小
-    zb: 0,  //混傷大
-    cd: 0,  //暴傷加成%
-    ed: 0, //元素傷害%
-    wed: 0, //武器元素傷害%
-    pd: 0,  //物理傷害%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    zd: 0, //混傷%
-    hp: 0, //最大生命
-    hpd: 0, //生命%
-    mp: 0, //最大魔力
-    mpd: 0, //魔力%
-  },
-  quiver: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    d: 0,  //傷害加成%
-    ps: 0,  //物理(小)
-    pb: 0,  //物理(大)
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    zs: 0,  //混傷小
-    zb: 0,  //混傷大
-    cd: 0,  //暴傷加成%
-    ed: 0, //元素傷害%
-    wed: 0, //武器元素傷害%
-    pd: 0,  //物理傷害%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    zd: 0, //混傷%
-    pjtd: 0, //投射出傷害%
-    hp: 0, //最大生命
-    hpd: 0, //生命%
-    mp: 0, //最大魔力
-    mpd: 0, //魔力%
-  },
+  head: equipment(),
+  hand: equipment(),
+  body: equipment(),
+  belt: equipment(),
+  necklace: equipment(),
+  ringone: equipment(),
+  ringtwo: equipment(),
+  foot: equipment(),
+  quiver: equipment(),
   skill: {
     as: 0,  //攻擊速度
     asl: 0, //較少攻擊速度
@@ -376,6 +161,58 @@ const init = {
     agb: 0, //憤怒(大)
   }
 }
+
+function equipment(){
+  return {
+    as: 0,  //攻擊速度
+    c: 0, //暴擊機率
+    d: 0,  //傷害加成%
+    ps: 0,  //物理(小)
+    pb: 0,  //物理(大)
+    ices: 0,  //冰冷小
+    iceb: 0,  //冰冷大
+    fs: 0,  //火焰小
+    fb: 0,  //火焰大
+    ts: 0,  //閃電小
+    tb: 0,  //閃電大
+    zs: 0,  //混傷小
+    zb: 0,  //混傷大
+    cd: 0,  //暴傷加成%
+    ed: 0, //元素傷害%
+    wed: 0, //武器元素傷害%
+    pd: 0,  //物理傷害%
+    iced: 0, //冰冷傷害%
+    fd: 0, //火焰傷害%
+    td: 0,  //閃電傷害%
+    zd: 0, //混傷%
+    pjtd: 0, //投射出傷害%
+    hp: 0, //最大生命
+    hpd: 0, //生命%
+    mp: 0, //最大魔力
+    mpd: 0, //魔力%
+  }
+}
+const info = {
+  name: '未命名頁面',
+  player: {},
+  weapon: {},
+  weaponadd: {},
+  talent: {},
+  head: {},
+  hand: {},
+  body: {},
+  belt: {},
+  necklace: {},
+  ringone: {},
+  ringtwo: {},
+  foot: {},
+  quiver: {},
+  skill: {},
+  moreless: {},
+  hideinfo: {},
+  aural: {}
+}
+let temp = JSON.parse(JSON.stringify(init));
 let leftPanel =  [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 let rightPanel = [false, false, false, false, false, false, false, false, false, false];
 let index = localStorage.index ? localStorage.index : 1;
@@ -384,7 +221,7 @@ const view = location.hash ? true : false;
 let shortUrl = null;
 if(localStorage.left) {
   leftPanel = localStorage.left.split(",").map(function(bool){
-    if(bool == "false") {
+    if(!bool) {
       return false;
     } else {
       return true;
@@ -393,7 +230,7 @@ if(localStorage.left) {
 }
 if(localStorage.right) {
   rightPanel = localStorage.right.split(",").map(function(bool){
-    if(bool == "false") {
+    if(!bool) {
       return false;
     } else {
       return true;  
@@ -403,26 +240,26 @@ if(localStorage.right) {
 if(!view) {
     if(localStorage.temp) {
       if(typeof JSON.parse(localStorage.temp) === 'object') {
-        localStorage.version == 1 ? value = JSON.parse(localStorage.temp) : value[0] = init;
-        localStorage.version = 1;
+        value = JSON.parse(localStorage.temp);
         if(value.length < index) {
             localStorage.index = index = value.length;
         }
       } else {
-        value[0] = init;
+        value[0] = info;
         localStorage.temp = JSON.stringify(value);
-        localStorage.version = 1;
       }
     } else {
-      value[0] = init;
+      value[0] = info;
       localStorage.temp = JSON.stringify(value);
-      localStorage.version = 1;
     }
+
 } else {
     const hash = location.hash.replace("#","");
     const decode = base64.decode(hash);
-    value[index - 1] = JSON.parse(decode); 
+    value[index - 1] = JSON.parse(decode);
+    
 }
+temp = $.extend( true, temp, value[index - 1]);
 const Page = React.createClass({
   getInitialState() {
     return {
@@ -430,9 +267,9 @@ const Page = React.createClass({
     };
   },
   _handleAdd() {
-    value[value.length] = init;
+    temp = JSON.parse(JSON.stringify(init))
+    value[value.length] = info;
     this._handleChangePage(value.length);
-    window.location.href = (`${location.pathname}`);
   },
   _handleDel() {
     if(value.length === 1) {
@@ -455,15 +292,16 @@ const Page = React.createClass({
   },
   _handleCopy() {
     const name = "複製 - " + main.state.name;
-    const temp = value[index - 1];
+    var temp = JSON.parse(JSON.stringify(value[index - 1]));
     temp.name = name;
     value.push(temp);
     this._handleChangePage(value.length);
-    window.location.href = (`${location.pathname}`);
   },
   _handleChangePage(id) {
     if(!view) {
       localStorage.index = index = id;
+      temp = JSON.parse(JSON.stringify(init));
+      temp = $.extend( true, temp, value[index - 1]);
       this.setState();
       main.setState(value[index - 1]);
     }
@@ -528,3 +366,5 @@ const Header = React.createClass({
 });
 const headerBox = document.querySelector('#header');
 const header = React.render(<Header />, headerBox);
+
+
