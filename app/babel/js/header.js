@@ -104,6 +104,8 @@ const init = {
     as: 0,  //攻擊速度
     asl: 0, //較少攻擊速度
     c: 0, //暴擊機率
+    ps: 0,  //物理(小)
+    pb: 0,  //物理(大)
     ices: 0,  //冰冷小
     iceb: 0,  //冰冷大
     fs: 0,  //火焰小
@@ -113,8 +115,9 @@ const init = {
     zs: 0,  //混傷小
     zb: 0,  //混傷大
     cd: 0,  //暴傷加成%
+    pd: 0,  //物理傷害%
     wed: 0, //武器元素傷害%
-    pd: 0,  //投射物物理傷害%
+    pjptd: 0,  //投射物物理傷害%
     pjtd: 0, //投射物傷害%
     d: 0,  //傷害加成%
     ed: 0, //元素傷害%
@@ -219,9 +222,10 @@ let index = localStorage.index ? localStorage.index : 1;
 let value = [];
 const view = location.hash ? true : false;
 let shortUrl = null;
+let showAllRWD = true;
 if(localStorage.left) {
   leftPanel = localStorage.left.split(",").map(function(bool){
-    if(!bool) {
+    if(bool === "false") {
       return false;
     } else {
       return true;
@@ -230,7 +234,7 @@ if(localStorage.left) {
 }
 if(localStorage.right) {
   rightPanel = localStorage.right.split(",").map(function(bool){
-    if(!bool) {
+    if(bool === "false") {
       return false;
     } else {
       return true;  
@@ -315,6 +319,26 @@ const Page = React.createClass({
     };
     fileReader.readAsText(file);
   },
+  _handleShortURL() {
+    $.ajax({
+      url : 'https:\/\/www.googleapis.com/urlshortener/v1/url?key=AIzaSyBQw5RseC1Om1DzQn8YfsbF08GAryITvf8',
+      type : 'POST',
+      data : JSON.stringify({'longUrl': `http:\/\/dkbo.github.io/poe-calc/#${base64.encode(JSON.stringify(value[index - 1]))}`}),
+      contentType : "application/json",
+      dataType : "json",
+      success: function(result,status,xhr){
+        if ( status=="success" ) {
+        shortUrl = result.id;
+        header.setState();
+      }
+     }
+    });
+  },
+  _handleShowALLRWD() {
+    showAllRWD = !showAllRWD;
+    header.setState();
+    main.setState();
+  },
   _index(page, id) {
     if(index - 1 === id) {
       return <li className="active" keys={id} >{value[index - 1].name}</li>;
@@ -333,7 +357,8 @@ const Page = React.createClass({
           {view ? null : <li className='' onClick={this._handleReanme}>命名</li>}
           {view ? null : <li className='' onClick={this._handleCopy}>複製</li>}
           {view ? null : <li className='' onClick={this._handleDel}>刪除</li> }
-          <li className='' ><label>短網址</label><input value={shortUrl} /></li>
+          <li className='' onClick={this._handleShowALLRWD}>{showAllRWD ? "顯示所有" : "隱藏不必要"}資訊</li>
+          <li className='' onClick={this._handleShortURL}><label>短網址</label><input value={shortUrl} /></li>
           <li id="author" className='xx-fright' ><a href="http://dkbo.github.io">DKBO 製作</a></li>
           <div className='clearfix' />
           {value.map(this._index)}
@@ -368,3 +393,9 @@ const headerBox = document.querySelector('#header');
 const header = React.render(<Header />, headerBox);
 
 
+function transNum(val) {
+  if(/\./.test(val)){
+    return parseFloat(val);
+  }
+  return parseInt(val);
+};
