@@ -15,6 +15,7 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     plumber = require('gulp-plumber'),
     postcss = require('gulp-postcss'),
+    autoprefixer = require('autoprefixer');
     babel = require('gulp-babel');       //babel
 var init = {
   jade : {
@@ -85,7 +86,7 @@ gulp.task('sass', function() {
                 ]
             })
             .on('error', sass.logError))
-        .pipe(gulp.dest('app/css/'))
+        .pipe(gulp.dest('app/'))
         .pipe(livereload());
 });
 gulp.task('css', function() {
@@ -97,7 +98,7 @@ gulp.task('css', function() {
         gulp.src('app/css/**/*.css')
             .pipe(plumber())
             .pipe(postcss(processors))
-            .pipe(gulp.dest('/css/'));
+            .pipe(gulp.dest('css/'));
 
 });
 gulp.task('del', function(cb) {
@@ -108,6 +109,7 @@ gulp.task('del', function(cb) {
 gulp.task('watch', function () { 
   gulp.watch('app/jade/**/*.jade', ['jade']);
   gulp.watch('app/sass/**/*.sass', ['sass']);
+  gulp.watch('app/css/**/*.css', ['css']);
   gulp.watch('app/coffeescripts/**/*.coffee', ['coffee']);
   gulp.watch('app/babel/**/*.js', ['babel']);
   gulp.watch('app/images/**/*', ['images']);

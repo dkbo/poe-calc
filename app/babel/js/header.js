@@ -103,6 +103,7 @@ const init = {
   skill: {
     as: 0,  //攻擊速度
     asl: 0, //較少攻擊速度
+    wc: 0, //額外武器暴擊機率
     c: 0, //暴擊機率
     ps: 0,  //物理(小)
     pb: 0,  //物理(大)
@@ -133,6 +134,7 @@ const init = {
     ptiadd: 0, //額外物轉冰
     pttadd: 0, //額外物轉電
     ptzadd: 0, //額外物轉混
+    etzadd: 0, //額外元轉混
     itf: 0, // 冰轉火
     itfadd: 0, // 額外冰轉火
     ftz: 0, //火轉混
@@ -222,7 +224,8 @@ let index = localStorage.index ? localStorage.index : 1;
 let value = [];
 const view = location.hash ? true : false;
 let shortUrl = null;
-let showAllRWD = true;
+let showAllRWD = false;
+let showTextArea = false;
 if(localStorage.left) {
   leftPanel = localStorage.left.split(",").map(function(bool){
     if(bool === "false") {

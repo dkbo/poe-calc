@@ -83,7 +83,7 @@ const Player = React.createClass({
       };
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>人物數值</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>人物數值</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(category, this, s.state)}
@@ -122,7 +122,7 @@ const Weapon = React.createClass({
       };
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>武器基底</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>武器基底</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(category, this, s.state)}
@@ -180,7 +180,7 @@ const WeaponAdd = React.createClass({
       };
     return(
       <section>
-       <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>武器詞綴</h3>
+       <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>武器詞綴</span></h3>
        {this.state.display ? 
         <Row>
           {rwdValue(category, this, s.state)}
@@ -244,7 +244,7 @@ const Talent = React.createClass({
       };
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>天賦點</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>天賦點</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(category, this, s.state)}
@@ -271,10 +271,14 @@ const Head = React.createClass({
     main.leftPanel();
     this.setState({display: !this.state.display});
   },
+  _handleShowTextArea(e) {
+    showTextArea = !showTextArea
+    this.props.s.setState();
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>頭部</h3>
+        <h3 className={this.state.display ? 'active' : null} ><span onClick={this._handleClick}>頭部</span><span className="xx-fright" onClick={this._handleShowTextArea}>匯入</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(equipmentRwd("head"), this, s.state)}
@@ -300,10 +304,14 @@ const Hand = React.createClass({
     main.leftPanel();
     this.setState({display: !this.state.display});
   },
+  _handleShowTextArea(e) {
+    showTextArea = !showTextArea
+    this.props.s.setState();
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>手部</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>手部</span><span className="xx-fright" onClick={this._handleShowTextArea}>匯入</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(equipmentRwd("hand"), this, s.state)}
@@ -329,10 +337,14 @@ const Body= React.createClass({
     main.leftPanel();
     this.setState({display: !this.state.display});
   },
+  _handleShowTextArea(e) {
+    showTextArea = !showTextArea
+    this.props.s.setState();
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>身體</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>身體</span><span className="xx-fright" onClick={this._handleShowTextArea}>匯入</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(equipmentRwd("body"), this, s.state)}
@@ -358,10 +370,14 @@ const Belt = React.createClass({
     main.leftPanel();
     this.setState({display: !this.state.display});
   },
+  _handleShowTextArea(e) {
+    showTextArea = !showTextArea
+    this.props.s.setState();
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>腰帶</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>腰帶</span><span className="xx-fright" onClick={this._handleShowTextArea}>匯入</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(equipmentRwd("belt"), this, s.state)}
@@ -387,10 +403,14 @@ const Necklace = React.createClass({
     main.leftPanel();
     this.setState({display: !this.state.display});
   },
+  _handleShowTextArea(e) {
+    showTextArea = !showTextArea
+    this.props.s.setState();
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>項鍊</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>項鍊</span><span className="xx-fright" onClick={this._handleShowTextArea}>匯入</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(equipmentRwd("necklace"), this, s.state)}
@@ -416,10 +436,14 @@ const RingOne = React.createClass({
     main.leftPanel();
     this.setState({display: !this.state.display});
   },
+  _handleShowTextArea(e) {
+    showTextArea = !showTextArea
+    this.props.s.setState();
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>左戒指</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>左戒指</span><span className="xx-fright" onClick={this._handleShowTextArea}>匯入</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(equipmentRwd("ringone"), this, s.state)}
@@ -445,10 +469,14 @@ const RingTwo = React.createClass({
     main.leftPanel();
     this.setState({display: !this.state.display});
   },
+  _handleShowTextArea(e) {
+    showTextArea = !showTextArea
+    this.props.s.setState();
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>右戒指</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>右戒指</span><span className="xx-fright" onClick={this._handleShowTextArea}>匯入</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(equipmentRwd("ringtwo"), this, s.state)}
@@ -474,10 +502,14 @@ const Foot = React.createClass({
     main.leftPanel();
     this.setState({display: !this.state.display});
   },
+  _handleShowTextArea(e) {
+    showTextArea = !showTextArea
+    this.props.s.setState();
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>腳部</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>腳部</span><span className="xx-fright" onClick={this._handleShowTextArea}>匯入</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(equipmentRwd("foot"), this, s.state)}
@@ -503,10 +535,14 @@ const Quiver = React.createClass({
     main.leftPanel();
     this.setState({display: !this.state.display});
   },
+  _handleShowTextArea(e) {
+    showTextArea = !showTextArea
+    this.props.s.setState();
+  },
   render(s = this.props.s) {
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>箭袋</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>箭袋</span><span className="xx-fright" onClick={this._handleShowTextArea}>匯入</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(equipmentRwd("quiver"), this, s.state)}
@@ -539,6 +575,7 @@ const Skill = React.createClass({
           {label: "基礎傷加成", attr: "bd", step: "0.1"},
           {label: "攻速", attr: "as"},
           {label: "較少攻速", attr: "asl"},
+          {label: "額外武器暴率", attr: "wc", step: "0.1"},
           {label: "暴率", attr: "c"},
           {label: "暴傷%", attr: "cd"},
           {label: "clear"},
@@ -568,6 +605,7 @@ const Skill = React.createClass({
           {label: "額外物轉火%", attr: "ptfadd"},
           {label: "額外物轉電%", attr: "pttadd"},
           {label: "額外物轉混%", attr: "ptzadd"},
+          {label: "額外元轉混%", attr: "etzadd"},
           {label: "clear"},
           {label: "物轉冰%", attr: "pti"},
           {label: "物轉火%", attr: "ptf"},
@@ -581,7 +619,7 @@ const Skill = React.createClass({
       };
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>技能/其餘屬性</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>技能/其餘屬性</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(category, this, s.state)}
@@ -633,7 +671,7 @@ const Moreless = React.createClass({
       };
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>技能更多/較少修正</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>技能更多/較少修正</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(category, this, s.state)}
@@ -672,7 +710,7 @@ const Aural = React.createClass({
       };
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>技能光環</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>技能光環</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(category, this, s.state)}
@@ -708,7 +746,7 @@ const Hideinfo = React.createClass({
       };
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null} onClick={this._handleClick}>實際資訊</h3>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>實際資訊</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(category, this, s.state)}
@@ -811,7 +849,7 @@ const Info = React.createClass({
     const weapon = {
       ps: Math.round((s.weapon.ps + s.weaponadd.ps) * (100 + s.weapon.q + s.weaponadd.pd) / 100), //武器加成後小傷
       pb: Math.round((s.weapon.pb + s.weaponadd.pb) * (100 + s.weapon.q + s.weaponadd.pd) / 100), //武器加成後大傷
-      c: Math.round(s.weapon.c * (100 + s.weaponadd.c)) / 100, //武器加成後暴率
+      c: Math.round(s.weapon.c * (100 + s.weaponadd.c )) / 100 + s.skill.wc, //武器加成後暴率
     };
     const sum = {
       hp: s.talent.hp + s.head.hp + s.hand.hp + s.body.hp + s.belt.hp + s.ringone.hp + s.ringtwo.hp + s.necklace.hp + s.foot.hp + s.quiver.hp,
@@ -897,8 +935,8 @@ const Info = React.createClass({
         tb: Math.round((el(sum.tb, [sum.td], dml) + pl(sum.pb, [sum.td], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (100 - s.weaponadd.ttz) / 100),
         ps: Math.round(pl(sum.ps, [0], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
         pb: Math.round(pl(sum.pb, [0], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
-        zs: Math.round(sum.zs * (100 + sum.zd + sum.pjtd) / 100 * Math.round(dml * s.skill.bd) / 100 + pl(sum.ps, [sum.zd], dml) * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.ts, [sum.td, sum.zd], dml) + pl(sum.ps, [sum.td, sum.zd], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * s.weaponadd.ttz / 100 + (el(sum.fs, [sum.fd, sum.zd], dml) + (el(sum.ices, [sum.fd, sum.iced, sum.zd], dml) + pl(sum.ps, [sum.fd, sum.td, sum.iced, sum.zd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd, sum.zd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * s.skill.ftz / 100),
-        zb: Math.round(sum.zb * (100 + sum.zd + sum.pjtd) / 100 * Math.round(dml * s.skill.bd) / 100 + pl(sum.pb, [sum.zd], dml) * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.tb, [sum.td, sum.zd], dml) + pl(sum.pb, [sum.td, sum.zd], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * s.weaponadd.ttz / 100 + (el(sum.fb, [sum.fd, sum.zd], dml) + (el(sum.iceb, [sum.fd, sum.iced, sum.zd], dml) + pl(sum.pb, [sum.fd, sum.td, sum.iced, sum.zd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd, sum.zd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * s.skill.ftz / 100),
+        zs: Math.round(sum.zs * (100 + sum.zd + sum.pjtd) / 100 * Math.round(dml * s.skill.bd) / 100 + pl(sum.ps, [sum.zd], dml) * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.ices, [sum.iced, sum.zd], dml) + pl(sum.ps, [sum.iced, sum.zd], dml, true) * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.ts, [sum.td, sum.zd], dml) + pl(sum.ps, [sum.td, sum.zd], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (s.weaponadd.ttz + s.skill.etzadd) / 100 + (el(sum.fs, [sum.fd, sum.zd], dml) + (el(sum.ices, [sum.fd, sum.iced, sum.zd], dml) + pl(sum.ps, [sum.fd, sum.td, sum.iced, sum.zd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd, sum.zd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100),
+        zb: Math.round(sum.zb * (100 + sum.zd + sum.pjtd) / 100 * Math.round(dml * s.skill.bd) / 100 + pl(sum.pb, [sum.zd], dml) * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.iceb, [sum.iced, sum.zd], dml) + pl(sum.pb, [sum.iced, sum.zd], dml, true) * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.tb, [sum.td, sum.zd], dml) + pl(sum.pb, [sum.td, sum.zd], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (s.weaponadd.ttz + s.skill.etzadd) / 100 + (el(sum.fb, [sum.fd, sum.zd], dml) + (el(sum.iceb, [sum.fd, sum.iced, sum.zd], dml) + pl(sum.pb, [sum.fd, sum.td, sum.iced, sum.zd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd, sum.zd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100),
         pus: (pl(sum.ps, [sum.cud, sum.cupd], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
         pub: (pl(sum.pb, [sum.cud, sum.cupd], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100),
       }
@@ -1149,6 +1187,9 @@ const App = React.createClass({
   rightPanel() {
     localStorage.right = rightPanel.join(",");
   },
+  _handlePaste(e) {
+    alert(e.target.value)
+  },
   render(){
     value[index - 1] = this.state;
     window.location.href = (`#${base64.encode(JSON.stringify(value[index - 1]))}`);
@@ -1159,7 +1200,10 @@ const App = React.createClass({
     <div>
       <Value s={this} />
       <Info s={this} />
-    </div>
+      { showTextArea ? <div id="text">
+        <textarea onPaste={this._handlePaste}/>
+      </div> : null}
+    </div> 
     );
   },
 });
