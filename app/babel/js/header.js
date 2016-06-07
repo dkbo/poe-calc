@@ -157,6 +157,10 @@ const init = {
   hideinfo: {
     pb: 0, //零點射擊
     hy: 0, //急凍
+    cw: 0, //寶鑽
+    fe: 0, //感電
+    fr: 0, //脆弱(物理)
+    frc: 0, //脆弱(持續)
   },
   aural: {
     hate: 0,//贈恨
@@ -199,7 +203,7 @@ function equipment(){
 }
 const info = {
   name: '未命名頁面',
-  player: {},
+  player: {level: 1, bc: 1},
   weapon: {},
   weaponadd: {},
   talent: {},
@@ -212,7 +216,7 @@ const info = {
   ringtwo: {},
   foot: {},
   quiver: {},
-  skill: {},
+  skill: {bd: 100},
   moreless: {},
   hideinfo: {},
   aural: {}
