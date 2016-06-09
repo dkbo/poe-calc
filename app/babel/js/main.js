@@ -1308,7 +1308,6 @@ const App = React.createClass({
         for(let x in m){
           let f = r.insert.exec(m[x]);
           if(f) {
-              console.log(f)
             switch(f[2]) {
               case "閃電傷害":
                 tp.td += transNum(f[1]);
