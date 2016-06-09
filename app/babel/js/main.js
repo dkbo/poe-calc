@@ -1146,11 +1146,11 @@ const Info = React.createClass({
           {this.state.addHDisplay ?
           <Row>
             <p className="col xx6"><strong>物理</strong>{hideinfo.psc} - {hideinfo.pbc}</p>
-            <p className="col xx6"><strong className="iceColor">冰傷</strong>{hideinfo.icesc} - {hideinfo.icebc}</p>
-            <p className="col xx6"><strong className="fireColor">火傷</strong>{hideinfo.fsc} - {hideinfo.fbc}</p>
-            <p className="col xx6"><strong className="electricColor">電傷</strong>{hideinfo.tsc} - {hideinfo.tbc}</p>
-            <p className="col xx6"><strong>混傷</strong>{hideinfo.zsc} - {hideinfo.zbc}</p>
-            <p className="col xx6"><strong>總傷</strong>{hideinfo.psc + hideinfo.icesc + hideinfo.fsc + hideinfo.tsc + hideinfo.zsc} - {hideinfo.pbc + hideinfo.icebc + hideinfo.fbc + hideinfo.tbc + hideinfo.zbc}</p>   
+            <p className="col xx6"><strong className="iceColor">冰傷</strong>{hideinfo.icesc ? hideinfo.icesc.toFixed(2) :　0} - {hideinfo.icebc ? hideinfo.icebc.toFixed(2) : 0}</p>
+            <p className="col xx6"><strong className="fireColor">火傷</strong>{hideinfo.fsc ? hideinfo.fsc.toFixed(2) : 0} - {hideinfo.fbc ? hideinfo.fbc.toFixed(2) : 0}</p>
+            <p className="col xx6"><strong className="electricColor">電傷</strong>{hideinfo.tsc ? hideinfo.tsc.toFixed(2) : 0} - {hideinfo.tbc ? hideinfo.tbc.toFixed(2) : 0}</p>
+            <p className="col xx6"><strong>混傷</strong>{hideinfo.zsc ? hideinfo.zsc.toFixed(2) : 0} - {hideinfo.zbc ? hideinfo.zbc.toFixed(2) : 0}</p>
+            <p className="col xx6"><strong>總傷</strong>{(hideinfo.psc + hideinfo.icesc + hideinfo.fsc + hideinfo.tsc + hideinfo.zsc).toFixed(2)} - {(hideinfo.pbc + hideinfo.icebc + hideinfo.fbc + hideinfo.tbc + hideinfo.zbc).toFixed(2)}</p>   
           </Row> : null}
         </section>
         <section>
