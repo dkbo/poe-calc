@@ -1239,34 +1239,143 @@ const App = React.createClass({
     const r = reg.equipment;
     const n = infoArray[TextAreaNum];
     let tp = JSON.parse(JSON.stringify(init[n]));
-    let t = r.add;
-    let m = v.match(t);
-    if(m) {
-      for(let x in m){
-        let f = t.exec(m[x]);
+    {
+      let m = v.match(r.parG);
+      if(m) {
+        for(let x in m){
+          let f = r.par.exec(m[x]);
+          if(f) {
+            switch(f[3]) {
+              case "全域暴擊加成":
+                f[1] === "+" ? tp.cd += transNum(f[2]) : tp.cd -= transNum(f[2]);
+                break;
+              default:
+                break;
 
+            }
+          }
+        }
       }
     }
-    t = r.health;
-    m = v.match(t);
-    if(m) {
-      for(let x in m){
-        let f = t.exec(m[x]);
-        if(f) {
-          switch(f[3]) {
-            case "最大生命":
-              f[1] === "+" ? tp.hp += transNum(f[2]) : tp.hp -= transNum(f[2]);
-              break;
-            case "最大法力":
-              f[1] === "+" ? tp.mp += transNum(f[2]) : tp.hp -= transNum(f[2]);
-              break;
+    {
+      let m = v.match(r.addG);
+      if(m) {
+        for(let x in m){
+          let f = r.add.exec(m[x]);
+          if(f) {
+            switch(f[3]) {
+              case "閃電":
+                tp.ts += transNum(f[1]);
+                tp.tb += transNum(f[2]);
+                break;
+              case "冰冷":
+                tp.ices += transNum(f[1]);
+                tp.iceb += transNum(f[2]);
+                break;
+              case "火焰":
+                tp.fs += transNum(f[1]);
+                tp.fb += transNum(f[2]);
+                break;
+              case "物理":
+                tp.ps += transNum(f[1]);
+                tp.pb += transNum(f[2]);
+                break;
+              case "混沌":
+                tp.zs += transNum(f[1]);
+                tp.zb += transNum(f[2]);
+                break;
+              default:
+                break;
+
+            }
+          }
+        }
+      }
+    }
+    {
+      let m = v.match(r.insertG);
+      if(m) {
+        for(let x in m){
+          let f = r.insert.exec(m[x]);
+          if(f) {
+              console.log(f)
+            switch(f[2]) {
+              case "閃電傷害":
+                tp.td += transNum(f[1]);
+                break;
+              case "冰冷傷害":
+                tp.iced += transNum(f[1]);
+                break;
+              case "火焰傷害":
+                tp.fd += transNum(f[1]);
+                break;
+              case "物理傷害":
+                tp.pd += transNum(f[1]);
+                break;
+              case "混沌傷害":
+                tp.zd += transNum(f[1]);
+                break;
+              case "元素傷害":
+                tp.wed += transNum(f[1]);
+                break;
+              case "武器元素傷害":
+                tp.wed += transNum(f[1]);
+                break;
+              case "投射物傷害":
+                tp.pjtd += transNum(f[1]);
+                break;
+              case "陷阱傷害":
+                tp.trd += transNum(f[1]);
+                break;
+              case "中毒傷害":
+                tp.pod += transNum(f[1]);
+                break;
+              case "持續傷害":
+                tp.cud += transNum(f[1]);
+                break;
+              case "全域暴擊率":
+                tp.c += transNum(f[1]);
+                break;
+              case "攻擊速度":
+                tp.as += transNum(f[1]);
+                break;
+              case "最大生命":
+                tp.hpd += transNum(f[1]);
+                break;
+              case "最大法力":
+                tp.mpd += transNum(f[1]);
+                break;
+              default:
+                break;
+
+            }
+          }
+        }
+      }
+    }
+    {
+      let m = v.match(r.healthG);
+      if(m) {
+        for(let x in m){
+          let f = r.health.exec(m[x]);
+          if(f) {
+            switch(f[3]) {
+              case "最大生命":
+                f[1] === "+" ? tp.hp += transNum(f[2]) : tp.hp -= transNum(f[2]);
+                break;
+              case "最大法力":
+                f[1] === "+" ? tp.mp += transNum(f[2]) : tp.mp -= transNum(f[2]);
+                break;
+              default:
+                break;
+            }
           }
         }
       }
     }
     json[n] = temp[n] = tp;
-    showTextArea = false;
     this.setState(json);
+    showTextArea = false;
   },
   render(){
     value[index - 1] = this.state;
@@ -1280,7 +1389,7 @@ const App = React.createClass({
       <Info s={this} />
       { showTextArea ? <div id="text" >
         <h3 className="active">匯入裝備</h3>
-        <textarea onChange={this._handleChange}/>
+        <textarea onChange={this._handleChange} placeholder="滑鼠移到遊戲視窗內的裝備上按下 CTRL + C 再把滑鼠移回網頁文字框內按下 CRTR + V" />
       </div> : null}
     </div> 
     );
