@@ -701,9 +701,6 @@ const Moreless = React.createClass({
           {label: "clear"},
           {label: "武器元素傷害", attr: "wedm"},
           {label: "元素集中", attr: "edm"},
-          {label: "clear"},
-          {label: "(亂矢%)", attr: "pm"},
-
         ]
       };
     return(
@@ -777,6 +774,7 @@ const Hideinfo = React.createClass({
     const category = {
         name: "hideinfo",
         RWDValue: [
+          {label: "(亂矢%)", attr: "pm"},
           {label: "零點射擊", attr: "pb"},
           {label: "急凍", attr: "hy"},
           {label: "寶鑽藥劑", attr: "cw"},
@@ -925,7 +923,7 @@ const Info = React.createClass({
       pdml: ml(s.moreless.pdm),
       edml: Math.round(ml(s.moreless.wedm) * (100 + s.moreless.edm )) / 100,  
       dml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr,s.moreless.btomd, s.moreless.ci, 4 * s.player.gb) * (100 + s.moreless.rg)) / 100,
-      hdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.pm) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
+      hdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.hideinfo.pm) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
       ppdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy) * (100 + s.moreless.rg)) / 100,
       asl: ml(s.moreless.pdmasl, s.moreless.btomasl) * 100,
     };
