@@ -98,7 +98,7 @@ const Player = React.createClass({
     );
   }
 });
-const Weapon = React.createClass({
+const Talent = React.createClass({
   getInitialState() {
     return {
       display: leftPanel[1],
@@ -112,103 +112,6 @@ const Weapon = React.createClass({
   },
   _handleClick() {
     leftPanel[1] = !this.state.display;
-    main.leftPanel();
-    this.setState({display: !this.state.display});
-  },
-  render(s = this.props.s) {
-    const category = {
-        name: "weapon",
-        RWDValue: [
-          {label: "物傷(小)", attr: "ps"},
-          {label: "物傷(大)", attr: "pb"},
-          {label: "攻速", attr: "as", step: "0.01"},
-          {label: "品質", attr: "q"},
-          {label: "暴擊機率", attr: "c", step: "0.1"},
-        ]
-      };
-    return(
-      <section>
-        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>武器基底</span></h3>
-        {this.state.display ? 
-        <Row>
-          {rwdValue(category, this, s.state)}
-        </Row> : null}
-      </section>
-    );
-  },
-});
-const WeaponAdd = React.createClass({
-  getInitialState() {
-    return {
-      display: leftPanel[2],
-    };
-  },
-  setValue(e, json = this.props.s.state) {
-    let category = e.target.name;
-    let attr = e.target.className;
-    json[category][attr] = temp[category][attr] = transNum(e.target.value);
-    this.props.s.setState(json);
-  },
-  _handleClick() {
-    leftPanel[2] = !this.state.display;
-    main.leftPanel();
-    this.setState({display: !this.state.display});
-  },
-  render(s = this.props.s) {
-    const category = {
-        name: "weaponadd",
-        RWDValue: [
-          {label: "攻速", attr: "as"},
-          {label: "暴率", attr: "c"},
-          {label: "暴傷%", attr: "cd"},
-          {label: "clear"},
-          {label: "元傷%", attr: "ed"},
-          {label: "武器元傷%", attr: "wed"},
-          {label: "clear"},
-          {label: "物傷%", attr: "pd"},
-          {label: "物傷(小)", attr: "ps"},
-          {label: "物傷(大)", attr: "pb"},
-          {label: "冰傷%", attr: "iced", className: "iceColor"},
-          {label: "冰傷(小)", attr: "ices", className: "iceColor"},
-          {label: "冰傷(大)", attr: "iceb", className: "iceColor"},
-          {label: "火傷%", attr: "fd", className: "fireColor"},
-          {label: "火傷(小)", attr: "fs", className: "fireColor"},
-          {label: "火傷(大)", attr: "fb", className: "fireColor"},
-          {label: "電傷%", attr: "td", className: "electricColor"},
-          {label: "電傷(小)", attr: "ts", className: "electricColor"},
-          {label: "電傷(大)", attr: "tb", className: "electricColor"},
-          {label: "混傷%", attr: "zd", className: "zColor"},
-          {label: "混傷(小)", attr: "zs", className: "zColor"},
-          {label: "混傷(大)", attr: "zb", className: "zColor"},
-          {label: "(亂矢%)", attr: "pm"},
-          {label: "(魔暴電轉混%)", attr: "ttz"},
-        ]
-      };
-    return(
-      <section>
-       <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>武器詞綴</span></h3>
-       {this.state.display ? 
-        <Row>
-          {rwdValue(category, this, s.state)}
-        </Row> : null}
-      </section>
-    );
-  },
-});
-const Talent = React.createClass({
-  getInitialState() {
-    return {
-      display: leftPanel[3],
-    };
-  },
-  setValue(e, json = this.props.s.state) {
-    let category = e.target.name;
-    let attr = e.target.className;
-    json[category][attr] = temp[category][attr] = transNum(e.target.value);
-    this.props.s.setState(json);
-  },
-  _handleClick() {
-    leftPanel[3] = !this.state.display;
     main.leftPanel();
     this.setState({display: !this.state.display});
   },
@@ -264,6 +167,84 @@ const Talent = React.createClass({
     );
   },
 });
+const Weapon = React.createClass({
+  getInitialState() {
+    return {
+      display: leftPanel[2],
+    };
+  },
+  setValue(e, json = this.props.s.state) {
+    let category = e.target.name;
+    let attr = e.target.className;
+    json[category][attr] = temp[category][attr] = transNum(e.target.value);
+    this.props.s.setState(json);
+  },
+  _handleClick() {
+    leftPanel[2] = !this.state.display;
+    main.leftPanel();
+    this.setState({display: !this.state.display});
+  },
+  render(s = this.props.s) {
+    const category = {
+        name: "weapon",
+        RWDValue: [
+          {label: "物傷(小)", attr: "ps"},
+          {label: "物傷(大)", attr: "pb"},
+          {label: "攻速", attr: "as", step: "0.01"},
+          {label: "品質", attr: "q"},
+          {label: "暴擊機率", attr: "c", step: "0.1"},
+        ]
+      };
+    return(
+      <section>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>武器基底</span><span className="xx-fright"><a target="_blank" href="http://gametsg.techbang.com/poe/index.php?view=item&k1=normal&k2=%E9%9B%99%E6%89%8B%E6%AD%A6%E5%99%A8&k3=%E5%BC%93#detail">透視鏡查詢</a></span></h3>
+        {this.state.display ? 
+        <Row>
+          {rwdValue(category, this, s.state)}
+        </Row> : null}
+      </section>
+    );
+  },
+});
+const WeaponAdd = React.createClass({
+  getInitialState() {
+    return {
+      display: leftPanel[3],
+    };
+  },
+  setValue(e, json = this.props.s.state) {
+    let category = e.target.name;
+    let attr = e.target.className;
+    json[category][attr] = temp[category][attr] = transNum(e.target.value);
+    this.props.s.setState(json);
+  },
+  _handleClick() {
+    leftPanel[3] = !this.state.display;
+    main.leftPanel();
+    this.setState({display: !this.state.display});
+  },
+  _handleShowTextArea(e) {
+    showTextArea = !showTextArea;
+    TextAreaNum = 3;
+    if(!leftPanel[3]) {
+      this._handleClick();
+    }
+    this.props.s.setState();
+  },
+  render(s = this.props.s) {
+
+    return(
+      <section>
+        <h3 className={this.state.display ? 'active' : null} ><span onClick={this._handleClick}>武器詞綴</span><span className="xx-fright" onClick={this._handleShowTextArea}>匯入</span></h3>
+       {this.state.display ? 
+        <Row>
+          {rwdValue(equipmentRwd("weaponadd"), this, s.state)}
+        </Row> : null}
+      </section>
+    );
+  },
+});
+
 const Head = React.createClass({
   getInitialState() {
     return {
@@ -284,6 +265,9 @@ const Head = React.createClass({
   _handleShowTextArea(e) {
     showTextArea = !showTextArea;
     TextAreaNum = 4;
+    if(!leftPanel[4]) {
+      this._handleClick();
+    }
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -318,6 +302,9 @@ const Hand = React.createClass({
   _handleShowTextArea(e) {
     showTextArea = !showTextArea;
     TextAreaNum = 5;
+    if(!leftPanel[5]) {
+      this._handleClick();
+    }
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -352,6 +339,9 @@ const Body= React.createClass({
   _handleShowTextArea(e) {
     showTextArea = !showTextArea;
     TextAreaNum = 6;
+    if(!leftPanel[6]) {
+      this._handleClick();
+    }
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -386,6 +376,9 @@ const Belt = React.createClass({
   _handleShowTextArea(e) {
     showTextArea = !showTextArea;
     TextAreaNum = 7;
+    if(!leftPanel[7]) {
+      this._handleClick();
+    }
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -420,6 +413,9 @@ const Necklace = React.createClass({
   _handleShowTextArea(e) {
     showTextArea = !showTextArea;
     TextAreaNum = 8;
+    if(!leftPanel[8]) {
+      this._handleClick();
+    }
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -454,6 +450,9 @@ const RingOne = React.createClass({
   _handleShowTextArea(e) {
     showTextArea = !showTextArea
     TextAreaNum = 9;
+    if(!leftPanel[9]) {
+      this._handleClick();
+    }
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -488,6 +487,9 @@ const RingTwo = React.createClass({
   _handleShowTextArea(e) {
     showTextArea = !showTextArea;
     TextAreaNum = 10;
+    if(!leftPanel[10]) {
+      this._handleClick();
+    }
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -522,6 +524,9 @@ const Foot = React.createClass({
   _handleShowTextArea(e) {
     showTextArea = !showTextArea;
     TextAreaNum = 11;
+    if(!leftPanel[11]) {
+      this._handleClick();
+    }
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -556,6 +561,9 @@ const Quiver = React.createClass({
   _handleShowTextArea(e) {
     showTextArea = !showTextArea;
     TextAreaNum = 12;
+    if(!leftPanel[12]) {
+      this._handleClick();
+    }
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -634,7 +642,8 @@ const Skill = React.createClass({
           {label: "物轉混%", attr: "ptz"},
           {label: "clear"},
           {label: "額外冰轉火%", attr: "itfadd"},
-          {label: "冰轉火%", attr: "itf"},
+          {label: "火轉混%", attr: "ftz"},
+          {label: "電轉混%", attr: "ttz"},
           {label: "火轉混%", attr: "ftz"},
         ]
       };
@@ -692,6 +701,9 @@ const Moreless = React.createClass({
           {label: "clear"},
           {label: "武器元素傷害", attr: "wedm"},
           {label: "元素集中", attr: "edm"},
+          {label: "clear"},
+          {label: "(亂矢%)", attr: "pm"},
+
         ]
       };
     return(
@@ -789,9 +801,9 @@ const Value = React.createClass({
     return(
       <div className="col xx12 s8">
         <Player s={this.props.s} />
+        <Talent s={this.props.s} />
         <Weapon s={this.props.s} />
         <WeaponAdd s={this.props.s} />
-        <Talent s={this.props.s} />
         <Head s={this.props.s} />
         <Hand s={this.props.s} />
         <Body s={this.props.s} />
@@ -913,7 +925,7 @@ const Info = React.createClass({
       pdml: ml(s.moreless.pdm),
       edml: Math.round(ml(s.moreless.wedm) * (100 + s.moreless.edm )) / 100,  
       dml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr,s.moreless.btomd, s.moreless.ci, 4 * s.player.gb) * (100 + s.moreless.rg)) / 100,
-      hdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.weaponadd.pm) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
+      hdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.pm) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
       ppdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy) * (100 + s.moreless.rg)) / 100,
       asl: ml(s.moreless.pdmasl, s.moreless.btomasl) * 100,
     };
@@ -969,12 +981,12 @@ const Info = React.createClass({
         iceb: Math.round((el(sum.iceb, [sum.iced], dml) + pl(sum.pb, [sum.iced], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100 ) * (100 - s.skill.itf) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
         fs: Math.round((el(sum.fs, [sum.fd], dml) + (el(sum.ices, [sum.fd, sum.iced], dml) + pl(sum.ps, [sum.iced, sum.fd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
         fb: Math.round((el(sum.fb, [sum.fd], dml) + (el(sum.iceb, [sum.fd, sum.iced], dml) + pl(sum.pb, [sum.iced, sum.fd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
-        ts: Math.round((el(sum.ts, [sum.td], dml) + pl(sum.ps, [sum.td], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (100 - s.weaponadd.ttz) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
-        tb: Math.round((el(sum.tb, [sum.td], dml) + pl(sum.pb, [sum.td], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (100 - s.weaponadd.ttz) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
+        ts: Math.round((el(sum.ts, [sum.td], dml) + pl(sum.ps, [sum.td], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (100 - s.skill.ttz) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
+        tb: Math.round((el(sum.tb, [sum.td], dml) + pl(sum.pb, [sum.td], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (100 - s.skill.ttz) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
         ps: Math.round(pl(sum.ps, [0], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100 * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
         pb: Math.round(pl(sum.pb, [0], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100 * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
-        zs: Math.round((sum.zs * (100 + sum.zd + sum.pjtd) / 100 * Math.round(dml * s.skill.bd) / 100 + pl(sum.ps, [sum.zd], dml) * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.ices, [sum.iced, sum.zd], dml) + pl(sum.ps, [sum.iced, sum.zd], dml, true) * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.ts, [sum.td, sum.zd], dml) + pl(sum.ps, [sum.td, sum.zd], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (s.weaponadd.ttz + s.skill.etzadd) / 100 + (el(sum.fs, [sum.fd, sum.zd], dml) + (el(sum.ices, [sum.fd, sum.iced, sum.zd], dml) + pl(sum.ps, [sum.fd, sum.td, sum.iced, sum.zd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd, sum.zd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
-        zb: Math.round((sum.zb * (100 + sum.zd + sum.pjtd) / 100 * Math.round(dml * s.skill.bd) / 100 + pl(sum.pb, [sum.zd], dml) * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.iceb, [sum.iced, sum.zd], dml) + pl(sum.pb, [sum.iced, sum.zd], dml, true) * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.tb, [sum.td, sum.zd], dml) + pl(sum.pb, [sum.td, sum.zd], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (s.weaponadd.ttz + s.skill.etzadd) / 100 + (el(sum.fb, [sum.fd, sum.zd], dml) + (el(sum.iceb, [sum.fd, sum.iced, sum.zd], dml) + pl(sum.pb, [sum.fd, sum.td, sum.iced, sum.zd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd, sum.zd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
+        zs: Math.round((sum.zs * (100 + sum.zd + sum.pjtd) / 100 * Math.round(dml * s.skill.bd) / 100 + pl(sum.ps, [sum.zd], dml) * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.ices, [sum.iced, sum.zd], dml) + pl(sum.ps, [sum.iced, sum.zd], dml, true) * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.ts, [sum.td, sum.zd], dml) + pl(sum.ps, [sum.td, sum.zd], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fs, [sum.fd, sum.zd], dml) + (el(sum.ices, [sum.fd, sum.iced, sum.zd], dml) + pl(sum.ps, [sum.fd, sum.td, sum.iced, sum.zd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd, sum.zd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
+        zb: Math.round((sum.zb * (100 + sum.zd + sum.pjtd) / 100 * Math.round(dml * s.skill.bd) / 100 + pl(sum.pb, [sum.zd], dml) * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.iceb, [sum.iced, sum.zd], dml) + pl(sum.pb, [sum.iced, sum.zd], dml, true) * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.tb, [sum.td, sum.zd], dml) + pl(sum.pb, [sum.td, sum.zd], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fb, [sum.fd, sum.zd], dml) + (el(sum.iceb, [sum.fd, sum.iced, sum.zd], dml) + pl(sum.pb, [sum.fd, sum.td, sum.iced, sum.zd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd, sum.zd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
         pus: (pl(sum.ps, [sum.cud, sum.cupd], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100  * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr + s.hideinfo.frc) / 100 : 1)),
         pub: (pl(sum.pb, [sum.cud, sum.cupd], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100  * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr + s.hideinfo.frc) / 100 : 1)),
       }
@@ -1375,6 +1387,7 @@ const App = React.createClass({
     }
     json[n] = temp[n] = tp;
     this.setState(json);
+    e.target.value = "";
     showTextArea = false;
   },
   render(){
@@ -1387,10 +1400,10 @@ const App = React.createClass({
     <div>
       <Value s={this} />
       <Info s={this} />
-      { showTextArea ? <div id="text" >
+      <div id="text" className={showTextArea ? "" : "xx-hide"}>
         <h3 className="active">匯入裝備</h3>
         <textarea onChange={this._handleChange} placeholder="滑鼠移到遊戲視窗內的裝備上按下 CTRL + C 再把滑鼠移回網頁文字框內按下 CRTR + V" />
-      </div> : null}
+      </div>
     </div> 
     );
   },

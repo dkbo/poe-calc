@@ -38,37 +38,6 @@ const init = {
     bb: 0,    //籃球 
     bc: 1,    //散彈效應 
   },
-  weapon: {
-    ps: 0,  //物理(小)
-    pb: 0,  //物理(大)
-    as: 0,  //每秒攻擊次數
-    q: 0,   //品質
-    c: 0,   //暴擊機率
-  },
-  weaponadd: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    cd: 0,  //暴傷加成%
-    ed: 0, //元素傷害%
-    wed: 0, //武器元素傷害%
-    pd: 0,  //物理傷害%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    zd: 0, //混傷%
-    ps: 0,  //物理(小)
-    pb: 0,  //物理(大)
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    zs: 0,  //混傷小
-    zb: 0,  //混傷大
-    pm: 0,  //更多弓傷害%(亂矢)
-    ttz: 0, //魔暴弓(電轉混)
-  },
   talent: {
     as: 0,  //攻擊速度
     c: 0, //暴擊機率
@@ -102,6 +71,14 @@ const init = {
     zs: 0,  //混傷小
     zb: 0,  //混傷大
   },
+  weapon: {
+    ps: 0,  //物理(小)
+    pb: 0,  //物理(大)
+    as: 0,  //每秒攻擊次數
+    q: 0,   //品質
+    c: 0,   //暴擊機率
+  },
+  weaponadd: equipment(),
   head: equipment(),
   hand: equipment(),
   body: equipment(),
@@ -152,6 +129,8 @@ const init = {
     itfadd: 0, // 額外冰轉火
     ftz: 0, //火轉混
     bd: 100,  //基礎傷害加成
+    ttz: 0, //電轉混
+
   },
   moreless: {
     gmp: 0,  //高階多重
@@ -170,7 +149,7 @@ const init = {
     rg: 0, //集中效應
     btomd: 0, // 遠距離圖騰較少傷害
     btomasl: 0, //遠距離圖騰較少攻速
-
+    pm: 0,  //更多弓傷害%(亂矢)
   },
   hideinfo: {
     pb: 0, //零點射擊
@@ -225,9 +204,9 @@ function equipment(){
 const info = {
   name: '未命名頁面',
   player: {level: 1, bc: 1},
+  talent: {},
   weapon: {},
   weaponadd: {},
-  talent: {},
   head: {},
   hand: {},
   body: {},
@@ -244,9 +223,9 @@ const info = {
 }
 const infoArray = [
   "player",
+  "talent",
   "weapon",
   "weaponadd",
-  "talent",
   "head",
   "hand",
   "body",
