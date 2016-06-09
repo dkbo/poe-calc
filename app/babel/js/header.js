@@ -10,8 +10,7 @@ const reg = {
     // 傷害
     add: /(附加)\s(\d+)-(\d+)\s(.{2})傷害/g,
     // 生命 法力
-    hp: /(-|\+)(\d+)\s.+(生命)/g,
-    mp: /(-|\+)(\d+)\s.+(法力)/g,
+    health: /(-|\+)(\d+)\s(.+)/g,
   },
   skill: {
 
@@ -68,6 +67,8 @@ const init = {
     cd: 0,  //暴傷加成%
     ed: 0, //元素傷害%
     wed: 0, //武器元素傷害%
+    pod: 0, //中毒傷害%
+    trd: 0, //陷阱傷害%
     pd: 0,  //物理傷害%
     cupd: 0,  //物理持續傷害%
     cud: 0,  //持續傷害%
@@ -102,7 +103,6 @@ const init = {
   quiver: equipment(),
   skill: {
     as: 0,  //攻擊速度
-    asl: 0, //較少攻擊速度
     wc: 0, //額外武器暴擊機率
     c: 0, //暴擊機率
     ps: 0,  //物理(小)
@@ -117,8 +117,11 @@ const init = {
     zb: 0,  //混傷大
     cd: 0,  //暴傷加成%
     pd: 0,  //物理傷害%
+    cud: 0,  //持續傷害%
+    pod: 0,  //中毒傷害%
     wed: 0, //武器元素傷害%
     pjptd: 0,  //投射物物理傷害%
+    trd: 0, //陷阱傷害%
     pjtd: 0, //投射物傷害%
     d: 0,  //傷害加成%
     ed: 0, //元素傷害%
@@ -145,7 +148,9 @@ const init = {
     lmp: 0,  //低階多重
     fork: 0, //分裂
     pjtdm: 0, //投射物減速
+    penet: 0, //穿透
     pdm: 0,  //投射物物理傷害
+    pdmasl: 0, //投射物物理較少攻擊速度
     tr: 0,  //陷阱
     trd: 0, //陷阱傷害
     mtr: 0, //多重陷阱
@@ -153,6 +158,9 @@ const init = {
     wedm: 0, //武器元素傷害
     ci: 0, //連鎖
     rg: 0, //集中效應
+    btomd: 0, // 遠距離圖騰較少傷害
+    btomasl: 0, //遠距離圖騰較少攻速
+
   },
   hideinfo: {
     pb: 0, //零點射擊
@@ -194,7 +202,10 @@ function equipment(){
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
     zd: 0, //混傷%
-    pjtd: 0, //投射出傷害%
+    pod: 0, //中毒傷害%
+    pjtd: 0, //投射物傷害%
+    trd: 0, //陷阱傷害%
+    cud: 0, //持續傷%
     hp: 0, //最大生命
     hpd: 0, //生命%
     mp: 0, //最大魔力
@@ -221,6 +232,25 @@ const info = {
   hideinfo: {},
   aural: {}
 }
+const infoArray = [
+  "player",
+  "weapon",
+  "weaponadd",
+  "talent",
+  "head",
+  "hand",
+  "body",
+  "belt",
+  "necklace",
+  "ringone",
+  "ringtwo",
+  "foot",
+  "quiver",
+  "skill",
+  "moreless",
+  "hideinfo",
+  "aural",
+]
 let temp = JSON.parse(JSON.stringify(init));
 let leftPanel =  [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 let rightPanel = [false, false, false, false, false, false, false, false, false, false];
@@ -230,6 +260,7 @@ const view = location.hash ? true : false;
 let shortUrl = null;
 let showAllRWD = false;
 let showTextArea = false;
+let TextAreaNum = 0;
 if(localStorage.left) {
   leftPanel = localStorage.left.split(",").map(function(bool){
     if(bool === "false") {

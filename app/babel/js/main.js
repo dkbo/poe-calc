@@ -5,8 +5,14 @@ function equipmentRwd(name) {
           {label: "攻速", attr: "as"},
           {label: "暴率", attr: "c"},
           {label: "暴傷%", attr: "cd"},
+          {label: "clear"},
           {label: "元傷%", attr: "ed"},
           {label: "武器元傷%", attr: "wed"},
+          {label: "投射物(傷害)%", attr: "pjtd"},
+          {label: "陷阱傷害%", attr: "trd"},
+          {label: "clear"},
+          {label: "中毒傷害%", attr: "pod"},
+          {label: "持續傷%", attr: "cud"},
           {label: "clear"},
           {label: "物傷%", attr: "pd"},
           {label: "物傷(小)", attr: "ps"},
@@ -216,9 +222,13 @@ const Talent = React.createClass({
           {label: "clear"},
           {label: "元傷%", attr: "ed"},
           {label: "武器元傷%", attr: "wed"},
+          {label: "投射物(傷害)%", attr: "pjtd"},
+          {label: "陷阱傷害%", attr: "trd"},
+          {label: "clear"},
+          {label: "中毒傷害%", attr: "pod"},
           {label: "持續傷%", attr: "cud"},
           {label: "物理持續傷%", attr: "cupd"},
-          {label: "投射物傷害%", attr: "pjtd"},
+          {label: "clear"},
           {label: "物傷%", attr: "pd"},
           {label: "物傷(小)", attr: "ps"},
           {label: "物傷(大)", attr: "pb"},
@@ -272,7 +282,8 @@ const Head = React.createClass({
     this.setState({display: !this.state.display});
   },
   _handleShowTextArea(e) {
-    showTextArea = !showTextArea
+    showTextArea = !showTextArea;
+    TextAreaNum = 4;
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -305,7 +316,8 @@ const Hand = React.createClass({
     this.setState({display: !this.state.display});
   },
   _handleShowTextArea(e) {
-    showTextArea = !showTextArea
+    showTextArea = !showTextArea;
+    TextAreaNum = 5;
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -338,7 +350,8 @@ const Body= React.createClass({
     this.setState({display: !this.state.display});
   },
   _handleShowTextArea(e) {
-    showTextArea = !showTextArea
+    showTextArea = !showTextArea;
+    TextAreaNum = 6;
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -371,7 +384,8 @@ const Belt = React.createClass({
     this.setState({display: !this.state.display});
   },
   _handleShowTextArea(e) {
-    showTextArea = !showTextArea
+    showTextArea = !showTextArea;
+    TextAreaNum = 7;
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -404,7 +418,8 @@ const Necklace = React.createClass({
     this.setState({display: !this.state.display});
   },
   _handleShowTextArea(e) {
-    showTextArea = !showTextArea
+    showTextArea = !showTextArea;
+    TextAreaNum = 8;
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -438,6 +453,7 @@ const RingOne = React.createClass({
   },
   _handleShowTextArea(e) {
     showTextArea = !showTextArea
+    TextAreaNum = 9;
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -470,7 +486,8 @@ const RingTwo = React.createClass({
     this.setState({display: !this.state.display});
   },
   _handleShowTextArea(e) {
-    showTextArea = !showTextArea
+    showTextArea = !showTextArea;
+    TextAreaNum = 10;
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -503,7 +520,8 @@ const Foot = React.createClass({
     this.setState({display: !this.state.display});
   },
   _handleShowTextArea(e) {
-    showTextArea = !showTextArea
+    showTextArea = !showTextArea;
+    TextAreaNum = 11;
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -536,7 +554,8 @@ const Quiver = React.createClass({
     this.setState({display: !this.state.display});
   },
   _handleShowTextArea(e) {
-    showTextArea = !showTextArea
+    showTextArea = !showTextArea;
+    TextAreaNum = 12;
     this.props.s.setState();
   },
   render(s = this.props.s) {
@@ -574,7 +593,6 @@ const Skill = React.createClass({
         RWDValue: [
           {label: "基礎傷加成", attr: "bd", step: "0.1"},
           {label: "攻速", attr: "as"},
-          {label: "較少攻速", attr: "asl"},
           {label: "額外武器暴率", attr: "wc", step: "0.1"},
           {label: "暴率", attr: "c"},
           {label: "暴傷%", attr: "cd"},
@@ -582,8 +600,11 @@ const Skill = React.createClass({
           {label: "傷害%", attr: "d"},
           {label: "元傷%", attr: "ed"},
           {label: "武器元傷%", attr: "wed"},
-          {label: "投射物物傷%", attr: "pjptd"},
-          {label: "投射物傷害%", attr: "pjtd"},
+          {label: "投射物(物理)%", attr: "pjptd"},
+          {label: "投射物(傷害)%", attr: "pjtd"},
+          {label: "中毒傷害%", attr: "pod"},
+          {label: "持續傷害%", attr: "cud"},
+          {label: "陷阱傷害%", attr: "trd"},
           {label: "clear"},
           {label: "物傷%", attr: "pd"},
           {label: "物傷(小)", attr: "ps"},
@@ -654,12 +675,16 @@ const Moreless = React.createClass({
           {label: "低階多重", attr: "lmp"},
           {label: "分裂", attr: "fork"},
           {label: "投射物減速", attr: "pjtdm"},
+          {label: "穿透", attr: "penet"},
           {label: "clear"},
           {label: "物理投射物傷害", attr: "pdm"},
+          {label: "較少攻速", attr: "pdmasl"},
           {label: "clear"},
           {label: "陷阱", attr: "tr"},
           {label: "陷阱傷害", attr: "trd"},
           {label: "clear"},
+          {label: "遠距離圖騰(傷害)", attr: "btomd"},
+          {label: "遠距離圖騰(攻速)", attr: "btomasl"},
           {label: "多重陷阱", attr: "mtr"},
           {label: "連鎖", attr: "ci"},
           {label: "clear"},
@@ -879,26 +904,30 @@ const Info = React.createClass({
       pb: s.head.pb + s.talent.pb + s.hand.pb + s.body.pb + s.belt.pb + s.ringone.pb + s.ringtwo.pb + s.necklace.pb + s.foot.pb + s.quiver.pb + s.skill.pb + weapon.pb,
       c: s.player.bb * 50 + s.talent.c + s.head.c + s.hand.c + s.body.c + s.belt.c + s.ringone.c + s.ringtwo.c + s.necklace.c + s.foot.c + s.quiver.c + s.skill.c,
       cd: s.weaponadd.cd + s.talent.cd + s.head.cd + s.hand.cd + s.body.cd + s.belt.cd + s.ringone.cd + s.ringtwo.cd + s.necklace.cd + s.foot.cd + s.quiver.cd + s.skill.cd,
-      cud: s.talent.cud,
+      cud: s.talent.cud + s.head.cud + s.hand.cud + s.body.cud + s.belt.cud + s.ringone.cud + s.ringtwo.cud + s.necklace.cud + s.foot.cud + s.quiver.cud + s.skill.cud,
+      trd: s.talent.trd + s.head.trd + s.hand.trd + s.body.trd + s.belt.trd + s.ringone.trd + s.ringtwo.trd + s.necklace.trd + s.foot.trd + s.quiver.trd + s.skill.trd,
       cupd: s.talent.cupd,
-      pjtd: s.talent.pjtd + s.quiver.pjtd + s.skill.pjtd,
+      pjtd: s.talent.pjtd + s.head.pjtd + s.hand.pjtd + s.body.pjtd + s.belt.pjtd + s.ringone.pjtd + s.ringtwo.pjtd + s.necklace.pjtd + s.foot.pjtd + s.quiver.pjtd + s.skill.pjtd,
+      pod: s.talent.pod + s.head.pod + s.hand.pod + s.body.pod + s.belt.pod + s.ringone.pod + s.ringtwo.pod + s.necklace.pod + s.foot.pod + s.quiver.pod + s.skill.pod,
       pd: s.talent.pd + s.head.pd + s.hand.pd + s.body.pd + s.belt.pd + s.ringone.pd + s.ringtwo.pd + s.necklace.pd + s.foot.pd + s.quiver.pd + s.skill.pd + s.skill.pjptd,
       pdml: ml(s.moreless.pdm),
       edml: Math.round(ml(s.moreless.wedm) * (100 + s.moreless.edm )) / 100,  
-      dml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.ci, 4 * s.player.gb) * (100 + s.moreless.rg)) / 100,
-      hdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm) * ml(s.weaponadd.pm) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
+      dml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr,s.moreless.btomd, s.moreless.ci, 4 * s.player.gb) * (100 + s.moreless.rg)) / 100,
+      hdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.weaponadd.pm) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
+      ppdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy) * (100 + s.moreless.rg)) / 100,
+      asl: ml(s.moreless.pdmasl, s.moreless.btomasl) * 100,
     };
     function ml() {
       let value = 1;
       for(let i = 0; i < arguments.length; i++) {
-        if(arguments.length - i === 1) {
+        if(arguments.length - 1 === i) {
           value *= (100 + arguments[i]);
         } else {
           value *= (100 + arguments[i]) / 100;
         }
       }
       
-      return Math.round(value) / 100;
+      return value / 100;
     }
 
     
@@ -911,10 +940,10 @@ const Info = React.createClass({
       for(let i = 0 ; i < d.length; i++){
         dsum += d[i];
       }
-      return sd * (100 + sum.wed + sum.ed + dsum + sum.pjtd) / 100 * sum.edml * Math.round(em * s.skill.bd) / 100;
+      return sd * (100 + sum.wed + sum.ed + dsum + sum.pjtd + sum.trd) / 100 * sum.edml * Math.round(em * s.skill.bd) / 100;
     };
     function pl(sd, d, em, ise = false){
-      let dsum = 100 + sum.pjtd + sum.pd;
+      let dsum = 100 + sum.pjtd + sum.trd + sum.pd;
       let dml = sum.pdml;
       for(let i = 0 ; i < d.length; i++){
         dsum += d[i];
@@ -926,11 +955,16 @@ const Info = React.createClass({
       return sd * dsum / 100 * dml * Math.round(em * s.skill.bd) / 100
     };
     function zl(sd, d){
-      return sd * (100 + sum.wed + sum.ed + d + sum.pjtd) / 100 * sum.edml * Math.round(sum.dml * s.skill.bd) / 100;
+      return sd * (100 + sum.wed + sum.ed + d + sum.pjtd + sum.trd) / 100 * sum.edml * Math.round(sum.dml * s.skill.bd) / 100;
+    };
+    function ppl(sd, d, em){
+      let dsum = 100 + sum.cud + sum.pjtd + sum.pod + sum.trd + sum.zd;
+      let dml = sum.ppdml;
+      return Math.round(sd * dsum / 100 * dml * (100 + s.hideinfo.fe + s.hideinfo.frc) / 100 *  0.1);
     };
     function basicCalc(dml, h){
       return {
-        as: Math.round((100 + s.weaponadd.as) / 100 * (100 + sum.as) / 100 * (100 - s.skill.asl)) / 100 - 1,
+        as: Math.round((100 + s.weaponadd.as) / 100 * (100 + sum.as) / 100 * sum.asl) / 100 - 1,
         ices: Math.round((el(sum.ices, [sum.iced], dml) + pl(sum.ps, [sum.iced], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100 ) * (100 - s.skill.itf) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
         iceb: Math.round((el(sum.iceb, [sum.iced], dml) + pl(sum.pb, [sum.iced], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100 ) * (100 - s.skill.itf) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
         fs: Math.round((el(sum.fs, [sum.fd], dml) + (el(sum.ices, [sum.fd, sum.iced], dml) + pl(sum.ps, [sum.iced, sum.fd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
@@ -947,8 +981,8 @@ const Info = React.createClass({
     }
     const basic = basicCalc(sum.dml);
     const hidebasic = basicCalc(sum.hdml, true);
-    console.log(hidebasic.ps)
-
+    hidebasic.pps = ppl(hidebasic.zs + hidebasic.ps);
+    hidebasic.ppb = ppl(hidebasic.zb + hidebasic.pb);
     const calc = {
       as: Math.round(s.weapon.as * (1 + basic.as) * 100) / 100,
       basicds: basic.ices + basic.fs + basic.ts + basic.ps + basic.zs,
@@ -957,8 +991,10 @@ const Info = React.createClass({
       hbasicdb: hidebasic.iceb + hidebasic.fb + hidebasic.tb + hidebasic.pb + hidebasic.zb,
       c: (Math.round(weapon.c * (100 + sum.c)) / 100) > 95 ? 95 : (Math.round(weapon.c * (100 + sum.c)) / 100),
       cd: Math.round(150 + sum.cd),
+      ps: 2,
     };
-    calc.hc = s.hideinfo.cw ? 100 - Math.round(Math.pow(100 - calc.c, 2)) / 100 : calc.c;
+    calc.pmt = Math.round( 2 / (1 / calc.as) * 100) / 100; //最大毒傷次數
+    calc.hc = s.hideinfo.cw ? 100 - Math.round(Math.pow(100 - calc.c, 2)) / 100 : calc.c; // 寶鑽藥劑
     const info = {      
       td: Math.round((((calc.basicds + calc.basicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
       sd: Math.round(Math.round((((calc.basicds + calc.basicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc) * calc.as) / 100,
@@ -993,6 +1029,8 @@ const Info = React.createClass({
       esd: Math.round(Math.round((((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
       ztd: Math.round((((hidebasic.zs + hidebasic.zb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
       zsd: Math.round(Math.round((((hidebasic.zs + hidebasic.zb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
+      ppsd1: Math.round(Math.round((((hidebasic.pps + hidebasic.ppb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.pps + hidebasic.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.pmt / 2 * s.player.bc) / 100,
+      ppsd2: Math.round(Math.round((((hidebasic.pps + hidebasic.ppb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.pps + hidebasic.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.pmt * s.player.bc) / 100,
       icesc: Math.round(hidebasic.ices * calc.cd) / 100,
       icebc: Math.round(hidebasic.iceb * calc.cd) / 100,
       fsc: Math.round(hidebasic.fs * calc.cd) / 100,
@@ -1081,7 +1119,7 @@ const Info = React.createClass({
             <p className="col xx4"><strong>基礎混傷</strong>{hidebasic.zs} - {hidebasic.zb}</p>    
           </Row> : null}
         </section>
-        <section>
+        <section className="xx-hide">
           <h3 className={this.state.addDisplay ? 'active' : null} onClick={this._handleAdd}>暴擊傷害</h3>
           {this.state.addDisplay ?
           <Row>
@@ -1105,18 +1143,20 @@ const Info = React.createClass({
             <p className="col xx6"><strong>總傷</strong>{hideinfo.psc + hideinfo.icesc + hideinfo.fsc + hideinfo.tsc + hideinfo.zsc} - {hideinfo.pbc + hideinfo.icebc + hideinfo.fbc + hideinfo.tbc + hideinfo.zbc}</p>   
           </Row> : null}
         </section>
-        <section className="xx-hide">
-          <h3 className={this.state.puDisplay ? 'active' : null} onClick={this._handlePu}>流血傷害</h3>
+        <section>
+          <h3 className={this.state.puDisplay ? 'active' : null} onClick={this._handlePu}>中毒傷害</h3>
           {this.state.puDisplay ?
           <Row>
-            <p className="col xx6"><strong>站立</strong>{Math.round(basic.pus * 0.1)} - {Math.round(basic.pub * 0.1)}</p>
-            <p className="col xx6"><strong>站立暴擊</strong>{info.pusc} - {info.pubc}</p>
-            <p className="col xx6"><strong>移動</strong>{Math.round(basic.pus * 0.6)} - {Math.round(basic.pub * 0.6)}</p>
-            <p className="col xx6"><strong>移動暴擊</strong>{info.puswc} - {info.pubwc}</p>
+            <p className="col xx6"><strong>毒傷</strong>{hidebasic.pps} - {hidebasic.ppb}</p>
+            <Clear/>
+            <p className="col xx6"><strong>中毒持續時間</strong>{calc.ps} 秒</p>
+            <p className="col xx6"><strong>最大疊毒次數</strong>{calc.pmt}</p>
+            <p className="col xx6"><strong>{calc.ps} 秒內DPS</strong>{hideinfo.ppsd1}</p>
+            <p className="col xx6"><strong>{calc.ps} 秒後DPS</strong>{hideinfo.ppsd2}</p>
           </Row> : null}
         </section>
         <section className="xx-hide">
-          <h3 className={this.state.puHDisplay ? 'active' : null} onClick={this._handlePuH}>實際流血傷害</h3>
+          <h3 className={this.state.puHDisplay ? 'active' : null} onClick={this._handlePuH}>流血傷害</h3>
           {this.state.puHDisplay ?
           <Row>
             <p className="col xx6"><strong>站立</strong>{Math.round(hidebasic.pus * 0.1)} - {Math.round(hidebasic.pub * 0.1)}</p>
@@ -1194,8 +1234,39 @@ const App = React.createClass({
   rightPanel() {
     localStorage.right = rightPanel.join(",");
   },
-  _handlePaste(e) {
-    alert(e.target.value)
+  _handleChange(e, json = this.state) {
+    const v = e.target.value;
+    const r = reg.equipment;
+    const n = infoArray[TextAreaNum];
+    let tp = JSON.parse(JSON.stringify(init[n]));
+    let t = r.add;
+    let m = v.match(t);
+    if(m) {
+      for(let x in m){
+        let f = t.exec(m[x]);
+
+      }
+    }
+    t = r.health;
+    m = v.match(t);
+    if(m) {
+      for(let x in m){
+        let f = t.exec(m[x]);
+        if(f) {
+          switch(f[3]) {
+            case "最大生命":
+              f[1] === "+" ? tp.hp += transNum(f[2]) : tp.hp -= transNum(f[2]);
+              break;
+            case "最大法力":
+              f[1] === "+" ? tp.mp += transNum(f[2]) : tp.hp -= transNum(f[2]);
+              break;
+          }
+        }
+      }
+    }
+    json[n] = temp[n] = tp;
+    showTextArea = false;
+    this.setState(json);
   },
   render(){
     value[index - 1] = this.state;
@@ -1207,8 +1278,9 @@ const App = React.createClass({
     <div>
       <Value s={this} />
       <Info s={this} />
-      { showTextArea ? <div id="text">
-        <textarea onPaste={this._handlePaste}/>
+      { showTextArea ? <div id="text" >
+        <h3 className="active">匯入裝備</h3>
+        <textarea onChange={this._handleChange}/>
       </div> : null}
     </div> 
     );
