@@ -115,6 +115,14 @@ const Talent = React.createClass({
     main.leftPanel();
     this.setState({display: !this.state.display});
   },
+  _handleShowTextArea(e) {
+    showTextArea = !showTextArea;
+    TextAreaNum = 1;
+    if(!leftPanel[1]) {
+      this._handleClick();
+    }
+    this.props.s.setState();
+  },
   render(s = this.props.s) {
     const category = {
         name: "talent",
@@ -126,6 +134,7 @@ const Talent = React.createClass({
           {label: "元傷%", attr: "ed"},
           {label: "武器元傷%", attr: "wed"},
           {label: "投射物(傷害)%", attr: "pjtd"},
+          {label: "攻擊傷害%", attr: "ad"},
           {label: "陷阱傷害%", attr: "trd"},
           {label: "clear"},
           {label: "中毒傷害%", attr: "pod"},
@@ -157,7 +166,7 @@ const Talent = React.createClass({
       };
     return(
       <section>
-        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>天賦點</span></h3>
+        <h3 className={this.state.display ? 'active' : null} ><span onClick={this._handleClick}>天賦點</span><span className="xx-fright" onClick={this._handleShowTextArea}>匯入</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(category, this, s.state)}
@@ -891,10 +900,10 @@ const Info = React.createClass({
       c: Math.round(s.weapon.c * (100 + s.weaponadd.c )) / 100 + s.skill.wc, //武器加成後暴率
     };
     const sum = {
-      hp: s.talent.hp + s.head.hp + s.hand.hp + s.body.hp + s.belt.hp + s.ringone.hp + s.ringtwo.hp + s.necklace.hp + s.foot.hp + s.quiver.hp,
-      hpd: s.talent.hpd + s.head.hpd + s.hand.hpd + s.body.hpd + s.belt.hpd + s.ringone.hpd + s.ringtwo.hpd + s.necklace.hpd + s.foot.hpd + s.quiver.hpd,
-      mp: s.talent.mp + s.head.mp + s.hand.mp + s.body.mp + s.belt.mp + s.ringone.mp + s.ringtwo.mp + s.necklace.mp + s.foot.mp + s.quiver.mp,
-      mpd: s.talent.mpd + s.head.mpd + s.hand.mpd + s.body.mpd + s.belt.mpd + s.ringone.mpd + s.ringtwo.mpd + s.necklace.mpd + s.foot.mpd + s.quiver.mpd,
+      hp: s.weaponadd.hp + s.talent.hp + s.head.hp + s.hand.hp + s.body.hp + s.belt.hp + s.ringone.hp + s.ringtwo.hp + s.necklace.hp + s.foot.hp + s.quiver.hp,
+      hpd: s.weaponadd.hpd + s.talent.hpd + s.head.hpd + s.hand.hpd + s.body.hpd + s.belt.hpd + s.ringone.hpd + s.ringtwo.hpd + s.necklace.hpd + s.foot.hpd + s.quiver.hpd,
+      mp: s.weaponadd.mp + s.talent.mp + s.head.mp + s.hand.mp + s.body.mp + s.belt.mp + s.ringone.mp + s.ringtwo.mp + s.necklace.mp + s.foot.mp + s.quiver.mp,
+      mpd: s.weaponadd.mpd + s.talent.mpd + s.head.mpd + s.hand.mpd + s.body.mpd + s.belt.mpd + s.ringone.mpd + s.ringtwo.mpd + s.necklace.mpd + s.foot.mpd + s.quiver.mpd,
       as: s.talent.as + s.head.as + s.hand.as + s.body.as + s.belt.as + s.ringone.as + s.ringtwo.as + s.necklace.as + s.foot.as + s.quiver.as + s.skill.as + s.player.gb * 4, 
       ed: s.weaponadd.ed + s.talent.ed + s.head.ed + s.hand.ed + s.body.ed + s.belt.ed + s.ringone.ed + s.ringtwo.ed + s.necklace.ed + s.foot.ed + s.quiver.ed + s.skill.ed,
       wed: s.weaponadd.wed + s.talent.wed + s.head.wed + s.hand.wed + s.body.wed + s.belt.wed + s.ringone.wed + s.ringtwo.wed + s.necklace.wed + s.foot.wed + s.quiver.wed + s.skill.wed,
@@ -914,11 +923,12 @@ const Info = React.createClass({
       pb: s.head.pb + s.talent.pb + s.hand.pb + s.body.pb + s.belt.pb + s.ringone.pb + s.ringtwo.pb + s.necklace.pb + s.foot.pb + s.quiver.pb + s.skill.pb + weapon.pb,
       c: s.player.bb * 50 + s.talent.c + s.head.c + s.hand.c + s.body.c + s.belt.c + s.ringone.c + s.ringtwo.c + s.necklace.c + s.foot.c + s.quiver.c + s.skill.c,
       cd: s.weaponadd.cd + s.talent.cd + s.head.cd + s.hand.cd + s.body.cd + s.belt.cd + s.ringone.cd + s.ringtwo.cd + s.necklace.cd + s.foot.cd + s.quiver.cd + s.skill.cd,
-      cud: s.talent.cud + s.head.cud + s.hand.cud + s.body.cud + s.belt.cud + s.ringone.cud + s.ringtwo.cud + s.necklace.cud + s.foot.cud + s.quiver.cud + s.skill.cud,
-      trd: s.talent.trd + s.head.trd + s.hand.trd + s.body.trd + s.belt.trd + s.ringone.trd + s.ringtwo.trd + s.necklace.trd + s.foot.trd + s.quiver.trd + s.skill.trd,
+      cud: s.weaponadd.cud + s.talent.cud + s.head.cud + s.hand.cud + s.body.cud + s.belt.cud + s.ringone.cud + s.ringtwo.cud + s.necklace.cud + s.foot.cud + s.quiver.cud + s.skill.cud,
+      trd: s.weaponadd.trd + s.talent.trd + s.head.trd + s.hand.trd + s.body.trd + s.belt.trd + s.ringone.trd + s.ringtwo.trd + s.necklace.trd + s.foot.trd + s.quiver.trd + s.skill.trd,
       cupd: s.talent.cupd,
-      pjtd: s.talent.pjtd + s.head.pjtd + s.hand.pjtd + s.body.pjtd + s.belt.pjtd + s.ringone.pjtd + s.ringtwo.pjtd + s.necklace.pjtd + s.foot.pjtd + s.quiver.pjtd + s.skill.pjtd,
-      pod: s.talent.pod + s.head.pod + s.hand.pod + s.body.pod + s.belt.pod + s.ringone.pod + s.ringtwo.pod + s.necklace.pod + s.foot.pod + s.quiver.pod + s.skill.pod,
+      ad: s.talent.ad,
+      pjtd: s.weaponadd.pjtd + s.talent.pjtd + s.head.pjtd + s.hand.pjtd + s.body.pjtd + s.belt.pjtd + s.ringone.pjtd + s.ringtwo.pjtd + s.necklace.pjtd + s.foot.pjtd + s.quiver.pjtd + s.skill.pjtd,
+      pod: s.weaponadd.pod + s.talent.pod + s.head.pod + s.hand.pod + s.body.pod + s.belt.pod + s.ringone.pod + s.ringtwo.pod + s.necklace.pod + s.foot.pod + s.quiver.pod + s.skill.pod,
       pd: s.talent.pd + s.head.pd + s.hand.pd + s.body.pd + s.belt.pd + s.ringone.pd + s.ringtwo.pd + s.necklace.pd + s.foot.pd + s.quiver.pd + s.skill.pd + s.skill.pjptd,
       pdml: ml(s.moreless.pdm),
       edml: Math.round(ml(s.moreless.wedm) * (100 + s.moreless.edm )) / 100,  
@@ -950,10 +960,10 @@ const Info = React.createClass({
       for(let i = 0 ; i < d.length; i++){
         dsum += d[i];
       }
-      return sd * (100 + sum.wed + sum.ed + dsum + sum.pjtd + sum.trd) / 100 * sum.edml * Math.round(em * s.skill.bd) / 100;
+      return sd * (100 + sum.wed + sum.ed + dsum + sum.pjtd + sum.ad + sum.trd) / 100 * sum.edml * Math.round(em * s.skill.bd) / 100;
     };
     function pl(sd, d, em, ise = false){
-      let dsum = 100 + sum.pjtd + sum.trd + sum.pd;
+      let dsum = 100 + sum.pjtd + sum.trd + sum.pd + sum.ad;
       let dml = sum.pdml;
       for(let i = 0 ; i < d.length; i++){
         dsum += d[i];
@@ -965,10 +975,10 @@ const Info = React.createClass({
       return sd * dsum / 100 * dml * Math.round(em * s.skill.bd) / 100
     };
     function zl(sd, d){
-      return sd * (100 + sum.wed + sum.ed + d + sum.pjtd + sum.trd) / 100 * sum.edml * Math.round(sum.dml * s.skill.bd) / 100;
+      return sd * (100 + sum.wed + sum.ed + d + sum.pjtd + sum.ad + sum.trd) / 100 * sum.edml * Math.round(sum.dml * s.skill.bd) / 100;
     };
     function ppl(sd, d, em){
-      let dsum = 100 + sum.cud + sum.pjtd + sum.pod + sum.trd + sum.zd;
+      let dsum = 100 + sum.cud + sum.pjtd + sum.ad + sum.pod + sum.trd + sum.zd;
       let dml = sum.ppdml;
       return Math.round(sd * dsum / 100 * dml * (100 + s.hideinfo.fe + s.hideinfo.frc) / 100 *  0.1);
     };
@@ -1200,6 +1210,9 @@ const Info = React.createClass({
             <p className="col xx4"><strong >持續傷害%</strong>{sum.cud}</p>
             <p className="col xx4"><strong >物理持續傷害%</strong>{sum.cupd}</p>
             <p className="col xx4"><strong >投射物傷害%</strong>{sum.pjtd}</p>
+            <p className="col xx4"><strong >中毒傷害%</strong>{sum.pod}</p>
+            <p className="col xx4"><strong >陷阱傷害%</strong>{sum.trd}</p>
+            <p className="col xx4"><strong >攻擊傷害%</strong>{sum.ad}</p>
             <p className="col xx6"><strong >暴率%</strong>{sum.c}</p>
             <p className="col xx6"><strong >暴傷加成%</strong>{sum.cd}</p>
             <p className="col xx6"><strong >物理傷害(倍率)</strong>{sum.pdml}</p>
@@ -1246,141 +1259,293 @@ const App = React.createClass({
   },
   _handleChange(e, json = this.state) {
     const v = e.target.value;
-    const r = reg.equipment;
     const n = infoArray[TextAreaNum];
     let tp = JSON.parse(JSON.stringify(init[n]));
-    {
-      let m = v.match(r.parG);
-      if(m) {
-        for(let x in m){
-          let f = r.par.exec(m[x]);
-          if(f) {
-            switch(f[3]) {
-              case "全域暴擊加成":
-                f[1] === "+" ? tp.cd += transNum(f[2]) : tp.cd -= transNum(f[2]);
-                break;
-              default:
-                break;
+    if(TextAreaNum !== 1) {
+      const r = reg.equipment;
+      {
+        let m = v.match(r.parG);
+        if(m) {
+          for(let x in m){
+            let f = r.par.exec(m[x]);
+            if(f) {
+              switch(f[3]) {
+                case "全域暴擊加成":
+                  f[1] === "+" ? tp.cd += transNum(f[2]) : tp.cd -= transNum(f[2]);
+                  break;
+                default:
+                  break;
 
+              }
             }
           }
         }
       }
-    }
-    {
-      let m = v.match(r.addG);
-      if(m) {
-        for(let x in m){
-          let f = r.add.exec(m[x]);
-          if(f) {
-            switch(f[3]) {
-              case "閃電":
-                tp.ts += transNum(f[1]);
-                tp.tb += transNum(f[2]);
-                break;
-              case "冰冷":
-                tp.ices += transNum(f[1]);
-                tp.iceb += transNum(f[2]);
-                break;
-              case "火焰":
-                tp.fs += transNum(f[1]);
-                tp.fb += transNum(f[2]);
-                break;
-              case "物理":
-                tp.ps += transNum(f[1]);
-                tp.pb += transNum(f[2]);
-                break;
-              case "混沌":
-                tp.zs += transNum(f[1]);
-                tp.zb += transNum(f[2]);
-                break;
-              default:
-                break;
+      {
+        let m = v.match(r.addG);
+        if(m) {
+          for(let x in m){
+            let f = r.add.exec(m[x]);
+            if(f) {
+              switch(f[3]) {
+                case "閃電":
+                  tp.ts += transNum(f[1]);
+                  tp.tb += transNum(f[2]);
+                  break;
+                case "冰冷":
+                  tp.ices += transNum(f[1]);
+                  tp.iceb += transNum(f[2]);
+                  break;
+                case "火焰":
+                  tp.fs += transNum(f[1]);
+                  tp.fb += transNum(f[2]);
+                  break;
+                case "物理":
+                  tp.ps += transNum(f[1]);
+                  tp.pb += transNum(f[2]);
+                  break;
+                case "混沌":
+                  tp.zs += transNum(f[1]);
+                  tp.zb += transNum(f[2]);
+                  break;
+                default:
+                  break;
 
+              }
             }
           }
         }
       }
-    }
-    {
-      let m = v.match(r.insertG);
-      if(m) {
-        for(let x in m){
-          let f = r.insert.exec(m[x]);
-          if(f) {
-            switch(f[2]) {
-              case "閃電傷害":
-                tp.td += transNum(f[1]);
-                break;
-              case "冰冷傷害":
-                tp.iced += transNum(f[1]);
-                break;
-              case "火焰傷害":
-                tp.fd += transNum(f[1]);
-                break;
-              case "物理傷害":
-                tp.pd += transNum(f[1]);
-                break;
-              case "混沌傷害":
-                tp.zd += transNum(f[1]);
-                break;
-              case "元素傷害":
-                tp.wed += transNum(f[1]);
-                break;
-              case "武器元素傷害":
-                tp.wed += transNum(f[1]);
-                break;
-              case "投射物傷害":
-                tp.pjtd += transNum(f[1]);
-                break;
-              case "陷阱傷害":
-                tp.trd += transNum(f[1]);
-                break;
-              case "中毒傷害":
-                tp.pod += transNum(f[1]);
-                break;
-              case "持續傷害":
-                tp.cud += transNum(f[1]);
-                break;
-              case "全域暴擊率":
-                tp.c += transNum(f[1]);
-                break;
-              case "攻擊速度":
-                tp.as += transNum(f[1]);
-                break;
-              case "最大生命":
-                tp.hpd += transNum(f[1]);
-                break;
-              case "最大法力":
-                tp.mpd += transNum(f[1]);
-                break;
-              default:
-                break;
+      {
+        let m = v.match(r.insertG);
+        if(m) {
+          for(let x in m){
+            let f = r.insert.exec(m[x]);
+            if(f) {
+              switch(f[2]) {
+                case "閃電傷害":
+                  tp.td += transNum(f[1]);
+                  break;
+                case "冰冷傷害":
+                  tp.iced += transNum(f[1]);
+                  break;
+                case "火焰傷害":
+                  tp.fd += transNum(f[1]);
+                  break;
+                case "物理傷害":
+                  tp.pd += transNum(f[1]);
+                  break;
+                case "混沌傷害":
+                  tp.zd += transNum(f[1]);
+                  break;
+                case "元素傷害":
+                  tp.ed += transNum(f[1]);
+                  break;
+                case "武器元素傷害":
+                  tp.wed += transNum(f[1]);
+                  break;
+                case "投射物傷害":
+                  tp.pjtd += transNum(f[1]);
+                  break;
+                case "陷阱傷害":
+                  tp.trd += transNum(f[1]);
+                  break;
+                case "中毒傷害":
+                  tp.pod += transNum(f[1]);
+                  break;
+                case "持續傷害":
+                  tp.cud += transNum(f[1]);
+                  break;
+                case "全域暴擊率":
+                  tp.c += transNum(f[1]);
+                  break;
+                case "攻擊速度":
+                  tp.as += transNum(f[1]);
+                  break;
+                case "最大生命":
+                  tp.hpd += transNum(f[1]);
+                  break;
+                case "最大法力":
+                  tp.mpd += transNum(f[1]);
+                  break;
+                default:
+                  break;
 
+              }
             }
           }
         }
       }
-    }
-    {
-      let m = v.match(r.healthG);
-      if(m) {
-        for(let x in m){
-          let f = r.health.exec(m[x]);
-          if(f) {
-            switch(f[3]) {
-              case "最大生命":
-                f[1] === "+" ? tp.hp += transNum(f[2]) : tp.hp -= transNum(f[2]);
-                break;
-              case "最大法力":
-                f[1] === "+" ? tp.mp += transNum(f[2]) : tp.mp -= transNum(f[2]);
-                break;
-              default:
-                break;
+      {
+        let m = v.match(r.healthG);
+        if(m) {
+          for(let x in m){
+            let f = r.health.exec(m[x]);
+            if(f) {
+              switch(f[3]) {
+                case "最大生命":
+                  f[1] === "+" ? tp.hp += transNum(f[2]) : tp.hp -= transNum(f[2]);
+                  break;
+                case "最大法力":
+                  f[1] === "+" ? tp.mp += transNum(f[2]) : tp.mp -= transNum(f[2]);
+                  break;
+                default:
+                  break;
+              }
             }
           }
         }
       }
+    } else {
+      const code = loadHistoryUrl(v);
+      const data = passiveSkillTreeData.nodes;
+      let m = [];
+      for(let i in code) {
+        for(let j in data) {
+          if(code[i] == parseInt(data[j].id)) {
+            for(let k in data[j].sd) {
+              m.push(data[j].sd[k]);
+            }
+          }
+        } 
+      }
+      const r = reg.equipment;
+      const n = infoArray[TextAreaNum];
+
+      {
+          for(let x in m){
+            let f = r.par.exec(m[x]);
+            if(f) {
+              switch(f[3]) {
+                case "全域暴擊加成":
+                  f[1] === "+" ? tp.cd += transNum(f[2]) : tp.cd -= transNum(f[2]);
+                  break;
+                case "暴擊加成":
+                  f[1] === "+" ? tp.cd += transNum(f[2]) : tp.cd -= transNum(f[2]);
+                  break;
+                case "基礎暴擊加成":
+                  f[1] === "+" ? tp.cd += transNum(f[2]) : tp.cd -= transNum(f[2]);
+                  break;
+                default:
+                  break;
+
+              }
+            }
+          }
+      }
+      {
+          for(let x in m){
+            let f = r.add.exec(m[x]);
+            if(f) {
+              switch(f[3]) {
+                case "閃電":
+                  tp.ts += transNum(f[1]);
+                  tp.tb += transNum(f[2]);
+                  break;
+                case "冰冷":
+                  tp.ices += transNum(f[1]);
+                  tp.iceb += transNum(f[2]);
+                  break;
+                case "火焰":
+                  tp.fs += transNum(f[1]);
+                  tp.fb += transNum(f[2]);
+                  break;
+                case "物理":
+                  tp.ps += transNum(f[1]);
+                  tp.pb += transNum(f[2]);
+                  break;
+                case "混沌":
+                  tp.zs += transNum(f[1]);
+                  tp.zb += transNum(f[2]);
+                  break;
+                default:
+                  break;
+
+              }
+            }
+          }
+      }
+      {
+          for(let x in m){
+            let f = r.insert.exec(m[x]);
+            if(f) {
+              switch(f[2]) {
+                case "閃電傷害":
+                  tp.td += transNum(f[1]);
+                  break;
+                case "冰冷傷害":
+                  tp.iced += transNum(f[1]);
+                  break;
+                case "火焰傷害":
+                  tp.fd += transNum(f[1]);
+                  break;
+                case "物理傷害":
+                  tp.pd += transNum(f[1]);
+                  break;
+                case "混沌傷害":
+                  tp.zd += transNum(f[1]);
+                  break;
+                case "元素傷害":
+                  tp.ed += transNum(f[1]);
+                  break;
+                case "武器元素傷害":
+                  tp.wed += transNum(f[1]);
+                  break;
+                case "投射物傷害":
+                  tp.pjtd += transNum(f[1]);
+                  break;
+                case "攻擊傷害":
+                  tp.ad += transNum(f[1]);
+                  break;
+                case "陷阱傷害":
+                  tp.trd += transNum(f[1]);
+                  break;
+                case "中毒傷害":
+                  tp.pod += transNum(f[1]);
+                  break;
+                case "持續傷害":
+                  tp.cud += transNum(f[1]);
+                  break;
+                case "全域暴擊率":
+                  tp.c += transNum(f[1]);
+                  break;
+                case "暴擊率":
+                  tp.c += transNum(f[1]);
+                  break;
+                case "攻擊速度":
+                  tp.as += transNum(f[1]);
+                  break;
+                case "最大生命":
+                  tp.hpd += transNum(f[1]);
+                  break;
+                case "最大法力":
+                  tp.mpd += transNum(f[1]);
+                  break;
+                default:
+                  break;
+
+              }
+            }
+          }
+      }
+      {
+          for(let x in m){
+            let f = r.health.exec(m[x]);
+            if(f) {
+              switch(f[3]) {
+                case "最大生命":
+                  f[1] === "+" ? tp.hp += transNum(f[2]) : tp.hp -= transNum(f[2]);
+                  break;
+                case "最大法力":
+                  f[1] === "+" ? tp.mp += transNum(f[2]) : tp.mp -= transNum(f[2]);
+                  break;
+                default:
+                  break;
+              }
+            }
+          }
+      }
+
     }
     json[n] = temp[n] = tp;
     this.setState(json);
@@ -1407,3 +1572,5 @@ const App = React.createClass({
 });
 const mainBox = document.querySelector('#main');
 const main = React.render(<App />, mainBox);
+
+
