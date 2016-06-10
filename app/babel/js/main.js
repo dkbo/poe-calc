@@ -1563,8 +1563,8 @@ const App = React.createClass({
       <Value s={this} />
       <Info s={this} />
       <div id="text" className={showTextArea ? "" : "xx-hide"}>
-        <h3 className="active">匯入裝備</h3>
-        <textarea onChange={this._handleChange} placeholder="滑鼠移到遊戲視窗內的裝備上按下 CTRL + C 再把滑鼠移回網頁文字框內按下 CRTR + V" />
+        <h3 className="active">匯入裝備/天賦</h3>
+        <textarea onChange={this._handleChange} placeholder="滑鼠移到遊戲視窗內的裝備上按下 CTRL + C 再把滑鼠移回網頁文字框內按下 CRTR + V。 或是直接複製天賦網址貼上即可" />
       </div>
     </div> 
     );
