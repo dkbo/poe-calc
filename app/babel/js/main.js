@@ -934,7 +934,7 @@ const Info = React.createClass({
       edml: Math.round(ml(s.moreless.wedm) * (100 + s.moreless.edm )) / 100,  
       dml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr,s.moreless.btomd, s.moreless.ci, 4 * s.player.gb) * (100 + s.moreless.rg)) / 100,
       hdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.hideinfo.pm) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
-      ppdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy) * (100 + s.moreless.rg)) / 100,
+      ppdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
       asl: ml(s.moreless.pdmasl, s.moreless.btomasl) * 100,
     };
     function ml() {
@@ -1049,8 +1049,8 @@ const Info = React.createClass({
       esd: Math.round(Math.round((((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
       ztd: Math.round((((hidebasic.zs + hidebasic.zb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
       zsd: Math.round(Math.round((((hidebasic.zs + hidebasic.zb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
-      ppsd1: Math.round(Math.round((((hidebasic.pps + hidebasic.ppb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.pps + hidebasic.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.pmt / 2 * s.player.bc) / 100,
-      ppsd2: Math.round(Math.round((((hidebasic.pps + hidebasic.ppb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.pps + hidebasic.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.pmt * s.player.bc) / 100,
+      ppsd1: Math.round(Math.round((((hidebasic.pps + hidebasic.ppb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.pps + hidebasic.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.pmt / 2 / 2 * s.player.bc) / 100,
+      ppsd2: Math.round(Math.round((((hidebasic.pps + hidebasic.ppb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.pps + hidebasic.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.pmt / 2 * s.player.bc) / 100,
       icesc: Math.round(hidebasic.ices * calc.cd) / 100,
       icebc: Math.round(hidebasic.iceb * calc.cd) / 100,
       fsc: Math.round(hidebasic.fs * calc.cd) / 100,
@@ -1163,7 +1163,7 @@ const Info = React.createClass({
             <p className="col xx6"><strong>總傷</strong>{(hideinfo.psc + hideinfo.icesc + hideinfo.fsc + hideinfo.tsc + hideinfo.zsc).toFixed(2)} - {(hideinfo.pbc + hideinfo.icebc + hideinfo.fbc + hideinfo.tbc + hideinfo.zbc).toFixed(2)}</p>   
           </Row> : null}
         </section>
-        <section>
+        <section className="xx-hide">
           <h3 className={this.state.puDisplay ? 'active' : null} onClick={this._handlePu}>中毒傷害</h3>
           {this.state.puDisplay ?
           <Row>
