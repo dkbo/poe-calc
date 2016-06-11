@@ -137,6 +137,7 @@ const Talent = React.createClass({
           {label: "元傷%", attr: "ed"},
           {label: "武器元傷%", attr: "wed"},
           {label: "武器物傷%", attr: "wpd"},
+          {label: "攻擊物傷%", attr: "apd"},
           {label: "投射物(傷害)%", attr: "pjtd"},
           {label: "攻擊傷害%", attr: "ad"},
           {label: "陷阱傷害%", attr: "trd"},
@@ -918,6 +919,7 @@ const Info = React.createClass({
       ed: s.weaponadd.ed + s.talent.ed + s.head.ed + s.hand.ed + s.body.ed + s.belt.ed + s.ringone.ed + s.ringtwo.ed + s.necklace.ed + s.foot.ed + s.quiver.ed + s.skill.ed,
       wed: s.weaponadd.wed + s.talent.wed + s.head.wed + s.hand.wed + s.body.wed + s.belt.wed + s.ringone.wed + s.ringtwo.wed + s.necklace.wed + s.foot.wed + s.quiver.wed + s.skill.wed,
       wpd: s.talent.wpd,
+      apd: s.talent.apd,
       iced: s.weaponadd.iced + s.talent.iced + s.head.iced + s.hand.iced + s.body.iced + s.belt.iced + s.ringone.iced + s.ringtwo.iced + s.necklace.iced + s.foot.iced + s.quiver.iced + s.skill.iced,
       igd: s.skill.igd,
       fd: s.weaponadd.fd + s.talent.fd + s.head.fd + s.hand.fd + s.body.fd + s.belt.fd + s.ringone.fd + s.ringtwo.fd + s.necklace.fd + s.foot.fd + s.quiver.fd + s.skill.fd,
@@ -983,7 +985,7 @@ const Info = React.createClass({
       return sd * (100 + sum.wed + sum.ed + dsum + sum.pjtd + sum.ad + sum.aoed +sum.trd) / 100 * dml * Math.round(em * s.skill.bd) / 100;
     };
     function pl(sd, d, em, ise = false){
-      let dsum = 100 + sum.pjtd + sum.trd + sum.pd + sum.wpd + sum.ad + sum.aoed;
+      let dsum = 100 + sum.pjtd + sum.trd + sum.pd + sum.wpd + sum.apd + sum.ad + sum.aoed;
       let dml = sum.pdml;
       for(let i = 0 ; i < d.length; i++){
         dsum += d[i];
@@ -1037,19 +1039,19 @@ const Info = React.createClass({
 
     //點燃公式
     function igl(sd){
-      let dsum = 100 + sum.cud + sum.fd + sum.igd + sum.pjtd + sum.pod + sum.trd + sum.aoed;
+      let dsum = 100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.fd + sum.igd  + sum.ed;
       let dml = sum.igdml;
       return Math.round(sd * dsum / 100 * dml * (100 + s.hideinfo.fe + s.hideinfo.frc) / 100 *  0.2);
     };
     //流血公式
     function pul(sd){
-      let dsum = 100 + sum.cud + sum.cupd + sum.pjtd + sum.pod + sum.trd + sum.aoed;
+      let dsum = 100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.cupd + sum.pd;
       let dml = sum.pudml;
       return Math.round(sd * dsum / 100 * dml * (100 + s.hideinfo.fe + s.hideinfo.frc + s.hideinfo.fr) / 100 *  0.1);
     };
     //中毒公式
     function ppl(sd){
-      let dsum = 100 + sum.cud + sum.pjtd + sum.pod + sum.trd + sum.zd + sum.aoed;
+      let dsum = 100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.pod  + sum.zd ;
       let dml = sum.ppdml;
       return Math.round(sd * dsum / 100 * dml * (100 + s.hideinfo.fe + s.hideinfo.frc) / 100 *  0.1);
     };
@@ -1374,49 +1376,49 @@ const App = React.createClass({
             if(f) {
               switch(f[2]) {
                 case "閃電傷害":
-                  tp.td += transNum(f[1]);
+                  tp.td += transNum(f[2]);
                   break;
                 case "冰冷傷害":
-                  tp.iced += transNum(f[1]);
+                  tp.iced += transNum(f[2]);
                   break;
                 case "火焰傷害":
-                  tp.fd += transNum(f[1]);
+                  tp.fd += transNum(f[2]);
                   break;
                 case "物理傷害":
-                  tp.pd += transNum(f[1]);
+                  tp.pd += transNum(f[2]);
                   break;
                 case "混沌傷害":
-                  tp.zd += transNum(f[1]);
+                  tp.zd += transNum(f[2]);
                   break;
                 case "元素傷害":
-                  tp.ed += transNum(f[1]);
+                  tp.ed += transNum(f[2]);
                   break;
                 case "武器元素傷害":
-                  tp.wed += transNum(f[1]);
+                  tp.wed += transNum(f[2]);
                   break;
                 case "投射物傷害":
-                  tp.pjtd += transNum(f[1]);
+                  tp.pjtd += transNum(f[2]);
                   break;
                 case "陷阱傷害":
-                  tp.trd += transNum(f[1]);
+                  tp.trd += transNum(f[2]);
                   break;
                 case "中毒傷害":
-                  tp.pod += transNum(f[1]);
+                  tp.pod += transNum(f[2]);
                   break;
                 case "持續傷害":
-                  tp.cud += transNum(f[1]);
+                  tp.cud += transNum(f[2]);
                   break;
                 case "全域暴擊率":
-                  tp.c += transNum(f[1]);
+                  tp.c += transNum(f[2]);
                   break;
                 case "攻擊速度":
-                  tp.as += transNum(f[1]);
+                  tp.as += transNum(f[2]);
                   break;
                 case "最大生命":
-                  tp.hpd += transNum(f[1]);
+                  tp.hpd += transNum(f[2]);
                   break;
                 case "最大法力":
-                  tp.mpd += transNum(f[1]);
+                  tp.mpd += transNum(f[2]);
                   break;
                 default:
                   break;
@@ -1519,57 +1521,68 @@ const App = React.createClass({
           for(let x in m){
             let f = r.insert.exec(m[x]);
             if(f) {
-              switch(f[2]) {
+              console.log(f)
+              switch(f[3]) {
                 case "閃電傷害":
-                  tp.td += transNum(f[1]);
+                  tp.td += transNum(f[2]);
                   break;
                 case "冰冷傷害":
-                  tp.iced += transNum(f[1]);
+                  tp.iced += transNum(f[2]);
                   break;
                 case "火焰傷害":
-                  tp.fd += transNum(f[1]);
+                  tp.fd += transNum(f[2]);
                   break;
                 case "物理傷害":
-                  tp.pd += transNum(f[1]);
+                  switch(f[1]) {
+                    case "增加":
+                      tp.pd += transNum(f[2]);
+                      break;
+                    default:
+                      tp.wpd += transNum(f[2]);
+                      break;
+                  }
                   break;
                 case "混沌傷害":
-                  tp.zd += transNum(f[1]);
+                  tp.zd += transNum(f[2]);
                   break;
                 case "元素傷害":
-                  tp.ed += transNum(f[1]);
+                  tp.ed += transNum(f[2]);
                   break;
                 case "武器元素傷害":
-                  tp.wed += transNum(f[1]);
+                  tp.wed += transNum(f[2]);
                   break;
                 case "投射物傷害":
-                  tp.pjtd += transNum(f[1]);
+                  tp.pjtd += transNum(f[2]);
                   break;
                 case "攻擊傷害":
-                  tp.ad += transNum(f[1]);
+                  tp.ad += transNum(f[2]);
+                  break;
+                case "攻擊物理傷害":
+                  tp.apd += transNum(f[2]);
                   break;
                 case "陷阱傷害":
-                  tp.trd += transNum(f[1]);
+                  tp.trd += transNum(f[2]);
                   break;
                 case "中毒傷害":
-                  tp.pod += transNum(f[1]);
+                  tp.pod += transNum(f[2]);
                   break;
                 case "持續傷害":
-                  tp.cud += transNum(f[1]);
+                  tp.cud += transNum(f[2]);
                   break;
                 case "全域暴擊率":
-                  tp.c += transNum(f[1]);
+                  tp.c += transNum(f[2]);
                   break;
                 case "暴擊率":
-                  tp.c += transNum(f[1]);
+                  tp.c += transNum(f[2]);
                   break;
                 case "攻擊速度":
-                  tp.as += transNum(f[1]);
+                  tp.as += transNum(f[2]);
                   break;
                 case "最大生命":
-                  tp.hpd += transNum(f[1]);
+                  tp.hpd += transNum(f[2]);
                   break;
                 case "最大法力":
-                  tp.mpd += transNum(f[1]);
+                  tp.mpd += transNum(f[2]);
                   break;
                 default:
                   break;
