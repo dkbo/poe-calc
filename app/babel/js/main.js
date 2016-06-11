@@ -1039,21 +1039,21 @@ const Info = React.createClass({
 
     //點燃公式
     function igl(sd){
-      let dsum = 100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.fd + sum.igd  + sum.ed;
+      let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.fd + sum.igd  + sum.ed) / 100;
       let dml = sum.igdml;
-      return Math.round(sd * dsum / 100 * dml * (100 + s.hideinfo.fe + s.hideinfo.frc) / 100 *  0.2);
+      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + s.hideinfo.frc) / 100 *  0.2);
     };
     //流血公式
     function pul(sd){
-      let dsum = 100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.cupd + sum.pd;
+      let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.cupd + sum.pd) / 100;
       let dml = sum.pudml;
-      return Math.round(sd * dsum / 100 * dml * (100 + s.hideinfo.fe + s.hideinfo.frc + s.hideinfo.fr) / 100 *  0.1);
+      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + s.hideinfo.frc + s.hideinfo.fr) / 100 *  0.1);
     };
     //中毒公式
     function ppl(sd){
-      let dsum = 100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.pod  + sum.zd ;
+      let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.pod  + sum.zd) / 100 ;
       let dml = sum.ppdml;
-      return Math.round(sd * dsum / 100 * dml * (100 + s.hideinfo.fe + s.hideinfo.frc) / 100 *  0.1);
+      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + s.hideinfo.frc) / 100 *  0.1);
     };
 
     const dot = {
@@ -1209,7 +1209,7 @@ const Info = React.createClass({
           {this.state.puDisplay ?
           <Row>
             <p className="col xx6"><strong className="zColor">毒傷</strong>{dot.pps} - {dot.ppb}</p>
-            <Clear/>
+            <p className="col xx6"><strong className="zColor">毒傷暴擊</strong>{dot.ppcs} - {dot.ppcb}</p>
             <p className="col xx6"><strong className="zColor">中毒持續時間</strong>{calc.pps} 秒</p>
             <p className="col xx6"><strong className="zColor">最大疊毒次數</strong>{calc.pmt}</p>
             <p className="col xx6"><strong className="zColor">{calc.pps} 秒內DPS</strong>{hideinfo.ppsd1}</p>
