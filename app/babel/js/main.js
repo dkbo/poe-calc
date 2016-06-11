@@ -10,6 +10,7 @@ function equipmentRwd(name) {
           {label: "武器元傷%", attr: "wed"},
           {label: "投射物(傷害)%", attr: "pjtd"},
           {label: "陷阱傷害%", attr: "trd"},
+          {label: "範圍傷害%", attr: "aoed"},
           {label: "clear"},
           {label: "中毒傷害%", attr: "pod"},
           {label: "持續傷%", attr: "cud"},
@@ -85,6 +86,8 @@ const Player = React.createClass({
           {label: "綠球", attr: "gb", className: "gb"},
           {label: "籃球", attr: "bb", className: "bb"},
           {label: "散彈效應", attr: "bc"},
+          {label: "基礎中毒時間", attr: "pps"},
+          {label: "中毒機率", attr: "ppo"},
         ]
       };
     return(
@@ -133,9 +136,11 @@ const Talent = React.createClass({
           {label: "clear"},
           {label: "元傷%", attr: "ed"},
           {label: "武器元傷%", attr: "wed"},
+          {label: "武器物傷%", attr: "wpd"},
           {label: "投射物(傷害)%", attr: "pjtd"},
           {label: "攻擊傷害%", attr: "ad"},
           {label: "陷阱傷害%", attr: "trd"},
+          {label: "範圍傷害%", attr: "aoed"},
           {label: "clear"},
           {label: "中毒傷害%", attr: "pod"},
           {label: "持續傷%", attr: "cud"},
@@ -613,15 +618,18 @@ const Skill = React.createClass({
           {label: "額外武器暴率", attr: "wc", step: "0.1"},
           {label: "暴率", attr: "c"},
           {label: "暴傷%", attr: "cd"},
+          {label: "持續時間%", attr: "cuds"},
           {label: "clear"},
           {label: "傷害%", attr: "d"},
           {label: "元傷%", attr: "ed"},
           {label: "武器元傷%", attr: "wed"},
           {label: "投射物(物理)%", attr: "pjptd"},
           {label: "投射物(傷害)%", attr: "pjtd"},
-          {label: "中毒傷害%", attr: "pod"},
-          {label: "持續傷害%", attr: "cud"},
+          {label: "範圍傷害%", attr: "aoed"},
           {label: "陷阱傷害%", attr: "trd"},
+          {label: "中毒傷害%", attr: "pod"},
+          {label: "燃燒傷害%", attr: "igd"},
+          {label: "持續傷害%", attr: "cud"},
           {label: "clear"},
           {label: "物傷%", attr: "pd"},
           {label: "物傷(小)", attr: "ps"},
@@ -710,6 +718,8 @@ const Moreless = React.createClass({
           {label: "clear"},
           {label: "武器元素傷害", attr: "wedm"},
           {label: "元素集中", attr: "edm"},
+          {label: "clear"},
+          {label: "虛空操縱", attr: "vm"},
         ]
       };
     return(
@@ -907,7 +917,9 @@ const Info = React.createClass({
       as: s.talent.as + s.head.as + s.hand.as + s.body.as + s.belt.as + s.ringone.as + s.ringtwo.as + s.necklace.as + s.foot.as + s.quiver.as + s.skill.as + s.player.gb * 4, 
       ed: s.weaponadd.ed + s.talent.ed + s.head.ed + s.hand.ed + s.body.ed + s.belt.ed + s.ringone.ed + s.ringtwo.ed + s.necklace.ed + s.foot.ed + s.quiver.ed + s.skill.ed,
       wed: s.weaponadd.wed + s.talent.wed + s.head.wed + s.hand.wed + s.body.wed + s.belt.wed + s.ringone.wed + s.ringtwo.wed + s.necklace.wed + s.foot.wed + s.quiver.wed + s.skill.wed,
+      wpd: s.talent.wpd,
       iced: s.weaponadd.iced + s.talent.iced + s.head.iced + s.hand.iced + s.body.iced + s.belt.iced + s.ringone.iced + s.ringtwo.iced + s.necklace.iced + s.foot.iced + s.quiver.iced + s.skill.iced,
+      igd: s.skill.igd,
       fd: s.weaponadd.fd + s.talent.fd + s.head.fd + s.hand.fd + s.body.fd + s.belt.fd + s.ringone.fd + s.ringtwo.fd + s.necklace.fd + s.foot.fd + s.quiver.fd + s.skill.fd,
       td: s.weaponadd.td + s.talent.td + s.head.td + s.hand.td + s.body.td + s.belt.td + s.ringone.td + s.ringtwo.td + s.necklace.td + s.foot.td + s.quiver.td + s.skill.td,
       zd: s.weaponadd.zd + s.talent.zd + s.head.zd + s.hand.zd + s.body.zd + s.belt.zd + s.ringone.zd + s.ringtwo.zd + s.necklace.zd + s.foot.zd + s.quiver.zd + s.skill.zd,
@@ -928,13 +940,17 @@ const Info = React.createClass({
       cupd: s.talent.cupd,
       ad: s.talent.ad,
       pjtd: s.weaponadd.pjtd + s.talent.pjtd + s.head.pjtd + s.hand.pjtd + s.body.pjtd + s.belt.pjtd + s.ringone.pjtd + s.ringtwo.pjtd + s.necklace.pjtd + s.foot.pjtd + s.quiver.pjtd + s.skill.pjtd,
+      aoed: s.weaponadd.aoed + s.talent.aoed + s.head.aoed + s.hand.aoed + s.body.aoed + s.belt.aoed + s.ringone.aoed + s.ringtwo.aoed + s.necklace.aoed + s.foot.aoed + s.quiver.aoed + s.skill.aoed,
       pod: s.weaponadd.pod + s.talent.pod + s.head.pod + s.hand.pod + s.body.pod + s.belt.pod + s.ringone.pod + s.ringtwo.pod + s.necklace.pod + s.foot.pod + s.quiver.pod + s.skill.pod,
       pd: s.talent.pd + s.head.pd + s.hand.pd + s.body.pd + s.belt.pd + s.ringone.pd + s.ringtwo.pd + s.necklace.pd + s.foot.pd + s.quiver.pd + s.skill.pd + s.skill.pjptd,
       pdml: ml(s.moreless.pdm),
+      zml: ml(s.moreless.vm),
       edml: Math.round(ml(s.moreless.wedm) * (100 + s.moreless.edm )) / 100,  
       dml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr,s.moreless.btomd, s.moreless.ci, 4 * s.player.gb) * (100 + s.moreless.rg)) / 100,
       hdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.hideinfo.pm) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
-      ppdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
+      igdml: Math.round(ml(s.moreless.edm) * ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
+      pudml: Math.round(ml(s.moreless.pdm) * ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
+      ppdml: Math.round(ml(s.moreless.vm) * ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
       asl: ml(s.moreless.pdmasl, s.moreless.btomasl) * 100,
     };
     function ml() {
@@ -955,15 +971,19 @@ const Info = React.createClass({
       hp: Math.round((38 + (s.player.level * 12) + (s.player.str / 2) + sum.hp) * (100 + sum.hpd) / 100),  //血量
       mp: Math.round((34 + (6 * s.player.level) + (s.player.int / 2) + sum.mp) * (100 + sum.mpd)/ 100),    //法力
     };
-    function el(sd, d, em){
+    function el(sd, d, em, ise = false){
       let dsum = 0;
+      let dml = sum.edml;
+      if(ise == "z") {
+        dml *= sum.zml;
+      }
       for(let i = 0 ; i < d.length; i++){
         dsum += d[i];
       }
-      return sd * (100 + sum.wed + sum.ed + dsum + sum.pjtd + sum.ad + sum.trd) / 100 * sum.edml * Math.round(em * s.skill.bd) / 100;
+      return sd * (100 + sum.wed + sum.ed + dsum + sum.pjtd + sum.ad + sum.aoed +sum.trd) / 100 * dml * Math.round(em * s.skill.bd) / 100;
     };
     function pl(sd, d, em, ise = false){
-      let dsum = 100 + sum.pjtd + sum.trd + sum.pd + sum.ad;
+      let dsum = 100 + sum.pjtd + sum.trd + sum.pd + sum.wpd + sum.ad + sum.aoed;
       let dml = sum.pdml;
       for(let i = 0 ; i < d.length; i++){
         dsum += d[i];
@@ -972,16 +992,16 @@ const Info = React.createClass({
         dml *= sum.edml;
         dsum += sum.wed + sum.ed;
       }
+      if(ise == "z") {
+        dml *= sum.zml;
+      }
       return sd * dsum / 100 * dml * Math.round(em * s.skill.bd) / 100
     };
     function zl(sd, d){
-      return sd * (100 + sum.wed + sum.ed + d + sum.pjtd + sum.ad + sum.trd) / 100 * sum.edml * Math.round(sum.dml * s.skill.bd) / 100;
+      return sd * (100 + sum.wed + sum.ed + d + sum.pjtd + sum.ad + sum.trd + sum.aoed) / 100 * sum.edml * Math.round(sum.dml * s.skill.bd) / 100;
     };
-    function ppl(sd, d, em){
-      let dsum = 100 + sum.cud + sum.pjtd + sum.ad + sum.pod + sum.trd + sum.zd;
-      let dml = sum.ppdml;
-      return Math.round(sd * dsum / 100 * dml * (100 + s.hideinfo.fe + s.hideinfo.frc) / 100 *  0.1);
-    };
+
+
     function basicCalc(dml, h){
       return {
         as: Math.round((100 + s.weaponadd.as) / 100 * (100 + sum.as) / 100 * sum.asl) / 100 - 1,
@@ -993,16 +1013,14 @@ const Info = React.createClass({
         tb: Math.round((el(sum.tb, [sum.td], dml) + pl(sum.pb, [sum.td], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (100 - s.skill.ttz) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
         ps: Math.round(pl(sum.ps, [0], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100 * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
         pb: Math.round(pl(sum.pb, [0], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100 * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
-        zs: Math.round((sum.zs * (100 + sum.zd + sum.pjtd) / 100 * Math.round(dml * s.skill.bd) / 100 + pl(sum.ps, [sum.zd], dml) * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.ices, [sum.iced, sum.zd], dml) + pl(sum.ps, [sum.iced, sum.zd], dml, true) * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.ts, [sum.td, sum.zd], dml) + pl(sum.ps, [sum.td, sum.zd], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fs, [sum.fd, sum.zd], dml) + (el(sum.ices, [sum.fd, sum.iced, sum.zd], dml) + pl(sum.ps, [sum.fd, sum.td, sum.iced, sum.zd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd, sum.zd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
-        zb: Math.round((sum.zb * (100 + sum.zd + sum.pjtd) / 100 * Math.round(dml * s.skill.bd) / 100 + pl(sum.pb, [sum.zd], dml) * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.iceb, [sum.iced, sum.zd], dml) + pl(sum.pb, [sum.iced, sum.zd], dml, true) * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.tb, [sum.td, sum.zd], dml) + pl(sum.pb, [sum.td, sum.zd], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fb, [sum.fd, sum.zd], dml) + (el(sum.iceb, [sum.fd, sum.iced, sum.zd], dml) + pl(sum.pb, [sum.fd, sum.td, sum.iced, sum.zd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd, sum.zd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
-        pus: (pl(sum.ps, [sum.cud, sum.cupd], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100  * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr + s.hideinfo.frc) / 100 : 1)),
-        pub: (pl(sum.pb, [sum.cud, sum.cupd], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100  * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr + s.hideinfo.frc) / 100 : 1)),
+        zs: Math.round((sum.zs * (100 + sum.zd + sum.pjtd) / 100 * sum.zml * Math.round(dml * s.skill.bd) / 100 + pl(sum.ps, [sum.zd], dml, "z") * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.ices, [sum.iced, sum.zd], dml, "z") + pl(sum.ps, [sum.iced, sum.zd], dml, "z") * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.ts, [sum.td, sum.zd], dml, "z") + pl(sum.ps, [sum.td, sum.zd], dml, "z") * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fs, [sum.fd, sum.zd], dml, "z") + (el(sum.ices, [sum.fd, sum.iced, sum.zd], dml, "z") + pl(sum.ps, [sum.fd, sum.td, sum.iced, sum.zd], dml, "z") * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd, sum.zd], dml, "z") * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
+        zb: Math.round((sum.zb * (100 + sum.zd + sum.pjtd) / 100 * sum.zml * Math.round(dml * s.skill.bd) / 100 + pl(sum.pb, [sum.zd], dml, "z") * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.iceb, [sum.iced, sum.zd], dml, "z") + pl(sum.pb, [sum.iced, sum.zd], dml, "z") * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.tb, [sum.td, sum.zd], dml, "z") + pl(sum.pb, [sum.td, sum.zd], dml, "z") * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fb, [sum.fd, sum.zd], dml, "z") + (el(sum.iceb, [sum.fd, sum.iced, sum.zd], dml, "z") + pl(sum.pb, [sum.fd, sum.td, sum.iced, sum.zd], dml, "z") * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd, sum.zd], dml, "z") * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
       }
     }
+
     const basic = basicCalc(sum.dml);
     const hidebasic = basicCalc(sum.hdml, true);
-    hidebasic.pps = ppl(hidebasic.zs + hidebasic.ps);
-    hidebasic.ppb = ppl(hidebasic.zb + hidebasic.pb);
+
     const calc = {
       as: Math.round(s.weapon.as * (1 + basic.as) * 100) / 100,
       basicds: basic.ices + basic.fs + basic.ts + basic.ps + basic.zs,
@@ -1011,10 +1029,50 @@ const Info = React.createClass({
       hbasicdb: hidebasic.iceb + hidebasic.fb + hidebasic.tb + hidebasic.pb + hidebasic.zb,
       c: (Math.round(weapon.c * (100 + sum.c)) / 100) > 95 ? 95 : (Math.round(weapon.c * (100 + sum.c)) / 100),
       cd: Math.round(150 + sum.cd),
-      ps: 2,
+      pps: Math.floor(s.player.pps * (100 + s.skill.cuds)) / 100,
     };
-    calc.pmt = Math.round( 2 / (1 / calc.as) * 100) / 100; //最大毒傷次數
     calc.hc = s.hideinfo.cw ? 100 - Math.round(Math.pow(100 - calc.c, 2)) / 100 : calc.c; // 寶鑽藥劑
+
+
+
+    //點燃公式
+    function igl(sd){
+      let dsum = 100 + sum.cud + sum.fd + sum.igd + sum.pjtd + sum.pod + sum.trd + sum.aoed;
+      let dml = sum.igdml;
+      return Math.round(sd * dsum / 100 * dml * (100 + s.hideinfo.fe + s.hideinfo.frc) / 100 *  0.2);
+    };
+    //流血公式
+    function pul(sd){
+      let dsum = 100 + sum.cud + sum.cupd + sum.pjtd + sum.pod + sum.trd + sum.aoed;
+      let dml = sum.pudml;
+      return Math.round(sd * dsum / 100 * dml * (100 + s.hideinfo.fe + s.hideinfo.frc + s.hideinfo.fr) / 100 *  0.1);
+    };
+    //中毒公式
+    function ppl(sd){
+      let dsum = 100 + sum.cud + sum.pjtd + sum.pod + sum.trd + sum.zd + sum.aoed;
+      let dml = sum.ppdml;
+      return Math.round(sd * dsum / 100 * dml * (100 + s.hideinfo.fe + s.hideinfo.frc) / 100 *  0.1);
+    };
+
+    const dot = {
+      igs: igl(hidebasic.fs),
+      igb: igl(hidebasic.fb),
+      igcs: Math.round(igl(hidebasic.fs * calc.cd) / 100),
+      igcb: Math.round(igl(hidebasic.fb * calc.cd) / 100),
+
+      pus: pul(hidebasic.ps),
+      pub: pul(hidebasic.pb),
+      pucs: Math.round(pul(hidebasic.ps * calc.cd) / 100),
+      pucb: Math.round(pul(hidebasic.pb * calc.cd) / 100),
+
+      pps: ppl(hidebasic.zs + hidebasic.ps),
+      ppb: ppl(hidebasic.zb + hidebasic.pb),
+      ppcs: Math.round(ppl((hidebasic.zs + hidebasic.ps) * calc.cd) / 100),
+      ppcb: Math.round(ppl((hidebasic.zb + hidebasic.pb) * calc.cd) / 100),
+    };
+
+    calc.pmt = Math.round( calc.pps / (1 / calc.as) * 100) / 100; //最大毒傷次數
+
     const info = {      
       td: Math.round((((calc.basicds + calc.basicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
       sd: Math.round(Math.round((((calc.basicds + calc.basicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc) * calc.as) / 100,
@@ -1024,21 +1082,6 @@ const Info = React.createClass({
       esd: Math.round(Math.round((((basic.ices + basic.fs + basic.ts + basic.iceb + basic.fb + basic.tb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.ices + basic.fs + basic.ts + basic.iceb + basic.fb + basic.tb) / 2 * (100 - calc.c) / 100)) * s.player.acc) * calc.as) / 100,
       ztd: Math.round((((basic.zs + basic.zb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.zs + basic.zb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
       zsd: Math.round(Math.round((((basic.zs + basic.zb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.zs + basic.zb) / 2 * (100 - calc.c) / 100)) * s.player.acc) * calc.as) / 100,
-      icesc: Math.round(basic.ices * calc.cd) / 100,
-      icebc: Math.round(basic.iceb * calc.cd) / 100,
-      fsc: Math.round(basic.fs * calc.cd) / 100,
-      fbc: Math.round(basic.fb * calc.cd) / 100,
-      tsc: Math.round(basic.ts * calc.cd) / 100,
-      tbc: Math.round(basic.tb * calc.cd) / 100,
-      psc: Math.round(basic.ps * calc.cd) / 100,
-      pbc: Math.round(basic.pb * calc.cd) / 100,
-      zsc: Math.round(basic.zs * calc.cd) / 100,
-      zbc: Math.round(basic.zb * calc.cd) / 100,
-      pusc: Math.round(basic.pus * 0.1 * calc.cd) / 100,
-      pubc: Math.round(basic.pub * 0.1 * calc.cd) / 100,
-      puswc: Math.round((basic.pus * 0.1) + (basic.pus * 0.5) * calc.cd) / 100,
-      pubwc: Math.round((basic.pub * 0.1) + (basic.pub * 0.5) * calc.cd) / 100,
-
     };
     const hideinfo = {
       td: Math.round((((calc.hbasicds + calc.hbasicdb) / 2 * calc.hc / 100 * calc.cd / 100) + ((calc.hbasicds + calc.hbasicdb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
@@ -1049,22 +1092,18 @@ const Info = React.createClass({
       esd: Math.round(Math.round((((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
       ztd: Math.round((((hidebasic.zs + hidebasic.zb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
       zsd: Math.round(Math.round((((hidebasic.zs + hidebasic.zb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
-      ppsd1: Math.round(Math.round((((hidebasic.pps + hidebasic.ppb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.pps + hidebasic.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.pmt / 2 / 2 * s.player.bc) / 100,
-      ppsd2: Math.round(Math.round((((hidebasic.pps + hidebasic.ppb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.pps + hidebasic.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.pmt / 2 * s.player.bc) / 100,
+      ppsd1: Math.round(Math.round((((dot.ppcs + dot.ppcb) / 2 * calc.hc / 100) + ((dot.pps + dot.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ppo) * (calc.pmt - 1 > 0  ? (calc.pmt - 1) / calc.pps : 0)  * s.player.bc) / 100,
+      ppsd2: Math.round(Math.round((((dot.ppcs + dot.ppcb) / 2 * calc.hc / 100) + ((dot.pps + dot.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ppo) * calc.pmt * s.player.bc) / 100,
       icesc: Math.round(hidebasic.ices * calc.cd) / 100,
       icebc: Math.round(hidebasic.iceb * calc.cd) / 100,
-      fsc: Math.round(hidebasic.fs * calc.cd) / 100,
-      fbc: Math.round(hidebasic.fb * calc.cd) / 100,
-      tsc: Math.round(hidebasic.ts * calc.cd) / 100,
-      tbc: Math.round(hidebasic.tb * calc.cd) / 100,
-      psc: Math.round(hidebasic.ps * calc.cd) / 100,
-      pbc: Math.round(hidebasic.pb * calc.cd) / 100,
-      zsc: Math.round(hidebasic.zs * calc.cd) / 100,
-      zbc: Math.round(hidebasic.zb * calc.cd) / 100,
-      pusc: Math.round(hidebasic.pus * 0.1 * calc.cd) / 100,
-      pubc: Math.round(hidebasic.pub * 0.1 * calc.cd) / 100,
-      puswc: Math.round((hidebasic.pus * 0.1) + (hidebasic.pus * 0.5) * calc.cd) / 100,
-      pubwc: Math.round((hidebasic.pub * 0.1) + (hidebasic.pub * 0.5) * calc.cd) / 100,
+      fsc: Math.round(hidebasic.fs * calc.cd / 100),
+      fbc: Math.round(hidebasic.fb * calc.cd / 100),
+      tsc: Math.round(hidebasic.ts * calc.cd / 100),
+      tbc: Math.round(hidebasic.tb * calc.cd / 100),
+      psc: Math.round(hidebasic.ps * calc.cd / 100),
+      pbc: Math.round(hidebasic.pb * calc.cd / 100),
+      zsc: Math.round(hidebasic.zs * calc.cd / 100),
+      zbc: Math.round(hidebasic.zb * calc.cd / 100),
     };
     return(
     <div className="col xx12 s4">
@@ -1156,23 +1195,31 @@ const Info = React.createClass({
           {this.state.addHDisplay ?
           <Row>
             <p className="col xx6"><strong>物理</strong>{hideinfo.psc} - {hideinfo.pbc}</p>
-            <p className="col xx6"><strong className="iceColor">冰傷</strong>{hideinfo.icesc ? hideinfo.icesc.toFixed(2) :　0} - {hideinfo.icebc ? hideinfo.icebc.toFixed(2) : 0}</p>
-            <p className="col xx6"><strong className="fireColor">火傷</strong>{hideinfo.fsc ? hideinfo.fsc.toFixed(2) : 0} - {hideinfo.fbc ? hideinfo.fbc.toFixed(2) : 0}</p>
-            <p className="col xx6"><strong className="electricColor">電傷</strong>{hideinfo.tsc ? hideinfo.tsc.toFixed(2) : 0} - {hideinfo.tbc ? hideinfo.tbc.toFixed(2) : 0}</p>
-            <p className="col xx6"><strong>混傷</strong>{hideinfo.zsc ? hideinfo.zsc.toFixed(2) : 0} - {hideinfo.zbc ? hideinfo.zbc.toFixed(2) : 0}</p>
-            <p className="col xx6"><strong>總傷</strong>{(hideinfo.psc + hideinfo.icesc + hideinfo.fsc + hideinfo.tsc + hideinfo.zsc).toFixed(2)} - {(hideinfo.pbc + hideinfo.icebc + hideinfo.fbc + hideinfo.tbc + hideinfo.zbc).toFixed(2)}</p>   
+            <p className="col xx6"><strong className="iceColor">冰傷</strong>{hideinfo.icesc} - {hideinfo.icebc}</p>
+            <p className="col xx6"><strong className="fireColor">火傷</strong>{hideinfo.fsc} - {hideinfo.fbc}</p>
+            <p className="col xx6"><strong className="electricColor">電傷</strong>{hideinfo.tsc} - {hideinfo.tbc}</p>
+            <p className="col xx6"><strong>混傷</strong>{hideinfo.zsc} - {hideinfo.zbc}</p>
+            <p className="col xx6"><strong>總傷</strong>{hideinfo.psc + hideinfo.icesc + hideinfo.fsc + hideinfo.tsc + hideinfo.zsc} - {hideinfo.pbc + hideinfo.icebc + hideinfo.fbc + hideinfo.tbc + hideinfo.zbc}</p>   
           </Row> : null}
         </section>
-        <section className="xx-hide">
-          <h3 className={this.state.puDisplay ? 'active' : null} onClick={this._handlePu}>中毒傷害</h3>
+        <section>
+          <h3 className={this.state.puDisplay ? 'active' : null} onClick={this._handlePu}>中毒/流血/點燃</h3>
           {this.state.puDisplay ?
           <Row>
-            <p className="col xx6"><strong>毒傷</strong>{hidebasic.pps} - {hidebasic.ppb}</p>
+            <p className="col xx6"><strong className="zColor">毒傷</strong>{dot.pps} - {dot.ppb}</p>
             <Clear/>
-            <p className="col xx6"><strong>中毒持續時間</strong>{calc.ps} 秒</p>
-            <p className="col xx6"><strong>最大疊毒次數</strong>{calc.pmt}</p>
-            <p className="col xx6"><strong>{calc.ps} 秒內DPS</strong>{hideinfo.ppsd1}</p>
-            <p className="col xx6"><strong>{calc.ps} 秒後DPS</strong>{hideinfo.ppsd2}</p>
+            <p className="col xx6"><strong className="zColor">中毒持續時間</strong>{calc.pps} 秒</p>
+            <p className="col xx6"><strong className="zColor">最大疊毒次數</strong>{calc.pmt}</p>
+            <p className="col xx6"><strong className="zColor">{calc.pps} 秒內DPS</strong>{hideinfo.ppsd1}</p>
+            <p className="col xx6"><strong className="zColor">{calc.pps} 秒後DPS</strong>{hideinfo.ppsd2}</p>
+            <Clear/>
+            <p className="col xx6"><strong>流血(站)</strong>{dot.pus} - {dot.pub}</p>
+            <p className="col xx6"><strong>流血(站)暴擊</strong>{dot.pucs} - {dot.pucb}</p>
+            <p className="col xx6"><strong>流血(動)</strong>{Math.round(dot.pus * 6)} - {Math.round(dot.pub * 6)}</p>
+            <p className="col xx6"><strong>流血(動)暴擊</strong>{Math.round(dot.pucs * 6)} - {Math.round(dot.pucb * 6)}</p>
+            <Clear/>
+            <p className="col xx6"><strong className="fireColor">點燃</strong>{dot.igs} - {dot.igb}</p>
+            <p className="col xx6"><strong className="fireColor">點燃暴擊</strong>{dot.igcs} - {dot.igcb}</p>
           </Row> : null}
         </section>
         <section className="xx-hide">
@@ -1193,8 +1240,11 @@ const Info = React.createClass({
             <p className="col xx3"><strong>生命%</strong>{sum.hpd}</p>
             <p className="col xx3"><strong>魔力</strong>{sum.mp}</p>
             <p className="col xx3"><strong>魔力%</strong>{sum.mpd}</p>
+            <p className="col xx6"><strong>暴率%</strong>{sum.c}</p>
+            <p className="col xx6"><strong>暴傷加成%</strong>{sum.cd}</p>
             <p className="col xx6"><strong>元素傷害%</strong>{sum.ed}</p>
             <p className="col xx6"><strong>武器元素傷害%</strong>{sum.wed}</p>
+            <p className="col xx6"><strong>武器物理傷害%</strong>{sum.wpd}</p>
             <p className="col xx6"><strong>物傷%</strong>{sum.pd}</p>
             <p className="col xx6"><strong>物傷(大小)</strong>{sum.ps} - {sum.pb}</p>
             <p className="col xx6"><strong className="iceColor">冰傷%</strong>{sum.iced}</p>
@@ -1203,22 +1253,22 @@ const Info = React.createClass({
             <p className="col xx6"><strong className="fireColor">火傷(大小)</strong>{sum.fs} - {sum.fb}</p>
             <p className="col xx6"><strong className="electricColor">電傷%</strong>{sum.td}</p>
             <p className="col xx6"><strong className="electricColor">電傷(大小)</strong>{sum.ts} - {sum.tb}</p>
-            <p className="col xx6"><strong >混傷%</strong>{sum.zd}</p>
-            <p className="col xx6"><strong >混傷(大小)</strong>{sum.zs} - {sum.zb}</p>
-            <p className="col xx6"><strong >持續傷害%</strong>{sum.cud}</p>
-            <p className="col xx6"><strong >物理持續傷害%</strong>{sum.cupd}</p>
-            <p className="col xx4"><strong >持續傷害%</strong>{sum.cud}</p>
-            <p className="col xx4"><strong >物理持續傷害%</strong>{sum.cupd}</p>
-            <p className="col xx4"><strong >投射物傷害%</strong>{sum.pjtd}</p>
-            <p className="col xx4"><strong >中毒傷害%</strong>{sum.pod}</p>
-            <p className="col xx4"><strong >陷阱傷害%</strong>{sum.trd}</p>
-            <p className="col xx4"><strong >攻擊傷害%</strong>{sum.ad}</p>
-            <p className="col xx6"><strong >暴率%</strong>{sum.c}</p>
-            <p className="col xx6"><strong >暴傷加成%</strong>{sum.cd}</p>
-            <p className="col xx6"><strong >物理傷害(倍率)</strong>{sum.pdml}</p>
-            <p className="col xx6"><strong >元素傷害(倍率)</strong>{sum.edml}</p>
-            <p className="col xx6"><strong >傷害(倍率)</strong>{sum.dml}</p>
-            <p className="col xx6"><strong >實際傷害(倍率)</strong>{sum.hdml}</p>
+            <p className="col xx6"><strong className="zColor">混傷%</strong>{sum.zd}</p>
+            <p className="col xx6"><strong className="zColor">混傷(大小)</strong>{sum.zs} - {sum.zb}</p>
+            <p className="col xx6"><strong>物理持續傷害%</strong>{sum.cupd}</p>
+            <p className="col xx4"><strong>持續傷害%</strong>{sum.cud}</p>
+            <p className="col xx4"><strong>投射物傷害%</strong>{sum.pjtd}</p>
+            <p className="col xx4"><strong>陷阱傷害%</strong>{sum.trd}</p>
+            <p className="col xx4"><strong>攻擊傷害%</strong>{sum.ad}</p>
+            <p className="col xx4"><strong>範圍傷害%</strong>{sum.aoed}</p>
+            <p className="col xx4"><strong className="zColor">中毒傷害%</strong>{sum.pod}</p>
+            <p className="col xx4"><strong>物理傷害(倍率)</strong>{sum.pdml}</p>
+            <p className="col xx4"><strong>元素傷害(倍率)</strong>{sum.edml}</p>
+            <p className="col xx4"><strong>傷害(倍率)</strong>{sum.dml}</p>
+            <p className="col xx4"><strong>實際傷害(倍率)</strong>{sum.hdml}</p>
+            <p className="col xx4"><strong className="fireColor">點燃傷害(倍率)</strong>{sum.igdml}</p>
+            <p className="col xx4"><strong>流血傷害(倍率)</strong>{sum.pudml}</p>
+            <p className="col xx4"><strong className="zColor">中毒傷害(倍率)</strong>{sum.ppdml}</p>
           </Row> : null}
         </section>
       </div>

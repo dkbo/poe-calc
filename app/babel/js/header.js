@@ -37,6 +37,8 @@ const init = {
     gb: 0,    //綠球
     bb: 0,    //籃球 
     bc: 1,    //散彈效應 
+    pps: 2,    //基礎中毒時間 
+    ppo: 0,    //中毒機率 
   },
   talent: {
     as: 0,  //攻擊速度
@@ -48,7 +50,9 @@ const init = {
     wed: 0, //武器元素傷害%
     pod: 0, //中毒傷害%
     trd: 0, //陷阱傷害%
+    aoed: 0, //範圍傷害%
     pd: 0,  //物理傷害%
+    wpd: 0,  //武器物理傷害%
     cupd: 0,  //物理持續傷害%
     ad: 0,  //攻擊傷害%
     cud: 0,  //持續傷害%
@@ -93,6 +97,7 @@ const init = {
     as: 0,  //攻擊速度
     wc: 0, //額外武器暴擊機率
     c: 0, //暴擊機率
+    cuds: 0, //持續時間延長
     ps: 0,  //物理(小)
     pb: 0,  //物理(大)
     ices: 0,  //冰冷小
@@ -107,7 +112,9 @@ const init = {
     pd: 0,  //物理傷害%
     cud: 0,  //持續傷害%
     pod: 0,  //中毒傷害%
+    igd: 0,  //燃燒傷害%
     wed: 0, //武器元素傷害%
+    aoed: 0, //範圍傷害%
     pjptd: 0,  //投射物物理傷害%
     trd: 0, //陷阱傷害%
     pjtd: 0, //投射物傷害%
@@ -150,6 +157,7 @@ const init = {
     rg: 0, //集中效應
     btomd: 0, // 遠距離圖騰較少傷害
     btomasl: 0, //遠距離圖騰較少攻速
+    vm: 0, //虛空操縱
   },
   hideinfo: {
     pm: 0,  //更多弓傷害%(亂矢)
@@ -193,6 +201,7 @@ function equipment(){
     td: 0,  //閃電傷害%
     zd: 0, //混傷%
     pod: 0, //中毒傷害%
+    aoed: 0, //範圍傷害%
     pjtd: 0, //投射物傷害%
     trd: 0, //陷阱傷害%
     cud: 0, //持續傷%
@@ -204,7 +213,7 @@ function equipment(){
 }
 const info = {
   name: '未命名頁面',
-  player: {level: 1, bc: 1},
+  player: {level: 1, bc: 1, pps: 2},
   talent: {},
   weapon: {},
   weaponadd: {},
