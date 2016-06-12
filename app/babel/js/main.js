@@ -623,6 +623,7 @@ const Skill = React.createClass({
           {label: "暴率", attr: "c"},
           {label: "暴傷%", attr: "cd"},
           {label: "持續時間%", attr: "cuds"},
+          {label: "詛咒效果%", attr: "bdd"},
           {label: "clear"},
           {label: "傷害%", attr: "d"},
           {label: "元傷%", attr: "ed"},
@@ -969,9 +970,9 @@ const Info = React.createClass({
       pb: Math.round((s.weapon.pb + s.weaponadd.pb) * (100 + s.weapon.q + s.weaponadd.pd) / 100), //武器加成後大傷
       c: Math.round(s.weapon.c * (100 + s.weaponadd.c )) / 100 + s.skill.wc, //武器加成後暴率
     };
-    //詛咒減免
+    //詛咒效果減免
     function bdr(x) {
-      return Math.floor(x * (100 + s.monster.bd) / 100);
+      return Math.floor(x * (100 + s.skill.bdd) / 100 * (100 + s.monster.bd) / 100);
     };
     const sum = {
       hp: s.weaponadd.hp + s.talent.hp + s.head.hp + s.hand.hp + s.body.hp + s.belt.hp + s.ringone.hp + s.ringtwo.hp + s.necklace.hp + s.foot.hp + s.quiver.hp,
