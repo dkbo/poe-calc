@@ -125,6 +125,12 @@ const init = {
     fd: 0, //火焰傷害%
     td: 0,  //閃電傷害%
     zd: 0, //混傷%
+    icedi: 0, //冰冷穿透
+    icedr: 0, //冰冷減抗
+    fdi: 0, //火焰穿透
+    fdr: 0, //火焰減抗
+    tdi: 0, //閃電穿透
+    tdr: 0, //閃電減抗
     ptf: 0, //物轉火
     pti: 0, //物轉冰
     ptt: 0, //物轉電
@@ -168,6 +174,22 @@ const init = {
     fe: 0, //感電
     fr: 0, //脆弱(物理)
     frc: 0, //脆弱(持續)
+    amc: 0, //刺客印記(暴率)
+    amcd: 0, //刺客印記(承受暴傷)
+    icedr: 0, //凍傷
+    fdr: 0, //易燃
+    tdr: 0, //導電
+    edr: 0, //元素要害
+  },
+  monster: {
+    bd: 0, // 詛咒減免
+    pd: 0, //物理減傷
+    iced: 0, //冰抗
+    td: 0, //電抗
+    fd: 0, //火炕
+    zd: 0, //混抗
+    edr: 0, //元反
+    pdr: 0, //物反
   },
   aural: {
     hate: 0,//贈恨
@@ -230,6 +252,7 @@ const info = {
   skill: {bd: 100},
   moreless: {},
   hideinfo: {},
+  monster: {},
   aural: {}
 }
 const infoArray = [
@@ -249,10 +272,11 @@ const infoArray = [
   "skill",
   "moreless",
   "hideinfo",
+  "monster",
   "aural",
 ]
 let temp = JSON.parse(JSON.stringify(init));
-let leftPanel =  [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+let leftPanel =  [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 let rightPanel = [false, false, false, false, false, false, false, false, false, false];
 let index = localStorage.index ? localStorage.index : 1;
 let value = [];

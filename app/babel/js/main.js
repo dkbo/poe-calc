@@ -46,6 +46,9 @@ function rwdValue(category, _this, s) {
           s[category.name][val.attr] ? <RWDValue><label className={val.className ? val.className : ""}>{val.label}</label><input type="number" step={val.step ? val.step : 1} name={category.name} className={val.attr} value={s[category.name][val.attr] ? s[category.name][val.attr] : 0} onChange={_this.setValue} /></RWDValue> : null
           );
         }
+        if(!s[category.name]){
+          s[category.name] = {}
+        }
         return (
           <RWDValue><label className={val.className ? val.className : ""}>{val.label}</label><input type="number" step={val.step ? val.step : 1} name={category.name} className={val.attr} value={s[category.name][val.attr] ? s[category.name][val.attr] : 0} onChange={_this.setValue} /></RWDValue>
         );
@@ -648,6 +651,13 @@ const Skill = React.createClass({
           {label: "混傷(小)", attr: "zs", className: "zColor"},
           {label: "混傷(大)", attr: "zb", className: "zColor"},
           {label: "clear"},
+          {label: "冰冷穿透", attr: "icedi", className: "iceColor"},
+          {label: "冰冷減抗", attr: "icedr", className: "iceColor"},
+          {label: "火焰穿透", attr: "fdi", className: "fireColor"},
+          {label: "火焰減抗", attr: "fdr", className: "fireColor"},
+          {label: "閃電穿透", attr: "tdi", className: "electricColor"},
+          {label: "閃電減抗", attr: "tdr", className: "electricColor"},
+          {label: "clear"},
           {label: "額外物轉冰%", attr: "ptiadd"},
           {label: "額外物轉火%", attr: "ptfadd"},
           {label: "額外物轉電%", attr: "pttadd"},
@@ -801,11 +811,59 @@ const Hideinfo = React.createClass({
           {label: "感電", attr: "fe"},
           {label: "脆弱(物理)", attr: "fr"},
           {label: "脆弱(持續)", attr: "frc"},
+          {label: "刺客印記(暴率)", attr: "amc"},
+          {label: "刺客印記(承受)", attr: "amcd"},
+          {label: "凍傷(抗)", attr: "icedr"},
+          {label: "導電(抗)", attr: "tdr"},
+          {label: "點燃(抗)", attr: "fdr"},
+          {label: "元素要害", attr: "edr"},
         ]
       };
     return(
       <section>
         <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>隱藏資訊</span></h3>
+        {this.state.display ? 
+        <Row>
+          {rwdValue(category, this, s.state)}
+        </Row> : null }
+      </section>
+    );
+  },
+});
+const Monster = React.createClass({
+  getInitialState() {
+    return {
+      display: leftPanel[17],
+    };
+  },
+  setValue(e, json = this.props.s.state) {
+    let category = e.target.name;
+    let attr = e.target.className;
+    json[category][attr] = temp[category][attr] = transNum(e.target.value);
+    this.props.s.setState(json);
+  },
+  _handleClick() {
+    leftPanel[17] = !this.state.display;
+    main.leftPanel();
+    this.setState({display: !this.state.display});
+  },
+  render(s = this.props.s){
+    const category = {
+        name: "monster",
+        RWDValue: [
+          {label: "詛咒減免", attr: "bd"},
+          {label: "物理減傷", attr: "pd"},
+          {label: "冰抗", attr: "iced"},
+          {label: "電抗", attr: "td"},
+          {label: "火炕", attr: "fd"},
+          {label: "混抗", attr: "zd"},
+          {label: "元反", attr: "edr"},
+          {label: "物反", attr: "pdr"},
+        ]
+      };
+    return(
+      <section>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>怪物資訊</span></h3>
         {this.state.display ? 
         <Row>
           {rwdValue(category, this, s.state)}
@@ -835,6 +893,7 @@ const Value = React.createClass({
         <Moreless s={this.props.s} />
         <Aural s={this.props.s} />
         <Hideinfo s={this.props.s} />
+        <Monster s={this.props.s} />
       </div>
     );
   }
@@ -910,6 +969,10 @@ const Info = React.createClass({
       pb: Math.round((s.weapon.pb + s.weaponadd.pb) * (100 + s.weapon.q + s.weaponadd.pd) / 100), //武器加成後大傷
       c: Math.round(s.weapon.c * (100 + s.weaponadd.c )) / 100 + s.skill.wc, //武器加成後暴率
     };
+    //詛咒減免
+    function bdr(x) {
+      return Math.floor(x * (100 + s.monster.bd) / 100);
+    };
     const sum = {
       hp: s.weaponadd.hp + s.talent.hp + s.head.hp + s.hand.hp + s.body.hp + s.belt.hp + s.ringone.hp + s.ringtwo.hp + s.necklace.hp + s.foot.hp + s.quiver.hp,
       hpd: s.weaponadd.hpd + s.talent.hpd + s.head.hpd + s.hand.hpd + s.body.hpd + s.belt.hpd + s.ringone.hpd + s.ringtwo.hpd + s.necklace.hpd + s.foot.hpd + s.quiver.hpd,
@@ -954,6 +1017,11 @@ const Info = React.createClass({
       pudml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
       ppdml: Math.round(ml(s.moreless.vm) * ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
       asl: ml(s.moreless.pdmasl, s.moreless.btomasl) * 100,
+      mopd: s.monster.pd,
+      moiced: s.monster.iced + bdr(s.hideinfo.icedr) + s.skill.icedr + bdr(s.hideinfo.edr) > 75 ? 75 + s.skill.icedi : s.monster.iced + bdr(s.hideinfo.icedr) + s.skill.icedr + bdr(s.hideinfo.edr) + s.skill.icedi,
+      mofd: s.monster.fd + bdr(s.hideinfo.fdr) + s.skill.fdr + bdr(s.hideinfo.edr) > 75  ? 75 + s.skill.fdi : s.monster.fd + bdr(s.hideinfo.fdr) + s.skill.fdr + bdr(s.hideinfo.edr) + s.skill.fdi,
+      motd: s.monster.td + bdr(s.hideinfo.tdr) + s.skill.tdr + bdr(s.hideinfo.edr) > 75  ? 75 + s.skill.tdi : s.monster.td + bdr(s.hideinfo.tdr) + s.skill.tdr + bdr(s.hideinfo.edr) + s.skill.tdi,
+      mozd: s.monster.zd > 75 ? 75 : s.monster.zd,
     };
     function ml() {
       let value = 1;
@@ -1003,20 +1071,68 @@ const Info = React.createClass({
       return sd * (100 + sum.wed + sum.ed + d + sum.pjtd + sum.ad + sum.trd + sum.aoed) / 100 * sum.edml * Math.round(sum.dml * s.skill.bd) / 100;
     };
 
-
+    function iced(sd, dml, h, c) {
+      if(sd === true) {
+        return Math.round((el(sum.ices, [sum.iced], dml) + pl(sum.ps, [sum.iced], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100 ) * (100 - s.skill.itf) / 100 * (h ? (100 + s.hideinfo.fe + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.moiced : 100) / 100;
+      } else {
+        return Math.round((el(sum.iceb, [sum.iced], dml) + pl(sum.pb, [sum.iced], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100 ) * (100 - s.skill.itf) / 100 * (h ? (100 + s.hideinfo.fe + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.moiced : 100) / 100;
+      }
+    };
+    function fd(sd, dml, h, c) {
+      if(sd === true) {
+        return Math.round((el(sum.fs, [sum.fd], dml) + (el(sum.ices, [sum.fd, sum.iced], dml) + pl(sum.ps, [sum.iced, sum.fd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100 * (h ? (100 + s.hideinfo.fe + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mofd : 100) / 100;
+      } else {
+        return Math.round((el(sum.fb, [sum.fd], dml) + (el(sum.iceb, [sum.fd, sum.iced], dml) + pl(sum.pb, [sum.iced, sum.fd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100 * (h ? (100 + s.hideinfo.fe + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mofd : 100) / 100;
+      }
+      
+    };
+    function td(sd, dml, h, c) {
+      if(sd === true) {
+        return Math.round((el(sum.ts, [sum.td], dml) + pl(sum.ps, [sum.td], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (100 - s.skill.ttz) / 100 * (h ? (100 + s.hideinfo.fe + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.motd : 100) / 100;
+      } else {
+        return Math.round((el(sum.tb, [sum.td], dml) + pl(sum.pb, [sum.td], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (100 - s.skill.ttz) / 100 * (h ? (100 + s.hideinfo.fe + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.motd : 100) / 100;
+      }
+    };
+    function pd(sd, dml, h, c) {
+      if(sd === true) {
+        return Math.round(pl(sum.ps, [0], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100 * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mopd : 100) / 100;;
+      } else {
+        return Math.round(pl(sum.pb, [0], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100 * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mopd : 100) / 100;;
+      }
+    };
+    function zd(sd, dml, h, c) {
+      if(sd === true) {
+        return Math.round((sum.zs * (100 + sum.zd + sum.pjtd) / 100 * sum.zml * Math.round(dml * s.skill.bd) / 100 + pl(sum.ps, [sum.zd], dml, "z") * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.ices, [sum.iced, sum.zd], dml, "z") + pl(sum.ps, [sum.iced, sum.zd], dml, "z") * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.ts, [sum.td, sum.zd], dml, "z") + pl(sum.ps, [sum.td, sum.zd], dml, "z") * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fs, [sum.fd, sum.zd], dml, "z") + (el(sum.ices, [sum.fd, sum.iced, sum.zd], dml, "z") + pl(sum.ps, [sum.fd, sum.td, sum.iced, sum.zd], dml, "z") * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd, sum.zd], dml, "z") * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mozd : 100) / 100;
+      } else {
+        return Math.round((sum.zb * (100 + sum.zd + sum.pjtd) / 100 * sum.zml * Math.round(dml * s.skill.bd) / 100 + pl(sum.pb, [sum.zd], dml, "z") * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.iceb, [sum.iced, sum.zd], dml, "z") + pl(sum.pb, [sum.iced, sum.zd], dml, "z") * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.tb, [sum.td, sum.zd], dml, "z") + pl(sum.pb, [sum.td, sum.zd], dml, "z") * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fb, [sum.fd, sum.zd], dml, "z") + (el(sum.iceb, [sum.fd, sum.iced, sum.zd], dml, "z") + pl(sum.pb, [sum.fd, sum.td, sum.iced, sum.zd], dml, "z") * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd, sum.zd], dml, "z") * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mozd : 100) / 100;
+      }
+    };
+    function cd() {
+      return Math.round(150 + sum.cd);
+    };
     function basicCalc(dml, h){
       return {
         as: Math.round((100 + s.weaponadd.as) / 100 * (100 + sum.as) / 100 * sum.asl) / 100 - 1,
-        ices: Math.round((el(sum.ices, [sum.iced], dml) + pl(sum.ps, [sum.iced], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100 ) * (100 - s.skill.itf) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
-        iceb: Math.round((el(sum.iceb, [sum.iced], dml) + pl(sum.pb, [sum.iced], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100 ) * (100 - s.skill.itf) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
-        fs: Math.round((el(sum.fs, [sum.fd], dml) + (el(sum.ices, [sum.fd, sum.iced], dml) + pl(sum.ps, [sum.iced, sum.fd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
-        fb: Math.round((el(sum.fb, [sum.fd], dml) + (el(sum.iceb, [sum.fd, sum.iced], dml) + pl(sum.pb, [sum.iced, sum.fd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
-        ts: Math.round((el(sum.ts, [sum.td], dml) + pl(sum.ps, [sum.td], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (100 - s.skill.ttz) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
-        tb: Math.round((el(sum.tb, [sum.td], dml) + pl(sum.pb, [sum.td], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (100 - s.skill.ttz) / 100 * (h ? (100 + s.hideinfo.fe) / 100 : 1)),
-        ps: Math.round(pl(sum.ps, [0], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100 * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
-        pb: Math.round(pl(sum.pb, [0], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100 * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
-        zs: Math.round((sum.zs * (100 + sum.zd + sum.pjtd) / 100 * sum.zml * Math.round(dml * s.skill.bd) / 100 + pl(sum.ps, [sum.zd], dml, "z") * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.ices, [sum.iced, sum.zd], dml, "z") + pl(sum.ps, [sum.iced, sum.zd], dml, "z") * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.ts, [sum.td, sum.zd], dml, "z") + pl(sum.ps, [sum.td, sum.zd], dml, "z") * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fs, [sum.fd, sum.zd], dml, "z") + (el(sum.ices, [sum.fd, sum.iced, sum.zd], dml, "z") + pl(sum.ps, [sum.fd, sum.td, sum.iced, sum.zd], dml, "z") * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd, sum.zd], dml, "z") * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
-        zb: Math.round((sum.zb * (100 + sum.zd + sum.pjtd) / 100 * sum.zml * Math.round(dml * s.skill.bd) / 100 + pl(sum.pb, [sum.zd], dml, "z") * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.iceb, [sum.iced, sum.zd], dml, "z") + pl(sum.pb, [sum.iced, sum.zd], dml, "z") * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.tb, [sum.td, sum.zd], dml, "z") + pl(sum.pb, [sum.td, sum.zd], dml, "z") * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fb, [sum.fd, sum.zd], dml, "z") + (el(sum.iceb, [sum.fd, sum.iced, sum.zd], dml, "z") + pl(sum.pb, [sum.fd, sum.td, sum.iced, sum.zd], dml, "z") * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd, sum.zd], dml, "z") * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + s.hideinfo.fr) / 100 : 1)),
+        ices: iced(true, dml, h),
+        iceb: iced(false, dml, h),
+        icecs: iced(true, dml, h, true),
+        icecb: iced(false, dml, h, true),
+        fs: fd(true, dml, h),
+        fb: fd(false, dml, h),
+        fcs: fd(true, dml, h, true),
+        fcb: fd(false, dml, h, true),
+        ts: td(true, dml, h),
+        tb: td(false, dml, h),
+        tcs: td(true, dml, h, true),
+        tcb: td(false, dml, h, true),
+        ps: pd(true, dml, h),
+        pb: pd(false, dml, h),
+        pcs: pd(true, dml, h, true),
+        pcb: pd(false, dml, h, true),
+        zs: zd(true, dml, h),
+        zb: zd(false, dml, h),
+        zcs: zd(true, dml, h, true),
+        zcb: zd(false, dml, h, true),
       }
     }
 
@@ -1027,85 +1143,79 @@ const Info = React.createClass({
       as: Math.round(s.weapon.as * (1 + basic.as) * 100) / 100,
       basicds: basic.ices + basic.fs + basic.ts + basic.ps + basic.zs,
       basicdb: basic.iceb + basic.fb + basic.tb + basic.pb + basic.zb,
+      basicCds: basic.icecs + basic.fcs + basic.tcs + basic.pcs + basic.zcs,
+      basicCdb: basic.icecb + basic.fcb + basic.tcb + basic.pcb + basic.zcb,
       hbasicds: hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.ps + hidebasic.zs,
       hbasicdb: hidebasic.iceb + hidebasic.fb + hidebasic.tb + hidebasic.pb + hidebasic.zb,
-      c: (Math.round(weapon.c * (100 + sum.c)) / 100) > 95 ? 95 : (Math.round(weapon.c * (100 + sum.c)) / 100),
-      cd: Math.round(150 + sum.cd),
+      hbasicCds: hidebasic.icecs + hidebasic.fcs + hidebasic.tcs + hidebasic.pcs + hidebasic.zcs,
+      hbasicCdb: hidebasic.icecb + hidebasic.fcb + hidebasic.tcb + hidebasic.pcb + hidebasic.zcb,
+      c: ((Math.round(weapon.c * (100 + sum.c)) / 100) > 95 ? 95 : (Math.round(weapon.c * (100 + sum.c)) / 100)),
+      bc: ((Math.round(weapon.c * (100 + sum.c)) / 100) + bdr(s.hideinfo.amc)) > 95 ? 95 : (Math.round(weapon.c * (100 + sum.c)) / 100) + bdr(s.hideinfo.amc),
       pps: Math.floor(s.player.pps * (100 + s.skill.cuds)) / 100,
     };
-    calc.hc = s.hideinfo.cw ? 100 - Math.round(Math.pow(100 - calc.c, 2)) / 100 : calc.c; // 寶鑽藥劑
+    calc.hc = (s.hideinfo.cw) ? 100 - Math.round(Math.pow(100 - calc.bc, 2)) / 100 : calc.bc; // 寶鑽藥劑 // 刺客印記
 
 
 
     //點燃公式
-    function igl(sd){
+    function igl(sd, c){
       let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.fd + sum.igd  + sum.ed) / 100;
       let dml = sum.igdml;
-      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + s.hideinfo.frc) / 100 *  0.2);
+      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 *  0.2);
     };
     //流血公式
-    function pul(sd){
+    function pul(sd, c){
       let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.cupd + sum.pd) / 100;
       let dml = sum.pudml;
-      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + s.hideinfo.frc + s.hideinfo.fr) / 100 *  0.1);
+      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc) + bdr(s.hideinfo.fr) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 *  0.1);
     };
     //中毒公式
-    function ppl(sd){
+    function ppl(sd, c){
       let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.pod  + sum.zd) / 100 ;
       let dml = sum.ppdml;
-      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + s.hideinfo.frc) / 100 *  0.1);
+      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 *  0.1);
     };
 
     const dot = {
       igs: igl(hidebasic.fs),
       igb: igl(hidebasic.fb),
-      igcs: Math.round(igl(hidebasic.fs * calc.cd) / 100),
-      igcb: Math.round(igl(hidebasic.fb * calc.cd) / 100),
+      igcs: igl(hidebasic.fcs, true),
+      igcb: igl(hidebasic.fcb, true),
 
       pus: pul(hidebasic.ps),
       pub: pul(hidebasic.pb),
-      pucs: Math.round(pul(hidebasic.ps * calc.cd) / 100),
-      pucb: Math.round(pul(hidebasic.pb * calc.cd) / 100),
+      pucs: pul(hidebasic.pcs, true),
+      pucb: pul(hidebasic.pcb, true),
 
       pps: ppl(hidebasic.zs + hidebasic.ps),
       ppb: ppl(hidebasic.zb + hidebasic.pb),
-      ppcs: Math.round(ppl((hidebasic.zs + hidebasic.ps) * calc.cd) / 100),
-      ppcb: Math.round(ppl((hidebasic.zb + hidebasic.pb) * calc.cd) / 100),
+      ppcs: ppl(hidebasic.zcs + hidebasic.pcs, true),
+      ppcb: ppl(hidebasic.zcb + hidebasic.pcb, true),
     };
 
     calc.pmt = Math.round( calc.pps / (1 / calc.as) * 100) / 100; //最大毒傷次數
 
     const info = {      
-      td: Math.round((((calc.basicds + calc.basicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
-      sd: Math.round(Math.round((((calc.basicds + calc.basicdb) / 2 * calc.c / 100 * calc.cd / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc) * calc.as) / 100,
-      ptd: Math.round((((basic.ps + basic.pb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.ps + basic.pb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
-      psd: Math.round(Math.round((((basic.ps + basic.pb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.ps + basic.pb) / 2 * (100 - calc.c) / 100)) * s.player.acc) * calc.as) / 100,
-      etd: Math.round((((basic.ices + basic.fs + basic.ts + basic.iceb + basic.fb + basic.tb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.ices + basic.fs + basic.ts + basic.iceb + basic.fb + basic.tb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
-      esd: Math.round(Math.round((((basic.ices + basic.fs + basic.ts + basic.iceb + basic.fb + basic.tb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.ices + basic.fs + basic.ts + basic.iceb + basic.fb + basic.tb) / 2 * (100 - calc.c) / 100)) * s.player.acc) * calc.as) / 100,
-      ztd: Math.round((((basic.zs + basic.zb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.zs + basic.zb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
-      zsd: Math.round(Math.round((((basic.zs + basic.zb) / 2 * calc.c / 100 * calc.cd / 100) + ((basic.zs + basic.zb) / 2 * (100 - calc.c) / 100)) * s.player.acc) * calc.as) / 100,
+      td: Math.round((((calc.basicCds + calc.basicCdb) / 2 * calc.c / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
+      sd: Math.round(Math.round((((calc.basicCds + calc.basicCdb) / 2 * calc.c / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc) * calc.as) / 100,
+      ptd: Math.round((((basic.ps + basic.pb) / 2 * calc.c / 100 * cd() / 100) + ((basic.ps + basic.pb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
+      psd: Math.round(Math.round((((basic.pcs + basic.pcb) / 2 * calc.c / 100) + ((basic.ps + basic.pb) / 2 * (100 - calc.c) / 100)) * s.player.acc) * calc.as) / 100,
+      etd: Math.round((((basic.icecs + basic.fcs + basic.tcs + basic.icecb + basic.fcb + basic.tcb) / 2 * calc.c / 100) + ((basic.ices + basic.fs + basic.ts + basic.iceb + basic.fb + basic.tb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
+      esd: Math.round(Math.round((((basic.icecs + basic.fcs + basic.tcs + basic.icecb + basic.fcb + basic.tcb) / 2 * calc.c / 100) + ((basic.ices + basic.fs + basic.ts + basic.iceb + basic.fb + basic.tb) / 2 * (100 - calc.c) / 100)) * s.player.acc) * calc.as) / 100,
+      ztd: Math.round((((basic.zcs + basic.zcb) / 2 * calc.c / 100) + ((basic.zs + basic.zb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
+      zsd: Math.round(Math.round((((basic.zcs + basic.zcb) / 2 * calc.c / 100) + ((basic.zs + basic.zb) / 2 * (100 - calc.c) / 100)) * s.player.acc) * calc.as) / 100,
     };
     const hideinfo = {
-      td: Math.round((((calc.hbasicds + calc.hbasicdb) / 2 * calc.hc / 100 * calc.cd / 100) + ((calc.hbasicds + calc.hbasicdb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
-      sd: Math.round(Math.round((((calc.hbasicds + calc.hbasicdb) / 2 * calc.hc / 100 * calc.cd / 100) + ((calc.hbasicds + calc.hbasicdb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
-      ptd: Math.round((((hidebasic.ps + hidebasic.pb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.ps + hidebasic.pb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
-      psd: Math.round(Math.round((((hidebasic.ps + hidebasic.pb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.ps + hidebasic.pb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
-      etd: Math.round((((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
-      esd: Math.round(Math.round((((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
-      ztd: Math.round((((hidebasic.zs + hidebasic.zb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
-      zsd: Math.round(Math.round((((hidebasic.zs + hidebasic.zb) / 2 * calc.hc / 100 * calc.cd / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
+      td: Math.round((((calc.hbasicCds + calc.hbasicCdb) / 2 * calc.hc / 100) + ((calc.hbasicds + calc.hbasicdb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
+      sd: Math.round(Math.round((((calc.hbasicCds + calc.hbasicCdb) / 2 * calc.hc / 100) + ((calc.hbasicds + calc.hbasicdb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
+      ptd: Math.round((((hidebasic.pcs + hidebasic.pcb) / 2 * calc.hc / 100) + ((hidebasic.ps + hidebasic.pb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
+      psd: Math.round(Math.round((((hidebasic.pcs + hidebasic.pcb) / 2 * calc.hc / 100) + ((hidebasic.ps + hidebasic.pb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
+      etd: Math.round((((hidebasic.icecs + hidebasic.fcs + hidebasic.tcs + hidebasic.icecb + hidebasic.fcb + hidebasic.tcb) / 2 * calc.hc / 100 * cd() / 100) + ((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
+      esd: Math.round(Math.round((((hidebasic.icecs + hidebasic.fcs + hidebasic.tcs + hidebasic.icecb + hidebasic.fcb + hidebasic.tcb) / 2 * calc.hc / 100 * cd() / 100) + ((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
+      ztd: Math.round((((hidebasic.zcs + hidebasic.zcb) / 2 * calc.hc / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
+      zsd: Math.round(Math.round((((hidebasic.zs + hidebasic.zb) / 2 * calc.hc / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
       ppsd1: Math.round(Math.round((((dot.ppcs + dot.ppcb) / 2 * calc.hc / 100) + ((dot.pps + dot.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ppo) * (calc.pmt - 1 > 0  ? (calc.pmt - 1) / calc.pps : 0)  * s.player.bc) / 100,
       ppsd2: Math.round(Math.round((((dot.ppcs + dot.ppcb) / 2 * calc.hc / 100) + ((dot.pps + dot.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ppo) * calc.pmt * s.player.bc) / 100,
-      icesc: Math.round(hidebasic.ices * calc.cd) / 100,
-      icebc: Math.round(hidebasic.iceb * calc.cd) / 100,
-      fsc: Math.round(hidebasic.fs * calc.cd / 100),
-      fbc: Math.round(hidebasic.fb * calc.cd / 100),
-      tsc: Math.round(hidebasic.ts * calc.cd / 100),
-      tbc: Math.round(hidebasic.tb * calc.cd / 100),
-      psc: Math.round(hidebasic.ps * calc.cd / 100),
-      pbc: Math.round(hidebasic.pb * calc.cd / 100),
-      zsc: Math.round(hidebasic.zs * calc.cd / 100),
-      zbc: Math.round(hidebasic.zb * calc.cd / 100),
     };
     return(
     <div className="col xx12 s4">
@@ -1134,7 +1244,7 @@ const Info = React.createClass({
           <Row>
             <p className="col xx4"><strong>暴率</strong>{calc.c}%</p>
             <p className="col xx4"><strong>實際暴率</strong>{calc.hc}%</p>
-            <p className="col xx4"><strong>暴傷</strong>{calc.cd}</p>
+            <p className="col xx4"><strong>暴傷</strong>{cd()}</p>
             <p className="col xx4"><strong>命中</strong>{s.player.acc}</p>
             <p className="col xx4"><strong>修正攻速</strong>{(basic.as * 100).toFixed()}%</p>
             <p className="col xx4"><strong>攻速</strong>{calc.as}</p>
@@ -1172,12 +1282,12 @@ const Info = React.createClass({
             <p className="col xx6"><strong>每次傷害(元素)</strong>{hideinfo.etd}</p>
             <p className="col xx6"><strong>每秒傷害(混沌)</strong>{hideinfo.zsd}</p>
             <p className="col xx6"><strong>每次傷害(混沌)</strong>{hideinfo.ztd}</p>
-            <p className="col xx4"><strong>基礎傷害</strong>{calc.hbasicds} - {calc.hbasicdb}</p>
-            <p className="col xx4"><strong>基礎物理</strong>{hidebasic.ps} - {hidebasic.pb}</p>
-            <p className="col xx4"><strong className="iceColor">基礎冰傷</strong>{hidebasic.ices} - {hidebasic.iceb}</p>
-            <p className="col xx4"><strong className="fireColor">基礎火傷</strong>{hidebasic.fs} - {hidebasic.fb}</p>
-            <p className="col xx4"><strong className="electricColor">基礎電傷</strong>{hidebasic.ts} - {hidebasic.tb}</p>
-            <p className="col xx4"><strong>基礎混傷</strong>{hidebasic.zs} - {hidebasic.zb}</p>    
+            <p className="col xx4"><strong>基礎傷害</strong>{Math.round(calc.hbasicds)} - {Math.round(calc.hbasicdb)}</p>
+            <p className="col xx4"><strong>基礎物理</strong>{Math.round(hidebasic.ps)} - {Math.round(hidebasic.pb)}</p>
+            <p className="col xx4"><strong className="iceColor">基礎冰傷</strong>{Math.round(hidebasic.ices)} - {Math.round(hidebasic.iceb)}</p>
+            <p className="col xx4"><strong className="fireColor">基礎火傷</strong>{Math.round(hidebasic.fs)} - {Math.round(hidebasic.fb)}</p>
+            <p className="col xx4"><strong className="electricColor">基礎電傷</strong>{Math.round(hidebasic.ts)} - {Math.round(hidebasic.tb)}</p>
+            <p className="col xx4"><strong>基礎混傷</strong>{Math.round(hidebasic.zs)} - {Math.round(hidebasic.zb)}</p>    
           </Row> : null}
         </section>
         <section className="xx-hide">
@@ -1196,12 +1306,12 @@ const Info = React.createClass({
           <h3 className={this.state.addHDisplay ? 'active' : null} onClick={this._handleAddH}>實際暴擊傷害</h3>
           {this.state.addHDisplay ?
           <Row>
-            <p className="col xx6"><strong>物理</strong>{hideinfo.psc} - {hideinfo.pbc}</p>
-            <p className="col xx6"><strong className="iceColor">冰傷</strong>{hideinfo.icesc} - {hideinfo.icebc}</p>
-            <p className="col xx6"><strong className="fireColor">火傷</strong>{hideinfo.fsc} - {hideinfo.fbc}</p>
-            <p className="col xx6"><strong className="electricColor">電傷</strong>{hideinfo.tsc} - {hideinfo.tbc}</p>
-            <p className="col xx6"><strong>混傷</strong>{hideinfo.zsc} - {hideinfo.zbc}</p>
-            <p className="col xx6"><strong>總傷</strong>{hideinfo.psc + hideinfo.icesc + hideinfo.fsc + hideinfo.tsc + hideinfo.zsc} - {hideinfo.pbc + hideinfo.icebc + hideinfo.fbc + hideinfo.tbc + hideinfo.zbc}</p>   
+            <p className="col xx6"><strong>物理</strong>{Math.round(hidebasic.pcs)} - {Math.round(hidebasic.pcb)}</p>
+            <p className="col xx6"><strong className="iceColor">冰傷</strong>{Math.round(hidebasic.icecs)} - {Math.round(hidebasic.icecb)}</p>
+            <p className="col xx6"><strong className="fireColor">火傷</strong>{Math.round(hidebasic.fcs)} - {Math.round(hidebasic.fcb)}</p>
+            <p className="col xx6"><strong className="electricColor">電傷</strong>{Math.round(hidebasic.tcs)} - {Math.round(hidebasic.tcb)}</p>
+            <p className="col xx6"><strong>混傷</strong>{Math.round(hidebasic.zcs)} - {Math.round(hidebasic.zcb)}</p>
+            <p className="col xx6"><strong>總傷</strong>{Math.round(hidebasic.pcs + hidebasic.icecs + hidebasic.fcs + hidebasic.tcs + hidebasic.zcs)} - {Math.round(hidebasic.pcb + hidebasic.icecb + hidebasic.fcb + hidebasic.tcb + hidebasic.zcb)}</p>   
           </Row> : null}
         </section>
         <section>
