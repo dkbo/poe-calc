@@ -875,7 +875,7 @@ const Monster = React.createClass({
 const Value = React.createClass({
   render(){
     return(
-      <div className="col xx12 s8">
+      <div className="col xx12 s8" id="infoNum">
         <Player s={this.props.s} />
         <Talent s={this.props.s} />
         <Weapon s={this.props.s} />
