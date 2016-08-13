@@ -1167,19 +1167,19 @@ const Info = React.createClass({
     function igl(sd, c, t){
       let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.fd + sum.igd  + sum.ed) / 100;
       let dml = t ? sum.igd2ml : sum.igdml;
-      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 *  0.2);
+      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc)) / 100 *  0.2);
     };
     //流血公式
     function pul(sd, c){
       let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.cupd + sum.pd) / 100;
       let dml = sum.pudml;
-      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc) + bdr(s.hideinfo.fr) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 *  0.1);
+      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc)) / 100 *  0.1);
     };
     //中毒公式
     function ppl(sd, c){
       let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.pod  + sum.zd) / 100 ;
       let dml = sum.ppdml;
-      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 *  0.1);
+      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc)) / 100 *  0.1);
     };
 
     const dot = {
