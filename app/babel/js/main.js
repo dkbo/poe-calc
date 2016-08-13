@@ -1018,6 +1018,7 @@ const Info = React.createClass({
       dml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr,s.moreless.btomd, s.moreless.ci, 4 * s.player.gb) * (100 + s.moreless.rg)) / 100,
       hdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.hideinfo.pm) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
       igdml: Math.round(ml(s.moreless.edm) * ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy) * (100 + s.moreless.rg)) / 100,
+      igd2ml: Math.round(ml(s.moreless.edm) * ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy) * (100 + s.moreless.rg)) * 0.2 / 100,
       pudml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy) * (100 + s.moreless.rg)) / 100,
       ppdml: Math.round(ml(s.moreless.vm) * ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy) * (100 + s.moreless.rg)) / 100,
       asl: ml(s.moreless.pdmasl, s.moreless.btomasl) * 100,
@@ -1163,9 +1164,9 @@ const Info = React.createClass({
 
 
     //點燃公式
-    function igl(sd, c){
+    function igl(sd, c, t){
       let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.fd + sum.igd  + sum.ed) / 100;
-      let dml = sum.igdml;
+      let dml = t ? sum.igd2ml : sum.igdml;
       return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 *  0.2);
     };
     //流血公式
@@ -1184,6 +1185,8 @@ const Info = React.createClass({
     const dot = {
       igs: igl(hidebasic.fs),
       igb: igl(hidebasic.fb),
+      igs2: igl(hidebasic.fs, false, true),
+      igb2: igl(hidebasic.fb, false, true),
       igcs: igl(hidebasic.fcs, true),
       igcb: igl(hidebasic.fcb, true),
 
@@ -1197,9 +1200,6 @@ const Info = React.createClass({
       ppcs: ppl(hidebasic.zcs + hidebasic.pcs, true),
       ppcb: ppl(hidebasic.zcb + hidebasic.pcb, true),
     };
-    dot.igs2 = dot.igs * 0.2;
-    dot.igb2 = dot.igb * 0.2;
-
     calc.pmt = Math.round( calc.pps / (1 / calc.as) * 100) / 100; //最大毒傷次數
     calc.imt = Math.round( calc.ips / (1 / calc.as) * 100) / 100; //最大火傷次數
 
@@ -1224,8 +1224,8 @@ const Info = React.createClass({
       zsd: Math.round(Math.round((((hidebasic.zs + hidebasic.zb) / 2 * calc.hc / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
       ppsd1: Math.round(Math.round((((dot.ppcs + dot.ppcb) / 2 * calc.hc / 100) + ((dot.pps + dot.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ppo) * (calc.pmt - 1 > 0  ? (calc.pmt - 1) / calc.pps : 0)  * s.player.bc) / 100,
       ppsd2: Math.round(Math.round((((dot.ppcs + dot.ppcb) / 2 * calc.hc / 100) + ((dot.pps + dot.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ppo) * calc.pmt * s.player.bc) / 100,
-      ipsd1: Math.round(Math.round((((dot.igs2 + dot.igs2) / 2 * calc.hc / 100) + ((dot.igs2 + dot.igb2) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ipo) * (calc.imt - 1 > 0  ? (calc.imt - 1) / calc.ips : 0)  * s.player.bc) / 100,
-      ipsd2: Math.round(Math.round((((dot.igs2 + dot.igs2) / 2 * calc.hc / 100) + ((dot.igs2 + dot.igb2) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ipo) * calc.imt * s.player.bc) / 100,
+      ipsd1: Math.round(Math.round((dot.igs2 + dot.igs2) / 2 * s.player.acc / 100 * s.player.ipo) * (calc.imt - 1 > 0  ? (calc.imt - 1) / calc.ips : 0)  * s.player.bc) / 100,
+      ipsd2: Math.round(Math.round((dot.igs2 + dot.igs2) / 2 * s.player.acc / 100 * s.player.ipo) * calc.imt * s.player.bc) / 100,
     };
     return(
     <div className="col xx12 s4 xx-np" id="infobox">
@@ -1396,6 +1396,7 @@ const Info = React.createClass({
             <p className="col xx4"><strong>傷害(倍率)</strong>{sum.dml}</p>
             <p className="col xx4"><strong>實際傷害(倍率)</strong>{sum.hdml}</p>
             <p className="col xx4"><strong className="fireColor">點燃傷害(倍率)</strong>{sum.igdml}</p>
+            <p className="col xx4"><strong className="fireColor">餘燼傷害(倍率)</strong>{sum.igd2ml}</p>
             <p className="col xx4"><strong>流血傷害(倍率)</strong>{sum.pudml}</p>
             <p className="col xx4"><strong className="zColor">中毒傷害(倍率)</strong>{sum.ppdml}</p>
           </Row> : null}
