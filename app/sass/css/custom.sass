@@ -35,7 +35,7 @@ h3
     a
       color: #1D2C75
 section
-  padding: 0 .5rem
+  padding: 0 0 0 .5rem
   p
     text-align: center
     strong
@@ -106,6 +106,14 @@ nav
     padding: 5px
     resize: none
 #infobox, #infoNum
-  height: 500px
   overflow-y: auto
   overflow-x: hidden
+  -ms-overflow-style: -ms-autohiding-scrollbar
+  -webkit-overflow-scrolling: touch
+  &::-webkit-scrollbar
+    -webkit-appearance: none
+    width: 10px
+    height: 10px
+  &::-webkit-scrollbar-thumb
+    border-radius: 8px
+    background: linear-gradient(#6C91E4 0%,#142C79 100%)

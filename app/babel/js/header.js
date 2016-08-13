@@ -39,6 +39,8 @@ const init = {
     bc: 1,    //散彈效應 
     pps: 2,    //基礎中毒時間 
     ppo: 0,    //中毒機率 
+    ips: 4,    //基礎燃燒時間 
+    ipo: 0,    //點燃機率 
   },
   talent: {
     as: 0,  //攻擊速度
@@ -99,6 +101,7 @@ const init = {
     wc: 0, //額外武器暴擊機率
     c: 0, //暴擊機率
     cuds: 0, //持續時間延長
+    ips: 0, //增加點燃時間
     ps: 0,  //物理(小)
     pb: 0,  //物理(大)
     ices: 0,  //冰冷小
@@ -236,7 +239,7 @@ function equipment(){
 }
 const info = {
   name: '未命名頁面',
-  player: {level: 1, bc: 1, pps: 2},
+  player: {level: 1, bc: 1, pps: 2, ips: 4},
   talent: {},
   weapon: {},
   weaponadd: {},
@@ -421,7 +424,7 @@ const Page = React.createClass({
           {view ? null : <li className='' onClick={this._handleDel}>刪除</li> }
           <li className='' onClick={this._handleShowALLRWD}>{showAllRWD ? "顯示所有" : "隱藏不必要"}資訊</li>
           <li className='' onClick={this._handleShortURL}><label>短網址</label><input value={shortUrl} /></li>
-          <li id="author" className='xx-fright' ><a href="http://dkbo.github.io">DKBO 製作</a></li>
+          <li id="author" title="路過的訪客要是覺得好用，也可隨意散撥或修改，目前已經對於 POE 傷害公式還算了解，如在使用上有任何問題時，也歡迎在遊戲中設我為好友 ID: DKBO，上線時間不多，休閒時會玩下。" className='xx-fright' >POE 弓類傷害計算機 BY <a href="http://dkbo.github.io">DKBO</a></li>
           <div className='clearfix' />
           {value.map(this._index)}
         </ul>
@@ -429,24 +432,12 @@ const Page = React.createClass({
     );
   },
 });
-const Title = React.createClass({
-  render(s = this.props.s){
-    return(
-      <div className="col xx12">
-        <h1 className="xx-center">POE 弓類傷害計算機</h1>
-        <div className="row">
-          <p className="primary xx-p">路過的訪客要是覺得好用，也可隨意散撥或修改，目前已經對於 POE 傷害公式還算了解，如在使用上有任何問題時，也歡迎在遊戲中設我為好友 ID: DKBO，上線時間不多，休閒時會玩下。</p>
-        </div>
-      </div>
-    );
-  },
-});
+
 const Header = React.createClass({
   render(s = this.props.s){
     return(
       <div>
         <Page />
-        <Title />
       </div>
     );
   },

@@ -89,8 +89,11 @@ const Player = React.createClass({
           {label: "綠球", attr: "gb", className: "gb"},
           {label: "籃球", attr: "bb", className: "bb"},
           {label: "散彈效應", attr: "bc"},
-          {label: "基礎中毒時間", attr: "pps"},
-          {label: "中毒機率", attr: "ppo"},
+          {label: "clear"},
+          {label: "基礎中毒時間", attr: "pps", className: "zColor"},
+          {label: "中毒機率", attr: "ppo", className: "zColor"},
+          {label: "基礎燃燒時間", attr: "ips", className: "fireColor"},
+          {label: "點燃機率", attr: "ipo", className: "fireColor"},
         ]
       };
     return(
@@ -623,6 +626,7 @@ const Skill = React.createClass({
           {label: "暴率", attr: "c"},
           {label: "暴傷%", attr: "cd"},
           {label: "持續時間%", attr: "cuds"},
+          {label: "增加燃燒時間%", attr: "ips"},
           {label: "詛咒效果%", attr: "bdd"},
           {label: "clear"},
           {label: "元傷%", attr: "ed"},
@@ -875,7 +879,7 @@ const Monster = React.createClass({
 const Value = React.createClass({
   render(){
     return(
-      <div className="col xx12 s8" id="infoNum">
+      <div className="col xx12 s8 xx-np" id="infoNum">
         <Player s={this.props.s} />
         <Talent s={this.props.s} />
         <Weapon s={this.props.s} />
@@ -1152,6 +1156,7 @@ const Info = React.createClass({
       c: ((Math.round(weapon.c * (100 + sum.c)) / 100) > 95 ? 95 : (Math.round(weapon.c * (100 + sum.c)) / 100)),
       bc: ((Math.round(weapon.c * (100 + sum.c)) / 100) + bdr(s.hideinfo.amc)) > 95 ? 95 : (Math.round(weapon.c * (100 + sum.c)) / 100) + bdr(s.hideinfo.amc),
       pps: Math.floor(s.player.pps * (100 + s.skill.cuds)) / 100,
+      ips: Math.floor(s.player.ips * (100 + s.skill.ips)) / 100,
     };
     calc.hc = (s.hideinfo.cw) ? 100 - Math.round(Math.pow(100 - calc.bc, 2)) / 100 : calc.bc; // 寶鑽藥劑 // 刺客印記
 
@@ -1192,8 +1197,11 @@ const Info = React.createClass({
       ppcs: ppl(hidebasic.zcs + hidebasic.pcs, true),
       ppcb: ppl(hidebasic.zcb + hidebasic.pcb, true),
     };
+    dot.igs2 = dot.igs * 0.2;
+    dot.igb2 = dot.igb * 0.2;
 
     calc.pmt = Math.round( calc.pps / (1 / calc.as) * 100) / 100; //最大毒傷次數
+    calc.imt = Math.round( calc.ips / (1 / calc.as) * 100) / 100; //最大火傷次數
 
     const info = {      
       td: Math.round((((calc.basicCds + calc.basicCdb) / 2 * calc.c / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
@@ -1216,10 +1224,12 @@ const Info = React.createClass({
       zsd: Math.round(Math.round((((hidebasic.zs + hidebasic.zb) / 2 * calc.hc / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
       ppsd1: Math.round(Math.round((((dot.ppcs + dot.ppcb) / 2 * calc.hc / 100) + ((dot.pps + dot.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ppo) * (calc.pmt - 1 > 0  ? (calc.pmt - 1) / calc.pps : 0)  * s.player.bc) / 100,
       ppsd2: Math.round(Math.round((((dot.ppcs + dot.ppcb) / 2 * calc.hc / 100) + ((dot.pps + dot.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ppo) * calc.pmt * s.player.bc) / 100,
+      ipsd1: Math.round(Math.round((((dot.igs2 + dot.igs2) / 2 * calc.hc / 100) + ((dot.igs2 + dot.igb2) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ipo) * (calc.imt - 1 > 0  ? (calc.imt - 1) / calc.ips : 0)  * s.player.bc) / 100,
+      ipsd2: Math.round(Math.round((((dot.igs2 + dot.igs2) / 2 * calc.hc / 100) + ((dot.igs2 + dot.igb2) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ipo) * calc.imt * s.player.bc) / 100,
     };
     return(
-    <div className="col xx12 s4">
-      <div id="infobox">
+    <div className="col xx12 s4 xx-np" id="infobox">
+      <div>
         <section>
           <h3 className={this.state.playerDisplay ? 'active' : null} onClick={this._handlePlayer}>人物資訊</h3>
           {this.state.playerDisplay ?
@@ -1321,7 +1331,7 @@ const Info = React.createClass({
             <p className="col xx6"><strong className="zColor">毒傷</strong>{dot.pps} - {dot.ppb}</p>
             <p className="col xx6"><strong className="zColor">毒傷暴擊</strong>{dot.ppcs} - {dot.ppcb}</p>
             <p className="col xx6"><strong className="zColor">中毒持續時間</strong>{calc.pps} 秒</p>
-            <p className="col xx6"><strong className="zColor">最大疊毒次數</strong>{calc.pmt}</p>
+            <p className="col xx6"><strong className="zColor">最大疊毒(次)</strong>{calc.pmt}</p>
             <p className="col xx6"><strong className="zColor">{calc.pps} 秒內DPS</strong>{hideinfo.ppsd1}</p>
             <p className="col xx6"><strong className="zColor">{calc.pps} 秒後DPS</strong>{hideinfo.ppsd2}</p>
             <Clear/>
@@ -1332,6 +1342,13 @@ const Info = React.createClass({
             <Clear/>
             <p className="col xx6"><strong className="fireColor">點燃</strong>{dot.igs} - {dot.igb}</p>
             <p className="col xx6"><strong className="fireColor">點燃暴擊</strong>{dot.igcs} - {dot.igcb}</p>
+            <Clear/>
+            <p className="col xx6"><strong className="fireColor">燃燒持續時間</strong>{calc.ips} 秒</p>
+            <p className="col xx6"><strong className="fireColor">餘燼</strong>{dot.igs2} - {dot.igb2}</p>
+            <p className="col xx6"><strong className="fireColor">最大疊燃燒(次)</strong>{calc.imt}</p>
+            <p className="col xx6"><strong className="fireColor">{calc.ips} 秒內DPS</strong>{hideinfo.ipsd1}</p>
+            <p className="col xx6"><strong className="fireColor">{calc.ips} 秒後DPS</strong>{hideinfo.ipsd2}</p>
+
           </Row> : null}
         </section>
         <section className="xx-hide">

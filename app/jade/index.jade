@@ -31,7 +31,7 @@ html
       .container
         .row#main
         script(src='js/main.js')
-    footer
+    footer.xx-hide
       .container
         .row
           .col.xx12.xx2p
@@ -50,7 +50,10 @@ html
         s.type = 'text/javascript';
         s.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-      }());            
+      }());
+      $(function(){
+        $("#infobox, #infoNum").height($(window).height()-$("#infobox").offset().top - 20);
+      });       
     
       
 
