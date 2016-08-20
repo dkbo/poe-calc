@@ -812,6 +812,7 @@ const Hideinfo = React.createClass({
           {label: "零點射擊", attr: "pb"},
           {label: "急凍", attr: "hy"},
           {label: "寶鑽藥劑", attr: "cw"},
+          {label: "毒物走私", attr: "ppd"},
           {label: "感電", attr: "fe"},
           {label: "投射物要害", attr: "pjc"},
           {label: "脆弱(物理)", attr: "fr"},
@@ -1174,13 +1175,13 @@ const Info = React.createClass({
     function pul(sd, c){
       let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.cupd + sum.pd) / 100;
       let dml = sum.pudml;
-      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc) + bdr(s.hideinfo.fr)) / 100 *  0.1);
+      return Math.round(sd * dsum * dml * (c ? (s.hideinfo.ppd ? 2 : 1) : 1) * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc) + bdr(s.hideinfo.fr)) / 100 *  0.1);
     };
     //中毒公式
     function ppl(sd, c){
       let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.pod  + sum.zd) / 100 ;
       let dml = sum.ppdml;
-      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc)) / 100 *  0.1);
+      return Math.round(sd * dsum * dml * (c ? (s.hideinfo.ppd ? 2 : 1) : 1) * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc)) / 100 *  0.1);
     };
 
     const dot = {
