@@ -406,6 +406,9 @@ const Page = React.createClass({
     header.setState();
     main.setState();
   },
+  _handleComment() {
+    $("#comment").toggle();
+  },
   _index(page, id) {
     if(index - 1 === id) {
       return <li className="active" keys={id} >{value[index - 1].name}</li>;
@@ -426,6 +429,7 @@ const Page = React.createClass({
           {view ? null : <li className='' onClick={this._handleDel}>刪除</li> }
           <li className='' onClick={this._handleShowALLRWD}>{showAllRWD ? "顯示所有" : "隱藏不必要"}資訊</li>
           <li className='' onClick={this._handleShortURL}><label>短網址</label><input value={shortUrl} /></li>
+          {<li className='' onClick={this._handleComment}>留言</li> }
           <li id="author" title="路過的訪客要是覺得好用，也可隨意散撥或修改，目前已經對於 POE 傷害公式還算了解，如在使用上有任何問題時，也歡迎在遊戲中設我為好友 ID: DKBO，上線時間不多，休閒時會玩下。" className='xx-fright' >POE 弓類傷害計算機 BY <a href="http://dkbo.github.io">DKBO</a></li>
           <div className='clearfix' />
           {value.map(this._index)}
