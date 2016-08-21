@@ -1474,7 +1474,7 @@ const App = React.createClass({
   },
   _handleChange(e, json = this.state) {
     const v = e.target.value;
-    const n = infoArray[TextAreaNum];
+    const n = TextAreaNum !== 1 ? infoArray[TextAreaNum + 1] : infoArray[TextAreaNum];
     let tp = JSON.parse(JSON.stringify(init[n]));
     if(TextAreaNum !== 1) {
       const r = reg.equipment;
