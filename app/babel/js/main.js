@@ -679,7 +679,6 @@ const Skill = React.createClass({
           {label: "額外冰轉火%", attr: "itfadd"},
           {label: "火轉混%", attr: "ftz"},
           {label: "電轉混%", attr: "ttz"},
-          {label: "火轉混%", attr: "ftz"},
         ]
       };
     return(
@@ -1093,12 +1092,13 @@ const Info = React.createClass({
       return sd * (100 + sum.wed + sum.ed + dsum + sum.pjtd + sum.ad + sum.aoed +sum.trd) / 100 * dml * Math.round(em * s.skill.bd) / 100;
     };
     function pl(sd, d, em, ise = false){
-      let dsum = 100 + sum.pjtd + sum.trd + sum.pd + sum.wpd + sum.apd + sum.ad + sum.aoed;
+      let dsum = 100 + sum.pjtd + sum.trd + sum.ad + sum.aoed + sum.pd + sum.wpd + sum.apd;
+
       let dml = sum.pdml;
       for(let i = 0 ; i < d.length; i++){
         dsum += d[i];
       }
-      if(ise) {
+      if(ise && ise !== "z") {
         dml *= sum.edml;
         dsum += sum.wed + sum.ed;
       }
@@ -1141,10 +1141,11 @@ const Info = React.createClass({
       }
     };
     function zd(sd, dml, h, c) {
+      let dsum = sum.zd + sum.pjtd + sum.aoed + sum.ad + sum.trd;
       if(sd === true) {
-        return Math.round((sum.zs * (100 + sum.zd + sum.pjtd) / 100 * sum.zml * Math.round(dml * s.skill.bd) / 100 + pl(sum.ps, [sum.zd], dml, "z") * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.ices, [sum.iced, sum.zd], dml, "z") + pl(sum.ps, [sum.iced, sum.zd], dml, "z") * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.ts, [sum.td, sum.zd], dml, "z") + pl(sum.ps, [sum.td, sum.zd], dml, "z") * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fs, [sum.fd, sum.zd], dml, "z") + (el(sum.ices, [sum.fd, sum.iced, sum.zd], dml, "z") + pl(sum.ps, [sum.fd, sum.td, sum.iced, sum.zd], dml, "z") * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd, sum.zd], dml, "z") * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + bdr(s.hideinfo.pjc)) / 100 * (c ? (100 + bdr(s.hideinfo.amcd)) / 100 : 1) : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mozd : 100) / 100;
+        return Math.round((sum.zs * (100 + dsum) / 100 * sum.zml * Math.round(dml * s.skill.bd) / 100 + pl(sum.ps, [sum.zd], dml, "z") * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.ices, [sum.iced, sum.zd], dml, "z") + pl(sum.ps, [sum.iced, sum.zd], dml, "z") * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.ts, [sum.td, sum.zd], dml, "z") + pl(sum.ps, [sum.td, sum.zd], dml, "z") * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fs, [sum.fd, sum.zd], dml, "z") + (el(sum.ices, [sum.fd, sum.iced, sum.zd], dml, "z") + pl(sum.ps, [sum.fd, sum.td, sum.iced, sum.zd], dml, "z") * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd, sum.zd], dml, "z") * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + bdr(s.hideinfo.pjc)) / 100 * (c ? (100 + bdr(s.hideinfo.amcd)) / 100 : 1) : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mozd : 100) / 100;
       } else {
-        return Math.round((sum.zb * (100 + sum.zd + sum.pjtd) / 100 * sum.zml * Math.round(dml * s.skill.bd) / 100 + pl(sum.pb, [sum.zd], dml, "z") * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.iceb, [sum.iced, sum.zd], dml, "z") + pl(sum.pb, [sum.iced, sum.zd], dml, "z") * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.tb, [sum.td, sum.zd], dml, "z") + pl(sum.pb, [sum.td, sum.zd], dml, "z") * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fb, [sum.fd, sum.zd], dml, "z") + (el(sum.iceb, [sum.fd, sum.iced, sum.zd], dml, "z") + pl(sum.pb, [sum.fd, sum.td, sum.iced, sum.zd], dml, "z") * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd, sum.zd], dml, "z") * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + bdr(s.hideinfo.pjc)) / 100 * (c ? (100 + bdr(s.hideinfo.amcd)) / 100 : 1) : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mozd : 100) / 100;
+        return Math.round((sum.zb * (100 + dsum) / 100 * sum.zml * Math.round(dml * s.skill.bd) / 100 + pl(sum.pb, [sum.zd], dml, "z") * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.iceb, [sum.iced, sum.zd], dml, "z") + pl(sum.pb, [sum.iced, sum.zd], dml, "z") * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.tb, [sum.td, sum.zd], dml, "z") + pl(sum.pb, [sum.td, sum.zd], dml, "z") * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fb, [sum.fd, sum.zd], dml, "z") + (el(sum.iceb, [sum.fd, sum.iced, sum.zd], dml, "z") + pl(sum.pb, [sum.fd, sum.td, sum.iced, sum.zd], dml, "z") * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd, sum.zd], dml, "z") * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + bdr(s.hideinfo.pjc)) / 100 * (c ? (100 + bdr(s.hideinfo.amcd)) / 100 : 1) : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mozd : 100) / 100;
       }
     };
     function cd() {
@@ -1684,7 +1685,6 @@ const App = React.createClass({
           for(let x in m){
             let f = r.insert.exec(m[x]);
             if(f) {
-              console.log(f)
               switch(f[3]) {
                 case "閃電傷害":
                   tp.td += transNum(f[2]);
