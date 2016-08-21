@@ -42,43 +42,8 @@ const init = {
     ips: 4,    //基礎燃燒時間 
     ipo: 0,    //點燃機率 
   },
-  talent: {
-    as: 0,  //攻擊速度
-    c: 0, //暴擊機率
-    d: 0,  //傷害加成%
-    pjtd: 0, //投射物傷害%
-    cd: 0,  //暴傷加成%
-    ed: 0, //元素傷害%
-    wed: 0, //武器元素傷害%
-    pod: 0, //中毒傷害%
-    trd: 0, //陷阱傷害%
-    aoed: 0, //範圍傷害%
-    pd: 0,  //物理傷害%
-    apd: 0,  //攻擊物理傷害%
-    wpd: 0,  //武器物理傷害%
-    cupd: 0,  //物理持續傷害%
-    ad: 0,  //攻擊傷害%
-    cud: 0,  //持續傷害%
-    iced: 0, //冰冷傷害%
-    fd: 0, //火焰傷害%
-    td: 0,  //閃電傷害%
-    aura: 0,  //光環效果%
-    hp: 0, //最大生命
-    hpd: 0, //生命%
-    mp: 0, //最大魔力
-    mpd: 0, //魔力%
-    zd: 0, //混傷%
-    ps: 0,  //物理(小)
-    pb: 0,  //物理(大)
-    ices: 0,  //冰冷小
-    iceb: 0,  //冰冷大
-    fs: 0,  //火焰小
-    fb: 0,  //火焰大
-    ts: 0,  //閃電小
-    tb: 0,  //閃電大
-    zs: 0,  //混傷小
-    zb: 0,  //混傷大
-  },
+  talent: talent(),
+  ruby: talent(),
   weapon: {
     ps: 0,  //物理(小)
     pb: 0,  //物理(大)
@@ -239,10 +204,50 @@ function equipment(){
     mpd: 0, //魔力%
   }
 }
+function talent(){
+  return {
+    as: 0,  //攻擊速度
+    c: 0, //暴擊機率
+    d: 0,  //傷害加成%
+    pjtd: 0, //投射物傷害%
+    cd: 0,  //暴傷加成%
+    ed: 0, //元素傷害%
+    wed: 0, //武器元素傷害%
+    pod: 0, //中毒傷害%
+    trd: 0, //陷阱傷害%
+    aoed: 0, //範圍傷害%
+    pd: 0,  //物理傷害%
+    apd: 0,  //攻擊物理傷害%
+    wpd: 0,  //武器物理傷害%
+    cupd: 0,  //物理持續傷害%
+    ad: 0,  //攻擊傷害%
+    cud: 0,  //持續傷害%
+    iced: 0, //冰冷傷害%
+    fd: 0, //火焰傷害%
+    td: 0,  //閃電傷害%
+    aura: 0,  //光環效果%
+    hp: 0, //最大生命
+    hpd: 0, //生命%
+    mp: 0, //最大魔力
+    mpd: 0, //魔力%
+    zd: 0, //混傷%
+    ps: 0,  //物理(小)
+    pb: 0,  //物理(大)
+    ices: 0,  //冰冷小
+    iceb: 0,  //冰冷大
+    fs: 0,  //火焰小
+    fb: 0,  //火焰大
+    ts: 0,  //閃電小
+    tb: 0,  //閃電大
+    zs: 0,  //混傷小
+    zb: 0,  //混傷大
+  }
+}
 const info = {
   name: '未命名頁面',
   player: {level: 1, bc: 1, pps: 2, ips: 4},
   talent: {},
+  ruby: {},
   weapon: {},
   weaponadd: {},
   head: {},
@@ -263,6 +268,7 @@ const info = {
 const infoArray = [
   "player",
   "talent",
+  "ruby",
   "weapon",
   "weaponadd",
   "head",
@@ -281,7 +287,7 @@ const infoArray = [
   "aural",
 ]
 let temp = JSON.parse(JSON.stringify(init));
-let leftPanel =  [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+let leftPanel =  [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 let rightPanel = [false, false, false, false, false, false, false, false, false, false];
 let index = localStorage.index ? localStorage.index : 1;
 let value = [];

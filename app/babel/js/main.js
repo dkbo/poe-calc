@@ -38,6 +38,52 @@ function equipmentRwd(name) {
         ]
       };
 }
+
+function talentRwd(name) {
+  return  {
+        name: name,
+        RWDValue: [
+          {label: "攻速", attr: "as"},
+          {label: "暴率", attr: "c"},
+          {label: "暴傷%", attr: "cd"},
+          {label: "clear"},
+          {label: "元傷%", attr: "ed"},
+          {label: "武器元傷%", attr: "wed"},
+          {label: "武器物傷%", attr: "wpd"},
+          {label: "攻擊物傷%", attr: "apd"},
+          {label: "投射物(傷害)%", attr: "pjtd"},
+          {label: "攻擊傷害%", attr: "ad"},
+          {label: "陷阱傷害%", attr: "trd"},
+          {label: "範圍傷害%", attr: "aoed"},
+          {label: "clear"},
+          {label: "中毒傷害%", attr: "pod"},
+          {label: "持續傷%", attr: "cud"},
+          {label: "物理持續傷%", attr: "cupd"},
+          {label: "clear"},
+          {label: "物傷%", attr: "pd"},
+          {label: "物傷(小)", attr: "ps"},
+          {label: "物傷(大)", attr: "pb"},
+          {label: "冰傷%", attr: "iced", className: "iceColor"},
+          {label: "冰傷(小)", attr: "ices", className: "iceColor"},
+          {label: "冰傷(大)", attr: "iceb", className: "iceColor"},
+          {label: "火傷%", attr: "fd", className: "fireColor"},
+          {label: "火傷(小)", attr: "fs", className: "fireColor"},
+          {label: "火傷(大)", attr: "fb", className: "fireColor"},
+          {label: "電傷%", attr: "td", className: "electricColor"},
+          {label: "電傷(小)", attr: "ts", className: "electricColor"},
+          {label: "電傷(大)", attr: "tb", className: "electricColor"},
+          {label: "混傷%", attr: "zd", className: "zColor"},
+          {label: "混傷(小)", attr: "zs", className: "zColor"},
+          {label: "混傷(大)", attr: "zb", className: "zColor"},
+          {label: "clear"},
+          {label: "最大生命", attr: "hp"},
+          {label: "生命%", attr: "hpd"},
+          {label: "最大魔力", attr: "mp"},
+          {label: "魔力%", attr: "mpd"},
+          {label: "光環效果", attr: "aura"},
+        ]
+      };
+}
 function rwdValue(category, _this, s) {
   return category.RWDValue.map(function(val, i) {
       if(val.label !== "clear"){
@@ -133,55 +179,12 @@ const Talent = React.createClass({
     this.props.s.setState();
   },
   render(s = this.props.s) {
-    const category = {
-        name: "talent",
-        RWDValue: [
-          {label: "攻速", attr: "as"},
-          {label: "暴率", attr: "c"},
-          {label: "暴傷%", attr: "cd"},
-          {label: "clear"},
-          {label: "元傷%", attr: "ed"},
-          {label: "武器元傷%", attr: "wed"},
-          {label: "武器物傷%", attr: "wpd"},
-          {label: "攻擊物傷%", attr: "apd"},
-          {label: "投射物(傷害)%", attr: "pjtd"},
-          {label: "攻擊傷害%", attr: "ad"},
-          {label: "陷阱傷害%", attr: "trd"},
-          {label: "範圍傷害%", attr: "aoed"},
-          {label: "clear"},
-          {label: "中毒傷害%", attr: "pod"},
-          {label: "持續傷%", attr: "cud"},
-          {label: "物理持續傷%", attr: "cupd"},
-          {label: "clear"},
-          {label: "物傷%", attr: "pd"},
-          {label: "物傷(小)", attr: "ps"},
-          {label: "物傷(大)", attr: "pb"},
-          {label: "冰傷%", attr: "iced", className: "iceColor"},
-          {label: "冰傷(小)", attr: "ices", className: "iceColor"},
-          {label: "冰傷(大)", attr: "iceb", className: "iceColor"},
-          {label: "火傷%", attr: "fd", className: "fireColor"},
-          {label: "火傷(小)", attr: "fs", className: "fireColor"},
-          {label: "火傷(大)", attr: "fb", className: "fireColor"},
-          {label: "電傷%", attr: "td", className: "electricColor"},
-          {label: "電傷(小)", attr: "ts", className: "electricColor"},
-          {label: "電傷(大)", attr: "tb", className: "electricColor"},
-          {label: "混傷%", attr: "zd", className: "zColor"},
-          {label: "混傷(小)", attr: "zs", className: "zColor"},
-          {label: "混傷(大)", attr: "zb", className: "zColor"},
-          {label: "clear"},
-          {label: "最大生命", attr: "hp"},
-          {label: "生命%", attr: "hpd"},
-          {label: "最大魔力", attr: "mp"},
-          {label: "魔力%", attr: "mpd"},
-          {label: "光環效果", attr: "aura"},
-        ]
-      };
     return(
       <section>
         <h3 className={this.state.display ? 'active' : null} ><span onClick={this._handleClick}>天賦點</span><span className="xx-fright" onClick={this._handleShowTextArea}>匯入</span></h3>
         {this.state.display ? 
         <Row>
-          {rwdValue(category, this, s.state)}
+          {rwdValue(talentRwd("talent"), this, s.state)}
         </Row> : null}
 
       </section>
@@ -878,12 +881,42 @@ const Monster = React.createClass({
     );
   },
 });
+const Ruby = React.createClass({
+  getInitialState() {
+    return {
+      display: leftPanel[18],
+    };
+  },
+  setValue(e, json = this.props.s.state) {
+    let category = e.target.name;
+    let attr = e.target.className;
+    json[category][attr] = temp[category][attr] = transNum(e.target.value);
+    this.props.s.setState(json);
+  },
+  _handleClick() {
+    leftPanel[18] = !this.state.display;
+    main.leftPanel();
+    this.setState({display: !this.state.display});
+  },
+  render(s = this.props.s) {
+    return(
+      <section>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>天賦珠寶</span></h3>
+        {this.state.display ? 
+        <Row>
+          {rwdValue(talentRwd("ruby"), this, s.state)}
+        </Row> : null}
+      </section>
+    );
+  },
+});
 const Value = React.createClass({
   render(){
     return(
       <div className="col xx12 s8 xx-np" id="infoNum">
         <Player s={this.props.s} />
         <Talent s={this.props.s} />
+        <Ruby s={this.props.s} />
         <Weapon s={this.props.s} />
         <WeaponAdd s={this.props.s} />
         <Head s={this.props.s} />
@@ -980,40 +1013,40 @@ const Info = React.createClass({
       return Math.floor(x * (100 + s.skill.bdd) / 100 * (100 + s.monster.bd) / 100);
     };
     const sum = {
-      hp: s.weaponadd.hp + s.talent.hp + s.head.hp + s.hand.hp + s.body.hp + s.belt.hp + s.ringone.hp + s.ringtwo.hp + s.necklace.hp + s.foot.hp + s.quiver.hp,
-      hpd: s.weaponadd.hpd + s.talent.hpd + s.head.hpd + s.hand.hpd + s.body.hpd + s.belt.hpd + s.ringone.hpd + s.ringtwo.hpd + s.necklace.hpd + s.foot.hpd + s.quiver.hpd,
-      mp: s.weaponadd.mp + s.talent.mp + s.head.mp + s.hand.mp + s.body.mp + s.belt.mp + s.ringone.mp + s.ringtwo.mp + s.necklace.mp + s.foot.mp + s.quiver.mp,
-      mpd: s.weaponadd.mpd + s.talent.mpd + s.head.mpd + s.hand.mpd + s.body.mpd + s.belt.mpd + s.ringone.mpd + s.ringtwo.mpd + s.necklace.mpd + s.foot.mpd + s.quiver.mpd,
-      as: s.talent.as + s.head.as + s.hand.as + s.body.as + s.belt.as + s.ringone.as + s.ringtwo.as + s.necklace.as + s.foot.as + s.quiver.as + s.skill.as + s.player.gb * 4, 
-      ed: s.weaponadd.ed + s.talent.ed + s.head.ed + s.hand.ed + s.body.ed + s.belt.ed + s.ringone.ed + s.ringtwo.ed + s.necklace.ed + s.foot.ed + s.quiver.ed + s.skill.ed,
-      wed: s.weaponadd.wed + s.talent.wed + s.head.wed + s.hand.wed + s.body.wed + s.belt.wed + s.ringone.wed + s.ringtwo.wed + s.necklace.wed + s.foot.wed + s.quiver.wed + s.skill.wed,
-      wpd: s.talent.wpd,
-      apd: s.talent.apd,
-      iced: s.weaponadd.iced + s.talent.iced + s.head.iced + s.hand.iced + s.body.iced + s.belt.iced + s.ringone.iced + s.ringtwo.iced + s.necklace.iced + s.foot.iced + s.quiver.iced + s.skill.iced,
+      hp: s.weaponadd.hp + s.talent.hp + s.ruby.hp + s.head.hp + s.hand.hp + s.body.hp + s.belt.hp + s.ringone.hp + s.ringtwo.hp + s.necklace.hp + s.foot.hp + s.quiver.hp,
+      hpd: s.weaponadd.hpd + s.talent.hpd + s.ruby.hpd + s.head.hpd + s.hand.hpd + s.body.hpd + s.belt.hpd + s.ringone.hpd + s.ringtwo.hpd + s.necklace.hpd + s.foot.hpd + s.quiver.hpd,
+      mp: s.weaponadd.mp + s.talent.mp + s.ruby.mp + s.head.mp + s.hand.mp + s.body.mp + s.belt.mp + s.ringone.mp + s.ringtwo.mp + s.necklace.mp + s.foot.mp + s.quiver.mp,
+      mpd: s.weaponadd.mpd + s.talent.mpd + s.ruby.mpd  + s.head.mpd + s.hand.mpd + s.body.mpd + s.belt.mpd + s.ringone.mpd + s.ringtwo.mpd + s.necklace.mpd + s.foot.mpd + s.quiver.mpd,
+      as: s.talent.as + s.ruby.as  + s.head.as + s.hand.as + s.body.as + s.belt.as + s.ringone.as + s.ringtwo.as + s.necklace.as + s.foot.as + s.quiver.as + s.skill.as + s.player.gb * 4, 
+      ed: s.weaponadd.ed + s.talent.ed + s.ruby.ed  + s.head.ed + s.hand.ed + s.body.ed + s.belt.ed + s.ringone.ed + s.ringtwo.ed + s.necklace.ed + s.foot.ed + s.quiver.ed + s.skill.ed,
+      wed: s.weaponadd.wed + s.talent.wed + s.ruby.wed  + s.head.wed + s.hand.wed + s.body.wed + s.belt.wed + s.ringone.wed + s.ringtwo.wed + s.necklace.wed + s.foot.wed + s.quiver.wed + s.skill.wed,
+      wpd: s.talent.wpd + s.ruby.wpd,
+      apd: s.talent.apd + s.ruby.apd,
+      iced: s.weaponadd.iced + s.talent.iced + s.ruby.iced  + s.head.iced + s.hand.iced + s.body.iced + s.belt.iced + s.ringone.iced + s.ringtwo.iced + s.necklace.iced + s.foot.iced + s.quiver.iced + s.skill.iced,
       igd: s.skill.igd,
-      fd: s.weaponadd.fd + s.talent.fd + s.head.fd + s.hand.fd + s.body.fd + s.belt.fd + s.ringone.fd + s.ringtwo.fd + s.necklace.fd + s.foot.fd + s.quiver.fd + s.skill.fd,
-      td: s.weaponadd.td + s.talent.td + s.head.td + s.hand.td + s.body.td + s.belt.td + s.ringone.td + s.ringtwo.td + s.necklace.td + s.foot.td + s.quiver.td + s.skill.td,
-      zd: s.weaponadd.zd + s.talent.zd + s.head.zd + s.hand.zd + s.body.zd + s.belt.zd + s.ringone.zd + s.ringtwo.zd + s.necklace.zd + s.foot.zd + s.quiver.zd + s.skill.zd,
-      ices: s.weaponadd.ices + s.talent.ices + s.head.ices + s.hand.ices + s.body.ices + s.belt.ices + s.ringone.ices + s.ringtwo.ices + s.necklace.ices + s.foot.ices + s.quiver.ices + s.skill.ices,
-      iceb: s.weaponadd.iceb + s.talent.iceb + s.head.iceb + s.hand.iceb + s.body.iceb + s.belt.iceb + s.ringone.iceb + s.ringtwo.iceb + s.necklace.iceb + s.foot.iceb + s.quiver.iceb + s.skill.iceb,
-      fs: Math.floor(s.aural.ags * (100 + s.talent.aura) / 100) + s.weaponadd.fs + s.talent.fs + s.head.fs + s.hand.fs + s.body.fs + s.belt.fs + s.ringone.fs + s.ringtwo.fs + s.necklace.fs + s.foot.fs + s.quiver.fs + s.skill.fs,
-      fb: Math.floor(s.aural.agb * (100 + s.talent.aura) / 100) + s.weaponadd.fb + s.talent.fb + s.head.fb + s.hand.fb + s.body.fb + s.belt.fb + s.ringone.fb + s.ringtwo.fb + s.necklace.fb + s.foot.fb + s.quiver.fb + s.skill.fb,
-      ts: Math.floor(s.aural.ths * (100 + s.talent.aura) / 100) + s.weaponadd.ts + s.talent.ts + s.head.ts + s.hand.ts + s.body.ts + s.belt.ts + s.ringone.ts + s.ringtwo.ts + s.necklace.ts + s.foot.ts + s.quiver.ts + s.skill.ts,
-      tb: Math.floor(s.aural.thb * (100 + s.talent.aura) / 100) + s.weaponadd.tb + s.talent.tb + s.head.tb + s.hand.tb + s.body.tb + s.belt.tb + s.ringone.tb + s.ringtwo.tb + s.necklace.tb + s.foot.tb + s.quiver.tb + s.skill.tb,
-      zs: s.weaponadd.zs + s.talent.zs + s.head.zs + s.hand.zs + s.body.zs + s.belt.zs + s.ringone.zs + s.ringtwo.zs + s.necklace.zs + s.foot.zs + s.quiver.zs + s.skill.zs,
-      zb: s.weaponadd.zb + s.talent.zb + s.head.zb + s.hand.zb + s.body.zb + s.belt.zb + s.ringone.zb + s.ringtwo.zb + s.necklace.zb + s.foot.zb + s.quiver.zb + s.skill.zb,
-      ps: s.head.ps + s.talent.ps + s.hand.ps + s.body.ps + s.belt.ps + s.ringone.ps + s.ringtwo.ps + s.necklace.ps + s.foot.ps + s.quiver.ps + s.skill.ps + weapon.ps,
-      pb: s.head.pb + s.talent.pb + s.hand.pb + s.body.pb + s.belt.pb + s.ringone.pb + s.ringtwo.pb + s.necklace.pb + s.foot.pb + s.quiver.pb + s.skill.pb + weapon.pb,
-      c: s.player.bb * 50 + s.talent.c + s.head.c + s.hand.c + s.body.c + s.belt.c + s.ringone.c + s.ringtwo.c + s.necklace.c + s.foot.c + s.quiver.c + s.skill.c,
-      cd: s.weaponadd.cd + s.talent.cd + s.head.cd + s.hand.cd + s.body.cd + s.belt.cd + s.ringone.cd + s.ringtwo.cd + s.necklace.cd + s.foot.cd + s.quiver.cd + s.skill.cd,
-      cud: s.weaponadd.cud + s.talent.cud + s.head.cud + s.hand.cud + s.body.cud + s.belt.cud + s.ringone.cud + s.ringtwo.cud + s.necklace.cud + s.foot.cud + s.quiver.cud + s.skill.cud,
-      trd: s.weaponadd.trd + s.talent.trd + s.head.trd + s.hand.trd + s.body.trd + s.belt.trd + s.ringone.trd + s.ringtwo.trd + s.necklace.trd + s.foot.trd + s.quiver.trd + s.skill.trd,
-      cupd: s.talent.cupd,
-      ad: s.talent.ad,
-      pjtd: s.weaponadd.pjtd + s.talent.pjtd + s.head.pjtd + s.hand.pjtd + s.body.pjtd + s.belt.pjtd + s.ringone.pjtd + s.ringtwo.pjtd + s.necklace.pjtd + s.foot.pjtd + s.quiver.pjtd + s.skill.pjtd,
-      aoed: s.weaponadd.aoed + s.talent.aoed + s.head.aoed + s.hand.aoed + s.body.aoed + s.belt.aoed + s.ringone.aoed + s.ringtwo.aoed + s.necklace.aoed + s.foot.aoed + s.quiver.aoed + s.skill.aoed,
-      pod: s.weaponadd.pod + s.talent.pod + s.head.pod + s.hand.pod + s.body.pod + s.belt.pod + s.ringone.pod + s.ringtwo.pod + s.necklace.pod + s.foot.pod + s.quiver.pod + s.skill.pod,
-      pd: s.talent.pd + s.head.pd + s.hand.pd + s.body.pd + s.belt.pd + s.ringone.pd + s.ringtwo.pd + s.necklace.pd + s.foot.pd + s.quiver.pd + s.skill.pd + s.skill.pjptd,
+      fd: s.weaponadd.fd + s.talent.fd + s.ruby.fd + s.head.fd + s.hand.fd + s.body.fd + s.belt.fd + s.ringone.fd + s.ringtwo.fd + s.necklace.fd + s.foot.fd + s.quiver.fd + s.skill.fd,
+      td: s.weaponadd.td + s.talent.td + s.ruby.td  + s.head.td + s.hand.td + s.body.td + s.belt.td + s.ringone.td + s.ringtwo.td + s.necklace.td + s.foot.td + s.quiver.td + s.skill.td,
+      zd: s.weaponadd.zd + s.talent.zd + s.ruby.zd  + s.head.zd + s.hand.zd + s.body.zd + s.belt.zd + s.ringone.zd + s.ringtwo.zd + s.necklace.zd + s.foot.zd + s.quiver.zd + s.skill.zd,
+      ices: s.weaponadd.ices + s.talent.ices + s.ruby.ices + s.head.ices + s.hand.ices + s.body.ices + s.belt.ices + s.ringone.ices + s.ringtwo.ices + s.necklace.ices + s.foot.ices + s.quiver.ices + s.skill.ices,
+      iceb: s.weaponadd.iceb + s.talent.iceb + s.ruby.iceb + s.head.iceb + s.hand.iceb + s.body.iceb + s.belt.iceb + s.ringone.iceb + s.ringtwo.iceb + s.necklace.iceb + s.foot.iceb + s.quiver.iceb + s.skill.iceb,
+      fs: Math.floor(s.aural.ags * (100 + s.talent.aura) / 100) + s.weaponadd.fs + s.talent.fs + s.ruby.fs + s.head.fs + s.hand.fs + s.body.fs + s.belt.fs + s.ringone.fs + s.ringtwo.fs + s.necklace.fs + s.foot.fs + s.quiver.fs + s.skill.fs,
+      fb: Math.floor(s.aural.agb * (100 + s.talent.aura) / 100) + s.weaponadd.fb + s.talent.fb + s.ruby.fb + s.head.fb + s.hand.fb + s.body.fb + s.belt.fb + s.ringone.fb + s.ringtwo.fb + s.necklace.fb + s.foot.fb + s.quiver.fb + s.skill.fb,
+      ts: Math.floor(s.aural.ths * (100 + s.talent.aura) / 100) + s.weaponadd.ts + s.talent.ts + s.ruby.ts + s.head.ts + s.hand.ts + s.body.ts + s.belt.ts + s.ringone.ts + s.ringtwo.ts + s.necklace.ts + s.foot.ts + s.quiver.ts + s.skill.ts,
+      tb: Math.floor(s.aural.thb * (100 + s.talent.aura) / 100) + s.weaponadd.tb + s.talent.tb + s.ruby.tb + s.head.tb + s.hand.tb + s.body.tb + s.belt.tb + s.ringone.tb + s.ringtwo.tb + s.necklace.tb + s.foot.tb + s.quiver.tb + s.skill.tb,
+      zs: s.weaponadd.zs + s.talent.zs + s.ruby.zs + s.head.zs + s.hand.zs + s.body.zs + s.belt.zs + s.ringone.zs + s.ringtwo.zs + s.necklace.zs + s.foot.zs + s.quiver.zs + s.skill.zs,
+      zb: s.weaponadd.zb + s.talent.zb + s.ruby.zb + s.head.zb + s.hand.zb + s.body.zb + s.belt.zb + s.ringone.zb + s.ringtwo.zb + s.necklace.zb + s.foot.zb + s.quiver.zb + s.skill.zb,
+      ps: s.head.ps + s.talent.ps + s.ruby.ps + s.hand.ps + s.body.ps + s.belt.ps + s.ringone.ps + s.ringtwo.ps + s.necklace.ps + s.foot.ps + s.quiver.ps + s.skill.ps + weapon.ps,
+      pb: s.head.pb + s.talent.pb + s.ruby.pb + s.hand.pb + s.body.pb + s.belt.pb + s.ringone.pb + s.ringtwo.pb + s.necklace.pb + s.foot.pb + s.quiver.pb + s.skill.pb + weapon.pb,
+      c: s.player.bb * 50 + s.talent.c + s.ruby.c + s.head.c + s.hand.c + s.body.c + s.belt.c + s.ringone.c + s.ringtwo.c + s.necklace.c + s.foot.c + s.quiver.c + s.skill.c,
+      cd: s.weaponadd.cd + s.talent.cd + s.ruby.cd + s.head.cd + s.hand.cd + s.body.cd + s.belt.cd + s.ringone.cd + s.ringtwo.cd + s.necklace.cd + s.foot.cd + s.quiver.cd + s.skill.cd,
+      cud: s.weaponadd.cud + s.talent.cud + s.ruby.cud + s.head.cud + s.hand.cud + s.body.cud + s.belt.cud + s.ringone.cud + s.ringtwo.cud + s.necklace.cud + s.foot.cud + s.quiver.cud + s.skill.cud,
+      trd: s.weaponadd.trd + s.talent.trd + s.ruby.trd + s.head.trd + s.hand.trd + s.body.trd + s.belt.trd + s.ringone.trd + s.ringtwo.trd + s.necklace.trd + s.foot.trd + s.quiver.trd + s.skill.trd,
+      cupd: s.talent.cupd + s.ruby.cupd,
+      ad: s.talent.ad + s.ruby.ad,
+      pjtd: s.weaponadd.pjtd + s.talent.pjtd + s.ruby.pjtd + s.head.pjtd + s.hand.pjtd + s.body.pjtd + s.belt.pjtd + s.ringone.pjtd + s.ringtwo.pjtd + s.necklace.pjtd + s.foot.pjtd + s.quiver.pjtd + s.skill.pjtd,
+      aoed: s.weaponadd.aoed + s.talent.aoed + s.ruby.aoed + s.head.aoed + s.hand.aoed + s.body.aoed + s.belt.aoed + s.ringone.aoed + s.ringtwo.aoed + s.necklace.aoed + s.foot.aoed + s.quiver.aoed + s.skill.aoed,
+      pod: s.weaponadd.pod + s.talent.pod + s.ruby.pod + s.head.pod + s.hand.pod + s.body.pod + s.belt.pod + s.ringone.pod + s.ringtwo.pod + s.necklace.pod + s.foot.pod + s.quiver.pod + s.skill.pod,
+      pd: s.talent.pd + s.ruby.pd + s.head.pd + s.hand.pd + s.body.pd + s.belt.pd + s.ringone.pd + s.ringtwo.pd + s.necklace.pd + s.foot.pd + s.quiver.pd + s.skill.pd + s.skill.pjptd,
       pdml: ml(s.moreless.pdm),
       zml: ml(s.moreless.vm),
       edml: Math.round(ml(s.moreless.wedm) * (100 + s.moreless.edm )) / 100,  
