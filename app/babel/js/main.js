@@ -823,7 +823,7 @@ const Hideinfo = React.createClass({
           {label: "刺客印記(承受)", attr: "amcd"},
           {label: "凍傷(抗)", attr: "icedr"},
           {label: "導電(抗)", attr: "tdr"},
-          {label: "點燃(抗)", attr: "fdr"},
+          {label: "易燃(抗)", attr: "fdr"},
           {label: "元素要害", attr: "edr"},
         ]
       };
@@ -1260,8 +1260,8 @@ const Info = React.createClass({
       zsd: Math.round(Math.round((((hidebasic.zcs + hidebasic.zcb) / 2 * calc.hc / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
       ppsd1: Math.round(Math.round((((dot.ppcs + dot.ppcb) / 2 * calc.hc / 100) + ((dot.pps + dot.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ppo) * (calc.pmt - 1 > 0  ? (calc.pmt - 1) / calc.pps : 0)  * s.player.bc) / 100,
       ppsd2: Math.round(Math.round((((dot.ppcs + dot.ppcb) / 2 * calc.hc / 100) + ((dot.pps + dot.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ppo) * calc.pmt * s.player.bc) / 100,
-      ipsd1: Math.round(Math.round((dot.igs2 + dot.igs2) / 2 * s.player.acc / 100 * s.player.ipo) * (calc.imt - 1 > 0  ? (calc.imt - 1) / calc.ips : 0)  * s.player.bc) / 100,
-      ipsd2: Math.round(Math.round((dot.igs2 + dot.igs2) / 2 * s.player.acc / 100 * s.player.ipo) * calc.imt * s.player.bc) / 100,
+      ipsd1: Math.round(Math.round((dot.igs2 + dot.igb2) / 2 * s.player.acc / 100 * s.player.ipo) * (calc.imt - 1 > 0  ? (calc.imt - 1) / calc.ips : 0)  * s.player.bc) / 100,
+      ipsd2: Math.round(Math.round((dot.igs2 + dot.igb2) / 2 * s.player.acc / 100 * s.player.ipo) * calc.imt * s.player.bc) / 100,
     };
     return(
     <div className="col xx12 s4 xx-np" id="infobox">
