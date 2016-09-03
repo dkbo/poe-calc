@@ -38,6 +38,52 @@ function equipmentRwd(name) {
         ]
       };
 }
+
+function talentRwd(name) {
+  return  {
+        name: name,
+        RWDValue: [
+          {label: "攻速", attr: "as"},
+          {label: "暴率", attr: "c"},
+          {label: "暴傷%", attr: "cd"},
+          {label: "clear"},
+          {label: "元傷%", attr: "ed"},
+          {label: "武器元傷%", attr: "wed"},
+          {label: "武器物傷%", attr: "wpd"},
+          {label: "攻擊物傷%", attr: "apd"},
+          {label: "投射物(傷害)%", attr: "pjtd"},
+          {label: "攻擊傷害%", attr: "ad"},
+          {label: "陷阱傷害%", attr: "trd"},
+          {label: "範圍傷害%", attr: "aoed"},
+          {label: "clear"},
+          {label: "中毒傷害%", attr: "pod"},
+          {label: "持續傷%", attr: "cud"},
+          {label: "物理持續傷%", attr: "cupd"},
+          {label: "clear"},
+          {label: "物傷%", attr: "pd"},
+          {label: "物傷(小)", attr: "ps"},
+          {label: "物傷(大)", attr: "pb"},
+          {label: "冰傷%", attr: "iced", className: "iceColor"},
+          {label: "冰傷(小)", attr: "ices", className: "iceColor"},
+          {label: "冰傷(大)", attr: "iceb", className: "iceColor"},
+          {label: "火傷%", attr: "fd", className: "fireColor"},
+          {label: "火傷(小)", attr: "fs", className: "fireColor"},
+          {label: "火傷(大)", attr: "fb", className: "fireColor"},
+          {label: "電傷%", attr: "td", className: "electricColor"},
+          {label: "電傷(小)", attr: "ts", className: "electricColor"},
+          {label: "電傷(大)", attr: "tb", className: "electricColor"},
+          {label: "混傷%", attr: "zd", className: "zColor"},
+          {label: "混傷(小)", attr: "zs", className: "zColor"},
+          {label: "混傷(大)", attr: "zb", className: "zColor"},
+          {label: "clear"},
+          {label: "最大生命", attr: "hp"},
+          {label: "生命%", attr: "hpd"},
+          {label: "最大魔力", attr: "mp"},
+          {label: "魔力%", attr: "mpd"},
+          {label: "光環效果", attr: "aura"},
+        ]
+      };
+}
 function rwdValue(category, _this, s) {
   return category.RWDValue.map(function(val, i) {
       if(val.label !== "clear"){
@@ -89,8 +135,11 @@ const Player = React.createClass({
           {label: "綠球", attr: "gb", className: "gb"},
           {label: "籃球", attr: "bb", className: "bb"},
           {label: "散彈效應", attr: "bc"},
-          {label: "基礎中毒時間", attr: "pps"},
-          {label: "中毒機率", attr: "ppo"},
+          {label: "clear"},
+          {label: "基礎中毒時間", attr: "pps", className: "zColor"},
+          {label: "中毒機率", attr: "ppo", className: "zColor"},
+          {label: "基礎燃燒時間", attr: "ips", className: "fireColor"},
+          {label: "點燃機率", attr: "ipo", className: "fireColor"},
         ]
       };
     return(
@@ -130,55 +179,12 @@ const Talent = React.createClass({
     this.props.s.setState();
   },
   render(s = this.props.s) {
-    const category = {
-        name: "talent",
-        RWDValue: [
-          {label: "攻速", attr: "as"},
-          {label: "暴率", attr: "c"},
-          {label: "暴傷%", attr: "cd"},
-          {label: "clear"},
-          {label: "元傷%", attr: "ed"},
-          {label: "武器元傷%", attr: "wed"},
-          {label: "武器物傷%", attr: "wpd"},
-          {label: "攻擊物傷%", attr: "apd"},
-          {label: "投射物(傷害)%", attr: "pjtd"},
-          {label: "攻擊傷害%", attr: "ad"},
-          {label: "陷阱傷害%", attr: "trd"},
-          {label: "範圍傷害%", attr: "aoed"},
-          {label: "clear"},
-          {label: "中毒傷害%", attr: "pod"},
-          {label: "持續傷%", attr: "cud"},
-          {label: "物理持續傷%", attr: "cupd"},
-          {label: "clear"},
-          {label: "物傷%", attr: "pd"},
-          {label: "物傷(小)", attr: "ps"},
-          {label: "物傷(大)", attr: "pb"},
-          {label: "冰傷%", attr: "iced", className: "iceColor"},
-          {label: "冰傷(小)", attr: "ices", className: "iceColor"},
-          {label: "冰傷(大)", attr: "iceb", className: "iceColor"},
-          {label: "火傷%", attr: "fd", className: "fireColor"},
-          {label: "火傷(小)", attr: "fs", className: "fireColor"},
-          {label: "火傷(大)", attr: "fb", className: "fireColor"},
-          {label: "電傷%", attr: "td", className: "electricColor"},
-          {label: "電傷(小)", attr: "ts", className: "electricColor"},
-          {label: "電傷(大)", attr: "tb", className: "electricColor"},
-          {label: "混傷%", attr: "zd", className: "zColor"},
-          {label: "混傷(小)", attr: "zs", className: "zColor"},
-          {label: "混傷(大)", attr: "zb", className: "zColor"},
-          {label: "clear"},
-          {label: "最大生命", attr: "hp"},
-          {label: "生命%", attr: "hpd"},
-          {label: "最大魔力", attr: "mp"},
-          {label: "魔力%", attr: "mpd"},
-          {label: "光環效果", attr: "aura"},
-        ]
-      };
     return(
       <section>
         <h3 className={this.state.display ? 'active' : null} ><span onClick={this._handleClick}>天賦點</span><span className="xx-fright" onClick={this._handleShowTextArea}>匯入</span></h3>
         {this.state.display ? 
         <Row>
-          {rwdValue(category, this, s.state)}
+          {rwdValue(talentRwd("talent"), this, s.state)}
         </Row> : null}
 
       </section>
@@ -623,9 +629,9 @@ const Skill = React.createClass({
           {label: "暴率", attr: "c"},
           {label: "暴傷%", attr: "cd"},
           {label: "持續時間%", attr: "cuds"},
+          {label: "增加燃燒時間%", attr: "ips"},
           {label: "詛咒效果%", attr: "bdd"},
           {label: "clear"},
-          {label: "傷害%", attr: "d"},
           {label: "元傷%", attr: "ed"},
           {label: "武器元傷%", attr: "wed"},
           {label: "投射物(物理)%", attr: "pjptd"},
@@ -673,7 +679,6 @@ const Skill = React.createClass({
           {label: "額外冰轉火%", attr: "itfadd"},
           {label: "火轉混%", attr: "ftz"},
           {label: "電轉混%", attr: "ttz"},
-          {label: "火轉混%", attr: "ftz"},
         ]
       };
     return(
@@ -809,14 +814,16 @@ const Hideinfo = React.createClass({
           {label: "零點射擊", attr: "pb"},
           {label: "急凍", attr: "hy"},
           {label: "寶鑽藥劑", attr: "cw"},
+          {label: "毒物走私", attr: "ppd"},
           {label: "感電", attr: "fe"},
+          {label: "投射物要害", attr: "pjc"},
           {label: "脆弱(物理)", attr: "fr"},
           {label: "脆弱(持續)", attr: "frc"},
           {label: "刺客印記(暴率)", attr: "amc"},
           {label: "刺客印記(承受)", attr: "amcd"},
           {label: "凍傷(抗)", attr: "icedr"},
           {label: "導電(抗)", attr: "tdr"},
-          {label: "點燃(抗)", attr: "fdr"},
+          {label: "易燃(抗)", attr: "fdr"},
           {label: "元素要害", attr: "edr"},
         ]
       };
@@ -873,12 +880,42 @@ const Monster = React.createClass({
     );
   },
 });
+const Ruby = React.createClass({
+  getInitialState() {
+    return {
+      display: leftPanel[18],
+    };
+  },
+  setValue(e, json = this.props.s.state) {
+    let category = e.target.name;
+    let attr = e.target.className;
+    json[category][attr] = temp[category][attr] = transNum(e.target.value);
+    this.props.s.setState(json);
+  },
+  _handleClick() {
+    leftPanel[18] = !this.state.display;
+    main.leftPanel();
+    this.setState({display: !this.state.display});
+  },
+  render(s = this.props.s) {
+    return(
+      <section>
+        <h3 className={this.state.display ? 'active' : null}><span onClick={this._handleClick}>天賦珠寶</span></h3>
+        {this.state.display ? 
+        <Row>
+          {rwdValue(talentRwd("ruby"), this, s.state)}
+        </Row> : null}
+      </section>
+    );
+  },
+});
 const Value = React.createClass({
   render(){
     return(
-      <div className="col xx12 s8">
+      <div className="col xx12 s8 xx-np" id="infoNum">
         <Player s={this.props.s} />
         <Talent s={this.props.s} />
+        <Ruby s={this.props.s} />
         <Weapon s={this.props.s} />
         <WeaponAdd s={this.props.s} />
         <Head s={this.props.s} />
@@ -975,48 +1012,49 @@ const Info = React.createClass({
       return Math.floor(x * (100 + s.skill.bdd) / 100 * (100 + s.monster.bd) / 100);
     };
     const sum = {
-      hp: s.weaponadd.hp + s.talent.hp + s.head.hp + s.hand.hp + s.body.hp + s.belt.hp + s.ringone.hp + s.ringtwo.hp + s.necklace.hp + s.foot.hp + s.quiver.hp,
-      hpd: s.weaponadd.hpd + s.talent.hpd + s.head.hpd + s.hand.hpd + s.body.hpd + s.belt.hpd + s.ringone.hpd + s.ringtwo.hpd + s.necklace.hpd + s.foot.hpd + s.quiver.hpd,
-      mp: s.weaponadd.mp + s.talent.mp + s.head.mp + s.hand.mp + s.body.mp + s.belt.mp + s.ringone.mp + s.ringtwo.mp + s.necklace.mp + s.foot.mp + s.quiver.mp,
-      mpd: s.weaponadd.mpd + s.talent.mpd + s.head.mpd + s.hand.mpd + s.body.mpd + s.belt.mpd + s.ringone.mpd + s.ringtwo.mpd + s.necklace.mpd + s.foot.mpd + s.quiver.mpd,
-      as: s.talent.as + s.head.as + s.hand.as + s.body.as + s.belt.as + s.ringone.as + s.ringtwo.as + s.necklace.as + s.foot.as + s.quiver.as + s.skill.as + s.player.gb * 4, 
-      ed: s.weaponadd.ed + s.talent.ed + s.head.ed + s.hand.ed + s.body.ed + s.belt.ed + s.ringone.ed + s.ringtwo.ed + s.necklace.ed + s.foot.ed + s.quiver.ed + s.skill.ed,
-      wed: s.weaponadd.wed + s.talent.wed + s.head.wed + s.hand.wed + s.body.wed + s.belt.wed + s.ringone.wed + s.ringtwo.wed + s.necklace.wed + s.foot.wed + s.quiver.wed + s.skill.wed,
-      wpd: s.talent.wpd,
-      apd: s.talent.apd,
-      iced: s.weaponadd.iced + s.talent.iced + s.head.iced + s.hand.iced + s.body.iced + s.belt.iced + s.ringone.iced + s.ringtwo.iced + s.necklace.iced + s.foot.iced + s.quiver.iced + s.skill.iced,
+      hp: s.weaponadd.hp + s.talent.hp + s.ruby.hp + s.head.hp + s.hand.hp + s.body.hp + s.belt.hp + s.ringone.hp + s.ringtwo.hp + s.necklace.hp + s.foot.hp + s.quiver.hp,
+      hpd: s.weaponadd.hpd + s.talent.hpd + s.ruby.hpd + s.head.hpd + s.hand.hpd + s.body.hpd + s.belt.hpd + s.ringone.hpd + s.ringtwo.hpd + s.necklace.hpd + s.foot.hpd + s.quiver.hpd,
+      mp: s.weaponadd.mp + s.talent.mp + s.ruby.mp + s.head.mp + s.hand.mp + s.body.mp + s.belt.mp + s.ringone.mp + s.ringtwo.mp + s.necklace.mp + s.foot.mp + s.quiver.mp,
+      mpd: s.weaponadd.mpd + s.talent.mpd + s.ruby.mpd  + s.head.mpd + s.hand.mpd + s.body.mpd + s.belt.mpd + s.ringone.mpd + s.ringtwo.mpd + s.necklace.mpd + s.foot.mpd + s.quiver.mpd,
+      as: s.talent.as + s.ruby.as  + s.head.as + s.hand.as + s.body.as + s.belt.as + s.ringone.as + s.ringtwo.as + s.necklace.as + s.foot.as + s.quiver.as + s.skill.as + s.player.gb * 4, 
+      ed: s.weaponadd.ed + s.talent.ed + s.ruby.ed  + s.head.ed + s.hand.ed + s.body.ed + s.belt.ed + s.ringone.ed + s.ringtwo.ed + s.necklace.ed + s.foot.ed + s.quiver.ed + s.skill.ed,
+      wed: s.weaponadd.wed + s.talent.wed + s.ruby.wed  + s.head.wed + s.hand.wed + s.body.wed + s.belt.wed + s.ringone.wed + s.ringtwo.wed + s.necklace.wed + s.foot.wed + s.quiver.wed + s.skill.wed,
+      wpd: s.talent.wpd + s.ruby.wpd,
+      apd: s.talent.apd + s.ruby.apd,
+      iced: s.weaponadd.iced + s.talent.iced + s.ruby.iced  + s.head.iced + s.hand.iced + s.body.iced + s.belt.iced + s.ringone.iced + s.ringtwo.iced + s.necklace.iced + s.foot.iced + s.quiver.iced + s.skill.iced,
       igd: s.skill.igd,
-      fd: s.weaponadd.fd + s.talent.fd + s.head.fd + s.hand.fd + s.body.fd + s.belt.fd + s.ringone.fd + s.ringtwo.fd + s.necklace.fd + s.foot.fd + s.quiver.fd + s.skill.fd,
-      td: s.weaponadd.td + s.talent.td + s.head.td + s.hand.td + s.body.td + s.belt.td + s.ringone.td + s.ringtwo.td + s.necklace.td + s.foot.td + s.quiver.td + s.skill.td,
-      zd: s.weaponadd.zd + s.talent.zd + s.head.zd + s.hand.zd + s.body.zd + s.belt.zd + s.ringone.zd + s.ringtwo.zd + s.necklace.zd + s.foot.zd + s.quiver.zd + s.skill.zd,
-      ices: s.weaponadd.ices + s.talent.ices + s.head.ices + s.hand.ices + s.body.ices + s.belt.ices + s.ringone.ices + s.ringtwo.ices + s.necklace.ices + s.foot.ices + s.quiver.ices + s.skill.ices,
-      iceb: s.weaponadd.iceb + s.talent.iceb + s.head.iceb + s.hand.iceb + s.body.iceb + s.belt.iceb + s.ringone.iceb + s.ringtwo.iceb + s.necklace.iceb + s.foot.iceb + s.quiver.iceb + s.skill.iceb,
-      fs: Math.floor(s.aural.ags * (100 + s.talent.aura) / 100) + s.weaponadd.fs + s.talent.fs + s.head.fs + s.hand.fs + s.body.fs + s.belt.fs + s.ringone.fs + s.ringtwo.fs + s.necklace.fs + s.foot.fs + s.quiver.fs + s.skill.fs,
-      fb: Math.floor(s.aural.agb * (100 + s.talent.aura) / 100) + s.weaponadd.fb + s.talent.fb + s.head.fb + s.hand.fb + s.body.fb + s.belt.fb + s.ringone.fb + s.ringtwo.fb + s.necklace.fb + s.foot.fb + s.quiver.fb + s.skill.fb,
-      ts: Math.floor(s.aural.ths * (100 + s.talent.aura) / 100) + s.weaponadd.ts + s.talent.ts + s.head.ts + s.hand.ts + s.body.ts + s.belt.ts + s.ringone.ts + s.ringtwo.ts + s.necklace.ts + s.foot.ts + s.quiver.ts + s.skill.ts,
-      tb: Math.floor(s.aural.thb * (100 + s.talent.aura) / 100) + s.weaponadd.tb + s.talent.tb + s.head.tb + s.hand.tb + s.body.tb + s.belt.tb + s.ringone.tb + s.ringtwo.tb + s.necklace.tb + s.foot.tb + s.quiver.tb + s.skill.tb,
-      zs: s.weaponadd.zs + s.talent.zs + s.head.zs + s.hand.zs + s.body.zs + s.belt.zs + s.ringone.zs + s.ringtwo.zs + s.necklace.zs + s.foot.zs + s.quiver.zs + s.skill.zs,
-      zb: s.weaponadd.zb + s.talent.zb + s.head.zb + s.hand.zb + s.body.zb + s.belt.zb + s.ringone.zb + s.ringtwo.zb + s.necklace.zb + s.foot.zb + s.quiver.zb + s.skill.zb,
-      ps: s.head.ps + s.talent.ps + s.hand.ps + s.body.ps + s.belt.ps + s.ringone.ps + s.ringtwo.ps + s.necklace.ps + s.foot.ps + s.quiver.ps + s.skill.ps + weapon.ps,
-      pb: s.head.pb + s.talent.pb + s.hand.pb + s.body.pb + s.belt.pb + s.ringone.pb + s.ringtwo.pb + s.necklace.pb + s.foot.pb + s.quiver.pb + s.skill.pb + weapon.pb,
-      c: s.player.bb * 50 + s.talent.c + s.head.c + s.hand.c + s.body.c + s.belt.c + s.ringone.c + s.ringtwo.c + s.necklace.c + s.foot.c + s.quiver.c + s.skill.c,
-      cd: s.weaponadd.cd + s.talent.cd + s.head.cd + s.hand.cd + s.body.cd + s.belt.cd + s.ringone.cd + s.ringtwo.cd + s.necklace.cd + s.foot.cd + s.quiver.cd + s.skill.cd,
-      cud: s.weaponadd.cud + s.talent.cud + s.head.cud + s.hand.cud + s.body.cud + s.belt.cud + s.ringone.cud + s.ringtwo.cud + s.necklace.cud + s.foot.cud + s.quiver.cud + s.skill.cud,
-      trd: s.weaponadd.trd + s.talent.trd + s.head.trd + s.hand.trd + s.body.trd + s.belt.trd + s.ringone.trd + s.ringtwo.trd + s.necklace.trd + s.foot.trd + s.quiver.trd + s.skill.trd,
-      cupd: s.talent.cupd,
-      ad: s.talent.ad,
-      pjtd: s.weaponadd.pjtd + s.talent.pjtd + s.head.pjtd + s.hand.pjtd + s.body.pjtd + s.belt.pjtd + s.ringone.pjtd + s.ringtwo.pjtd + s.necklace.pjtd + s.foot.pjtd + s.quiver.pjtd + s.skill.pjtd,
-      aoed: s.weaponadd.aoed + s.talent.aoed + s.head.aoed + s.hand.aoed + s.body.aoed + s.belt.aoed + s.ringone.aoed + s.ringtwo.aoed + s.necklace.aoed + s.foot.aoed + s.quiver.aoed + s.skill.aoed,
-      pod: s.weaponadd.pod + s.talent.pod + s.head.pod + s.hand.pod + s.body.pod + s.belt.pod + s.ringone.pod + s.ringtwo.pod + s.necklace.pod + s.foot.pod + s.quiver.pod + s.skill.pod,
-      pd: s.talent.pd + s.head.pd + s.hand.pd + s.body.pd + s.belt.pd + s.ringone.pd + s.ringtwo.pd + s.necklace.pd + s.foot.pd + s.quiver.pd + s.skill.pd + s.skill.pjptd,
+      fd: s.weaponadd.fd + s.talent.fd + s.ruby.fd + s.head.fd + s.hand.fd + s.body.fd + s.belt.fd + s.ringone.fd + s.ringtwo.fd + s.necklace.fd + s.foot.fd + s.quiver.fd + s.skill.fd,
+      td: s.weaponadd.td + s.talent.td + s.ruby.td  + s.head.td + s.hand.td + s.body.td + s.belt.td + s.ringone.td + s.ringtwo.td + s.necklace.td + s.foot.td + s.quiver.td + s.skill.td,
+      zd: s.weaponadd.zd + s.talent.zd + s.ruby.zd  + s.head.zd + s.hand.zd + s.body.zd + s.belt.zd + s.ringone.zd + s.ringtwo.zd + s.necklace.zd + s.foot.zd + s.quiver.zd + s.skill.zd,
+      ices: s.weaponadd.ices + s.talent.ices + s.ruby.ices + s.head.ices + s.hand.ices + s.body.ices + s.belt.ices + s.ringone.ices + s.ringtwo.ices + s.necklace.ices + s.foot.ices + s.quiver.ices + s.skill.ices,
+      iceb: s.weaponadd.iceb + s.talent.iceb + s.ruby.iceb + s.head.iceb + s.hand.iceb + s.body.iceb + s.belt.iceb + s.ringone.iceb + s.ringtwo.iceb + s.necklace.iceb + s.foot.iceb + s.quiver.iceb + s.skill.iceb,
+      fs: Math.floor(s.aural.ags * (100 + s.talent.aura) / 100) + s.weaponadd.fs + s.talent.fs + s.ruby.fs + s.head.fs + s.hand.fs + s.body.fs + s.belt.fs + s.ringone.fs + s.ringtwo.fs + s.necklace.fs + s.foot.fs + s.quiver.fs + s.skill.fs,
+      fb: Math.floor(s.aural.agb * (100 + s.talent.aura) / 100) + s.weaponadd.fb + s.talent.fb + s.ruby.fb + s.head.fb + s.hand.fb + s.body.fb + s.belt.fb + s.ringone.fb + s.ringtwo.fb + s.necklace.fb + s.foot.fb + s.quiver.fb + s.skill.fb,
+      ts: Math.floor(s.aural.ths * (100 + s.talent.aura) / 100) + s.weaponadd.ts + s.talent.ts + s.ruby.ts + s.head.ts + s.hand.ts + s.body.ts + s.belt.ts + s.ringone.ts + s.ringtwo.ts + s.necklace.ts + s.foot.ts + s.quiver.ts + s.skill.ts,
+      tb: Math.floor(s.aural.thb * (100 + s.talent.aura) / 100) + s.weaponadd.tb + s.talent.tb + s.ruby.tb + s.head.tb + s.hand.tb + s.body.tb + s.belt.tb + s.ringone.tb + s.ringtwo.tb + s.necklace.tb + s.foot.tb + s.quiver.tb + s.skill.tb,
+      zs: s.weaponadd.zs + s.talent.zs + s.ruby.zs + s.head.zs + s.hand.zs + s.body.zs + s.belt.zs + s.ringone.zs + s.ringtwo.zs + s.necklace.zs + s.foot.zs + s.quiver.zs + s.skill.zs,
+      zb: s.weaponadd.zb + s.talent.zb + s.ruby.zb + s.head.zb + s.hand.zb + s.body.zb + s.belt.zb + s.ringone.zb + s.ringtwo.zb + s.necklace.zb + s.foot.zb + s.quiver.zb + s.skill.zb,
+      ps: s.head.ps + s.talent.ps + s.ruby.ps + s.hand.ps + s.body.ps + s.belt.ps + s.ringone.ps + s.ringtwo.ps + s.necklace.ps + s.foot.ps + s.quiver.ps + s.skill.ps + weapon.ps,
+      pb: s.head.pb + s.talent.pb + s.ruby.pb + s.hand.pb + s.body.pb + s.belt.pb + s.ringone.pb + s.ringtwo.pb + s.necklace.pb + s.foot.pb + s.quiver.pb + s.skill.pb + weapon.pb,
+      c: s.player.bb * 50 + s.talent.c + s.ruby.c + s.head.c + s.hand.c + s.body.c + s.belt.c + s.ringone.c + s.ringtwo.c + s.necklace.c + s.foot.c + s.quiver.c + s.skill.c,
+      cd: s.weaponadd.cd + s.talent.cd + s.ruby.cd + s.head.cd + s.hand.cd + s.body.cd + s.belt.cd + s.ringone.cd + s.ringtwo.cd + s.necklace.cd + s.foot.cd + s.quiver.cd + s.skill.cd,
+      cud: s.weaponadd.cud + s.talent.cud + s.ruby.cud + s.head.cud + s.hand.cud + s.body.cud + s.belt.cud + s.ringone.cud + s.ringtwo.cud + s.necklace.cud + s.foot.cud + s.quiver.cud + s.skill.cud,
+      trd: s.weaponadd.trd + s.talent.trd + s.ruby.trd + s.head.trd + s.hand.trd + s.body.trd + s.belt.trd + s.ringone.trd + s.ringtwo.trd + s.necklace.trd + s.foot.trd + s.quiver.trd + s.skill.trd,
+      cupd: s.talent.cupd + s.ruby.cupd,
+      ad: s.talent.ad + s.ruby.ad,
+      pjtd: s.weaponadd.pjtd + s.talent.pjtd + s.ruby.pjtd + s.head.pjtd + s.hand.pjtd + s.body.pjtd + s.belt.pjtd + s.ringone.pjtd + s.ringtwo.pjtd + s.necklace.pjtd + s.foot.pjtd + s.quiver.pjtd + s.skill.pjtd,
+      aoed: s.weaponadd.aoed + s.talent.aoed + s.ruby.aoed + s.head.aoed + s.hand.aoed + s.body.aoed + s.belt.aoed + s.ringone.aoed + s.ringtwo.aoed + s.necklace.aoed + s.foot.aoed + s.quiver.aoed + s.skill.aoed,
+      pod: s.weaponadd.pod + s.talent.pod + s.ruby.pod + s.head.pod + s.hand.pod + s.body.pod + s.belt.pod + s.ringone.pod + s.ringtwo.pod + s.necklace.pod + s.foot.pod + s.quiver.pod + s.skill.pod,
+      pd: s.talent.pd + s.ruby.pd + s.head.pd + s.hand.pd + s.body.pd + s.belt.pd + s.ringone.pd + s.ringtwo.pd + s.necklace.pd + s.foot.pd + s.quiver.pd + s.skill.pd + s.skill.pjptd,
       pdml: ml(s.moreless.pdm),
       zml: ml(s.moreless.vm),
       edml: Math.round(ml(s.moreless.wedm) * (100 + s.moreless.edm )) / 100,  
       dml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr,s.moreless.btomd, s.moreless.ci, 4 * s.player.gb) * (100 + s.moreless.rg)) / 100,
       hdml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.hideinfo.pm) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
-      igdml: Math.round(ml(s.moreless.edm) * ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
-      pudml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
-      ppdml: Math.round(ml(s.moreless.vm) * ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy, s.hideinfo.pb) * (100 + s.moreless.rg)) / 100,
+      igdml: Math.round(ml(s.moreless.edm) * ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy) * (100 + s.moreless.rg)) / 100,
+      igd2ml: Math.round(ml(s.moreless.edm) * ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy) * (100 + s.moreless.rg)) * 0.2 / 100,
+      pudml: Math.round(ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy) * (100 + s.moreless.rg)) / 100,
+      ppdml: Math.round(ml(s.moreless.vm) * ml(s.moreless.gmp, s.moreless.lmp, s.moreless.fork, s.moreless.pjtdm, s.moreless.penet) * ml(s.moreless.tr, s.moreless.trd) * ml(s.moreless.mtr, s.moreless.btomd,  s.moreless.ci, 4 * s.player.gb, s.hideinfo.hy) * (100 + s.moreless.rg)) / 100,
       asl: ml(s.moreless.pdmasl, s.moreless.btomasl) * 100,
       mopd: s.monster.pd,
       moiced: s.monster.iced + bdr(s.hideinfo.icedr) + s.skill.icedr + bdr(s.hideinfo.edr) > 75 ? 75 + s.skill.icedi : s.monster.iced + bdr(s.hideinfo.icedr) + s.skill.icedr + bdr(s.hideinfo.edr) + s.skill.icedi,
@@ -1054,12 +1092,13 @@ const Info = React.createClass({
       return sd * (100 + sum.wed + sum.ed + dsum + sum.pjtd + sum.ad + sum.aoed +sum.trd) / 100 * dml * Math.round(em * s.skill.bd) / 100;
     };
     function pl(sd, d, em, ise = false){
-      let dsum = 100 + sum.pjtd + sum.trd + sum.pd + sum.wpd + sum.apd + sum.ad + sum.aoed;
+      let dsum = 100 + sum.pjtd + sum.trd + sum.ad + sum.aoed + sum.pd + sum.wpd + sum.apd;
+
       let dml = sum.pdml;
       for(let i = 0 ; i < d.length; i++){
         dsum += d[i];
       }
-      if(ise) {
+      if(ise && ise !== "z") {
         dml *= sum.edml;
         dsum += sum.wed + sum.ed;
       }
@@ -1074,38 +1113,39 @@ const Info = React.createClass({
 
     function iced(sd, dml, h, c) {
       if(sd === true) {
-        return Math.round((el(sum.ices, [sum.iced], dml) + pl(sum.ps, [sum.iced], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100 ) * (100 - s.skill.itf) / 100 * (h ? (100 + s.hideinfo.fe + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.moiced : 100) / 100;
+        return Math.round((el(sum.ices, [sum.iced], dml) + pl(sum.ps, [sum.iced], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100 ) * (100 - s.skill.itf) / 100 * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.pjc)) / 100 * (c ? (100 + bdr(s.hideinfo.amcd)) / 100 : 1) : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.moiced : 100) / 100;
       } else {
-        return Math.round((el(sum.iceb, [sum.iced], dml) + pl(sum.pb, [sum.iced], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100 ) * (100 - s.skill.itf) / 100 * (h ? (100 + s.hideinfo.fe + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.moiced : 100) / 100;
+        return Math.round((el(sum.iceb, [sum.iced], dml) + pl(sum.pb, [sum.iced], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100 ) * (100 - s.skill.itf) / 100 * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.pjc)) / 100 * (c ? (100 + bdr(s.hideinfo.amcd)) / 100 : 1) : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.moiced : 100) / 100;
       }
     };
     function fd(sd, dml, h, c) {
       if(sd === true) {
-        return Math.round((el(sum.fs, [sum.fd], dml) + (el(sum.ices, [sum.fd, sum.iced], dml) + pl(sum.ps, [sum.iced, sum.fd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100 * (h ? (100 + s.hideinfo.fe + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mofd : 100) / 100;
+        return Math.round((el(sum.fs, [sum.fd], dml) + (el(sum.ices, [sum.fd, sum.iced], dml) + pl(sum.ps, [sum.iced, sum.fd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100 * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.pjc)) / 100 * (c ? (100 + bdr(s.hideinfo.amcd)) / 100 : 1) : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mofd : 100) / 100;
       } else {
-        return Math.round((el(sum.fb, [sum.fd], dml) + (el(sum.iceb, [sum.fd, sum.iced], dml) + pl(sum.pb, [sum.iced, sum.fd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100 * (h ? (100 + s.hideinfo.fe + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mofd : 100) / 100;
+        return Math.round((el(sum.fb, [sum.fd], dml) + (el(sum.iceb, [sum.fd, sum.iced], dml) + pl(sum.pb, [sum.iced, sum.fd], dml, true) * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd], dml, true) * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (100 - s.skill.ftz) / 100 * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.pjc)) / 100 * (c ? (100 + bdr(s.hideinfo.amcd)) / 100 : 1) : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mofd : 100) / 100;
       }
       
     };
     function td(sd, dml, h, c) {
       if(sd === true) {
-        return Math.round((el(sum.ts, [sum.td], dml) + pl(sum.ps, [sum.td], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (100 - s.skill.ttz) / 100 * (h ? (100 + s.hideinfo.fe + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.motd : 100) / 100;
+        return Math.round((el(sum.ts, [sum.td], dml) + pl(sum.ps, [sum.td], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (100 - s.skill.ttz) / 100 * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.pjc)) / 100 * (c ? (100 + bdr(s.hideinfo.amcd)) / 100 : 1) : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.motd : 100) / 100;
       } else {
-        return Math.round((el(sum.tb, [sum.td], dml) + pl(sum.pb, [sum.td], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (100 - s.skill.ttz) / 100 * (h ? (100 + s.hideinfo.fe + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.motd : 100) / 100;
+        return Math.round((el(sum.tb, [sum.td], dml) + pl(sum.pb, [sum.td], dml, true) * (s.skill.pttadd + s.skill.ptt) / 100) * (100 - s.skill.ttz) / 100 * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.pjc)) / 100 * (c ? (100 + bdr(s.hideinfo.amcd)) / 100 : 1) : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.motd : 100) / 100;
       }
     };
     function pd(sd, dml, h, c) {
       if(sd === true) {
-        return Math.round(pl(sum.ps, [0], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100 * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mopd : 100) / 100;;
+        return Math.round(pl(sum.ps, [0], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100 * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + bdr(s.hideinfo.pjc)) / 100 * (c ? (100 + bdr(s.hideinfo.amcd)) / 100 : 1) : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mopd : 100) / 100;;
       } else {
-        return Math.round(pl(sum.pb, [0], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100 * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mopd : 100) / 100;;
+        return Math.round(pl(sum.pb, [0], dml) * (100 - s.skill.pti - s.skill.ptt - s.skill.ptf - s.skill.ptz) / 100 * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + bdr(s.hideinfo.pjc)) / 100 * (c ? (100 + bdr(s.hideinfo.amcd)) / 100 : 1) : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mopd : 100) / 100;;
       }
     };
     function zd(sd, dml, h, c) {
+      let dsum = sum.zd + sum.pjtd + sum.aoed + sum.ad + sum.trd;
       if(sd === true) {
-        return Math.round((sum.zs * (100 + sum.zd + sum.pjtd) / 100 * sum.zml * Math.round(dml * s.skill.bd) / 100 + pl(sum.ps, [sum.zd], dml, "z") * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.ices, [sum.iced, sum.zd], dml, "z") + pl(sum.ps, [sum.iced, sum.zd], dml, "z") * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.ts, [sum.td, sum.zd], dml, "z") + pl(sum.ps, [sum.td, sum.zd], dml, "z") * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fs, [sum.fd, sum.zd], dml, "z") + (el(sum.ices, [sum.fd, sum.iced, sum.zd], dml, "z") + pl(sum.ps, [sum.fd, sum.td, sum.iced, sum.zd], dml, "z") * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd, sum.zd], dml, "z") * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mozd : 100) / 100;
+        return Math.round((sum.zs * (100 + dsum) / 100 * sum.zml * Math.round(dml * s.skill.bd) / 100 + pl(sum.ps, [sum.zd], dml, "z") * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.ices, [sum.iced, sum.zd], dml, "z") + pl(sum.ps, [sum.iced, sum.zd], dml, "z") * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.ts, [sum.td, sum.zd], dml, "z") + pl(sum.ps, [sum.td, sum.zd], dml, "z") * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fs, [sum.fd, sum.zd], dml, "z") + (el(sum.ices, [sum.fd, sum.iced, sum.zd], dml, "z") + pl(sum.ps, [sum.fd, sum.td, sum.iced, sum.zd], dml, "z") * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.ps, [sum.fd, sum.zd], dml, "z") * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + bdr(s.hideinfo.pjc)) / 100 * (c ? (100 + bdr(s.hideinfo.amcd)) / 100 : 1) : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mozd : 100) / 100;
       } else {
-        return Math.round((sum.zb * (100 + sum.zd + sum.pjtd) / 100 * sum.zml * Math.round(dml * s.skill.bd) / 100 + pl(sum.pb, [sum.zd], dml, "z") * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.iceb, [sum.iced, sum.zd], dml, "z") + pl(sum.pb, [sum.iced, sum.zd], dml, "z") * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.tb, [sum.td, sum.zd], dml, "z") + pl(sum.pb, [sum.td, sum.zd], dml, "z") * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fb, [sum.fd, sum.zd], dml, "z") + (el(sum.iceb, [sum.fd, sum.iced, sum.zd], dml, "z") + pl(sum.pb, [sum.fd, sum.td, sum.iced, sum.zd], dml, "z") * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd, sum.zd], dml, "z") * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mozd : 100) / 100;
+        return Math.round((sum.zb * (100 + dsum) / 100 * sum.zml * Math.round(dml * s.skill.bd) / 100 + pl(sum.pb, [sum.zd], dml, "z") * (s.skill.ptzadd + s.skill.ptz) / 100 + (el(sum.iceb, [sum.iced, sum.zd], dml, "z") + pl(sum.pb, [sum.iced, sum.zd], dml, "z") * (s.skill.ptiadd + s.skill.pti) / 100) * s.skill.etzadd / 100 + (el(sum.tb, [sum.td, sum.zd], dml, "z") + pl(sum.pb, [sum.td, sum.zd], dml, "z") * (s.skill.pttadd + s.skill.ptt) / 100) * (s.skill.ttz + s.skill.etzadd) / 100 + (el(sum.fb, [sum.fd, sum.zd], dml, "z") + (el(sum.iceb, [sum.fd, sum.iced, sum.zd], dml, "z") + pl(sum.pb, [sum.fd, sum.td, sum.iced, sum.zd], dml, "z") * (Math.floor(s.aural.hate * (100 + s.talent.aura) / 100)  + s.skill.pti + s.skill.ptiadd) / 100) * (s.skill.itf + s.skill.itfadd) / 100 + pl(sum.pb, [sum.fd, sum.zd], dml, "z") * Math.round(s.skill.ptfadd + s.skill.ptf) / 100) * (s.skill.ftz + s.skill.etzadd) / 100) * (h ? (100 + s.hideinfo.fe + bdr(s.hideinfo.fr) + bdr(s.hideinfo.pjc)) / 100 * (c ? (100 + bdr(s.hideinfo.amcd)) / 100 : 1) : 1)) * (c ? cd() : 100) / 100 * (h ? 100 - sum.mozd : 100) / 100;
       }
     };
     function cd() {
@@ -1153,33 +1193,36 @@ const Info = React.createClass({
       c: ((Math.round(weapon.c * (100 + sum.c)) / 100) > 95 ? 95 : (Math.round(weapon.c * (100 + sum.c)) / 100)),
       bc: ((Math.round(weapon.c * (100 + sum.c)) / 100) + bdr(s.hideinfo.amc)) > 95 ? 95 : (Math.round(weapon.c * (100 + sum.c)) / 100) + bdr(s.hideinfo.amc),
       pps: Math.floor(s.player.pps * (100 + s.skill.cuds)) / 100,
+      ips: Math.floor(s.player.ips * (100 + s.skill.ips)) / 100,
     };
     calc.hc = (s.hideinfo.cw) ? 100 - Math.round(Math.pow(100 - calc.bc, 2)) / 100 : calc.bc; // 寶鑽藥劑 // 刺客印記
 
 
 
     //點燃公式
-    function igl(sd, c){
+    function igl(sd, c, t){
       let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.fd + sum.igd  + sum.ed) / 100;
-      let dml = sum.igdml;
-      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 *  0.2);
+      let dml = t ? sum.igd2ml : sum.igdml;
+      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc)) / 100 *  0.2);
     };
     //流血公式
     function pul(sd, c){
       let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.cupd + sum.pd) / 100;
       let dml = sum.pudml;
-      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc) + bdr(s.hideinfo.fr) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 *  0.1);
+      return Math.round(sd * dsum * dml * (c ? (s.hideinfo.ppd ? 2 : 1) : 1) * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc) + bdr(s.hideinfo.fr)) / 100 *  0.1);
     };
     //中毒公式
     function ppl(sd, c){
       let dsum = (100 + sum.cud + sum.pjtd + sum.trd + sum.aoed + sum.pod  + sum.zd) / 100 ;
       let dml = sum.ppdml;
-      return Math.round(sd * dsum * dml * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc) + (c ? bdr(s.hideinfo.amcd) : 0)) / 100 *  0.08);
+      return Math.round(sd * dsum * dml * (c ? (s.hideinfo.ppd ? 2 : 1) : 1) * (100 + s.hideinfo.fe + bdr(s.hideinfo.frc)) / 100 *  0.1);
     };
 
     const dot = {
       igs: igl(hidebasic.fs),
       igb: igl(hidebasic.fb),
+      igs2: igl(hidebasic.fs, false, true),
+      igb2: igl(hidebasic.fb, false, true),
       igcs: igl(hidebasic.fcs, true),
       igcb: igl(hidebasic.fcb, true),
 
@@ -1193,8 +1236,8 @@ const Info = React.createClass({
       ppcs: ppl(hidebasic.zcs + hidebasic.pcs, true),
       ppcb: ppl(hidebasic.zcb + hidebasic.pcb, true),
     };
-
     calc.pmt = Math.round( calc.pps / (1 / calc.as) * 100) / 100; //最大毒傷次數
+    calc.imt = Math.round( calc.ips / (1 / calc.as) * 100) / 100; //最大火傷次數
 
     const info = {      
       td: Math.round((((calc.basicCds + calc.basicCdb) / 2 * calc.c / 100) + ((calc.basicds + calc.basicdb) / 2 * (100 - calc.c) / 100)) * s.player.acc ) / 100,
@@ -1211,16 +1254,18 @@ const Info = React.createClass({
       sd: Math.round(Math.round((((calc.hbasicCds + calc.hbasicCdb) / 2 * calc.hc / 100) + ((calc.hbasicds + calc.hbasicdb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
       ptd: Math.round((((hidebasic.pcs + hidebasic.pcb) / 2 * calc.hc / 100) + ((hidebasic.ps + hidebasic.pb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
       psd: Math.round(Math.round((((hidebasic.pcs + hidebasic.pcb) / 2 * calc.hc / 100) + ((hidebasic.ps + hidebasic.pb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
-      etd: Math.round((((hidebasic.icecs + hidebasic.fcs + hidebasic.tcs + hidebasic.icecb + hidebasic.fcb + hidebasic.tcb) / 2 * calc.hc / 100 * cd() / 100) + ((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
-      esd: Math.round(Math.round((((hidebasic.icecs + hidebasic.fcs + hidebasic.tcs + hidebasic.icecb + hidebasic.fcb + hidebasic.tcb) / 2 * calc.hc / 100 * cd() / 100) + ((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
+      etd: Math.round((((hidebasic.icecs + hidebasic.fcs + hidebasic.tcs + hidebasic.icecb + hidebasic.fcb + hidebasic.tcb) / 2 * calc.hc / 100) + ((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
+      esd: Math.round(Math.round((((hidebasic.icecs + hidebasic.fcs + hidebasic.tcs + hidebasic.icecb + hidebasic.fcb + hidebasic.tcb) / 2 * calc.hc / 100) + ((hidebasic.ices + hidebasic.fs + hidebasic.ts + hidebasic.iceb + hidebasic.fb + hidebasic.tb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
       ztd: Math.round((((hidebasic.zcs + hidebasic.zcb) / 2 * calc.hc / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc ) / 100,
-      zsd: Math.round(Math.round((((hidebasic.zs + hidebasic.zb) / 2 * calc.hc / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
+      zsd: Math.round(Math.round((((hidebasic.zcs + hidebasic.zcb) / 2 * calc.hc / 100) + ((hidebasic.zs + hidebasic.zb) / 2 * (100 - calc.hc) / 100)) * s.player.acc) * calc.as * s.player.bc) / 100,
       ppsd1: Math.round(Math.round((((dot.ppcs + dot.ppcb) / 2 * calc.hc / 100) + ((dot.pps + dot.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ppo) * (calc.pmt - 1 > 0  ? (calc.pmt - 1) / calc.pps : 0)  * s.player.bc) / 100,
       ppsd2: Math.round(Math.round((((dot.ppcs + dot.ppcb) / 2 * calc.hc / 100) + ((dot.pps + dot.ppb) / 2 * (100 - calc.hc) / 100)) * s.player.acc / 100 * s.player.ppo) * calc.pmt * s.player.bc) / 100,
+      ipsd1: Math.round(Math.round((dot.igs2 + dot.igb2) / 2 * s.player.acc / 100 * s.player.ipo) * (calc.imt - 1 > 0  ? (calc.imt - 1) / calc.ips : 0)  * s.player.bc) / 100,
+      ipsd2: Math.round(Math.round((dot.igs2 + dot.igb2) / 2 * s.player.acc / 100 * s.player.ipo) * calc.imt * s.player.bc) / 100,
     };
     return(
-    <div className="col xx12 s4">
-      <div id="infobox">
+    <div className="col xx12 s4 xx-np" id="infobox">
+      <div>
         <section>
           <h3 className={this.state.playerDisplay ? 'active' : null} onClick={this._handlePlayer}>人物資訊</h3>
           {this.state.playerDisplay ?
@@ -1322,7 +1367,7 @@ const Info = React.createClass({
             <p className="col xx6"><strong className="zColor">毒傷</strong>{dot.pps} - {dot.ppb}</p>
             <p className="col xx6"><strong className="zColor">毒傷暴擊</strong>{dot.ppcs} - {dot.ppcb}</p>
             <p className="col xx6"><strong className="zColor">中毒持續時間</strong>{calc.pps} 秒</p>
-            <p className="col xx6"><strong className="zColor">最大疊毒次數</strong>{calc.pmt}</p>
+            <p className="col xx6"><strong className="zColor">最大疊毒(次)</strong>{calc.pmt}</p>
             <p className="col xx6"><strong className="zColor">{calc.pps} 秒內DPS</strong>{hideinfo.ppsd1}</p>
             <p className="col xx6"><strong className="zColor">{calc.pps} 秒後DPS</strong>{hideinfo.ppsd2}</p>
             <Clear/>
@@ -1333,6 +1378,13 @@ const Info = React.createClass({
             <Clear/>
             <p className="col xx6"><strong className="fireColor">點燃</strong>{dot.igs} - {dot.igb}</p>
             <p className="col xx6"><strong className="fireColor">點燃暴擊</strong>{dot.igcs} - {dot.igcb}</p>
+            <Clear/>
+            <p className="col xx6"><strong className="fireColor">燃燒持續時間</strong>{calc.ips} 秒</p>
+            <p className="col xx6"><strong className="fireColor">餘燼</strong>{dot.igs2} - {dot.igb2}</p>
+            <p className="col xx6"><strong className="fireColor">最大疊燃燒(次)</strong>{calc.imt}</p>
+            <p className="col xx6"><strong className="fireColor">{calc.ips} 秒內DPS</strong>{hideinfo.ipsd1}</p>
+            <p className="col xx6"><strong className="fireColor">{calc.ips} 秒後DPS</strong>{hideinfo.ipsd2}</p>
+
           </Row> : null}
         </section>
         <section className="xx-hide">
@@ -1380,6 +1432,7 @@ const Info = React.createClass({
             <p className="col xx4"><strong>傷害(倍率)</strong>{sum.dml}</p>
             <p className="col xx4"><strong>實際傷害(倍率)</strong>{sum.hdml}</p>
             <p className="col xx4"><strong className="fireColor">點燃傷害(倍率)</strong>{sum.igdml}</p>
+            <p className="col xx4"><strong className="fireColor">餘燼傷害(倍率)</strong>{sum.igd2ml}</p>
             <p className="col xx4"><strong>流血傷害(倍率)</strong>{sum.pudml}</p>
             <p className="col xx4"><strong className="zColor">中毒傷害(倍率)</strong>{sum.ppdml}</p>
           </Row> : null}
@@ -1422,7 +1475,7 @@ const App = React.createClass({
   },
   _handleChange(e, json = this.state) {
     const v = e.target.value;
-    const n = infoArray[TextAreaNum];
+    const n = TextAreaNum !== 1 ? infoArray[TextAreaNum + 1] : infoArray[TextAreaNum];
     let tp = JSON.parse(JSON.stringify(init[n]));
     if(TextAreaNum !== 1) {
       const r = reg.equipment;
@@ -1632,7 +1685,6 @@ const App = React.createClass({
           for(let x in m){
             let f = r.insert.exec(m[x]);
             if(f) {
-              console.log(f)
               switch(f[3]) {
                 case "閃電傷害":
                   tp.td += transNum(f[2]);
