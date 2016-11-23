@@ -51,7 +51,7 @@ var init = {
   },
 
 }
-gulp.task(init.webServer.name, function() {
+gulp.task(init.webServer.name, ()=> {
   var x = init.webServer;
   gulp.src(x.src)
     .pipe(webserver({
@@ -59,7 +59,7 @@ gulp.task(init.webServer.name, function() {
          livereload: x.livereload,
     }));
 });
-gulp.task(init.jade.name, function() {
+gulp.task(init.jade.name, ()=> {
   var x = init.jade;
   gulp.src(x.src)
      .pipe(jade())
@@ -67,7 +67,7 @@ gulp.task(init.jade.name, function() {
      .pipe(notify({ message: x.message }))
      .pipe(livereload());
 });
-gulp.task(init.babel.name, function() {
+gulp.task(init.babel.name, ()=> {
     var x = init.babel
     gulp.src(x.src) 
     .pipe(babel()) 
@@ -76,7 +76,7 @@ gulp.task(init.babel.name, function() {
     .pipe(notify({ message: x.message }))
     .pipe(livereload());
 });
-gulp.task('sass', function() {
+gulp.task('sass', ()=> {
     gulp.src('app/sass/**/*.sass')
         .pipe(plumber())
         .pipe(sass({
@@ -89,7 +89,7 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('app/'))
         .pipe(livereload());
 });
-gulp.task('css', function() {
+gulp.task('css', ()=> {
     var processors = [
         autoprefixer({
             browsers: ['last 1 version']
@@ -101,12 +101,12 @@ gulp.task('css', function() {
             .pipe(gulp.dest('css/'));
 
 });
-gulp.task('del', function(cb) {
+gulp.task('del', (cb)=> {
     del([
         '.sass-cache'
     ], cb)
 });
-gulp.task('watch', function () { 
+gulp.task('watch',  ()=> { 
   gulp.watch('app/jade/**/*.jade', ['jade']);
   gulp.watch('app/sass/**/*.sass', ['sass']);
   gulp.watch('app/css/**/*.css', ['css']);
